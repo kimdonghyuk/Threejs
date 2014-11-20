@@ -15,8 +15,8 @@ public class ThreeService {
 	@Inject
 	ThreeMapper mapper;
 	
-	public List<ThreeVO> list(){
-		return mapper.list();
+	public List<ThreeVO> list(int page){
+		return mapper.list(page);
 	}
 	
 }

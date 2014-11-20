@@ -22,7 +22,7 @@ public class ThreeMapperTest {
 	
 	@Test
 	public void test() {
-		List<ThreeVO> list = service.list();
+		List<ThreeVO> list = service.list(2);
 		System.out.println(list);
 	}
 

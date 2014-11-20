@@ -43,11 +43,19 @@ a {
 	text-align: center;
 }
 
+.movePage{
+	position: absolute;
+	bottom: 50px;
+	width: 50px;
+	text-align: right;
+
+}
+
 .element {
 	width: 200px;
 	height: 250px;
-	box-shadow: 0px 0px 12px rgba(255, 0, 210, 0.5);
-	border: 2px solid rgba(255, 0, 210, 0.25);
+	box-shadow: 0px 0px 12px rgba(0, 250, 85, 0.5);
+	border: 2px solid rgba(0, 250, 85, 0.25);
 	text-align: center;
 	cursor: pointer;
 }
@@ -72,8 +80,8 @@ a {
 	bottom: 15px;
 	font-size: 40px;
 	font-weight: bold;
-	color: rgba(255, 0, 210, 0.25);
-	text-shadow: 0 0 10px rgba(255, 0, 210, 0.50);
+	color: rgba(0, 0, 0, 0.25);
+	text-shadow: 0 0 10px rgba(0, 250, 85, 0.50);
 }
 
 .element .details {
@@ -82,7 +90,7 @@ a {
 	left: 0px;
 	right: 0px;
 	font-size: 12px;
-	color: rgba(255, 0, 210, 0.8);
+	color: rgba(0, 250, 85, 0.8);
 }
 
 button {
@@ -121,62 +129,36 @@ button:active {
 		<button id="grid">GRID</button>
 	</div>
 	
+	<div class="movePage">
+	
+	</div>
+	
 
 
 <!-- 스크립트문 시작........................................................................................................... -->
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script>
- 	/* $(document).ready(makeLocation());  */
-
-
-// table
-/*  var table = [
-    "H", "Hydrogen", "1.00794", 5, 3,
-    "He", "Helium", "4.002602", 7, 3,
-    "Li", "Lithium", "6.941", 9, 3,
-    "Be", "Beryllium", "9.012182", 11, 3,
-    "B", "Boron", "10.811", 13, 3,
-    "C", "Carbon", "12.0107", 5, 5,
-    "N", "Nitrogen", "14.0067", 7, 5,
-    "O", "Oxygen", "15.9994", 9, 5,
-    "F", "Fluorine", "18.9984032", 11, 5,
-    "Ne", "Neon", "20.1797", 13, 5
-];  */
+ 
+/* make Table...............................................................................................................  */
+	var tableData = [];
+	var page = 1;
 
 	
-/*  var table = [];
-	function list(){
-	var url = "/web/list"
-	$.getJSON(url, function (data) {			
-		$.each(data, function (key, val) {	// for each문을 돌려서 key값을 잡고 val값을 item 배열에 넣어줌.
-
-			table.push(val.tno);
-			table.push(val.title);
-			table.push(val.userid);
-			table.push(val.contfile);
-			table.push(val.regdate);
-			});
-			console.log(table);
-			return table;
-			
-		});		
-	} */
-	
-	
-	var tableData = []; 
+	console.log("page : " + page);
 	
 	(function makeTable(){
-		
-		var urlPath = "/web/list"
 		var locationList = makeLocation();
-		var i = 0;
+		var i = 0; 
 		
 		var xStart = 5;
 		var yStart = 3;
 		var len = 5;
 		
+		makeBtn();
+		
+		
 		$.ajax({
-			url: "/web/list",
+			url: "/web/list?page=" + page,
 			dataType:"json",
 			async:false,
 			success:function(data){
@@ -188,7 +170,6 @@ button:active {
 					if(tempX > 13){
 						tempX -= 10;						
 					}
-					console.log(tempX);
 					data[i].x = tempX;
 					data[i].y = tempY;					
 				}
@@ -201,7 +182,7 @@ button:active {
 		var x = 5;
 		var y = 3;
 		var list = [];
-		for(y = 3 ; y < 1503; y = y+2){
+		for(y = 3 ; y < 13; y = y+2){
 			for(x = 5; x < 15; x = x+2){
 				list.push(x,y);
 			}			
@@ -209,11 +190,8 @@ button:active {
 		return list;			
 	}
 	
+/*end makeTable............................................................................................................. */	
 	
-	
-	console.log("-----------------------------");
-	console.dir(tableData);
-	console.log("-----------------------------");
 	
 	var camera, scene, renderer;
 	var controls;
@@ -226,12 +204,14 @@ button:active {
 	// console.log("Table data:" + tableData); 
 	//console.log(table);
 	
+/*Start main..................................................................................................................*/
+	
  	init();
 	// 초기화 함수 실행
 	animate();
 	// 애니메이션 함수 실행 
 
-	
+/**/	
 	function init() {
 	
 	    camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 );
@@ -244,7 +224,7 @@ button:active {
 	
 	        var element = document.createElement( 'div' );                                                  // 'div'요소를 element에 추가
 	        element.className = 'element';                                                                  // 'div'에 class이름을 element로 잡음.
-	        element.style.backgroundColor = 'rgba(255,0,210,' + ( Math.random() * 0.01 + 0.1 ) + ')';
+	        element.style.backgroundColor = 'rgba(0, 250, 85,' + ( Math.random() * 0.01 + 0.1 ) + ')';
 	        // class 이름을 element로 잡은 부분에 배경색 스타일에 투명도를 넣고 그 값을 랜덤으로 지정해줌 rgba(0,127,127, 투명도)
 	
 /* 	        var number = document.createElement( 'div' );                                                   // 'div'요소를 element에 추가
@@ -451,6 +431,73 @@ button:active {
 	
 	    renderer.render( scene, camera );
 	
+	}
+	
+	
+	
+	function againTable(){
+		
+		var obj = document.getElementsByClassName("element");
+		while(obj.length>0){
+			obj[0].parentNode.removeChild(obj[0]);
+		}
+		console.log(obj);
+		var locationList = makeLocation();
+		var i = 0;
+		makeBtn();
+		var xStart = 5;
+		var yStart = 3;
+		var len = 5;
+		
+		$.ajax({
+			url: "/web/list?page=" + page,
+			dataType:"json",
+			async:false,
+			success:function(data){
+				for(var i= 0, len = data.length; i < len ; i++){
+					
+					var tempX = xStart + ((i % 5) * 2);
+					var tempY = yStart + ((Math.floor(i / 5)) * 2);
+					
+					if(tempX > 13){
+						tempX -= 10;						
+					}
+					data[i].x = tempX;
+					data[i].y = tempY;					
+				}
+				tableData = data;							
+			}});
+	}
+	
+	function makeBtn(){
+		var target = $(".movePage")
+		var content = "";
+		if(page>1){
+			console.log("-------------in page number 2------");
+			content += "<div><button onclick='prevPage();' >"+ "PREV" + "</button>"+"</div>"
+						+ "<div><button onclick='nextPage();'>"+ "NEXT" + "</button>"+"</div>";
+			target.html(content);
+		}
+		else if(page = 1){
+			content += "<div><button onclick='nextPage();'>" + "NEXT" + "</button>"+"</div>";
+			console.log(content);
+			target.html(content);
+		}
+	}
+	
+	
+	function nextPage(){
+		page = page + 1;
+		againTable();
+		init();
+		animate();
+	};
+	
+	function prevPage(){
+		page = page - 1;
+		againTable();
+		init();
+		animate();
 	}
 
 </script>
