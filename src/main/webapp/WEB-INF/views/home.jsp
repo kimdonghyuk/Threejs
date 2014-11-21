@@ -43,7 +43,16 @@ a {
 	text-align: center;
 }
 
-.movePage{
+.prevPage{
+	position: absolute;
+	bottom: 50%;
+	right : 85%;
+	width: 50px;
+	text-align: right;
+	opacity:0.2;
+}
+
+.nextPage{
 	position: absolute;
 	bottom: 50%;
 	right : 18%;
@@ -108,6 +117,14 @@ button:hover {
 	background-color: rgba(255, 0, 210, 0.2);
 }
 
+.prevPage:hover{
+	opacity : 0.7
+}
+
+.nextPage:hover{
+	opacity : 0.7
+}
+
 button:active {
 	color: #000000;
 	background-color: rgba(0, 0, 255, 0.5);
@@ -131,9 +148,15 @@ button:active {
 		<button id="grid">GRID</button>
 	</div>
 	
-	<div class="movePage">
+	<div class="prevPage">
 	
 	</div>
+	
+	<div class="nextPage">
+	
+	</div>
+	
+	
 	
 
 
@@ -149,14 +172,14 @@ button:active {
 	console.log("page : " + page);
 	
 	(function makeTable(){
+		
+		
 		var locationList = makeLocation();
 		var i = 0; 
 		
 		var xStart = 5;
 		var yStart = 3;
 		var len = 5;
-		
-		makeBtn();
 		
 		
 		$.ajax({
@@ -175,7 +198,9 @@ button:active {
 					data[i].x = tempX;
 					data[i].y = tempY;					
 				}
-				tableData = data;					
+				tableData = data;
+				makeBtn(tableData[0].cnt);
+				
 			}});
 	})();
 	
@@ -241,9 +266,9 @@ button:active {
 	        // 각 원소별 축약어 띄어주기
 			// "H", "<a href = http://www.naver.com><img src = resources/ko.jpg width='100' height='100'></a>", "1.00794", 1, 1,
 	        
-			var details = document.createElement( 'a' );
+			var details = document.createElement( 'div' );
            details.className = 'details';
-           details.innerHTML = '<img src = resources/'+ tableData[ i ].contfile +' weidth = "180" height = "170"></a>';
+           details.innerHTML = '<img src = resources/'+ tableData[ i ].contfile +' weidth = "180" height = "170"></div>';
            element.appendChild( details );
 	        // 각 원소별 풀네임 + 방사능번호 하단 두줄 밀어넣어주기
 	
@@ -436,17 +461,14 @@ button:active {
 	}
 	
 	
-	
 	function againTable(){
 		
 		var obj = document.getElementsByClassName("element");
 		while(obj.length>0){
 			obj[0].parentNode.removeChild(obj[0]);
 		}
-		console.log(obj);
 		var locationList = makeLocation();
 		var i = 0;
-		makeBtn();
 		var xStart = 5;
 		var yStart = 3;
 		var len = 5;
@@ -466,29 +488,52 @@ button:active {
 					data[i].x = tempX;
 					data[i].y = tempY;					
 				}
-				tableData = data;							
+				tableData = data;
+				makeBtn(tableData[0].cnt);
 			}});
 	}
+
 	
-	function makeBtn(){
-		var target = $(".movePage")
-		var content = "";
-		if(page>1){
-			if(page == tableData[0].cnt){
-				content += "<div><button onclick='prevPage();' >"+ " < " + "</button>"+"</div>";
-				target.html(content);
-				return;
-			}
-			content += "<div><button onclick='prevPage();' >"+ " < " + "</button>"+"</div>"
-						+ "<div><button onclick='nextPage();'>"+ " > " + "</button>"+"</div>";
-			target.html(content);
-		}
-		else if(page = 1){
-			content += "<div><button onclick='nextPage();'>" + " > " + "</button>"+"</div>";
-			console.log(content);
-			target.html(content);
-		}
-	}
+	
+	
+	  function makeBtn(num){
+	      var target1 = $(".prevPage")
+	      var target2 = $(".nextPage")
+	      var content1 = "";
+	      var content2 = "";
+	      var cnt = num;
+	      if(page > 1 && page < num){
+	         console.log("------in Page-------------");
+	         content1 += "<div><img src = resources/prevPage.jpg onclick='prevPage();'/>"+ "</div>";
+	         content2 += "<div><img src = resources/nextPage.jpg onclick='nextPage();'/>"+ "</div>";
+	         target1.html(content1);
+	         target2.html(content2);
+	         return;
+	      }
+	      
+	      else if(page == 1){
+	         console.log("------in First Page-------------");
+	         content1 += "<div style='display:none'><img src = resources/prevPage.jpg onclick='prevPage();'/>"+ "</div>";
+	         content2 += "<div><img src = resources/nextPage.jpg onclick='nextPage();'>" +  "</button>"+"</div>";
+	         target1.html(content1);
+	         target2.html(content2);   
+	         return;
+	      }
+	      
+	      else if( page == cnt){
+	         console.log("------in Last Page-------------");
+	        /*  var obj = document.getElementsByClassName("nextPage");
+	         while(obj.length>0){
+	               obj[0].parentNode.removeChild(obj[0]);
+	            } */
+	         content2 += "<div style='display:none'><button onclick='nextPage();'>" + "</button>"+"</div>";
+	         target2.html(content2);   
+	         content1 += "<div><img src = resources/prevPage.jpg onclick='prevPage();'/>"+ "</div>";
+	         target1.html(content1);
+	         return;
+	      }
+	   }
+	   
 	
 	
 	function nextPage(){
@@ -504,6 +549,8 @@ button:active {
 		init();
 		animate();
 	}
+	
+
 
 </script>
 </body>
