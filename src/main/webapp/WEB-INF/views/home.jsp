@@ -45,9 +45,11 @@ a {
 
 .movePage{
 	position: absolute;
-	bottom: 50px;
+	bottom: 50%;
+	right : 18%;
 	width: 50px;
 	text-align: right;
+	opacity:0.2;
 
 }
 
@@ -173,7 +175,7 @@ button:active {
 					data[i].x = tempX;
 					data[i].y = tempY;					
 				}
-				tableData = data;								
+				tableData = data;					
 			}});
 	})();
 	
@@ -272,13 +274,13 @@ button:active {
 	
 	        var phi = Math.acos( -1 + ( 2 * i ) / l );
 	        var theta = Math.sqrt( l * Math.PI ) * phi;
-	
+		        
 	        var object = new THREE.Object3D();
 	
 	        object.position.x = 800 * Math.cos( theta ) * Math.sin( phi );
 	        object.position.y = 800 * Math.sin( theta ) * Math.sin( phi );
 	        object.position.z = 800 * Math.cos( phi );
-	
+	        
 	        vector.copy( object.position ).multiplyScalar( 2 );
 	
 	        object.lookAt( vector );
@@ -460,8 +462,7 @@ button:active {
 					var tempY = yStart + ((Math.floor(i / 5)) * 2);
 					
 					if(tempX > 13){
-						tempX -= 10;						
-					}
+						tempX -= 10;}
 					data[i].x = tempX;
 					data[i].y = tempY;					
 				}
@@ -473,13 +474,17 @@ button:active {
 		var target = $(".movePage")
 		var content = "";
 		if(page>1){
-			console.log("-------------in page number 2------");
-			content += "<div><button onclick='prevPage();' >"+ "PREV" + "</button>"+"</div>"
-						+ "<div><button onclick='nextPage();'>"+ "NEXT" + "</button>"+"</div>";
+			if(page == tableData[0].cnt){
+				content += "<div><button onclick='prevPage();' >"+ " < " + "</button>"+"</div>";
+				target.html(content);
+				return;
+			}
+			content += "<div><button onclick='prevPage();' >"+ " < " + "</button>"+"</div>"
+						+ "<div><button onclick='nextPage();'>"+ " > " + "</button>"+"</div>";
 			target.html(content);
 		}
 		else if(page = 1){
-			content += "<div><button onclick='nextPage();'>" + "NEXT" + "</button>"+"</div>";
+			content += "<div><button onclick='nextPage();'>" + " > " + "</button>"+"</div>";
 			console.log(content);
 			target.html(content);
 		}

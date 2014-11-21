@@ -9,7 +9,16 @@ public class ThreeVO {
 	private String userid;
 	private String contfile;
 	private Date regdate;
+	private Integer cnt;
 	
+	
+	
+	public Integer getCnt() {
+		return cnt;
+	}
+	public void setCnt(Integer cnt) {
+		this.cnt = cnt;
+	}
 	public Integer getTno() {
 		return tno;
 	}
@@ -41,13 +50,15 @@ public class ThreeVO {
 		this.regdate = regdate;
 	}
 	
-	
 	@Override
 	public String toString() {
 		return "ThreeVO [tno=" + tno + ", title=" + title + ", userid="
 				+ userid + ", contfile=" + contfile + ", regdate=" + regdate
-				+ "]";
+				+ ", cnt=" + cnt + "]";
 	}
+	
+
+	
 	
 	
 	
