@@ -45,26 +45,28 @@ a {
 
 .prevPage{
 	position: absolute;
-	bottom: 50%;
-	right : 85%;
+	bottom: 30%;
+	right : 95%;
 	width: 50px;
 	text-align: right;
 	opacity:0.2;
+	cursor: pointer;
 }
 
 .nextPage{
 	position: absolute;
-	bottom: 50%;
-	right : 18%;
+	bottom: 30%;
+	right : 12%;
 	width: 50px;
 	text-align: right;
-	opacity:0.2;
+	opacity:0.3;
+	cursor: pointer;
 
 }
 
 .element {
-	width: 200px;
-	height: 250px;
+	width: 330px;
+	height: 340px;
 	box-shadow: 0px 0px 12px rgba(0, 250, 85, 0.5);
 	border: 2px solid rgba(0, 250, 85, 0.25);
 	text-align: center;
@@ -139,7 +141,7 @@ button:active {
 
 	<div id="container"></div>
 	<div id="info">
-		<h2><a href="http://www.naver.com" target="_blank">Team Project 한잔해</a></h2>
+		<h2><a href="/web">Team Project 한잔해</a></h2>
 	</div>
 	<div id="menu">
 		<button id="table">TABLE</button>
@@ -155,9 +157,6 @@ button:active {
 	<div class="nextPage">
 	
 	</div>
-	
-	
-	
 
 
 <!-- 스크립트문 시작........................................................................................................... -->
@@ -167,20 +166,14 @@ button:active {
 /* make Table...............................................................................................................  */
 	var tableData = [];
 	var page = 1;
-
 	
 	console.log("page : " + page);
 	
 	(function makeTable(){
-		
-		
-		var locationList = makeLocation();
 		var i = 0; 
 		
-		var xStart = 5;
+		var xStart = 4;
 		var yStart = 3;
-		var len = 5;
-		
 		
 		$.ajax({
 			url: "/web/list?page=" + page,
@@ -189,43 +182,28 @@ button:active {
 			success:function(data){
 				for(var i= 0, len = data.length; i < len ; i++){
 					
-					var tempX = xStart + ((i % 5) * 2);
-					var tempY = yStart + ((Math.floor(i / 5)) * 2);
+					var tempX = xStart + ((i % 4) * 3);
+					var tempY = yStart + ((Math.floor(i / 4)) * 2);
 					
 					if(tempX > 13){
-						tempX -= 10;						
+						tempX -= 9;						
 					}
+					console.log(tempX, tempY);
 					data[i].x = tempX;
 					data[i].y = tempY;					
 				}
 				tableData = data;
 				makeBtn(tableData[0].cnt);
-				
 			}});
 	})();
 	
-	
-	function makeLocation(){
-		var x = 5;
-		var y = 3;
-		var list = [];
-		for(y = 3 ; y < 13; y = y+2){
-			for(x = 5; x < 15; x = x+2){
-				list.push(x,y);
-			}			
-		}
-		return list;			
-	}
-	
 /*end makeTable............................................................................................................. */	
-	
 	
 	var camera, scene, renderer;
 	var controls;
 
 	var objects = [];
 	var targets = { table: [], sphere: [], helix: [], grid: [] };
-		
 
 	//var tableData = makeTable();
 	// console.log("Table data:" + tableData); 
@@ -267,9 +245,9 @@ button:active {
 			// "H", "<a href = http://www.naver.com><img src = resources/ko.jpg width='100' height='100'></a>", "1.00794", 1, 1,
 	        
 			var details = document.createElement( 'div' );
-           details.className = 'details';
-           details.innerHTML = '<img src = resources/'+ tableData[ i ].contfile +' weidth = "180" height = "170"></div>';
-           element.appendChild( details );
+           	details.className = 'details';
+           	details.innerHTML = '<img src = resources/'+ tableData[ i ].contfile +' weidth = "350" height = "280"></div>';
+           	element.appendChild( details );
 	        // 각 원소별 풀네임 + 방사능번호 하단 두줄 밀어넣어주기
 	
 	        
@@ -280,13 +258,10 @@ button:active {
 	        scene.add( object );
 	
 	        objects.push( object );
-	
-	        //
-	
+	        
 	        var object = new THREE.Object3D();
-	        object.position.x = ( tableData[i].x * 140 ) - 1330;
-	        object.position.y = - ( tableData[i].y* 180 ) + 1250;
-	
+	        object.position.x = ( tableData[i].x * 140 ) - 1200;
+	        object.position.y = - ( tableData[i].y* 180 ) + 900;	
 	        targets.table.push( object );
 	
 	    }
@@ -294,30 +269,30 @@ button:active {
 	    // sphere
 	
 	    var vector = new THREE.Vector3();
-	
-	    for ( var i = 0, l = objects.length; i < l; i ++ ) {
+	    var length = 12;
+	    
+		if(tableData[0].cnt == page){
+			length = tableData.length;
+		}
+		
+	    for ( var i = 0, l = length; i < l; i++ ) {
 	
 	        var phi = Math.acos( -1 + ( 2 * i ) / l );
-	        var theta = Math.sqrt( l * Math.PI ) * phi;
-		        
+	        var theta = Math.sqrt( l * Math.PI ) * phi;		        
 	        var object = new THREE.Object3D();
 	
 	        object.position.x = 800 * Math.cos( theta ) * Math.sin( phi );
 	        object.position.y = 800 * Math.sin( theta ) * Math.sin( phi );
 	        object.position.z = 800 * Math.cos( phi );
 	        
-	        vector.copy( object.position ).multiplyScalar( 2 );
-	
-	        object.lookAt( vector );
-	
+	        vector.copy( object.position ).multiplyScalar( 2 );	
+	        object.lookAt( vector );	
 	        targets.sphere.push( object );
-	
 	    }
 	
-	    // helix
-	
+	    // helix	
 	    var vector = new THREE.Vector3();
-	
+	    
 	    for ( var i = 0, l = objects.length; i < l; i ++ ) {
 	
 	        var phi = i * 0.175 + Math.PI;
@@ -461,17 +436,14 @@ button:active {
 	}
 	
 	
-	function againTable(){
-		
+	function againTable(){		
 		var obj = document.getElementsByClassName("element");
 		while(obj.length>0){
 			obj[0].parentNode.removeChild(obj[0]);
 		}
-		var locationList = makeLocation();
 		var i = 0;
-		var xStart = 5;
-		var yStart = 3;
-		var len = 5;
+		var xStart = 4;
+		var yStart = 3;	
 		
 		$.ajax({
 			url: "/web/list?page=" + page,
@@ -480,11 +452,13 @@ button:active {
 			success:function(data){
 				for(var i= 0, len = data.length; i < len ; i++){
 					
-					var tempX = xStart + ((i % 5) * 2);
-					var tempY = yStart + ((Math.floor(i / 5)) * 2);
+					var tempX = xStart + ((i % 4) * 3);
+					var tempY = yStart + ((Math.floor(i / 4)) * 2);
 					
 					if(tempX > 13){
-						tempX -= 10;}
+						tempX -= 9;						
+					}
+					console.log(tempX, tempY);
 					data[i].x = tempX;
 					data[i].y = tempY;					
 				}
@@ -492,9 +466,6 @@ button:active {
 				makeBtn(tableData[0].cnt);
 			}});
 	}
-
-	
-	
 	
 	  function makeBtn(num){
 	      var target1 = $(".prevPage")
@@ -534,8 +505,6 @@ button:active {
 	      }
 	   }
 	   
-	
-	
 	function nextPage(){
 		page = page + 1;
 		againTable();
@@ -549,8 +518,6 @@ button:active {
 		init();
 		animate();
 	}
-	
-
 
 </script>
 </body>
