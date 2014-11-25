@@ -100,5 +100,13 @@ public class HomeController {
 	@RequestMapping("/services")
 	public void services(){}
 	
+	@RequestMapping("/sample")
+	public void servicesPage(){}
+	
+	@RequestMapping("/sample/list")
+	public @ResponseBody List<ThreeVO> serviceList(
+			@RequestParam(value = "page", defaultValue = "1")int page){
+		return service.list(page);
+	}
 	
 }

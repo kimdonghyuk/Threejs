@@ -1,30 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding ="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-<title> Team HanZanHae!</title>
-<style>
-html, body {
-	height: 100%;
-}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>한잔해 Project</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width", user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
-body {
-	background-image: url(resources/dogam/background.jpg);
-	background-size: cover;
-	margin: 0;
-	font-family: Helvetica, sans-serif;;
-	overflow: hidden;
-}
+    <link rel="stylesheet" href="resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="resources/css/font-awesome.min.css">
+    <link rel="stylesheet" href="resources/css/main.css">
+    <link rel="stylesheet" href="resources/css/sl-slide.css">
 
-a {
-	color: #ffffff;
-}
+    <script src="resources/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 
-#info {
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="resources/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="resources/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="resources/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="resources/images/ico/apple-touch-icon-57-precomposed.png">
+    
+    <style>
+    
+    .btn-success{    	
+    	margin : 5px;
+    	width : 119px;	
+    	text-align : center;
+    	font-weight: bold
+    }
+	    
+    #info {
 	position: absolute;
 	width: 100%;
 	color: #ffffff;
@@ -34,116 +46,165 @@ a {
 	font-weight: bold;
 	text-align: center;
 	z-index: 1;
-}
+	}
 
-#menu {
-	position: absolute;
-	bottom: 20px;
-	width: 100%;
-	text-align: center;
-}
-
-.prevPage{
-	position: absolute;
-	bottom: 30%;
-	right : 95%;
-	width: 50px;
-	text-align: right;
-	opacity:0.2;
-	cursor: pointer;
-}
-
-.nextPage{
-	position: absolute;
-	bottom: 30%;
-	right : 12%;
-	width: 50px;
-	text-align: right;
-	opacity:0.3;
-	cursor: pointer;
-
-}
-
-.element {
-	width: 330px;
-	height: 340px;
-	box-shadow: 0px 0px 12px rgba(0, 250, 85, 0.5);
-	border: 2px solid rgba(0, 250, 85, 0.25);
-	text-align: center;
-	cursor: pointer;
-}
-
-.element:hover {
-	box-shadow: 0px 0px 12px rgba(0, 255, 255, 0.75);
-	border: 1px solid rgba(127, 255, 255, 0.75);
-}
-
-.element .number {
-	position: absolute;
-	top: 20px;
-	right: 20px;
-	font-size: 12px;
-	color: rgba(127, 255, 255, 0.75);
-}
-
-.element .symbol {
-	/* position: absolute; */
-	left: 0px;
-	right: 0px;
-	bottom: 15px;
-	font-size: 40px;
-	font-weight: bold;
-	color: rgba(0, 0, 0, 0.25);
-	text-shadow: 0 0 10px rgba(0, 250, 85, 0.50);
-}
-
-.element .details {
-/* 	position: absolute; */
-	top: 40px;
-	left: 0px;
-	right: 0px;
-	font-size: 12px;
-	color: rgba(0, 250, 85, 0.8);
-}
-
-button {
-	color: rgba(255, 0, 210, 0.6);					/* button 부분의 글자색깔  */
-	background: transparent;
-	outline: 2px solid rgba(255, 0, 210, 0.6);		/* button 부분의 선 색깔, 굵기 */
-	border: 0px;
-	padding: 5px 10px;
-	cursor: pointer;
-}
-
-button:hover {
-	background-color: rgba(255, 0, 210, 0.2);
-}
-
-.prevPage:hover{
-	opacity : 0.7
-}
-
-.nextPage:hover{
-	opacity : 0.7
-}
-
-button:active {
-	color: #000000;
-	background-color: rgba(0, 0, 255, 0.5);
-}
-</style>
+	
+	#menu {
+		position: relative;
+		bottom: -400px;
+		width: 100%;
+		heigth : 100%;
+		text-align: center;
+	}
+	
+	.prevPage{
+		position: absolute;
+		bottom: 40%;
+		right : 95%;
+		width: 50px;
+		text-align: right;
+		opacity:0.2;
+		cursor: pointer;
+	}
+	
+	.nextPage{
+		position: absolute;
+		bottom: 40%;
+		right : 2%;
+		width: 50px;
+		text-align: right;
+		opacity:0.3;
+		cursor: pointer;
+	
+	}
+	
+	.element {
+		width: 300px;
+		height: 250px;
+		box-shadow: 0px 0px 12px rgba(0, 250, 85, 0.5);
+		border: 2px solid rgba(0, 250, 85, 0.25);
+		text-align: center;
+		cursor: pointer;
+	}
+	
+	.element:hover {
+		box-shadow: 0px 0px 12px rgba(0, 255, 255, 0.75);
+		border: 1px solid rgba(127, 255, 255, 0.75);
+	}
+	
+	.element .number {
+		position: absolute;
+		top: 20px;
+		right: 20px;
+		font-size: 12px;
+		color: rgba(127, 255, 255, 0.75);
+	}
+	
+	.element .symbol {
+		/* position: absolute; */
+		left: 0px;
+		right: 0px;
+		font-bottom: 40px;
+		font-size: 50px;
+		font-weight: bold;
+		color: rgba(0, 0, 0, 0.25);
+		text-shadow: 0 0 10px rgba(0, 250, 85, 0.50);
+	}
+	
+	.element .details {
+	/* 	position: absolute; */
+		top: 40px;
+		left: 0px;
+		right: 0px;
+		font-size: 12px;
+		color: rgba(0, 250, 85, 0.8);
+	}
+	
+	button {
+		color: rgba(255, 0, 210, 0.6);					/* button 부분의 글자색깔  */
+		background: transparent;
+		outline: 2px solid rgba(255, 0, 210, 0.6);		/* button 부분의 선 색깔, 굵기 */
+		border: 0px;
+		padding: 5px 10px;
+		cursor: pointer;
+	}
+	
+	button:hover {
+		background-color: rgba(255, 0, 210, 0.2);
+	}
+	
+	.prevPage:hover{
+		opacity : 0.7
+	}
+	
+	.nextPage:hover{
+		opacity : 0.7
+	}
+	
+	button:active {
+		color: #000000;
+		background-color: rgba(0, 0, 255, 0.5);
+	}
+    
+    </style>
+    
 </head>
-<body>
-	<script src="resources/dogam/three.min.js"></script>
-	<script src="resources/dogam/tween.min.js"></script>
-	<script src="resources/dogam/TrackballControls.js"></script>
-	<script src="resources/dogam/CSS3DRenderer.js"></script>
 
-	<div id="container"></div>
-	<div id="info">
-		<hr>
-		<h2><a href="/">Team Project 한잔해</a></h2>
-	</div>
+<body>
+
+<!--Header Start ...........................................................................................................-->
+    <header class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a id="logo" class="pull-left" href="/index"></a>
+                <div class="nav-collapse collapse pull-right">
+                    <ul class="nav">
+                        <li><a href="/index">Home</a></li>
+                        <li><a href="/about-us">검 색</a></li>
+                        <li class="active"><a href="services">나만의 도감</a></li>
+                        <li><a href="/portfolio">Portfolio</a></li>
+                        <li><a href="/index">Pages</a></li>
+                        <li><a href="/blog">Blog</a></li> 
+                        <li><a href="/contact-us">Contact</a></li>
+                        <li class="login">
+                            <a data-toggle="modal" href="#loginForm"><i class="icon-lock"></i></a>
+                        </li>
+                    </ul>        
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+    </header>
+<!--/header end..............................................................................................................-->
+    
+<!-- seconde header..........................................................................................................-->
+       <section class="title">
+        <div class="container">
+            <div class="row-fluid">
+                <div class="span6">
+                    <h1>나만의 도감</h1>
+                </div>
+                <div class="span6">
+                    <ul class="breadcrumb pull-right">
+                        <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+                        <li class="active">나만의 도감</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+<!--/second header end.......................................................................................................-->
+    
+<!--Three.js Satart..........................................................................................................-->
+
+	<div id="maincontainer"></div>
+<!-- 	<div id="info">
+		<h2><a href="/sample">Sample Project</a></h2>
+	</div> -->
 	<div id="menu">
 		<button id="table">TABLE</button>
 		<button id="sphere">SPHERE</button>
@@ -156,10 +217,40 @@ button:active {
 	
 	<div class="nextPage">	
 	</div>
+<!--/Three.js Area End.......................................................................................................-->
 
+<!--Login form...............................................................................................................-->
+<div class="modal hide fade in" id="loginForm" aria-hidden="false">
+    <div class="modal-header">
+        <i class="icon-remove" data-dismiss="modal" aria-hidden="true"></i>
+        <h4>Login Form</h4>
+    </div>
+    <!--Modal Body-->
+    <div class="modal-body">
+        <form class="form-inline" action="index.html" method="post" id="form-login">
+            <input type="text" class="input-small" placeholder="Email">
+            <input type="password" class="input-small" placeholder="Password">
+            <label class="checkbox">
+                <input type="checkbox"> Remember me
+            </label>
+            <button type="submit" class="btn btn-primary">Sign in</button>
+        </form>
+        <a href="#">Forgot your password?</a>
+    </div>
+    <!--/Modal Body-->
+</div>
+<!--/Login form..............................................................................................................-->
+    
+    
+<!--java script문 시작........................................................................................................--> 
+<script src="resources/js/vendor/jquery-1.9.1.min.js"></script>
+<script src="resources/js/vendor/bootstrap.min.js"></script>
+<script src="resources/js/main.js"></script>
+<script src="resources/dogam/three.min.js"></script>
+<script src="resources/dogam/tween.min.js"></script>
+<script src="resources/dogam/TrackballControls.js"></script>
+<script src="resources/dogam/CSS3DRenderer.js"></script>
 
-<!-- 스크립트문 시작........................................................................................................... -->
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script>
  
 /* make Table...............................................................................................................  */
@@ -245,7 +336,7 @@ button:active {
 	        
 			var details = document.createElement( 'div' );
            	details.className = 'details';
-           	details.innerHTML = '<img src = resources/dogam/'+ tableData[ i ].contfile +' weidth = "350" height = "280"></div>';
+           	details.innerHTML = '<img src = resources/dogam/'+ tableData[ i ].contfile +' weidth = "400" height = "300"></div>';
            	element.appendChild( details );
 	        // 각 원소별 풀네임 + 방사능번호 하단 두줄 밀어넣어주기
 	
@@ -260,7 +351,7 @@ button:active {
 	        
 	        var object = new THREE.Object3D();
 	        object.position.x = ( tableData[i].x * 140 ) - 1200;
-	        object.position.y = - ( tableData[i].y* 180 ) + 900;	
+	        object.position.y = - ( tableData[i].y* 180 ) + 1150;	
 	        targets.table.push( object );
 	
 	    }
@@ -280,9 +371,9 @@ button:active {
 	        var theta = Math.sqrt( l * Math.PI ) * phi;		        
 	        var object = new THREE.Object3D();
 	
-	        object.position.x = 800 * Math.cos( theta ) * Math.sin( phi );
-	        object.position.y = 800 * Math.sin( theta ) * Math.sin( phi );
-	        object.position.z = 800 * Math.cos( phi );
+	        object.position.x = 620 * Math.cos( theta ) * Math.sin( phi );
+	        object.position.y = 620 * Math.sin( theta ) * Math.sin( phi ) + 50;
+	        object.position.z = 620 * Math.cos( phi );
 	        
 	        vector.copy( object.position ).multiplyScalar( 2 );	
 	        object.lookAt( vector );	
@@ -331,7 +422,7 @@ button:active {
 	    renderer = new THREE.CSS3DRenderer();
 	    renderer.setSize( window.innerWidth, window.innerHeight );
 	    renderer.domElement.style.position = 'absolute';
-	    document.getElementById( 'container' ).appendChild( renderer.domElement );
+	    document.getElementById( 'maincontainer' ).appendChild( renderer.domElement );
 	
 	    
 		// Zoom Control Parts
@@ -519,6 +610,8 @@ button:active {
 	}
 
 </script>
+
+
+
 </body>
 </html>
-

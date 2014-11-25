@@ -79,8 +79,8 @@ THREE.CSS3DRenderer = function () {
 		_widthHalf = _width / 2;
 		_heightHalf = _height / 2;
 
-		domElement.style.width = width + 'px';
-		domElement.style.height = height + 'px';
+		domElement.style.width = width - 16 + 'px';
+		domElement.style.height = height - 300 + 'px';
 
 		cameraElement.style.width = width + 'px';
 		cameraElement.style.height = height + 'px';
