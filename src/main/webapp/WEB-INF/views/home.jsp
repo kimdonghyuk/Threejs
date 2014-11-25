@@ -13,7 +13,7 @@ html, body {
 }
 
 body {
-	background-image: url(resources/background.jpg);
+	background-image: url(resources/dogam/background.jpg);
 	background-size: cover;
 	margin: 0;
 	font-family: Helvetica, sans-serif;;
@@ -134,14 +134,14 @@ button:active {
 </style>
 </head>
 <body>
-	<script src="resources/three.min.js"></script>
-	<script src="resources/tween.min.js"></script>
-	<script src="resources/TrackballControls.js"></script>
-	<script src="resources/CSS3DRenderer.js"></script>
+	<script src="resources/dogam/three.min.js"></script>
+	<script src="resources/dogam/tween.min.js"></script>
+	<script src="resources/dogam/TrackballControls.js"></script>
+	<script src="resources/dogam/CSS3DRenderer.js"></script>
 
 	<div id="container"></div>
 	<div id="info">
-		<h2><a href="/web">Team Project 한잔해</a></h2>
+		<h2><a href="/">Team Project 한잔해</a></h2>
 	</div>
 	<div id="menu">
 		<button id="table">TABLE</button>
@@ -150,12 +150,10 @@ button:active {
 		<button id="grid">GRID</button>
 	</div>
 	
-	<div class="prevPage">
-	
+	<div class="prevPage">	
 	</div>
 	
-	<div class="nextPage">
-	
+	<div class="nextPage">	
 	</div>
 
 
@@ -176,7 +174,7 @@ button:active {
 		var yStart = 3;
 		
 		$.ajax({
-			url: "/web/list?page=" + page,
+			url: "/list?page=" + page,
 			dataType:"json",
 			async:false,
 			success:function(data){
@@ -246,7 +244,7 @@ button:active {
 	        
 			var details = document.createElement( 'div' );
            	details.className = 'details';
-           	details.innerHTML = '<img src = resources/'+ tableData[ i ].contfile +' weidth = "350" height = "280"></div>';
+           	details.innerHTML = '<img src = resources/dogam/'+ tableData[ i ].contfile +' weidth = "350" height = "280"></div>';
            	element.appendChild( details );
 	        // 각 원소별 풀네임 + 방사능번호 하단 두줄 밀어넣어주기
 	
@@ -446,7 +444,7 @@ button:active {
 		var yStart = 3;	
 		
 		$.ajax({
-			url: "/web/list?page=" + page,
+			url: "/list?page=" + page,
 			dataType:"json",
 			async:false,
 			success:function(data){
@@ -475,8 +473,8 @@ button:active {
 	      var cnt = num;
 	      if(page > 1 && page < num){
 	         console.log("------in Page-------------");
-	         content1 += "<div><img src = resources/prevPage.jpg onclick='prevPage();'/>"+ "</div>";
-	         content2 += "<div><img src = resources/nextPage.jpg onclick='nextPage();'/>"+ "</div>";
+	         content1 += "<div><img src = resources/dogam/prevPage.jpg onclick='prevPage();'/>"+ "</div>";
+	         content2 += "<div><img src = resources/dogam/nextPage.jpg onclick='nextPage();'/>"+ "</div>";
 	         target1.html(content1);
 	         target2.html(content2);
 	         return;
@@ -485,7 +483,7 @@ button:active {
 	      else if(page == 1){
 	         console.log("------in First Page-------------");
 	         content1 += "<div style='display:none'><img src = resources/prevPage.jpg onclick='prevPage();'/>"+ "</div>";
-	         content2 += "<div><img src = resources/nextPage.jpg onclick='nextPage();'>" +  "</button>"+"</div>";
+	         content2 += "<div><img src = resources/dogam/nextPage.jpg onclick='nextPage();'>" +  "</button>"+"</div>";
 	         target1.html(content1);
 	         target2.html(content2);   
 	         return;
@@ -499,7 +497,7 @@ button:active {
 	            } */
 	         content2 += "<div style='display:none'><button onclick='nextPage();'>" + "</button>"+"</div>";
 	         target2.html(content2);   
-	         content1 += "<div><img src = resources/prevPage.jpg onclick='prevPage();'/>"+ "</div>";
+	         content1 += "<div><img src = resources/dogam/prevPalllge.jpg onclick='prevPage();'/>"+ "</div>";
 	         target1.html(content1);
 	         return;
 	      }

@@ -54,4 +54,51 @@ public class HomeController {
 		return service.list(page);
 	}
 	
+	@RequestMapping("/index")
+	public void index(){}
+	
+	
+	@RequestMapping("/about-us")
+	public void aboutus(){}
+	
+	@RequestMapping("/404")
+	public void error(){}
+	
+	@RequestMapping("/blog")
+	public void blog(){}
+	
+	@RequestMapping("/blog-item")
+	public void blogitem(){}
+	
+	@RequestMapping("/career")
+	public void career(){}
+	
+	@RequestMapping("/contact-us")
+	public void contactus(){}
+	
+	@RequestMapping("/faq")
+	public void faq(){}
+	
+	@RequestMapping("/portfolio")
+	public void portfolio(){}
+	
+	@RequestMapping("/pricing")
+	public void pricing(){}
+
+	@RequestMapping("/privacy")
+	public void privacy(){}
+	
+	@RequestMapping("/registration")
+	public void registration(){}
+
+	@RequestMapping("/terms")
+	public void terms(){}
+	
+	@RequestMapping("/typography")
+	public void typography(){}
+	
+	@RequestMapping("/services")
+	public void services(){}
+	
+	
 }
