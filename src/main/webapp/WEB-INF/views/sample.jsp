@@ -11,7 +11,7 @@
     <title>한잔해 Project</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width", user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-
+    
     <link rel="stylesheet" href="resources/css/bootstrap.min.css">
     <link rel="stylesheet" href="resources/css/bootstrap-responsive.min.css">
     <link rel="stylesheet" href="resources/css/font-awesome.min.css">
@@ -21,7 +21,7 @@
     <script src="resources/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 
     <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="shortcut icon" href="resources/images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="resources/images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="resources/images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="resources/images/ico/apple-touch-icon-72-precomposed.png">
@@ -47,13 +47,9 @@
 	text-align: center;
 	z-index: 1;
 	}
-
 	
 	#menu {
-		position: relative;
-		bottom: -400px;
-		width: 100%;
-		heigth : 100%;
+		position: absolute;
 		text-align: center;
 	}
 	
@@ -74,12 +70,11 @@
 		width: 50px;
 		text-align: right;
 		opacity:0.3;
-		cursor: pointer;
-	
+		cursor: pointer;	
 	}
 	
-	.element {
-		width: 300px;
+	.element{
+		width: 250px;
 		height: 250px;
 		box-shadow: 0px 0px 12px rgba(0, 250, 85, 0.5);
 		border: 2px solid rgba(0, 250, 85, 0.25);
@@ -190,7 +185,7 @@
                 </div>
                 <div class="span6">
                     <ul class="breadcrumb pull-right">
-                        <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+                        <li><a href="/index">Home</a> <span class="divider">/</span></li>
                         <li class="active">나만의 도감</li>
                     </ul>
                 </div>
@@ -201,16 +196,8 @@
     
 <!--Three.js Satart..........................................................................................................-->
 
-	<div id="maincontainer"></div>
-<!-- 	<div id="info">
-		<h2><a href="/sample">Sample Project</a></h2>
-	</div> -->
-	<div id="menu">
-		<button id="table">TABLE</button>
-		<button id="sphere">SPHERE</button>
-		<button id="helix">HELIX</button>
-		<button id="grid">GRID</button>
-	</div>
+	<div id="maincontainer">
+	</div>	
 	
 	<div class="prevPage">	
 	</div>
@@ -218,6 +205,17 @@
 	<div class="nextPage">	
 	</div>
 <!--/Three.js Area End.......................................................................................................-->
+
+<!--Menu Div.................................................................................................................-->
+
+	<div class="span7" style="text-align:center; height:-250px">
+		<div id="menu">
+			<button id="table">TABLE</button>
+			<button id="sphere">SPHERE</button>
+<!-- 			<button id="helix">HELIX</button>
+			<button id="grid">GRID</button> -->
+		</div>
+	</div>
 
 <!--Login form...............................................................................................................-->
 <div class="modal hide fade in" id="loginForm" aria-hidden="false">
@@ -227,7 +225,7 @@
     </div>
     <!--Modal Body-->
     <div class="modal-body">
-        <form class="form-inline" action="index.html" method="post" id="form-login">
+        <form class="form-inline" action="/index" method="post" id="form-login">
             <input type="text" class="input-small" placeholder="Email">
             <input type="password" class="input-small" placeholder="Password">
             <label class="checkbox">
@@ -262,8 +260,9 @@
 	(function makeTable(){
 		var i = 0; 
 		
-		var xStart = 4;
-		var yStart = 3;
+		var i = 0;
+		var xStart = 5;
+		var yStart = 3;	
 		
 		$.ajax({
 			url: "/list?page=" + page,
@@ -272,10 +271,10 @@
 			success:function(data){
 				for(var i= 0, len = data.length; i < len ; i++){
 					
-					var tempX = xStart + ((i % 4) * 3);
-					var tempY = yStart + ((Math.floor(i / 4)) * 2);
+					var tempX = xStart + ((i % 3) * 3);
+					var tempY = yStart + ((Math.floor(i / 3)) * 2);
 					
-					if(tempX > 13){
+					if(tempX > 12){
 						tempX -= 9;						
 					}
 					console.log(tempX, tempY);
@@ -293,7 +292,8 @@
 	var controls;
 
 	var objects = [];
-	var targets = { table: [], sphere: [], helix: [], grid: [] };
+	var targets = { table: [], sphere: []};
+/* 	var targets = { table: [], sphere: [], helix: [], grid: [] }; */
 
 	//var tableData = makeTable();
 	// console.log("Table data:" + tableData); 
@@ -336,7 +336,7 @@
 	        
 			var details = document.createElement( 'div' );
            	details.className = 'details';
-           	details.innerHTML = '<img src = resources/dogam/'+ tableData[ i ].contfile +' weidth = "400" height = "300"></div>';
+           	details.innerHTML = '<img src = resources/dogam/'+ tableData[ i ].contfile +' weidth = "300" height = "300"></div>';
            	element.appendChild( details );
 	        // 각 원소별 풀네임 + 방사능번호 하단 두줄 밀어넣어주기
 	
@@ -350,7 +350,7 @@
 	        objects.push( object );
 	        
 	        var object = new THREE.Object3D();
-	        object.position.x = ( tableData[i].x * 140 ) - 1200;
+	        object.position.x = ( tableData[i].x * 140 ) - 1150;
 	        object.position.y = - ( tableData[i].y* 180 ) + 1150;	
 	        targets.table.push( object );
 	
@@ -380,7 +380,7 @@
 	        targets.sphere.push( object );
 	    }
 	
-	    // helix	
+/* 	    // helix	
 	    var vector = new THREE.Vector3();
 	    
 	    for ( var i = 0, l = objects.length; i < l; i ++ ) {
@@ -415,7 +415,7 @@
 	
 	        targets.grid.push( object );
 	
-	    }
+	    } */
 	
 	    //
 	
@@ -447,7 +447,7 @@
 	
 	    }, false );
 	
-	    var button = document.getElementById( 'helix' );
+/* 	    var button = document.getElementById( 'helix' );
 	    button.addEventListener( 'click', function ( event ) {
 	
 	        transform( targets.helix, 2000 );
@@ -459,7 +459,7 @@
 	
 	        transform( targets.grid, 2000 );
 	
-	    }, false );
+	    }, false ); */
 	
 	    transform( targets.table, 2000 );
 	
@@ -492,14 +492,13 @@
 	    }
 	
 	    new TWEEN.Tween( this )
-	            .to( {}, duration * 2 )
+	            .to({}, duration * 2 )
 	            .onUpdate( render )
 	            .start();
 	
 	}
 	
-	function onWindowResize() {
-	
+	function onWindowResize() {	
 	    camera.aspect = window.innerWidth / window.innerHeight;
 	    camera.updateProjectionMatrix();
 	
@@ -509,22 +508,15 @@
 	
 	}
 	
-	function animate() {
-	
-	    requestAnimationFrame( animate );
-	
-	    TWEEN.update();
-	
+	function animate() {	
+	    requestAnimationFrame( animate );	
+	    TWEEN.update();	
 	    controls.update();
-	
 	}
 	
-	function render() {
-	
-	    renderer.render( scene, camera );
-	
-	}
-	
+	function render() {	
+	    renderer.render( scene, camera );	
+	}	
 	
 	function againTable(){		
 		var obj = document.getElementsByClassName("element");
@@ -532,7 +524,7 @@
 			obj[0].parentNode.removeChild(obj[0]);
 		}
 		var i = 0;
-		var xStart = 4;
+		var xStart = 5;
 		var yStart = 3;	
 		
 		$.ajax({
@@ -542,10 +534,10 @@
 			success:function(data){
 				for(var i= 0, len = data.length; i < len ; i++){
 					
-					var tempX = xStart + ((i % 4) * 3);
-					var tempY = yStart + ((Math.floor(i / 4)) * 2);
+					var tempX = xStart + ((i % 3) * 3);
+					var tempY = yStart + ((Math.floor(i / 3)) * 2);
 					
-					if(tempX > 13){
+					if(tempX > 12){
 						tempX -= 9;						
 					}
 					console.log(tempX, tempY);
@@ -556,6 +548,7 @@
 				makeBtn(tableData[0].cnt);
 			}});
 	}
+	
 	
 	  function makeBtn(num){
 	      var target1 = $(".prevPage")
