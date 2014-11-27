@@ -35,6 +35,13 @@
     	font-weight: bold;
     	opacity : 0.8; 
     }    
+    
+   	body{
+    	background-image : url("resources/dogam/dogam_main_background.png");
+    	background-repeat : no repeat;
+    	background-size : cover;
+    }
+    
     </style>    
 </head>
 
@@ -69,7 +76,6 @@
     <!-- /header -->
 
 
-  
     <section class="title">
         <div class="container">
             <div class="row-fluid">
@@ -87,11 +93,24 @@
     </section>
     
     <!-- / .title -->
-    <div style="height: 150px; padding: 5px;" >
+    <div class="sample" style="height: 150px; padding: 5px;" >
     	<a class="btn-success btn-large pull-left" href="/sample">도감 더미 파일</a>
         <a class="btn-success btn-large pull-right" href="/createPicture">사진 올리기</a>
         <a class="btn-success btn-large pull-right" href="/dogamReg">새 도감 만들기</a>
     </div>
+    
+<footer id="footer" style="opacity: 0.7; position: absolute; bottom: 0; width: 100%; background-color: silver;">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span12" style="margin-top:-15px">
+                &copy; Bit58th 한잔해!!                
+                <a id="gototop" class="gototop pull-right" href="#"><i class="icon-angle-up"></i></a>
+            </div>
+            <!--/Goto Top-->
+        </div>
+    </div>
+</footer>
+
 
 <!--  Login form -->
 <div class="modal hide fade in" id="loginForm" aria-hidden="false">

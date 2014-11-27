@@ -30,7 +30,8 @@
     <style>
     
     body{
-    	background-color : gold;
+    	background-image : url("resources/dogam/dogam_main_background.jpg");
+    	background-repeat : no repeat;
     	background-size : cover;
     }
     
@@ -219,6 +220,8 @@
 <!--/second header end.......................................................................................................-->
     
 <!--Three.js Satart..........................................................................................................-->
+	<div id="back" style="height: 600px">
+	
 	<div id="maincontainer">
 	</div>	
 	
@@ -227,6 +230,8 @@
 	
 	<div class="nextPage">	
 	</div>
+
+	
 <!--/Three.js Area End.......................................................................................................-->
 <!--Menu Div.................................................................................................................-->
 
@@ -238,6 +243,19 @@
 <!-- 		<button id="helix">HELIX</button>
 			<button id="grid">GRID</button> -->
 
+	</div>
+	
+<footer id="footer" style="opacity: 0.7; position: absolute; bottom: auto; width: 100%; background-color: black;">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span12" style="margin-top:-15px">
+                &copy; Bit58th 한잔해!!                
+                <a id="gototop" class="gototop pull-right" href="#"><i class="icon-angle-up"></i></a>
+            </div>
+            <!--/Goto Top-->
+        </div>
+    </div>
+</footer>
 
 <!--Login form...............................................................................................................-->
 <div class="modal hide fade in" id="loginForm" aria-hidden="false">
