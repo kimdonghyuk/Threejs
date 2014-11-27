@@ -48,6 +48,14 @@
     	text-align : center;
     	font-weight: bold;
     	opacity : 0.8; 
+    	}
+    	
+    	body {
+		background-image: url("resources/dogam/dogam_main_background.png");
+    	background-repeat : no repeat;
+    	background-size : cover;
+    	height:600px;
+		}
 		
 	</style>
 
@@ -98,16 +106,14 @@
 			</div>
 		</div>
 	</section>
+	
+<div id="back" style="height:635px;">	
 	<!-- / .title -->
-    <div style="height: 150px; padding: 5px;" >
+    <div style="height: 40px; padding: 5px;" >
         <a class="btn-success btn-large pull-right" href="/createPicture">사진 올리기</a>
         <a class="btn-success btn-large pull-right" href="/dogamReg">새 도감 만들기</a>
     </div>
 
-	<div style="height: 70px;">
-		<a class="btn btn-success btn-large pull-left" href="/index"
-			style="margin: 10px; border-radius: 5px;">도감 등록</a>
-	</div>
 
 	<!--도감 등록꾸민곳 -->
 	<form class="center" action='' method="POST">
@@ -128,29 +134,20 @@
 	<!-- /#registration-page -->
 
 	<!-- 업로드된 이미지화면 보여주는곳 -->
+</div>
 
-	<!--Footer-->
-	<footer id="footer" style="background-color: #000000;">
-		<div class="container">
-			<div class="row-fluid">
-				<div class="span5 cp">
-					<!-- 좌측에 표현할 기능 -->
-				</div>
-				<!--/Copyright-->
 
-				<div class="span6">
-					<!-- 우측에 쓸 기능 추가 -->
-				</div>
-
-				<div class="span1">
-					<a id="gototop" class="gototop pull-right" href="#"><i
-						class="icon-angle-up"></i></a>
-				</div>
-				<!--/Goto Top-->
-			</div>
-		</div>
-	</footer>
-	<!--/Footer-->
+<footer id="footer" style="opacity: 0.7; position: absolute; bottom: auto; width: 100%; background-color: black;">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span12" style="margin-top:-15px">
+                &copy; Bit58th 한잔해!!                
+                <a id="gototop" class="gototop pull-right" href="#"><i class="icon-angle-up"></i></a>
+            </div>
+            <!--/Goto Top-->
+        </div>
+    </div>
+</footer>
 
 	<!--  Login form -->
 	<div class="modal hide fade in" id="loginForm" aria-hidden="false">

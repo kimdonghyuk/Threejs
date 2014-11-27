@@ -36,15 +36,12 @@
 		opacity: 0.8;
 	}
 	
-	html{
-		height:600px;
-	}
 	
 	body {
 		background-image: url("resources/dogam/dogam_main_background.png");
     	background-repeat : no repeat;
     	background-size : cover;
-    	height:600px;
+    	height:635px;
 	}
 	
 	@media screen and (max-width: 979px) {
@@ -117,13 +114,11 @@
     
     <div id="album"><div id="album_dogam1" >    		
     	<a href="/sample">
-    		<img src = "resources/dogam/dogam_travel.jpg" style="width:250px; height:250px; margin-left:20%; " />
-    		<div style="width:250px; height:20px; margin-left:20%; text-align:center;">2014.11.27 수목원 여행</div>    		
-    	</a> 
+    		<img src = "resources/dogam/dogam_travel.jpg" style="width:200px; height:200px; margin-left:15%; " /></a>
+    		<div style="width:200px; height:20px; margin-left:15%; text-align:center;">2014.05.27 꽃놀이 여행</div>  
     	</div>
-    </div>
-    
-</div> 
+    </div> 
+</div>
     
 <footer id="footer" style="opacity: 0.7; position: absolute; bottom: auto; width: 100%; background-color: black;">
     <div class="container">
