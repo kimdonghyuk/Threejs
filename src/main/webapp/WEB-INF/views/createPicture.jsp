@@ -40,7 +40,15 @@
     	text-align : center;
     	font-weight: bold;
     	opacity : 0.8; 
-    }    
+    	}
+    	
+    	body {
+		background-image: url("resources/dogam/dogam_main_background.png");
+    	background-repeat : no repeat;
+    	background-size : cover;
+    	height:600px;
+	}
+    	    
         
     </style>
     
@@ -92,66 +100,48 @@
 	</section>
 	
 	<!-- / .title -->
-    <div style="height: 150px; padding: 5px;" >
+    <div style="height: 40px; padding: 5px;" >
+        <a class="btn btn-success btn-large pull-left" href="/index" style="margin:10px; border-radius: 5px;">도감 등록</a>
         <a class="btn-success btn-large pull-right" href="/createPicture">사진 올리기</a>
         <a class="btn-success btn-large pull-right" href="/dogamReg">새 도감 만들기</a>
     </div>
-
-    <div style="height: 60px;">
-        <a class="btn btn-success btn-large pull-left" href="/index" style="margin:10px; border-radius: 5px;">도감 등록</a>
-    </div>
     
-	<!--도감 등록꾸민곳 -->
-	<section id="about-us" class="container main">
-		<div class="row-fluid">
-			<div class="span8"
-				style="border: solid; border-color: green; opacity: 0.7;">
-				<div class="blog" style="opacity: 1;">
-					<form id="main-contact-form" class="contact-form"
-						name="contact-form" method="post" action="">
-						<label>여기에 제목을 적어주세요</label> <input type="text"
-							class="input-block-level" required="required"> <label>사진을
-							등록해주세요</label> <input type="file" multiple=""
-							class="btn btn-primary btn-small">
-						<p class="insertImg">
-						<p class="help-block">선택된 사진이 없어요...</p>
-						</p>
-						<!-- 본문 들어갈 부분 -->
-						<label>일기 내용을 적어주세요</label>
-						<textarea name="message" id="message" required="required"
-							class="input-block-level" rows="8"></textarea>
-						<button type="submit" class="btn btn-primary btn-large pull-right">다썼다~
-							>▽<</button>
-					</form>
-					<!-- End Blog Item -->
-					<div class="gap"></div>
-				</div>
-			</div>
-		</div>
-	</section>
+<!--사진 등록꾸민곳 -->
+<section id="about-us" class="container main">
+    <div class="row-fluid">
+        <div class="span8 offset2" style="border: solid; border-color: green; opacity: 0.7;">
+            <div class="blog" style="opacity: 1;">
+                <form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="">
+                    <label>여기에 제목을 적어주세요</label>
+                    <input type="text" class="input-block-level" required="required">
+                    <label>사진을 등록해주세요</label>
+                    <input type="file" multiple="" class="btn btn-primary btn-small">
+                    <p class="insertImg"><p class="help-block">선택된 사진이 없어요...</p></p>
+                    <!-- 본문 들어갈 부분 -->
+                    <label>일기 내용을 적어주세요</label>
+                    <textarea name="message" id="message" required="required" class="input-block-level" rows="8"></textarea>
+                    <button type="submit" class="btn btn-primary btn-large pull-right">다썼다~ >▽<</button>
+                </form>
+                <!-- End Blog Item -->
+                <div class="gap"></div>
+            </div>
+        </div>
+    </div>
+</section>
 
- <!-- 
-	<footer id="footer" style="background-color: #000000;">
-		<div class="container">
-			<div class="row-fluid">
-				<div class="span5 cp">
-					좌측에 표현할 기능
-				</div>				
-				/Copyright
+<footer id="footer" style="opacity: 0.7; position: absolute; bottom: auto; width: 100%; background-color: black;">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span12" style="margin-top:-15px">
+                &copy; Bit58th 한잔해!!                
+                <a id="gototop" class="gototop pull-right" href="#"><i class="icon-angle-up"></i></a>
+            </div>
+            <!--/Goto Top-->
+        </div>
+    </div>
+</footer>
 
-				<div class="span6">
-					우측에 쓸 기능 추가
-				</div>
 
-				<div class="span1">
-					<a id="gototop" class="gototop pull-right" href="#"><i
-						class="icon-angle-up"></i></a>
-				</div>
-				/Goto Top
-			</div>
-		</div>
-	</footer>
- -->
 <!--  Login form -->
 <div class="modal hide fade in" id="loginForm" aria-hidden="false">
     <div class="modal-header">
