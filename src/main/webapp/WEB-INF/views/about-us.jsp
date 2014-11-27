@@ -34,24 +34,20 @@
                 padding-top: 0px;
             }
         }
-        
-<<<<<<< HEAD
-              body{
-            background-image: url(resources/images/tag/search_back.jpg);
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: cover;
-            background-color: #464646;
+          body{
+        background-image: url(resources/images/tag/search_back.jpg);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-color: #464646;
         }
-=======
        	body {
 		background-image: url("resources/images/sample/search_main_background.png");
     	background-repeat : no repeat;
     	background-size : cover;
 		}
         
->>>>>>> 29c3f0d9355f25d51134633a50d44c841ee8f631
     </style>
     
 </head>
@@ -97,11 +93,10 @@
 </section>
 <!-- / .title -->
 
-<<<<<<< HEAD
+
 <section id="about-us" class="container main">
-=======
-<section id="about-us" class="container main" style="height: auto; width: auto; " >
->>>>>>> 29c3f0d9355f25d51134633a50d44c841ee8f631
+
+
 
     <h4 class="center">유사한 이미지를 선택해주세요</h4>
     <!--tagClout-->
@@ -126,24 +121,6 @@
             <div class="span5 cp">
                 &copy; Bit58th 한잔해!!
             </div>
-            <!--/Copyright-->
-
-            <!--<div class="span6">
-                <ul class="social pull-right">
-                    <li><a href="#"><i class="icon-facebook"></i></a></li>
-                    <li><a href="#"><i class="icon-twitter"></i></a></li>
-                    <li><a href="#"><i class="icon-pinterest"></i></a></li>
-                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
-                    <li><a href="https://www.google.co.kr"><i class="icon-google-plus"></i></a></li>
-                    <li><a href="#"><i class="icon-youtube"></i></a></li>
-                    <li><a href="#"><i class="icon-tumblr"></i></a></li>
-                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
-                    <li><a href="#"><i class="icon-rss"></i></a></li>
-                    <li><a href="#"><i class="icon-github-alt"></i></a></li>
-                    <li><a href="#"><i class="icon-instagram"></i></a></li>
-                </ul>
-            </div>-->
-
             <div class="span1">
                 <a id="gototop" class="gototop pull-right" href="#"><i class="icon-angle-up"></i></a>
             </div>
