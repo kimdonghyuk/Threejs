@@ -35,6 +35,7 @@
             }
         }
         
+<<<<<<< HEAD
               body{
             background-image: url(resources/images/tag/search_back.jpg);
             background-position: center center;
@@ -43,6 +44,14 @@
             background-size: cover;
             background-color: #464646;
         }
+=======
+       	body {
+		background-image: url("resources/images/sample/search_main_background.png");
+    	background-repeat : no repeat;
+    	background-size : cover;
+		}
+        
+>>>>>>> 29c3f0d9355f25d51134633a50d44c841ee8f631
     </style>
     
 </head>
@@ -88,7 +97,11 @@
 </section>
 <!-- / .title -->
 
+<<<<<<< HEAD
 <section id="about-us" class="container main">
+=======
+<section id="about-us" class="container main" style="height: auto; width: auto; " >
+>>>>>>> 29c3f0d9355f25d51134633a50d44c841ee8f631
 
     <h4 class="center">유사한 이미지를 선택해주세요</h4>
     <!--tagClout-->
