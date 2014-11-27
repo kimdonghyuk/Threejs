@@ -34,6 +34,15 @@
                 padding-top: 0px;
             }
         }
+        
+              body{
+            background-image: url(resources/images/tag/search_back.jpg);
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            background-color: #464646;
+        }
     </style>
     
 </head>
@@ -79,7 +88,7 @@
 </section>
 <!-- / .title -->
 
-<section id="about-us" class="container main" style="background-color: gold; height: auto; width: auto; " >
+<section id="about-us" class="container main">
 
     <h4 class="center">유사한 이미지를 선택해주세요</h4>
     <!--tagClout-->
