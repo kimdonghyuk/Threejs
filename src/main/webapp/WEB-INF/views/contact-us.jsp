@@ -26,6 +26,14 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="resources/images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="resources/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="resources/images/ico/apple-touch-icon-57-precomposed.png">
+    
+    <style>
+        @media screen and (max-width: 979px){
+            body{
+                padding-top: 0px;
+            }
+        }
+    </style>
 </head>
 <body>
 

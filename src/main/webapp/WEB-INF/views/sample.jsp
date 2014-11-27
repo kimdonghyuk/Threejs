@@ -29,6 +29,17 @@
     
     <style>
     
+    body{
+    	background-color : gold;
+    	background-size : cover;
+    }
+    
+	@media screen and (max-width: 979px){
+		body{
+			padding-top: 0px;
+		}
+	}
+    
     .btn-success{    	
     	margin : 5px;
     	width : 119px;	
@@ -37,35 +48,40 @@
     }
 	    
     #info {
-	position: absolute;
-	width: 100%;
-	color: #ffffff;
-	padding: 5px;
-	font-family: Monospace;
-	font-size: 13px;
-	font-weight: bold;
-	text-align: center;
-	z-index: 1;
-	}
-	
-	#menu {
 		position: absolute;
+		width: 100%;
+		color: #ffffff;
+		padding: 5px;
+		font-family: Monospace;
+		font-size: 13px;
+		font-weight: bold;
 		text-align: center;
+		z-index: 1;
 	}
 	
-	.prevPage{
+	.maincontainer{
+		position : absolute;
+		margin: 0px auto;
+	}
+	
+	.menu {
+		padding : 20px;
+		position : absolute;		
+	}
+	
+ 	.prevPage{
 		position: absolute;
-		bottom: 40%;
-		right : 95%;
+		padding : 15px;
+		left : 5%;
 		width: 50px;
-		text-align: right;
+		text-align: left;
 		opacity:0.2;
 		cursor: pointer;
 	}
 	
 	.nextPage{
 		position: absolute;
-		bottom: 40%;
+		padding : 15px;
 		right : 2%;
 		width: 50px;
 		text-align: right;
@@ -74,8 +90,8 @@
 	}
 	
 	.element{
-		width: 250px;
-		height: 250px;
+		width: 270px;
+		height: 300px;
 		box-shadow: 0px 0px 12px rgba(0, 250, 85, 0.5);
 		border: 2px solid rgba(0, 250, 85, 0.25);
 		text-align: center;
@@ -96,18 +112,18 @@
 	}
 	
 	.element .symbol {
-		/* position: absolute; */
+		position: absolute;
 		left: 0px;
 		right: 0px;
-		font-bottom: 40px;
-		font-size: 50px;
+		font : 40px/1.5;
+		font-size: 40px;
 		font-weight: bold;
 		color: rgba(0, 0, 0, 0.25);
 		text-shadow: 0 0 10px rgba(0, 250, 85, 0.50);
 	}
 	
 	.element .details {
-	/* 	position: absolute; */
+		position: absolute;
 		top: 40px;
 		left: 0px;
 		right: 0px;
@@ -115,17 +131,26 @@
 		color: rgba(0, 250, 85, 0.8);
 	}
 	
-	button {
-		color: rgba(255, 0, 210, 0.6);					/* button 부분의 글자색깔  */
+/* 	#table{
+		color: rgba(0, 255, 0, 0.6);
 		background: transparent;
-		outline: 2px solid rgba(255, 0, 210, 0.6);		/* button 부분의 선 색깔, 굵기 */
-		border: 0px;
-		padding: 5px 10px;
+		border:solid;
 		cursor: pointer;
 	}
+
+	#sphere{
+		color: rgba(0, 255, 0, 0.6);
+		background: transparent;
+		border:solid;
+		cursor: pointer;
+	} */
+		
+	#table:hover {
+		background-color: rgba(0, 250, 0, 0.2);
+	}
 	
-	button:hover {
-		background-color: rgba(255, 0, 210, 0.2);
+	#sphere:hover {
+		background-color: rgba(0, 250, 0, 0.2);
 	}
 	
 	.prevPage:hover{
@@ -139,8 +164,7 @@
 	button:active {
 		color: #000000;
 		background-color: rgba(0, 0, 255, 0.5);
-	}
-    
+	}    
     </style>
     
 </head>
@@ -182,20 +206,19 @@
             <div class="row-fluid">
                 <div class="span6">
                     <h1>나만의 도감</h1>
-                </div>
-                <div class="span6">
+                </div> 
+                <!--<div class="span6">
                     <ul class="breadcrumb pull-right">
                         <li><a href="/index">Home</a> <span class="divider">/</span></li>
                         <li class="active">나만의 도감</li>
                     </ul>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
 <!--/second header end.......................................................................................................-->
     
 <!--Three.js Satart..........................................................................................................-->
-
 	<div id="maincontainer">
 	</div>	
 	
@@ -205,17 +228,16 @@
 	<div class="nextPage">	
 	</div>
 <!--/Three.js Area End.......................................................................................................-->
-
 <!--Menu Div.................................................................................................................-->
 
-	<div class="span7" style="text-align:center; height:-250px">
-		<div id="menu">
-			<button id="table">TABLE</button>
-			<button id="sphere">SPHERE</button>
-<!-- 			<button id="helix">HELIX</button>
-			<button id="grid">GRID</button> -->
-		</div>
+	<div class="menu" style="margin:0 auto;">
+		<button class="btn btn-primary" id="table">TABLE</button>
+		<button class="btn btn-primary" id="sphere">SPHERE</button>
 	</div>
+	
+<!-- 		<button id="helix">HELIX</button>
+			<button id="grid">GRID</button> -->
+
 
 <!--Login form...............................................................................................................-->
 <div class="modal hide fade in" id="loginForm" aria-hidden="false">
@@ -336,7 +358,7 @@
 	        
 			var details = document.createElement( 'div' );
            	details.className = 'details';
-           	details.innerHTML = '<img src = resources/dogam/'+ tableData[ i ].contfile +' weidth = "300" height = "300"></div>';
+           	details.innerHTML = '<img src = resources/dogam/'+ tableData[ i ].contfile +' width = "280px" height = "180px"></div>';
            	element.appendChild( details );
 	        // 각 원소별 풀네임 + 방사능번호 하단 두줄 밀어넣어주기
 	
@@ -347,11 +369,11 @@
 	        object.position.z = Math.random() * 4000 - 2000;
 	        scene.add( object );
 	
-	        objects.push( object );
+	        objects.push( object ); 
 	        
 	        var object = new THREE.Object3D();
 	        object.position.x = ( tableData[i].x * 140 ) - 1150;
-	        object.position.y = - ( tableData[i].y* 180 ) + 1150;	
+	        object.position.y = - ( tableData[i].y* 180 ) + 950;	
 	        targets.table.push( object );
 	
 	    }
@@ -359,7 +381,7 @@
 	    // sphere
 	
 	    var vector = new THREE.Vector3();
-	    var length = 12;
+	    var length = 9;
 	    
 		if(tableData[0].cnt == page){
 			length = tableData.length;
@@ -603,8 +625,5 @@
 	}
 
 </script>
-
-
-
 </body>
 </html>

@@ -98,7 +98,24 @@
 .sl-slide{
 	display: none;
 }
+
 .sl-slide-horizontal .sl-slide-inner {
+   background: #3498DB;
+}
+
+.item2 .sl-slide-inner {
+    background: #789bde;
+}
+
+.sl-slide-vertical .sl-slide-inner {
+   background: #E67E22;
+}
+
+.item3 .sl-slide-inner {
+   background: #9B59B6;
+}
+
+/* .sl-slide-horizontal .sl-slide-inner {
 	background: #3498DB;
 }
 
@@ -108,7 +125,7 @@
 
 .item3 .sl-slide-inner {
 	background: #9B59B6;
-}
+} */
 
 .sl-slider h2 {
 	padding: 170px 0 0;

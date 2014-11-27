@@ -88,8 +88,8 @@
                                 <li><a href="/terms">Terms of Use</a></li>
                             </ul>
                         </li>
-                        <li class="active"><a href="blog">Blog</a></li> 
-                        <li><a href="contact-us">Contact</a></li>
+                        <li class="active"><a href="/blog">Blog</a></li> 
+                        <li><a href="/contact-us">Contact</a></li>
                         <li class="login">
                             <a data-toggle="modal" href="#loginForm"><i class="icon-lock"></i></a>
                         </li>
@@ -100,78 +100,35 @@
     </header>
     <!-- /header -->
 
-
     <!-- / .title -->
     <section class="title">
         <div class="container">
             <div class="row-fluid">
                 <div class="span6">
-                    <h1>관찰일기</h1>
+                    <h1>일기쓰기</h1>
                 </div>
-                <!--<div class="span6">
-                    <ul class="breadcrumb pull-right">
-                        <li><a href="index.html" style="font-size:20px">전체보기</a> <span class="divider">|</span></li>
-                        <li><a href="blog-write.html" style="font-size:20px">일기쓰기</a>
-                    </ul>
-                </div>-->
             </div>
         </div>
     </section>
     <!-- / .title -->
 
-    <div class="center-button">
-        <a href="/index" class="btn btn-primary pull-left center-button-in">전체보기</a>
-        <a href="/blog-write" class="btn btn-primary pull-right center-button-in">일기쓰기</a>
-    </div>
-
     <section id="about-us" class="container main">
         <div class="row-fluid">
             <div class="span8">
                 <div class="blog">
-                    <div class="blog-item well">
-                        <a><h2>우왕 애벌레다~</h2></a>
-                        <div class="blog-meta clearfix">
-                            <p class="pull-left">
-                                <!-- 기본정보 들어가는 부분 -->
-                              <i class="icon-user"></i> 글쓴이 <a href="#">키므네</a> | <i class="icon-folder-close"></i> 관찰대상 <a href="#">장수풍뎅이</a> | <i class="icon-calendar"></i> Sept 16th, 2012
-                          </p>
-                          <p class="pull-right"><i class="icon-comment pull"></i> <a href="/blog-item#comments">덧글 3개</a></p>
-                        </div>
-                          <p><img src="resources/images/sample/lava.PNG" width="100%" alt="" /></p>
+                        <form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="">
+                            <label>여기에 제목을 적어주세요</label>
+                            <input type="text" class="input-block-level" required="required">
+                            <label>사진을 등록해주세요</label>
+                            <input type="file" multiple="" class="btn btn-primary btn-small button-radius">
+                            <p class="insertImg"><p class="help-block">선택된 사진이 없어요...</p></p>
                             <!-- 본문 들어갈 부분 -->
-                          <p>흙 많이 먹고 무럭무럭 자라라~</p>
-                          <a class="btn btn-link" href="#">덧글보기 <i class="icon-angle-right"></i></a>
-                    </div>
-                  <!-- End Blog Item -->
-
-                  <div class="blog-item well">
-                    <a href="#"><h2>어므나~</h2></a>
-                    <div class="blog-meta clearfix">
-                        <p class="pull-left">
-                          <i class="icon-user"></i> 글쓴이 <a href="#">김은왜</a> | <i class="icon-folder-close"></i> 관찰대상 <a href="#">장수풍뎅이</a> | <i class="icon-calendar"></i> Sept 16th, 2012
-                      </p>
-                      <p class="pull-right"><i class="icon-comment pull"></i> <a href="/blog-item#comments">덧글 2개</a></p>
-                    </div>
-                      <p><img src="resources/images/sample/ultra.PNG" width="100%" alt="" /></p>
-                      <p>우왕 뻔데기가 풍뎅이가 되었어요~</p>
-
-                      <a class="btn btn-link" href="#">덧글보기 <i class="icon-angle-right"></i></a>
-                  </div>
-              <!-- End Blog Item -->
-
-                <div class="gap"></div>
-                    <!-- Paginationa -->
-                  <div class="pagination">
-                    <ul>
-                        <li><a href="#"><i class="icon-angle-left"></i></a></li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#"><i class="icon-angle-right"></i></a></li>
-                    </ul>
-                  </div>
+                            <label>일기 내용을 적어주세요</label>
+                            <textarea name="message" id="message" required="required" class="input-block-level" rows="8"></textarea>
+                            <button type="submit" class="btn btn-primary btn-large pull-right button-radius">다썼다~ >▽<</button>
+                        </form>
+                    <!-- End Blog Item -->
+                    <div class="gap"></div>
                 </div>
             </div>
         </div>
@@ -197,6 +154,24 @@
     <!--/Modal Body-->
 </div>
 <!--  /Login form -->
+
+    <div class="modal fade" id="modal-test" tabindex="-1" role="dialog" aria-labelledby="modal-test" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">모달 제목</h4>
+                </div>
+                <div id="inner" class="modal-body">
+                    <p>적절한 본문…</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+                    <button type="button" class="btn btn-primary">저장</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
 <script src="resources/js/vendor/jquery-1.9.1.min.js"></script>
 <script src="resources/js/vendor/bootstrap.min.js"></script>

@@ -64,7 +64,7 @@ THREE.CSS3DRenderer = function () {
 	cameraElement.style.MozTransformStyle = 'preserve-3d';
 	cameraElement.style.oTransformStyle = 'preserve-3d';
 	cameraElement.style.transformStyle = 'preserve-3d';
-
+	
 	domElement.appendChild( cameraElement );
 
 	this.setClearColor = function () {
@@ -75,12 +75,11 @@ THREE.CSS3DRenderer = function () {
 
 		_width = width;
 		_height = height;
-
+ 
 		_widthHalf = _width / 2;
 		_heightHalf = _height / 2;
-
-		domElement.style.margin 
-		domElement.style.width = 90 + '%';
+		
+		domElement.style.width = 95 + '%';
 		domElement.style.height = height - 230 + 'px';
 
 /*		domElement.style.width = width - 100 + 'px';

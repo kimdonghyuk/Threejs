@@ -27,22 +27,18 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="resources/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="resources/images/ico/apple-touch-icon-57-precomposed.png">
     
-    <style>
-    
+    <style>    
     .btn-success{    	
     	margin : 5px;
     	width : 119px;	
     	text-align : center;
     	font-weight: bold;
     	opacity : 0.8; 
-    }
-    
-    </style>
-    
+    }    
+    </style>    
 </head>
 
 <body>
-
     <!--Header-->
     <header class="navbar navbar-fixed-top">
         <div class="navbar-inner">
@@ -92,8 +88,9 @@
     
     <!-- / .title -->
     <div style="height: 150px; padding: 5px;" >
-        <a class="btn-success btn-large pull-right" href="http://shapebootstrap.net">사진 올리기</a>
-        <a class="btn-success btn-large pull-right" href="/sample">새 도감 만들기</a>
+    	<a class="btn-success btn-large pull-left" href="/sample">도감 더미 파일</a>
+        <a class="btn-success btn-large pull-right" href="/createPicture">사진 올리기</a>
+        <a class="btn-success btn-large pull-right" href="/dogamReg">새 도감 만들기</a>
     </div>
 
 <!--  Login form -->
