@@ -55,32 +55,33 @@
 
 <body>
 
-	<!--Header-->
-	<header class="navbar navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container">
-				<a class="btn btn-navbar" data-toggle="collapse"
-					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a> <a id="logo" class="pull-left" href="/index"></a>
-				<div class="nav-collapse collapse pull-right">
-					<ul class="nav">
-						<li><a href="/index">Home</a></li>
-						<li><a href="/about-us">검 색</a></li>
-						<li class="active"><a href="/services">나만의 도감</a></li>
-						<li><a href="/portfolio">Portfolio</a></li>
-						<li><a href="/index">Pages</a></li>
-						<li><a href="/blog">Blog</a></li>
-						<li><a href="/contact-us">Contact</a></li>
-						<li class="login"><a data-toggle="modal" href="#loginForm"><i
-								class="icon-lock"></i></a></li>
-					</ul>
-				</div>
-				<!--/.nav-collapse -->
-			</div>
-		</div>
-	</header>
-	<!-- /header -->
+   <!--Header-->
+    <header class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a id="logo" class="pull-left" href="/index"></a>
+                <div class="nav-collapse collapse pull-right">
+                    <ul class="nav">
+                        <li><a href="/index">메인화면</a></li>
+                        <li><a href="/about-us">검색</a></li>
+                        <li class="active"><a href="/services">나만의도감</a></li>
+                        <li><a href="/portfolio">즐겨찾기</a></li>
+                        <li><a href="/blog">관찰일지</a></li> 
+                        <li><a href="/contact-us">My Pages</a></li>
+                        <li class="login">
+                            <a data-toggle="modal" href="#loginForm"><i class="icon-lock"></i></a>
+                        </li>
+                    </ul>        
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+    </header>
+    <!-- /header -->
 
 	<section class="title">
 		<div class="container">
@@ -90,7 +91,7 @@
 				</div>
 				<div class="span6">
 					<ul class="breadcrumb pull-right">
-						<li><a href="/index">Home</a> <span class="divider">/</span></li>
+						<li><a href="/index">메인화면</a> <span class="divider">/</span></li>
 						<li class="active">나만의도감</li>
 					</ul>
 				</div>

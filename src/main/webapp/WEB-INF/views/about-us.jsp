@@ -39,48 +39,33 @@
 </head>
 <body>
 
-<!--Header-->
-<header class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-            <a id="logo" class="pull-left" href="/index"></a>
-            <div class="nav-collapse collapse pull-right">
-                <ul class="nav">
-                    <li><a href="/index">메인화면</a></li>
-                    <li class="/active"><a href="/about-us">검색</a></li>
-                    <li><a href="/services">Services</a></li>
-                    <li><a href="/portfolio">Portfolio</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="icon-angle-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/career">Career</a></li>
-                            <li><a href="/blog-item">Blog Single</a></li>
-                            <li><a href="/faq">FAQ</a></li>
-                            <li><a href="/pricing">Pricing</a></li>
-                            <li><a href="/404">404</a></li>
-                            <li><a href="/typography">Typography</a></li>
-                            <li><a href="/registration">Registration</a></li>
-                            <li class="divider"></li>
-                            <li><a href="/privacy">Privacy Policy</a></li>
-                            <li><a href="/terms">Terms of Use</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="/blog">Blog</a></li>
-                    <li><a href="/contact-us">Contact</a></li>
-                    <li class="login">
-                        <a data-toggle="modal" href="#loginForm"><i class="icon-lock"></i></a>
-                    </li>
-                </ul>
-            </div><!--/.nav-collapse -->
+   <!--Header-->
+    <header class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a id="logo" class="pull-left" href="/index"></a>
+                <div class="nav-collapse collapse pull-right">
+                    <ul class="nav">
+                        <li><a href="/index">메인화면</a></li>
+                        <li class="active"><a href="/about-us">검색</a></li>
+                        <li><a href="/services">나만의도감</a></li>
+                        <li><a href="/portfolio">즐겨찾기</a></li>
+                        <li><a href="/blog">관찰일지</a></li> 
+                        <li><a href="/contact-us">My Pages</a></li>
+                        <li class="login">
+                            <a data-toggle="modal" href="#loginForm"><i class="icon-lock"></i></a>
+                        </li>
+                    </ul>        
+                </div><!--/.nav-collapse -->
+            </div>
         </div>
-    </div>
-</header>
-<!-- /header -->
+    </header>
+    <!-- /header -->
 
 
 <section class="title">

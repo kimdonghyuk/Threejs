@@ -28,6 +28,16 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="resources/images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="resources/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="resources/images/ico/apple-touch-icon-57-precomposed.png">
+    
+    <style>
+    	@media screen and (max-width: 979px) {
+		body {
+			padding-top: 0px;
+		}
+	}
+    
+    </style>
+    
 </head>
 
 <body>
@@ -46,25 +56,10 @@
                     <ul class="nav">
                         <li class="active"><a href="/index">메인화면</a></li>
                         <li><a href="/about-us">검색</a></li>
-                        <li><a href="/services">Services</a></li>
-                        <li><a href="/portfolio">Portfolio</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="icon-angle-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="/career">Career</a></li>
-                                <li><a href="/blog-item">Blog Single</a></li>
-                                <li><a href="/faq">FAQ</a></li>
-                                <li><a href="/pricing">Pricing</a></li>
-                                <li><a href="/404">404</a></li>
-                                <li><a href="/typography">Typography</a></li>
-                                <li><a href="/registration">Registration</a></li>
-                                <li class="divider"></li>
-                                <li><a href="/privacy">Privacy Policy</a></li>
-                                <li><a href="/terms">Terms of Use</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="/blog">Blog</a></li> 
-                        <li><a href="/contact-us">Contact</a></li>
+                        <li><a href="/services">나만의도감</a></li>
+                        <li><a href="/portfolio">즐겨찾기</a></li>
+                        <li><a href="/blog">관찰일지</a></li> 
+                        <li><a href="/contact-us">My Pages</a></li>
                         <li class="login">
                             <a data-toggle="modal" href="#loginForm"><i class="icon-lock"></i></a>
                         </li>
@@ -159,40 +154,17 @@
 
     <!--/Slider-->
 
-<!--Footer-->
-<footer id="footer">
+<footer id="footer" style="opacity: 0.7; position: absolute; bottom: auto; width: 100%; background-color: black;">
     <div class="container">
         <div class="row-fluid">
-            <div class="span5 cp">
-                &copy; 2013 <a target="_blank" href="http://shapebootstrap.net/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">ShapeBootstrap</a>. All Rights Reserved.
-            </div>
-            <!--/Copyright-->
-
-            <div class="span6">
-                <ul class="social pull-right">
-                    <li><a href="#"><i class="icon-facebook"></i></a></li>
-                    <li><a href="#"><i class="icon-twitter"></i></a></li>
-                    <li><a href="#"><i class="icon-pinterest"></i></a></li>
-                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
-                    <li><a href="https://www.google.co.kr"><i class="icon-google-plus"></i></a></li>
-                    <li><a href="#"><i class="icon-youtube"></i></a></li>
-                    <li><a href="#"><i class="icon-tumblr"></i></a></li>
-                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
-                    <li><a href="#"><i class="icon-rss"></i></a></li>
-                    <li><a href="#"><i class="icon-github-alt"></i></a></li>
-                    <li><a href="#"><i class="icon-instagram"></i></a></li>
-                </ul>
-            </div>
-
-            <div class="span1">
+            <div class="span12" style="margin-top:-15px">
+                &copy; Bit58th 한잔해!!                
                 <a id="gototop" class="gototop pull-right" href="#"><i class="icon-angle-up"></i></a>
             </div>
             <!--/Goto Top-->
         </div>
     </div>
 </footer>
-<!--/Footer-->
-
 <!--  Login form -->
 <div class="modal hide fade in" id="loginForm" aria-hidden="false">
     <div class="modal-header">

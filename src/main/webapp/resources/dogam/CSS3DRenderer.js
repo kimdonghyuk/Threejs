@@ -80,7 +80,7 @@ THREE.CSS3DRenderer = function () {
 		_heightHalf = _height / 2;
 		
 		domElement.style.width = 95 + '%';
-		domElement.style.height = height - 230 + 'px';
+		domElement.style.height = height - 280 + 'px';
 
 /*		domElement.style.width = width - 100 + 'px';
 		domElement.style.height = height - 240 + 'px';*/

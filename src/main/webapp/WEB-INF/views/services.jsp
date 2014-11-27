@@ -27,26 +27,50 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="resources/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="resources/images/ico/apple-touch-icon-57-precomposed.png">
     
-    <style>    
-    .btn-success{    	
-    	margin : 5px;
-    	width : 119px;	
-    	text-align : center;
-    	font-weight: bold;
-    	opacity : 0.8; 
-    }    
-    
-   	body{
-    	background-image : url("resources/dogam/dogam_main_background.png");
+    <style>
+	.btn-success {
+		margin: 5px;
+		width: 119px;
+		text-align: center;
+		font-weight: bold;
+		opacity: 0.8;
+	}
+	
+	html{
+		height:600px;
+	}
+	
+	body {
+		background-image: url("resources/dogam/dogam_main_background.png");
     	background-repeat : no repeat;
     	background-size : cover;
-    }
-    
-    </style>    
+    	height:600px;
+	}
+	
+	@media screen and (max-width: 979px) {
+		body {
+			padding-top: 0px;
+			}
+	}
+	
+	@media screen and (max-width: 476px){
+		footer{
+			padding-bottom: 0px;
+		}
+	}
+	
+	.updatePicture:hover{
+		opacity : 0.7;	
+	}
+	
+	.registDogam:hover{
+		opacity : 0.7;	
+	}
+</style>    
 </head>
 
 <body>
-    <!--Header-->
+   <!--Header-->
     <header class="navbar navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
@@ -58,13 +82,12 @@
                 <a id="logo" class="pull-left" href="/index"></a>
                 <div class="nav-collapse collapse pull-right">
                     <ul class="nav">
-                        <li><a href="/index">Home</a></li>
-                        <li><a href="/about-us">검 색</a></li>
-                        <li class="active"><a href="services">나만의 도감</a></li>
-                        <li><a href="/portfolio">Portfolio</a></li>
-                        <li><a href="/index">Pages</a></li>
-                        <li><a href="/blog">Blog</a></li> 
-                        <li><a href="/contact-us">Contact</a></li>
+                        <li><a href="/index">메인화면</a></li>
+                        <li><a href="/about-us">검색</a></li>
+                        <li class="active"><a href="/services">나만의도감</a></li>
+                        <li><a href="/portfolio">즐겨찾기</a></li>
+                        <li><a href="/blog">관찰일지</a></li> 
+                        <li><a href="/contact-us">My Pages</a></li>
                         <li class="login">
                             <a data-toggle="modal" href="#loginForm"><i class="icon-lock"></i></a>
                         </li>
@@ -75,18 +98,12 @@
     </header>
     <!-- /header -->
 
-
+<div id="back" style="height: 600px;">
     <section class="title">
         <div class="container">
             <div class="row-fluid">
                 <div class="span6">
                     <h1>나만의도감</h1>
-                </div>
-                <div class="span6">
-                    <ul class="breadcrumb pull-right">
-                        <li><a href="index.html">Home</a> <span class="divider">/</span></li>
-                        <li class="active">나만의도감</li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -94,12 +111,21 @@
     
     <!-- / .title -->
     <div class="sample" style="height: 150px; padding: 5px;" >
-    	<a class="btn-success btn-large pull-left" href="/sample">도감 더미 파일</a>
-        <a class="btn-success btn-large pull-right" href="/createPicture">사진 올리기</a>
-        <a class="btn-success btn-large pull-right" href="/dogamReg">새 도감 만들기</a>
+        <a class="btn-success btn-large pull-right" id="updatePicture" href="/createPicture">사진 올리기</a>
+        <a class="btn-success btn-large pull-right" id="registDogam" href="/dogamReg">새 도감 만들기</a>
     </div>
     
-<footer id="footer" style="opacity: 0.7; position: absolute; bottom: 0; width: 100%; background-color: silver;">
+    <div id="album"><div id="album_dogam1" >    		
+    	<a href="/sample">
+    		<img src = "resources/dogam/dogam_travel.jpg" style="width:250px; height:250px; margin-left:20%; " />
+    		<div style="width:250px; height:20px; margin-left:20%; text-align:center;">2014.11.27 수목원 여행</div>    		
+    	</a> 
+    	</div>
+    </div>
+    
+</div> 
+    
+<footer id="footer" style="opacity: 0.7; position: absolute; bottom: auto; width: 100%; background-color: black;">
     <div class="container">
         <div class="row-fluid">
             <div class="span12" style="margin-top:-15px">

@@ -30,7 +30,7 @@
     <style>
     
     body{
-    	background-image : url("resources/dogam/dogam_main_background.jpg");
+    	background-image : url("resources/dogam/dogam_allview_background.jpg");
     	background-repeat : no repeat;
     	background-size : cover;
     }
@@ -47,27 +47,18 @@
     	text-align : center;
     	font-weight: bold
     }
-	    
-    #info {
-		position: absolute;
-		width: 100%;
-		color: #ffffff;
-		padding: 5px;
-		font-family: Monospace;
-		font-size: 13px;
-		font-weight: bold;
-		text-align: center;
-		z-index: 1;
-	}
 	
 	.maincontainer{
 		position : absolute;
-		margin: 0px auto;
+		padding : 0px;
+		margin-top : 0px auto;
 	}
 	
 	.menu {
-		padding : 20px;
-		position : absolute;		
+		padding : 10px;
+		height : 10px;
+		width : 155px;
+		margin : auto;
 	}
 	
  	.prevPage{
@@ -116,10 +107,9 @@
 		position: absolute;
 		left: 0px;
 		right: 0px;
-		font : 40px/1.5;
 		font-size: 40px;
 		font-weight: bold;
-		color: rgba(0, 0, 0, 0.25);
+		color: rgba(255, 255, 255, 0.8);
 		text-shadow: 0 0 10px rgba(0, 250, 85, 0.50);
 	}
 	
@@ -147,11 +137,11 @@
 	} */
 		
 	#table:hover {
-		background-color: rgba(0, 250, 0, 0.2);
+		background-color: rgba(0, 0, 255, 0.2);
 	}
 	
 	#sphere:hover {
-		background-color: rgba(0, 250, 0, 0.2);
+		background-color: rgba(0, 0, 255, 0.2);
 	}
 	
 	.prevPage:hover{
@@ -173,6 +163,7 @@
 <body>
 
 <!--Header Start ...........................................................................................................-->
+    <!--Header-->
     <header class="navbar navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
@@ -184,13 +175,12 @@
                 <a id="logo" class="pull-left" href="/index"></a>
                 <div class="nav-collapse collapse pull-right">
                     <ul class="nav">
-                        <li><a href="/index">Home</a></li>
-                        <li><a href="/about-us">검 색</a></li>
-                        <li class="active"><a href="services">나만의 도감</a></li>
-                        <li><a href="/portfolio">Portfolio</a></li>
-                        <li><a href="/index">Pages</a></li>
-                        <li><a href="/blog">Blog</a></li> 
-                        <li><a href="/contact-us">Contact</a></li>
+                        <li><a href="/index">메인화면</a></li>
+                        <li><a href="/about-us">검색</a></li>
+                        <li class="active"><a href="/services">나만의도감</a></li>
+                        <li><a href="/portfolio">즐겨찾기</a></li>
+                        <li><a href="/blog">관찰일지</a></li> 
+                        <li><a href="/contact-us">My Pages</a></li>
                         <li class="login">
                             <a data-toggle="modal" href="#loginForm"><i class="icon-lock"></i></a>
                         </li>
@@ -199,9 +189,11 @@
             </div>
         </div>
     </header>
+    <!-- /header -->
 <!--/header end..............................................................................................................-->
     
 <!-- seconde header..........................................................................................................-->
+
        <section class="title">
         <div class="container">
             <div class="row-fluid">
@@ -218,31 +210,22 @@
         </div>
     </section>
 <!--/second header end.......................................................................................................-->
-    
+
 <!--Three.js Satart..........................................................................................................-->
-	<div id="back" style="height: 600px">
-	
-	<div id="maincontainer">
-	</div>	
-	
-	<div class="prevPage">	
-	</div>
-	
-	<div class="nextPage">	
+
+	<div class="menu">
+		<button class="btn btn-primary pull-left" id="table">TABLE</button>
+		<button class="btn btn-primary pull-right" id="sphere">SPHERE</button>
 	</div>
 
+	<div id="back" style="height: 600px">
+	
+		<div id="maincontainer"></div>		
+		<div class="prevPage"></div>	
+		<div class="nextPage"></div>
 	
 <!--/Three.js Area End.......................................................................................................-->
 <!--Menu Div.................................................................................................................-->
-
-	<div class="menu" style="margin:0 auto;">
-		<button class="btn btn-primary" id="table">TABLE</button>
-		<button class="btn btn-primary" id="sphere">SPHERE</button>
-	</div>
-	
-<!-- 		<button id="helix">HELIX</button>
-			<button id="grid">GRID</button> -->
-
 	</div>
 	
 <footer id="footer" style="opacity: 0.7; position: absolute; bottom: auto; width: 100%; background-color: black;">
@@ -474,17 +457,13 @@
 	
 	    // transform( target되는 이벤트 , 이동속도)
 	    var button = document.getElementById( 'table' );
-	    button.addEventListener( 'click', function ( event ) {
-	
-	        transform( targets.table, 2000 );
-	
+	    button.addEventListener( 'click', function ( event ) {	
+	        transform( targets.table, 2000 );	
 	    }, false );
 	
 	    var button = document.getElementById( 'sphere' );
-	    button.addEventListener( 'click', function ( event ) {
-	
-	        transform( targets.sphere, 2000 );
-	
+	    button.addEventListener( 'click', function ( event ) {	
+	        transform( targets.sphere, 2000 );	
 	    }, false );
 	
 /* 	    var button = document.getElementById( 'helix' );
