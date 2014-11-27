@@ -52,6 +52,12 @@
                 padding-top: 0px;
             }
         }
+        
+        body{
+	    	background-image : url("/resources/images/diary/wall06.jpg");
+	    	background-repeat : no repeat;
+	    	background-size : cover;
+    	}
     </style>
     
 </head>
@@ -91,7 +97,7 @@
                         <li class="active"><a href="/blog">Blog</a></li> 
                         <li><a href="/contact-us">Contact</a></li>
                         <li class="login">
-                            <a data-toggle="modal" href="#loginForm"><i class="icon-lock"></i></a>
+                            <a data-toggle="modal" href="#loginModal"><i class="icon-lock"></i></a>
                         </li>
                     </ul>        
                 </div><!--/.nav-collapse -->
@@ -114,7 +120,7 @@
 
     <section id="about-us" class="container main">
         <div class="row-fluid">
-            <div class="span8">
+            <div class="span8 offset2">
                 <div class="blog">
                         <form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="">
                             <label>여기에 제목을 적어주세요</label>
@@ -133,46 +139,53 @@
             </div>
         </div>
     </section>
+   	<footer id="footer" style="opacity: 0.7; position: absolute; bottom: auto; width: 100%; background-color: black;">
+	    <div class="container">
+	        <div class="row-fluid">
+	            <div class="span12" style="margin-top:-15px">
+	                &copy; Bit58th 한잔해!!                
+	                <a id="gototop" class="gototop pull-right" href="#"><i class="icon-angle-up"></i></a>
+	            </div>
+	            <!--/Goto Top-->
+	        </div>
+	    </div>
+	</footer>
 <!--  Login form -->
-<div class="modal hide fade in" id="loginForm" aria-hidden="false">
-    <div class="modal-header">
-        <i class="icon-remove" data-dismiss="modal" aria-hidden="true"></i>
-        <h4>Login Form</h4>
+    <div class="modal hide fade" id="loginModal">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">✕</button>
+            <h3 style="text-align: center">로그인</h3>
+        </div>
+        <div class="modal-body" style="text-align:center;">
+            <div class="row-fluid">
+                <div class="span10 offset1">
+                    <div id="modalTab">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="login">
+                                <form method="post" action='' name="login_form">
+                                    <p><input type="text" class="span12" name="eid" id="email" placeholder="Email"></p>
+                                    <p><input type="password" class="span12" name="passwd" placeholder="Password"></p>
+                                    <p><button type="submit" class="btn btn-primary">Sign in</button>
+                                        <a href="#forgotpassword" data-toggle="tab">Forgot Password?</a>
+                                    </p>
+                                </form>
+                            </div>
+                            <div class="tab-pane fade" id="forgotpassword">
+                                <form method="post" action='' name="forgot_password">
+                                    <p>Hey this stuff happens, send us your email and we'll reset it for you!</p>
+                                    <input type="text" class="span12" name="eid" id="email" placeholder="Email">
+                                    <p><button type="submit" class="btn btn-primary">Submit</button>
+                                        <a href="#login" data-toggle="tab">Wait, I remember it now!</a>
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <!--Modal Body-->
-    <div class="modal-body">
-        <form class="form-inline" action="/index" method="post" id="form-login">
-            <input type="text" class="input-small" placeholder="Email">
-            <input type="password" class="input-small" placeholder="Password">
-            <label class="checkbox">
-                <input type="checkbox"> Remember me
-            </label>
-            <button type="submit" class="btn btn-primary">Sign in</button>
-        </form>
-        <a href="#">Forgot your password?</a>
-    </div>
-    <!--/Modal Body-->
-</div>
 <!--  /Login form -->
-
-    <div class="modal fade" id="modal-test" tabindex="-1" role="dialog" aria-labelledby="modal-test" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title">모달 제목</h4>
-                </div>
-                <div id="inner" class="modal-body">
-                    <p>적절한 본문…</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-                    <button type="button" class="btn btn-primary">저장</button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
 <script src="resources/js/vendor/jquery-1.9.1.min.js"></script>
 <script src="resources/js/vendor/bootstrap.min.js"></script>
 <script src="resources/js/main.js"></script>

@@ -52,13 +52,18 @@
                 padding-top: 0px;
             }
         }
+        
+        body{
+	    	background-image : url("/resources/images/diary/wall06.jpg");
+	    	background-repeat : no repeat;
+	    	background-size : cover;
+    	}
     </style>
     
 </head>
-
 <body>
 
-  <!--Header-->
+    <!--Header-->
     <header class="navbar navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
@@ -72,12 +77,27 @@
                     <ul class="nav">
                         <li><a href="/index">메인화면</a></li>
                         <li><a href="/about-us">검색</a></li>
-                        <li><a href="/services">나만의도감</a></li>
+                        <li><a href="/services">나만의 도감</a></li>
                         <li><a href="/portfolio">즐겨찾기</a></li>
-                        <li class="active"><a href="/blog">관찰일지</a></li> 
-                        <li><a href="/contact-us">My Pages</a></li>
+                        <!-- <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="icon-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/career">Career</a></li>
+                                <li><a href="/blog-item">Blog Single</a></li>
+                                <li><a href="/faq">FAQ</a></li>
+                                <li><a href="/pricing">Pricing</a></li>
+                                <li><a href="/404">404</a></li>
+                                <li><a href="/typography">Typography</a></li>
+                                <li><a href="/registration">Registration</a></li>
+                                <li class="divider"></li>
+                                <li><a href="/privacy">Privacy Policy</a></li>
+                                <li><a href="/terms">Terms of Use</a></li>
+                            </ul>
+                        </li> -->
+                        <li class="active"><a href="blog">관찰일기</a></li> 
+                        <li><a href="contact-us">My Page</a></li>
                         <li class="login">
-                            <a data-toggle="modal" href="#loginForm"><i class="icon-lock"></i></a>
+                            <a data-toggle="modal" href="#loginModal"><i class="icon-lock"></i></a>
                         </li>
                     </ul>        
                 </div><!--/.nav-collapse -->
@@ -112,7 +132,7 @@
 
     <section id="about-us" class="container main">
         <div class="row-fluid">
-            <div class="span8">
+            <div class="span8 offset2">
                 <div class="blog">
                     <div class="blog-item well">
                         <a><h2>우왕 애벌레다~</h2></a>
@@ -162,26 +182,52 @@
             </div>
         </div>
     </section>
+	<footer id="footer" style="opacity: 0.7; position: absolute; bottom: auto; width: 100%; background-color: black;">
+	    <div class="container">
+	        <div class="row-fluid">
+	            <div class="span12" style="margin-top:-15px">
+	                &copy; Bit58th 한잔해!!                
+	                <a id="gototop" class="gototop pull-right" href="#"><i class="icon-angle-up"></i></a>
+	            </div>
+	            <!--/Goto Top-->
+	        </div>
+	    </div>
+	</footer>
 <!--  Login form -->
-<div class="modal hide fade in" id="loginForm" aria-hidden="false">
-    <div class="modal-header">
-        <i class="icon-remove" data-dismiss="modal" aria-hidden="true"></i>
-        <h4>Login Form</h4>
+    <div class="modal hide fade" id="loginModal">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">✕</button>
+            <h3 style="text-align: center">로그인</h3>
+        </div>
+        <div class="modal-body" style="text-align:center;">
+            <div class="row-fluid">
+                <div class="span10 offset1">
+                    <div id="modalTab">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="login">
+                                <form method="post" action='' name="login_form">
+                                    <p><input type="text" class="span12" name="eid" id="email" placeholder="Email"></p>
+                                    <p><input type="password" class="span12" name="passwd" placeholder="Password"></p>
+                                    <p><button type="submit" class="btn btn-primary">Sign in</button>
+                                        <a href="#forgotpassword" data-toggle="tab">Forgot Password?</a>
+                                    </p>
+                                </form>
+                            </div>
+                            <div class="tab-pane fade" id="forgotpassword">
+                                <form method="post" action='' name="forgot_password">
+                                    <p>Hey this stuff happens, send us your email and we'll reset it for you!</p>
+                                    <input type="text" class="span12" name="eid" id="email" placeholder="Email">
+                                    <p><button type="submit" class="btn btn-primary">Submit</button>
+                                        <a href="#login" data-toggle="tab">Wait, I remember it now!</a>
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <!--Modal Body-->
-    <div class="modal-body">
-        <form class="form-inline" action="/index" method="post" id="form-login">
-            <input type="text" class="input-small" placeholder="Email">
-            <input type="password" class="input-small" placeholder="Password">
-            <label class="checkbox">
-                <input type="checkbox"> Remember me
-            </label>
-            <button type="submit" class="btn btn-primary">Sign in</button>
-        </form>
-        <a href="#">Forgot your password?</a>
-    </div>
-    <!--/Modal Body-->
-</div>
 <!--  /Login form -->
 
 <script src="resources/js/vendor/jquery-1.9.1.min.js"></script>
