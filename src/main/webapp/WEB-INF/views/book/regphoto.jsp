@@ -43,7 +43,7 @@
     	}
     	
     	body {
-		background-image: url("/resources/dogam/dogam_main_background.png");
+		background-image: url("/resources/book/background/book_main_background.png");
     	background-repeat : no repeat;
     	background-size : cover;
     	height:600px;

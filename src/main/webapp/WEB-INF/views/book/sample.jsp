@@ -30,7 +30,7 @@
     <style>
     
     body{
-    	background-image : url("/resources/dogam/dogam_allview_background.jpg");
+    	background-image : url("/resources/book/background/book_allview_background.jpg");
     	background-repeat : no repeat;
     	background-size : cover;
     }
@@ -267,10 +267,10 @@
 <script src="/resources/js/vendor/jquery-1.9.1.min.js"></script>
 <script src="/resources/js/vendor/bootstrap.min.js"></script>
 <script src="/resources/js/main.js"></script>
-<script src="/resources/dogam/three.min.js"></script>
-<script src="/resources/dogam/tween.min.js"></script>
-<script src="/resources/dogam/TrackballControls.js"></script>
-<script src="/resources/dogam/CSS3DRenderer.js"></script>
+<script src="/resources/book/js/three.min.js"></script>
+<script src="/resources/book/js/tween.min.js"></script>
+<script src="/resources/book/js/TrackballControls.js"></script>
+<script src="/resources/book/js/CSS3DRenderer.js"></script>
 
 <script>
  
@@ -359,7 +359,7 @@
 	        
 			var details = document.createElement( 'div' );
            	details.className = 'details';
-           	details.innerHTML = '<img src = /resources/dogam/'+ tableData[ i ].contfile +' width = "280px" height = "180px"></div>';
+           	details.innerHTML = '<img src = /resources/book/images/'+ tableData[ i ].contfile +' width = "280px" height = "180px"></div>';
            	element.appendChild( details );
 	        // 각 원소별 풀네임 + 방사능번호 하단 두줄 밀어넣어주기
 	
@@ -577,8 +577,8 @@
 	      var cnt = num;
 	      if(page > 1 && page < num){
 	         console.log("------in Page-------------");
-	         content1 += "<div><img src = /resources/dogam/prevPage.jpg onclick='prevPage();'/>"+ "</div>";
-	         content2 += "<div><img src = /resources/dogam/nextPage.jpg onclick='nextPage();'/>"+ "</div>";
+	         content1 += "<div><img src = /resources/book/prevPage.jpg onclick='prevPage();'/>"+ "</div>";
+	         content2 += "<div><img src = /resources/book/nextPage.jpg onclick='nextPage();'/>"+ "</div>";
 	         target1.html(content1);
 	         target2.html(content2);
 	         return;
@@ -587,7 +587,7 @@
 	      else if(page == 1){
 	         console.log("------in First Page-------------");
 	         content1 += "<div style='display:none'><img src = /resources/prevPage.jpg onclick='prevPage();'/>"+ "</div>";
-	         content2 += "<div><img src = /resources/dogam/nextPage.jpg onclick='nextPage();'>" +  "</button>"+"</div>";
+	         content2 += "<div><img src = /resources/book/nextPage.jpg onclick='nextPage();'>" +  "</button>"+"</div>";
 	         target1.html(content1);
 	         target2.html(content2);   
 	         return;
@@ -601,7 +601,7 @@
 	            } */
 	         content2 += "<div style='display:none'><button onclick='nextPage();'>" + "</button>"+"</div>";
 	         target2.html(content2);   
-	         content1 += "<div><img src = /resources/dogam/prevPalllge.jpg onclick='prevPage();'/>"+ "</div>";
+	         content1 += "<div><img src = /resources/book/prevPage.jpg onclick='prevPage();'/>"+ "</div>";
 	         target1.html(content1);
 	         return;
 	      }

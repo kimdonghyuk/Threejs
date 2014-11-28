@@ -38,7 +38,7 @@
 	
 	
 	body {
-		background-image: url("/resources/dogam/dogam_main_background.png");
+		background-image: url("/resources/book/background/book_main_background.png");
     	background-repeat : no repeat;
     	background-size : cover;
     	height:635px;
@@ -114,7 +114,7 @@
     
     <div id="album"><div id="album_dogam1" >    		
     	<a href="/book/sample">
-    		<img src = "/resources/dogam/dogam_travel.jpg" style="width:200px; height:200px; margin-left:15%; " /></a>
+    		<img src = "/resources/book/images/book_travel.jpg" style="width:200px; height:200px; margin-left:15%; " /></a>
     		<div style="width:200px; height:20px; margin-left:15%; text-align:center;">2014.05.27 꽃놀이 여행</div>  
     	</div>
     </div> 
