@@ -12,20 +12,20 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
-    <link rel="stylesheet" href="resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="resources/css/bootstrap-responsive.min.css">
-    <link rel="stylesheet" href="resources/css/font-awesome.min.css">
-    <link rel="stylesheet" href="resources/css/main.css">
-    <link rel="stylesheet" href="resources/css/sl-slide.css">
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/resources/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="/resources/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/resources/css/main.css">
+    <link rel="stylesheet" href="/resources/css/sl-slide.css">
 
-    <script src="resources/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    <script src="/resources/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 
     <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="resources/images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="resources/images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="resources/images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="resources/images/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="/resources/images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/resources/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/resources/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/resources/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/resources/images/ico/apple-touch-icon-57-precomposed.png">
     
     <style>  
     	
@@ -76,26 +76,11 @@
                 <div class="nav-collapse collapse pull-right">
                     <ul class="nav">
                         <li><a href="/index">메인화면</a></li>
-                        <li><a href="/about-us">검색</a></li>
-                        <li><a href="/services">나만의 도감</a></li>
-                        <li><a href="/portfolio">즐겨찾기</a></li>
-                        <!-- <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="icon-angle-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="/career">Career</a></li>
-                                <li><a href="/blog-item">Blog Single</a></li>
-                                <li><a href="/faq">FAQ</a></li>
-                                <li><a href="/pricing">Pricing</a></li>
-                                <li><a href="/404">404</a></li>
-                                <li><a href="/typography">Typography</a></li>
-                                <li><a href="/registration">Registration</a></li>
-                                <li class="divider"></li>
-                                <li><a href="/privacy">Privacy Policy</a></li>
-                                <li><a href="/terms">Terms of Use</a></li>
-                            </ul>
-                        </li> -->
-                        <li class="active"><a href="blog">관찰일기</a></li> 
-                        <li><a href="contact-us">My Page</a></li>
+                        <li><a href="/search/main">검색</a></li>
+                        <li><a href="/book/main">나만의 도감</a></li>
+                        <li><a href="/favor/main">즐겨찾기</a></li>
+                        <li class="active"><a href="/diary/main">관찰일기</a></li> 
+                        <li><a href="/mypages/main">My Page</a></li>
                         <li class="login">
                             <a data-toggle="modal" href="#loginModal"><i class="icon-lock"></i></a>
                         </li>
@@ -114,12 +99,6 @@
                 <div class="span6">
                     <h1>관찰일기</h1>
                 </div>
-                <!--<div class="span6">
-                    <ul class="breadcrumb pull-right">
-                        <li><a href="index.html" style="font-size:20px">전체보기</a> <span class="divider">|</span></li>
-                        <li><a href="blog-write.html" style="font-size:20px">일기쓰기</a>
-                    </ul>
-                </div>-->
             </div>
         </div>
     </section>
@@ -127,7 +106,7 @@
 
     <div class="center-button">
         <a href="/index" class="btn btn-primary pull-left center-button-in">전체보기</a>
-        <a href="/blog-write" class="btn btn-primary pull-right center-button-in">일기쓰기</a>
+        <a href="/diary/write" class="btn btn-primary pull-right center-button-in">일기쓰기</a>
     </div>
 
     <section id="about-us" class="container main">
@@ -143,7 +122,7 @@
                           </p>
                           <p class="pull-right"><i class="icon-comment pull"></i> <a href="/blog-item#comments">덧글 3개</a></p>
                         </div>
-                          <p><img src="resources/images/sample/lava.PNG" width="100%" alt="" /></p>
+                          <p><img src="/resources/images/sample/lava.PNG" width="100%" alt="" /></p>
                             <!-- 본문 들어갈 부분 -->
                           <p>흙 많이 먹고 무럭무럭 자라라~</p>
                           <a class="btn btn-link" href="#">덧글보기 <i class="icon-angle-right"></i></a>
@@ -158,7 +137,7 @@
                       </p>
                       <p class="pull-right"><i class="icon-comment pull"></i> <a href="/blog-item#comments">덧글 2개</a></p>
                     </div>
-                      <p><img src="resources/images/sample/ultra.PNG" width="100%" alt="" /></p>
+                      <p><img src="/resources/images/sample/ultra.PNG" width="100%" alt="" /></p>
                       <p>우왕 뻔데기가 풍뎅이가 되었어요~</p>
 
                       <a class="btn btn-link" href="#">덧글보기 <i class="icon-angle-right"></i></a>
@@ -230,9 +209,9 @@
     </div>
 <!--  /Login form -->
 
-<script src="resources/js/vendor/jquery-1.9.1.min.js"></script>
-<script src="resources/js/vendor/bootstrap.min.js"></script>
-<script src="resources/js/main.js"></script>
+<script src="/resources/js/vendor/jquery-1.9.1.min.js"></script>
+<script src="/resources/js/vendor/bootstrap.min.js"></script>
+<script src="/resources/js/main.js"></script>
 
 </body>
 </html>

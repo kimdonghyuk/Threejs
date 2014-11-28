@@ -55,11 +55,11 @@
                 <div class="nav-collapse collapse pull-right">
                     <ul class="nav">
                         <li class="active"><a href="/index">메인화면</a></li>
-                        <li><a href="/about-us">검색</a></li>
-                        <li><a href="/services">나만의도감</a></li>
-                        <li><a href="/portfolio">즐겨찾기</a></li>
-                        <li><a href="/blog">관찰일지</a></li> 
-                        <li><a href="/contact-us">My Pages</a></li>
+                        <li><a href="/search/main">검색</a></li>
+                        <li><a href="/book/main">나만의도감</a></li>
+                        <li><a href="/favor/main">즐겨찾기</a></li>
+                        <li><a href="/diary/main">관찰일기</a></li> 
+                        <li><a href="/mypages/main">My Pages</a></li>
                         <li class="login">
                             <a data-toggle="modal" href="#loginForm"><i class="icon-lock"></i></a>
                         </li>
@@ -81,10 +81,10 @@
                 <div class="sl-slide item1" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
                     <div class="sl-slide-inner">
                         <div class="container">
-                            <img class="pull-right" src="resources/images/sample/slider/img1.jpg" alt="" />
+                            <img class="pull-right" src="/resources/images/sample/slider/img1.jpg" alt="" />
                             <h2>검색</h2>
                             <h3 class="gap">지금 눈앞에 보이는 그거 같이 찾아볼까요???</h3>
-                            <a class="btn btn-large btn-transparent" href="/about-us">자세히보기</a>
+                            <a class="btn btn-large btn-transparent" href="/search/main">자세히보기</a>
 
                         </div>
                     </div>
@@ -96,10 +96,10 @@
                 <div class="sl-slide item2" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
                     <div class="sl-slide-inner">
                         <div class="container">
-                            <img class="pull-right" src="resources/images/sample/slider/img2.jpg" alt="" />
+                            <img class="pull-right" src="/resources/images/sample/slider/img2.jpg" alt="" />
                             <h2>도감만들기</h2>
                             <h3 class="gap">내가 본것들 예쁘게 담아서 친구한테 자랑해야지~!</h3>
-                            <a class="btn btn-large btn-transparent" href="/services">자세히보기</a>
+                            <a class="btn btn-large btn-transparent" href="/book/main">자세히보기</a>
                         </div>
                     </div>
                 </div>
@@ -107,10 +107,10 @@
                 <div class="sl-slide item2" data-orientation="horizontal" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
                     <div class="sl-slide-inner">
                         <div class="container">
-                            <img class="pull-right" src="resources/images/sample/slider/img2.png" alt="" />
+                            <img class="pull-right" src="/resources/images/sample/slider/img2.png" alt="" />
                             <h2>관찰일기</h2>
                             <h3 class="gap">시간이 지나면 어떻게 변하는지 기록해보자!!</h3>
-                            <a class="btn btn-large btn-transparent" href="/blog">자세히보기</a>
+                            <a class="btn btn-large btn-transparent" href="/diary/main">자세히보기</a>
                         </div>
                     </div>
                 </div>
@@ -123,10 +123,10 @@
                 <div class="sl-slide item3" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
                     <div class="sl-slide-inner">
                         <div class="container">
-                            <img class="pull-right" src="resources/images/sample/slider/img3.png" alt="" />
+                            <img class="pull-right" src="/resources/images/sample/slider/img3.png" alt="" />
                             <h2>즐겨찾기</h2>
                             <h3 class="gap">우리 그때 그 놀이 하고 또 놀까??</h3>
-                            <a class="btn btn-large btn-transparent" href="#">자세히보기</a>
+                            <a class="btn btn-large btn-transparent" href="/favor/main">자세히보기</a>
                         </div>
                     </div>
                 </div>

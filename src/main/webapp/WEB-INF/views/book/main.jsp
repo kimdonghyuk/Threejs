@@ -12,20 +12,20 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
-    <link rel="stylesheet" href="resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="resources/css/bootstrap-responsive.min.css">
-    <link rel="stylesheet" href="resources/css/font-awesome.min.css">
-    <link rel="stylesheet" href="resources/css/main.css">
-    <link rel="stylesheet" href="resources/css/sl-slide.css">
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/resources/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="/resources/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/resources/css/main.css">
+    <link rel="stylesheet" href="/resources/css/sl-slide.css">
 
-    <script src="resources/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    <script src="/resources/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 
     <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="resources/images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="resources/images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="resources/images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="resources/images/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="/resources/images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/resources/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/resources/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/resources/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/resources/images/ico/apple-touch-icon-57-precomposed.png">
     
     <style>
 	.btn-success {
@@ -38,7 +38,7 @@
 	
 	
 	body {
-		background-image: url("resources/dogam/dogam_main_background.png");
+		background-image: url("/resources/dogam/dogam_main_background.png");
     	background-repeat : no repeat;
     	background-size : cover;
     	height:635px;
@@ -80,11 +80,11 @@
                 <div class="nav-collapse collapse pull-right">
                     <ul class="nav">
                         <li><a href="/index">메인화면</a></li>
-                        <li><a href="/about-us">검색</a></li>
-                        <li class="active"><a href="/services">나만의도감</a></li>
-                        <li><a href="/portfolio">즐겨찾기</a></li>
-                        <li><a href="/blog">관찰일지</a></li> 
-                        <li><a href="/contact-us">My Pages</a></li>
+                        <li><a href="/search/main">검색</a></li>
+                        <li class="active"><a href="/book/main">나만의도감</a></li>
+                        <li><a href="/favor/main">즐겨찾기</a></li>
+                        <li><a href="/diary/main">관찰일기</a></li> 
+                        <li><a href="/mypages/main">My Pages</a></li>
                         <li class="login">
                             <a data-toggle="modal" href="#loginForm"><i class="icon-lock"></i></a>
                         </li>
@@ -108,13 +108,13 @@
     
     <!-- / .title -->
     <div class="sample" style="height: 150px; padding: 5px;" >
-        <a class="btn-success btn-large pull-right" id="updatePicture" href="/createPicture">사진 올리기</a>
-        <a class="btn-success btn-large pull-right" id="registDogam" href="/dogamReg">새 도감 만들기</a>
+        <a class="btn-success btn-large pull-right" id="updatePicture" href="/book/regphoto">사진 올리기</a>
+        <a class="btn-success btn-large pull-right" id="registDogam" href="/book/regist">새 도감 만들기</a>
     </div>
     
     <div id="album"><div id="album_dogam1" >    		
-    	<a href="/sample">
-    		<img src = "resources/dogam/dogam_travel.jpg" style="width:200px; height:200px; margin-left:15%; " /></a>
+    	<a href="/book/sample">
+    		<img src = "/resources/dogam/dogam_travel.jpg" style="width:200px; height:200px; margin-left:15%; " /></a>
     		<div style="width:200px; height:20px; margin-left:15%; text-align:center;">2014.05.27 꽃놀이 여행</div>  
     	</div>
     </div> 
@@ -157,9 +157,9 @@
 
 
 
-<script src="resources/js/vendor/jquery-1.9.1.min.js"></script>
-<script src="resources/js/vendor/bootstrap.min.js"></script>
-<script src="resources/js/main.js"></script>
+<script src="/resources/js/vendor/jquery-1.9.1.min.js"></script>
+<script src="/resources/js/vendor/bootstrap.min.js"></script>
+<script src="/resources/js/main.js"></script>
 
 </body>
 </html>

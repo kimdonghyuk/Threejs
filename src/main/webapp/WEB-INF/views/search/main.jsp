@@ -13,20 +13,20 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
-    <link rel="stylesheet" href="resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="resources/css/bootstrap-responsive.min.css">
-    <link rel="stylesheet" href="resources/css/font-awesome.min.css">
-    <link rel="stylesheet" href="resources/css/main.css">
-    <link rel="stylesheet" href="resources/css/sl-slide.css">
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/resources/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="/resources/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/resources/css/main.css">
+    <link rel="stylesheet" href="/resources/css/sl-slide.css">
 
-    <script src="resources/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    <script src="/resources/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="resources/images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="resources/images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="resources/images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="resources/images/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/resources/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/resources/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/resources/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/resources/images/ico/apple-touch-icon-57-precomposed.png">
     
     <style>
         @media screen and (max-width: 979px){
@@ -35,7 +35,7 @@
             }
         }
           body{
-        background-image: url(resources/images/tag/search_back.jpg);
+        background-image: url(/resources/images/tag/search_back.jpg);
         background-position: center center;
         background-repeat: no-repeat;
         background-attachment: fixed;
@@ -43,7 +43,7 @@
         background-color: #464646;
         }
        	body {
-		background-image: url("resources/images/sample/search_main_background.png");
+		background-image: url("/resources/images/sample/search_main_background.png");
     	background-repeat : no repeat;
     	background-size : cover;
 		}
@@ -66,11 +66,11 @@
                 <div class="nav-collapse collapse pull-right">
                     <ul class="nav">
                         <li><a href="/index">메인화면</a></li>
-                        <li class="active"><a href="/about-us">검색</a></li>
-                        <li><a href="/services">나만의도감</a></li>
-                        <li><a href="/portfolio">즐겨찾기</a></li>
-                        <li><a href="/blog">관찰일지</a></li> 
-                        <li><a href="/contact-us">My Pages</a></li>
+                        <li class="active"><a href="/search/main">검색</a></li>
+                        <li><a href="/book/main">나만의도감</a></li>
+                        <li><a href="/favor/main">즐겨찾기</a></li>
+                        <li><a href="/diary/main">관찰일지</a></li> 
+                        <li><a href="/mypages/main">My Pages</a></li>
                         <li class="login">
                             <a data-toggle="modal" href="#loginForm"><i class="icon-lock"></i></a>
                         </li>
@@ -102,10 +102,10 @@
     <!--tagClout-->
     <div id="ts1" style="max-width:800px; height:500px;   margin: auto;  ">
         <ul>
-            <li class="span3"><a href="#6" rel="5"><img src="resources/images/tag/꽃.png"></a></li>
-            <li class="span3"><a href="#8" rel="15"><img src="resources/images/tag/나무.png" ></a></li>
-            <li class="span3"><a href="#9" rel="20"><img src="resources/images/tag/나뭇잎.png" ></a></li>
-            <li class="span3"><a href="#10"rel="15"><img src="resources/images/tag/일체형꽃잎2.png" ></a></li>
+            <li class="span3"><a href="#6" rel="5"><img src="/resources/images/tag/꽃.png"></a></li>
+            <li class="span3"><a href="#8" rel="15"><img src="/resources/images/tag/나무.png" ></a></li>
+            <li class="span3"><a href="#9" rel="20"><img src="/resources/images/tag/나뭇잎.png" ></a></li>
+            <li class="span3"><a href="#10"rel="15"><img src="/resources/images/tag/일체형꽃잎2.png" ></a></li>
         </ul>
         <nav id="nav-arrows" class="nav-arrows">
             <span class="nav-arrow-prev"><i class="icon-angle-left"></i></span>
@@ -155,15 +155,15 @@
 </div>
 <!--  /Login form -->
 
-<script src="resources/js/vendor/jquery-1.9.1.min.js"></script>
-<script src="resources/js/vendor/bootstrap.min.js"></script>
-<script src="resources/js/main.js"></script>
+<script src="/resources/js/vendor/jquery-1.9.1.min.js"></script>
+<script src="/resources/js/vendor/bootstrap.min.js"></script>
+<script src="/resources/js/main.js"></script>
 
 
 <!--tagCloud-->
-<script type="text/javascript" src="resources/js/jquery.min.js"></script>
-<script type="text/javascript" src="resources/js/jquery.mousewheel.min.js"></script>
-<script type="text/javascript" src="resources/js/jquery.tagsphere.js"></script>
+<script type="text/javascript" src="/resources/js/jquery.min.js"></script>
+<script type="text/javascript" src="/resources/js/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" src="/resources/js/jquery.tagsphere.js"></script>
 <script type="text/javascript">
 
     var maxwidth = document.getElementById('ts1').clientWidth;

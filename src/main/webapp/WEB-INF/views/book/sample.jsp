@@ -12,25 +12,25 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width", user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     
-    <link rel="stylesheet" href="resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="resources/css/bootstrap-responsive.min.css">
-    <link rel="stylesheet" href="resources/css/font-awesome.min.css">
-    <link rel="stylesheet" href="resources/css/main.css">
-    <link rel="stylesheet" href="resources/css/sl-slide.css">
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/resources/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="/resources/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/resources/css/main.css">
+    <link rel="stylesheet" href="/resources/css/sl-slide.css">
 
-    <script src="resources/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    <script src="/resources/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 
     <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="resources/images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="resources/images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="resources/images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="resources/images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="resources/images/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="/resources/images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/resources/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/resources/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/resources/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/resources/images/ico/apple-touch-icon-57-precomposed.png">
     
     <style>
     
     body{
-    	background-image : url("resources/dogam/dogam_allview_background.jpg");
+    	background-image : url("/resources/dogam/dogam_allview_background.jpg");
     	background-repeat : no repeat;
     	background-size : cover;
     }
@@ -163,7 +163,7 @@
 <body>
 
 <!--Header Start ...........................................................................................................-->
-    <!--Header-->
+   <!--Header-->
     <header class="navbar navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
@@ -176,11 +176,11 @@
                 <div class="nav-collapse collapse pull-right">
                     <ul class="nav">
                         <li><a href="/index">메인화면</a></li>
-                        <li><a href="/about-us">검색</a></li>
-                        <li class="active"><a href="/services">나만의도감</a></li>
-                        <li><a href="/portfolio">즐겨찾기</a></li>
-                        <li><a href="/blog">관찰일지</a></li> 
-                        <li><a href="/contact-us">My Pages</a></li>
+                        <li><a href="/search/main">검색</a></li>
+                        <li class="active"><a href="/book/main">나만의도감</a></li>
+                        <li><a href="/favor/main">즐겨찾기</a></li>
+                        <li><a href="/diary/main">관찰일기</a></li> 
+                        <li><a href="/mypages/main">My Pages</a></li>
                         <li class="login">
                             <a data-toggle="modal" href="#loginForm"><i class="icon-lock"></i></a>
                         </li>
@@ -264,13 +264,13 @@
     
     
 <!--java script문 시작........................................................................................................--> 
-<script src="resources/js/vendor/jquery-1.9.1.min.js"></script>
-<script src="resources/js/vendor/bootstrap.min.js"></script>
-<script src="resources/js/main.js"></script>
-<script src="resources/dogam/three.min.js"></script>
-<script src="resources/dogam/tween.min.js"></script>
-<script src="resources/dogam/TrackballControls.js"></script>
-<script src="resources/dogam/CSS3DRenderer.js"></script>
+<script src="/resources/js/vendor/jquery-1.9.1.min.js"></script>
+<script src="/resources/js/vendor/bootstrap.min.js"></script>
+<script src="/resources/js/main.js"></script>
+<script src="/resources/dogam/three.min.js"></script>
+<script src="/resources/dogam/tween.min.js"></script>
+<script src="/resources/dogam/TrackballControls.js"></script>
+<script src="/resources/dogam/CSS3DRenderer.js"></script>
 
 <script>
  
@@ -288,7 +288,7 @@
 		var yStart = 3;	
 		
 		$.ajax({
-			url: "/list?page=" + page,
+			url: "/book/sample/list?page=" + page,
 			dataType:"json",
 			async:false,
 			success:function(data){
@@ -355,11 +355,11 @@
 	        symbol.textContent = tableData[i].title
 	        element.appendChild( symbol ); 
 	        // 각 원소별 축약어 띄어주기
-			// "H", "<a href = http://www.naver.com><img src = resources/ko.jpg width='100' height='100'></a>", "1.00794", 1, 1,
+			// "H", "<a href = http://www.naver.com><img src = /resources/ko.jpg width='100' height='100'></a>", "1.00794", 1, 1,
 	        
 			var details = document.createElement( 'div' );
            	details.className = 'details';
-           	details.innerHTML = '<img src = resources/dogam/'+ tableData[ i ].contfile +' width = "280px" height = "180px"></div>';
+           	details.innerHTML = '<img src = /resources/dogam/'+ tableData[ i ].contfile +' width = "280px" height = "180px"></div>';
            	element.appendChild( details );
 	        // 각 원소별 풀네임 + 방사능번호 하단 두줄 밀어넣어주기
 	
@@ -547,7 +547,7 @@
 		var yStart = 3;	
 		
 		$.ajax({
-			url: "/list?page=" + page,
+			url: "/book/sample/list?page=" + page,
 			dataType:"json",
 			async:false,
 			success:function(data){
@@ -577,8 +577,8 @@
 	      var cnt = num;
 	      if(page > 1 && page < num){
 	         console.log("------in Page-------------");
-	         content1 += "<div><img src = resources/dogam/prevPage.jpg onclick='prevPage();'/>"+ "</div>";
-	         content2 += "<div><img src = resources/dogam/nextPage.jpg onclick='nextPage();'/>"+ "</div>";
+	         content1 += "<div><img src = /resources/dogam/prevPage.jpg onclick='prevPage();'/>"+ "</div>";
+	         content2 += "<div><img src = /resources/dogam/nextPage.jpg onclick='nextPage();'/>"+ "</div>";
 	         target1.html(content1);
 	         target2.html(content2);
 	         return;
@@ -586,8 +586,8 @@
 	      
 	      else if(page == 1){
 	         console.log("------in First Page-------------");
-	         content1 += "<div style='display:none'><img src = resources/prevPage.jpg onclick='prevPage();'/>"+ "</div>";
-	         content2 += "<div><img src = resources/dogam/nextPage.jpg onclick='nextPage();'>" +  "</button>"+"</div>";
+	         content1 += "<div style='display:none'><img src = /resources/prevPage.jpg onclick='prevPage();'/>"+ "</div>";
+	         content2 += "<div><img src = /resources/dogam/nextPage.jpg onclick='nextPage();'>" +  "</button>"+"</div>";
 	         target1.html(content1);
 	         target2.html(content2);   
 	         return;
@@ -601,7 +601,7 @@
 	            } */
 	         content2 += "<div style='display:none'><button onclick='nextPage();'>" + "</button>"+"</div>";
 	         target2.html(content2);   
-	         content1 += "<div><img src = resources/dogam/prevPalllge.jpg onclick='prevPage();'/>"+ "</div>";
+	         content1 += "<div><img src = /resources/dogam/prevPalllge.jpg onclick='prevPage();'/>"+ "</div>";
 	         target1.html(content1);
 	         return;
 	      }

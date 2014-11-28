@@ -15,24 +15,24 @@
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width">
 
-<link rel="stylesheet" href="resources/css/bootstrap.min.css">
-<link rel="stylesheet" href="resources/css/bootstrap-responsive.min.css">
-<link rel="stylesheet" href="resources/css/font-awesome.min.css">
-<link rel="stylesheet" href="resources/css/main.css">
-<link rel="stylesheet" href="resources/css/sl-slide.css">
+<link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="/resources/css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="/resources/css/font-awesome.min.css">
+<link rel="stylesheet" href="/resources/css/main.css">
+<link rel="stylesheet" href="/resources/css/sl-slide.css">
 
-<script src="resources/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+<script src="/resources/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 
 <!-- Le fav and touch icons -->
 <link rel="shortcut icon" href="images/ico/favicon.ico">
 <link rel="apple-touch-icon-precomposed" sizes="144x144"
-	href="resources/images/ico/apple-touch-icon-144-precomposed.png">
+	href="/resources/images/ico/apple-touch-icon-144-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="114x114"
-	href="resources/images/ico/apple-touch-icon-114-precomposed.png">
+	href="/resources/images/ico/apple-touch-icon-114-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="72x72"
-	href="resources/images/ico/apple-touch-icon-72-precomposed.png">
+	href="/resources/images/ico/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed"
-	href="resources/images/ico/apple-touch-icon-57-precomposed.png">
+	href="/resources/images/ico/apple-touch-icon-57-precomposed.png">
 
 <style>
 	@media screen and (max-width: 979px) {
@@ -55,11 +55,11 @@
 			<div class="nav-collapse collapse pull-right">
 				<ul class="nav">
 					<li><a href="/index">메인화면</a></li>
-					<li><a href="/about-us">검색</a></li>
-					<li><a href="/services">나만의도감</a></li>
-					<li><a href="/portfolio">즐겨찾기</a></li>
-					<li><a href="/blog">관찰일지</a></li>
-					<li class="active"><a href="/contact-us">My Pages</a></li>
+					<li><a href="/search/main">검색</a></li>
+					<li><a href="/book/main">나만의도감</a></li>
+					<li><a href="/favor/main">즐겨찾기</a></li>
+					<li><a href="/diary/main">관찰일지</a></li>
+					<li class="active"><a href="/mypages/main">My Pages</a></li>
 					<li class="login"><a data-toggle="modal" href="#loginForm"><i
 							class="icon-lock"></i></a></li>
 				</ul>
@@ -295,9 +295,9 @@
 	</div>
 	<!--  /Login form -->
 
-	<script src="resources/js/vendor/jquery-1.9.1.min.js"></script>
-	<script src="resources/js/vendor/bootstrap.min.js"></script>
-	<script src="resources/js/main.js"></script>
+	<script src="/resources/js/vendor/jquery-1.9.1.min.js"></script>
+	<script src="/resources/js/vendor/bootstrap.min.js"></script>
+	<script src="/resources/js/main.js"></script>
 
 </body>
 </html>

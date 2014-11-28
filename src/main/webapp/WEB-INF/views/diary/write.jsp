@@ -12,20 +12,20 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
-    <link rel="stylesheet" href="resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="resources/css/bootstrap-responsive.min.css">
-    <link rel="stylesheet" href="resources/css/font-awesome.min.css">
-    <link rel="stylesheet" href="resources/css/main.css">
-    <link rel="stylesheet" href="resources/css/sl-slide.css">
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/resources/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="/resources/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/resources/css/main.css">
+    <link rel="stylesheet" href="/resources/css/sl-slide.css">
 
-    <script src="resources/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    <script src="/resources/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 
     <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="resources/images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="resources/images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="resources/images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="resources/images/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="/resources/images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/resources/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/resources/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/resources/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/resources/images/ico/apple-touch-icon-57-precomposed.png">
     
     <style>  
     	
@@ -63,7 +63,7 @@
 </head>
 <body>
 
-    <!--Header-->
+   <!--Header-->
     <header class="navbar navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
@@ -75,27 +75,12 @@
                 <a id="logo" class="pull-left" href="/index"></a>
                 <div class="nav-collapse collapse pull-right">
                     <ul class="nav">
-                        <li><a href="/index">Home</a></li>
-                        <li><a href="/about-us">About Us</a></li>
-                        <li><a href="/services">Services</a></li>
-                        <li><a href="/portfolio">Portfolio</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="icon-angle-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="/career">Career</a></li>
-                                <li><a href="/blog-item">Blog Single</a></li>
-                                <li><a href="/faq">FAQ</a></li>
-                                <li><a href="/pricing">Pricing</a></li>
-                                <li><a href="/404">404</a></li>
-                                <li><a href="/typography">Typography</a></li>
-                                <li><a href="/registration">Registration</a></li>
-                                <li class="divider"></li>
-                                <li><a href="/privacy">Privacy Policy</a></li>
-                                <li><a href="/terms">Terms of Use</a></li>
-                            </ul>
-                        </li>
-                        <li class="active"><a href="/blog">Blog</a></li> 
-                        <li><a href="/contact-us">Contact</a></li>
+                        <li><a href="/index">메인화면</a></li>
+                        <li><a href="/search/main">검색</a></li>
+                        <li><a href="/book/main">나만의 도감</a></li>
+                        <li><a href="/favor/main">즐겨찾기</a></li>
+                        <li class="active"><a href="/diary/main">관찰일기</a></li> 
+                        <li><a href="/mypages/main">My Page</a></li>
                         <li class="login">
                             <a data-toggle="modal" href="#loginModal"><i class="icon-lock"></i></a>
                         </li>
@@ -186,9 +171,9 @@
         </div>
     </div>
 <!--  /Login form -->
-<script src="resources/js/vendor/jquery-1.9.1.min.js"></script>
-<script src="resources/js/vendor/bootstrap.min.js"></script>
-<script src="resources/js/main.js"></script>
+<script src="/resources/js/vendor/jquery-1.9.1.min.js"></script>
+<script src="/resources/js/vendor/bootstrap.min.js"></script>
+<script src="/resources/js/main.js"></script>
 
 </body>
 </html>
