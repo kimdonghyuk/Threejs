@@ -213,12 +213,13 @@
 
 <!--Three.js Satart..........................................................................................................-->
 
+<div id="back" style="height: 600px;"> 
 	<div class="menu">
 		<button class="btn btn-primary pull-left" id="table">TABLE</button>
 		<button class="btn btn-primary pull-right" id="sphere">SPHERE</button>
 	</div>
 
-	<div id="back" style="height: 600px">
+	<div id="back">
 	
 		<div id="maincontainer"></div>		
 		<div class="prevPage"></div>	
@@ -226,6 +227,7 @@
 	
 <!--/Three.js Area End.......................................................................................................-->
 <!--Menu Div.................................................................................................................-->
+	</div>
 	</div>
 	
 <footer id="footer" style="opacity: 0.7; position: absolute; bottom: auto; width: 100%; background-color: black;">

@@ -93,10 +93,7 @@
 </section>
 <!-- / .title -->
 
-
-<section id="about-us" class="container main">
-
-
+<div id="back" style="height: 600px;"> 
 
     <h4 class="center">유사한 이미지를 선택해주세요</h4>
     <!--tagClout-->
@@ -112,8 +109,8 @@
             <span class="nav-arrow-next"><i class="icon-angle-right"></i></span>
         </nav>
     </div>
-
-</section>
+    </div>
+    
 <!--Footer-->
 <footer id="footer">
     <div class="container">
