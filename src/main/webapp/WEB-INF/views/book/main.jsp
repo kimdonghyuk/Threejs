@@ -95,7 +95,7 @@
     </header>
     <!-- /header -->
 
-<div id="back" style="height: 600px;">
+
     <section class="title">
         <div class="container">
             <div class="row-fluid">
@@ -103,9 +103,9 @@
                     <h1>나만의도감</h1>
                 </div>
             </div>
-        </div>
+
     </section>
-    
+<div id="back" style="height: 600px;">    
     <!-- / .title -->
     <div class="sample" style="height: 150px; padding: 5px;" >
         <a class="btn-success btn-large pull-right" id="updatePicture" href="/book/regphoto">사진 올리기</a>
@@ -118,6 +118,7 @@
     		<div style="width:200px; height:20px; margin-left:15%; text-align:center;">2014.05.27 꽃놀이 여행</div>  
     	</div>
     </div> 
+</div>
 </div>
     
 <footer id="footer" style="opacity: 0.7; position: absolute; bottom: auto; width: 100%; background-color: black;">

@@ -81,7 +81,7 @@
                 <div class="sl-slide item1" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
                     <div class="sl-slide-inner">
                         <div class="container">
-                            <img class="pull-right" src="/resources/images/sample/slider/img1.jpg" alt="" />
+                            <img class="pull-right" src="/resources/images/sample/slider/img1.png" alt="" />
                             <h2>검색</h2>
                             <h3 class="gap">지금 눈앞에 보이는 그거 같이 찾아볼까요???</h3>
                             <a class="btn btn-large btn-transparent" href="/search/main">자세히보기</a>
@@ -96,7 +96,7 @@
                 <div class="sl-slide item2" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
                     <div class="sl-slide-inner">
                         <div class="container">
-                            <img class="pull-right" src="/resources/images/sample/slider/img2.jpg" alt="" />
+                            <img class="pull-right" src="/resources/images/sample/slider/img4.png" alt="" />
                             <h2>도감만들기</h2>
                             <h3 class="gap">내가 본것들 예쁘게 담아서 친구한테 자랑해야지~!</h3>
                             <a class="btn btn-large btn-transparent" href="/book/main">자세히보기</a>
@@ -107,7 +107,7 @@
                 <div class="sl-slide item2" data-orientation="horizontal" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
                     <div class="sl-slide-inner">
                         <div class="container">
-                            <img class="pull-right" src="/resources/images/sample/slider/img2.png" alt="" />
+                            <img class="pull-right" src="/resources/images/sample/slider/img3.png" alt="" />
                             <h2>관찰일기</h2>
                             <h3 class="gap">시간이 지나면 어떻게 변하는지 기록해보자!!</h3>
                             <a class="btn btn-large btn-transparent" href="/diary/main">자세히보기</a>
@@ -123,7 +123,7 @@
                 <div class="sl-slide item3" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
                     <div class="sl-slide-inner">
                         <div class="container">
-                            <img class="pull-right" src="/resources/images/sample/slider/img3.png" alt="" />
+                            <img class="pull-right" src="/resources/images/sample/slider/img2.png" alt="" />
                             <h2>즐겨찾기</h2>
                             <h3 class="gap">우리 그때 그 놀이 하고 또 놀까??</h3>
                             <a class="btn btn-large btn-transparent" href="/favor/main">자세히보기</a>
