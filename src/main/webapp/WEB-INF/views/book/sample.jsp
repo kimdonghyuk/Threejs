@@ -267,10 +267,10 @@
 <script src="/resources/js/vendor/jquery-1.9.1.min.js"></script>
 <script src="/resources/js/vendor/bootstrap.min.js"></script>
 <script src="/resources/js/main.js"></script>
-<script src="/resources/book/js/three.min.js"></script>
-<script src="/resources/book/js/tween.min.js"></script>
-<script src="/resources/book/js/TrackballControls.js"></script>
-<script src="/resources/book/js/CSS3DRenderer.js"></script>
+<script src="/resources/Threejs/three.min.js"></script>
+<script src="/resources/Threejs/tween.min.js"></script>
+<script src="/resources/Threejs/TrackballControls.js"></script>
+<script src="/resources/Threejs/CSS3DRenderer.js"></script>
 
 <script>
  
