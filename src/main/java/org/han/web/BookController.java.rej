@@ -1,0 +1,18 @@
+diff a/src/main/java/org/han/web/BookController.java b/src/main/java/org/han/web/BookController.java	(rejected hunks)
+@@ -26,6 +26,16 @@
+ 	
+ 	@RequestMapping("/sample")
+ 	public void sample(){}
++<<<<<<< HEAD
+ 
++=======
++	
++	// ���� ��ü���� ȭ�� smaple list ajax�� ���ֱ�
++	@RequestMapping("/sample/list")
++	public @ResponseBody List<PageVO> serviceList(
++			@RequestParam(value = "page", defaultValue = "1")int page){
++		return bookService.readPage(page);
++	}
++>>>>>>> 4b2a66f3da651da722e2be2a680bc6534355d5f9
+ 	
+ }
