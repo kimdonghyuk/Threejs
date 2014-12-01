@@ -300,11 +300,11 @@
 					var tempY = yStart + ((Math.floor(i / 3)) * 2);
 					
 					if(tempX > 12){
-						tempX -= 9;						
+						tempX -= 9;
 					}
 					console.log(tempX, tempY);
 					data[i].x = tempX;
-					data[i].y = tempY;					
+					data[i].y = tempY;
 				}
 				tableData = data;
 				makeBtn(tableData[0].cnt);
@@ -539,7 +539,7 @@
 	    renderer.render( scene, camera );	
 	}	
 	
-	function againTable(){		
+	function againTable(){
 		var obj = document.getElementsByClassName("element");
 		while(obj.length>0){
 			obj[0].parentNode.removeChild(obj[0]);
@@ -566,6 +566,7 @@
 					data[i].y = tempY;					
 				}
 				tableData = data;
+				console.log("next cnt : " + tableData[0].cnt);
 				makeBtn(tableData[0].cnt);
 			}});
 	}
@@ -577,6 +578,8 @@
 	      var content1 = "";
 	      var content2 = "";
 	      var cnt = num;
+	      console.log("page : " + page);
+	      console.log("cnt : " + num);	      
 	      if(page > 1 && page < num){
 	         console.log("------in Page-------------");
 	         content1 += "<div><img src = /resources/book/prevPage.jpg onclick='prevPage();'/>"+ "</div>";
@@ -588,7 +591,7 @@
 	      
 	      else if(page == 1){
 	         console.log("------in First Page-------------");
-	         content1 += "<div style='display:none'><img src = /resources/prevPage.jpg onclick='prevPage();'/>"+ "</div>";
+	         content1 += "<div style='display:none'><img src = /resources/book/prevPage.jpg onclick='prevPage();'/>"+ "</div>";
 	         content2 += "<div><img src = /resources/book/nextPage.jpg onclick='nextPage();'>" +  "</button>"+"</div>";
 	         target1.html(content1);
 	         target2.html(content2);   

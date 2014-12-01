@@ -1,4 +1,4 @@
-package org.han.VO;
+package org.han.vo;
 
 public class FavorVO {
 

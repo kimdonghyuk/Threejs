@@ -4,8 +4,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.han.VO.ThreeVO;
-import org.han.service.ThreeService;
+import org.han.service.PageService;
+import org.han.vo.PageVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class BookController {
 
 	@Inject
-	ThreeService service;
+	PageService bookService;
 	
 	@RequestMapping("/main")
 	public void search(){}
@@ -32,9 +32,9 @@ public class BookController {
 	
 	// 도감 전체보기 화면 smaple list ajax로 쏴주기
 	@RequestMapping("/sample/list")
-	public @ResponseBody List<ThreeVO> serviceList(
+	public @ResponseBody List<PageVO> serviceList(
 			@RequestParam(value = "page", defaultValue = "1")int page){
-		return service.list(page);
+		return bookService.readPage(page);
 	}
 	
 }

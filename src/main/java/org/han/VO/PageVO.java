@@ -1,6 +1,9 @@
-package org.han.VO;
+package org.han.vo;
 
 import java.sql.Date;
+
+import org.springframework.stereotype.Service;
+
 
 public class PageVO {
 	
@@ -11,7 +14,16 @@ public class PageVO {
 	private String cont;
 	private String contfile;
 	private Date regdate;
+	private Integer cnt;
 	
+	
+	public Integer getCnt(){
+		return cnt;
+	}	
+	public void setCnt(Integer cnt) {
+		this.cnt = cnt;
+	}
+
 	public Integer getPno() {
 		return pno;
 	}
@@ -59,7 +71,8 @@ public class PageVO {
 	public String toString() {
 		return "PageVO [pno=" + pno + ", bno=" + bno + ", userid=" + userid
 				+ ", title=" + title + ", cont=" + cont + ", contfile="
-				+ contfile + ", regdate=" + regdate + "]";
+				+ contfile + ", regdate=" + regdate + ", cnt=" + cnt + "]";
 	}
 	
+
 }

@@ -1,4 +1,4 @@
-package org.han.VO;
+package org.han.vo;
 
 import java.sql.Date;
 
