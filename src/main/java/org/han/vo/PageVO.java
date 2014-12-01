@@ -1,22 +1,28 @@
-package org.han.VO;
+package org.han.vo;
 
 import java.sql.Date;
 
-public class DiaryVO {
+public class PageVO {
 	
-	private Integer dno;
+	private Integer pno;
+	private Integer bno;
 	private String userid;
 	private String title;
 	private String cont;
 	private String contfile;
 	private Date regdate;
-	private String tag;
 	
-	public Integer getDno() {
-		return dno;
+	public Integer getPno() {
+		return pno;
 	}
-	public void setDno(Integer dno) {
-		this.dno = dno;
+	public void setPno(Integer pno) {
+		this.pno = pno;
+	}
+	public Integer getBno() {
+		return bno;
+	}
+	public void setBno(Integer bno) {
+		this.bno = bno;
 	}
 	public String getUserid() {
 		return userid;
@@ -48,18 +54,12 @@ public class DiaryVO {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
-	public String getTag() {
-		return tag;
-	}
-	public void setTag(String tag) {
-		this.tag = tag;
-	}
 	
 	@Override
 	public String toString() {
-		return "DiaryVO [dno=" + dno + ", userid=" + userid + ", title="
-				+ title + ", cont=" + cont + ", contfile=" + contfile
-				+ ", regdate=" + regdate + ", tag=" + tag + "]";
+		return "PageVO [pno=" + pno + ", bno=" + bno + ", userid=" + userid
+				+ ", title=" + title + ", cont=" + cont + ", contfile="
+				+ contfile + ", regdate=" + regdate + "]";
 	}
-
+	
 }

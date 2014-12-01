@@ -1,27 +1,28 @@
-package org.han.VO;
+package org.han.vo;
 
 import java.sql.Date;
 
-public class ContVO {
-
-	private Integer cno;
-	private Integer sno;
+public class DiaryVO {
+	
+	private Integer dno;
+	private String userid;
 	private String title;
 	private String cont;
 	private String contfile;
 	private Date regdate;
-	private String userid;
-	public Integer getCno() {
-		return cno;
+	private String tag;
+	
+	public Integer getDno() {
+		return dno;
 	}
-	public void setCno(Integer cno) {
-		this.cno = cno;
+	public void setDno(Integer dno) {
+		this.dno = dno;
 	}
-	public Integer getSno() {
-		return sno;
+	public String getUserid() {
+		return userid;
 	}
-	public void setSno(Integer sno) {
-		this.sno = sno;
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
 	public String getTitle() {
 		return title;
@@ -47,18 +48,18 @@ public class ContVO {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
-	public String getUserid() {
-		return userid;
+	public String getTag() {
+		return tag;
 	}
-	public void setUserid(String userid) {
-		this.userid = userid;
+	public void setTag(String tag) {
+		this.tag = tag;
 	}
 	
 	@Override
 	public String toString() {
-		return "ContVO [cno=" + cno + ", sno=" + sno + ", title=" + title
-				+ ", cont=" + cont + ", contfile=" + contfile + ", regdate="
-				+ regdate + ", userid=" + userid + "]";
+		return "DiaryVO [dno=" + dno + ", userid=" + userid + ", title="
+				+ title + ", cont=" + cont + ", contfile=" + contfile
+				+ ", regdate=" + regdate + ", tag=" + tag + "]";
 	}
-	
+
 }

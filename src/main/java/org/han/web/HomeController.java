@@ -7,8 +7,6 @@ import java.util.Locale;
 
 import javax.inject.Inject;
 
-import org.han.VO.ThreeVO;
-import org.han.service.ThreeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -25,8 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HomeController {
 	
-	@Inject
-	ThreeService service;
+
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
@@ -48,14 +45,6 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping("/list")
-	public @ResponseBody List<ThreeVO> list(
-			@RequestParam(value = "page", defaultValue = "1")int page){
-		return service.list(page);
-	}
-	
-	@RequestMapping("/index")
-	public void index(){}
-		
+
 	
 }

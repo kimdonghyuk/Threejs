@@ -1,34 +1,27 @@
-package org.han.VO;
+package org.han.vo;
 
 import java.sql.Date;
 
-public class PageVO {
-	
-	private Integer pno;
-	private Integer bno;
-	private String userid;
+public class ContVO {
+
+	private Integer cno;
+	private Integer sno;
 	private String title;
 	private String cont;
 	private String contfile;
 	private Date regdate;
-	
-	public Integer getPno() {
-		return pno;
+	private String userid;
+	public Integer getCno() {
+		return cno;
 	}
-	public void setPno(Integer pno) {
-		this.pno = pno;
+	public void setCno(Integer cno) {
+		this.cno = cno;
 	}
-	public Integer getBno() {
-		return bno;
+	public Integer getSno() {
+		return sno;
 	}
-	public void setBno(Integer bno) {
-		this.bno = bno;
-	}
-	public String getUserid() {
-		return userid;
-	}
-	public void setUserid(String userid) {
-		this.userid = userid;
+	public void setSno(Integer sno) {
+		this.sno = sno;
 	}
 	public String getTitle() {
 		return title;
@@ -54,12 +47,18 @@ public class PageVO {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
 	
 	@Override
 	public String toString() {
-		return "PageVO [pno=" + pno + ", bno=" + bno + ", userid=" + userid
-				+ ", title=" + title + ", cont=" + cont + ", contfile="
-				+ contfile + ", regdate=" + regdate + "]";
+		return "ContVO [cno=" + cno + ", sno=" + sno + ", title=" + title
+				+ ", cont=" + cont + ", contfile=" + contfile + ", regdate="
+				+ regdate + ", userid=" + userid + "]";
 	}
 	
 }
