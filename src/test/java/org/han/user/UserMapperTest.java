@@ -12,8 +12,8 @@ public class UserMapperTest {
 	}
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void read() {
+		
 	}
 
 }
