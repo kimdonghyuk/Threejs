@@ -116,26 +116,39 @@
 
 
 	<!--도감 등록꾸민곳 -->
-	<form class="center" action='' method="POST">
-		<fieldset class="registration-form"
-			style="border: solid; border-color: green;">
-			<div class="control-group">
-				<!-- 제목 -->
-				<div class="controls">
-					<input type="text" id="username" name="username" placeholder="제목"
-						class="input-xlarge">
-				</div>
+	<section id="about-us" class="container main">
+    <div class="row-fluid">
+    	<div class="span8 offset2" style="border: solid; border-color: green; opacity: 0.7;">
+            <div class="blog" style="opacity: 1;">
+            	<ul class="uploadUL"> </ul>
+            	<form target="zero" action="upload"  method="post" enctype="multipart/form-data">
+					<input type='file' name='contfile'><input type='submit' value="UPLOAD">
+				</form>
+				<iframe name="zero" width="0px" height="0px">
+				</iframe>
 			</div>
-			<!-- Upload -->
-			<label>사진을 등록해주세요</label> <input type="file" multiple=""
-				class="btn btn-primary btn-small">
-		</fieldset>
-	</form>
-	<!-- /#registration-page -->
-
-	<!-- 업로드된 이미지화면 보여주는곳 -->
-</div>
-
+			
+		</div>
+	</div>	
+	<br>
+    <div class="row-fluid">
+        <div class="span8 offset2" style="border: solid; border-color: green; opacity: 0.7;">
+            <div class="blog" style="opacity: 1;">
+                <form method="post" action="registdata" accept-charset="utf-8">
+                    <label>여기에 제목을 적어주세요</label>
+                    <textarea name="title"  required="required" class="input-block-level"></textarea>
+                    <!-- <input name="contfile" type="file" class="btn btn-primary btn-small">
+                    <p class="insertImg"><p class="help-block">선택된 사진이 없어요...</p> -->
+                    <!-- 본문 들어갈 부분 -->
+                    <ul class="filename"></ul>
+                    <button type="submit" class="btn btn-primary btn-large pull-right">다썼다~ >▽<</button>
+                </form>
+                <!-- End Blog Item -->
+                <div class="gap"></div>
+            </div>
+        </div>
+    </div>
+	</section>
 
 <footer id="footer" style="opacity: 0.7; position: absolute; bottom: auto; width: 100%; background-color: black;">
     <div class="container">
@@ -178,7 +191,7 @@
 
 	<!-- SL Slider -->
 	<script type="text/javascript">
-    $(function() {
+	$(function() {
         var Page = (function() {
 
             var $navArrows = $( '#nav-arrows' ),
@@ -206,8 +219,22 @@
 
         Page.init();
     });
-</script>
-	<!-- /SL Slider -->
+	</script>
+
+	<script>
+	function updateResult(data){
+    	
+		console.log(data);
+		//class이름이 filename인 부분에 히든값으로 fileName을 추가 시켜준다.
+		$(".filename").append("<input type='hidden' name='contfile' value= '"+data.fileName+"'>");
+		if(data.suffix == '.jpg'){
+			$(".uploadUL").append("<li><image class='thumb' data-src='"+data.fileName+"' src='/book/regist/"+ "s_" + data.fileName+"'/></li>");
+		}else{
+			$(".uploadUL").append("<li><image class='thumb' data-src='"+data.fileName+"' src='/resources/images/logo.png'/></li>");
+		}
+	}
+	</script>	
+	<!-- /SL Slider and Update -->
 
 </body>
 </html>
