@@ -2,19 +2,21 @@ package org.han.vo;
 
 import java.sql.Date;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class UserVO {
 
-	private String title;
+	private String userid;
 	private String pw;
 	private String email;
 	private Date regdate;
 	private Integer exp;
-	
-	public String getTitle() {
-		return title;
+	public String getUserid() {
+		return userid;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
 	public String getPw() {
 		return pw;
@@ -40,11 +42,11 @@ public class UserVO {
 	public void setExp(Integer exp) {
 		this.exp = exp;
 	}
-	
 	@Override
 	public String toString() {
-		return "UserVO [title=" + title + ", pw=" + pw + ", email=" + email
+		return "UserVO [userid=" + userid + ", pw=" + pw + ", email=" + email
 				+ ", regdate=" + regdate + ", exp=" + exp + "]";
 	}
+	
 	
 }

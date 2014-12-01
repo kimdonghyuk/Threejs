@@ -12,11 +12,20 @@ public class UserService {
 	@Inject
 	UserMapper mapper;
 	
-	@Inject
-	UserVO vo;
-	
-	public UserVO readinfo(UserVO userid){
-		return mapper.readInfo(userid);
+	public UserVO readInfo(UserVO vo){
+		return mapper.readInfo(vo);
 	}
+	
+	public void createUser(UserVO vo){
+		mapper.createUser(vo);
+	}
+	public void updateUser(UserVO vo){
+		mapper.updateUser(vo);
+	}
+	public void deleteUser(UserVO vo){
+		
+		mapper.deleteUser(vo);
+	}
+	
 
 }

@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 public class HomeController {
+	
 
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -43,9 +44,7 @@ public class HomeController {
 		
 		return "home";
 	}
+	
 
-	@RequestMapping("/index")
-	public void index(){}
-		
 	
 }
