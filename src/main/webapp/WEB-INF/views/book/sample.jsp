@@ -37,8 +37,7 @@
     
 	@media screen and (max-width: 979px){
 		body{
-			padding-top: 0px;
-		}
+			padding-top: 0px;}
 	}
     
     .btn-success{    	
@@ -283,7 +282,6 @@
 	console.log("page : " + page);
 	
 	(function makeTable(){
-		var i = 0; 
 		
 		var i = 0;
 		var xStart = 5;
@@ -443,7 +441,6 @@
 	    } */
 	
 	    //
-	
 	    renderer = new THREE.CSS3DRenderer();
 	    renderer.setSize( window.innerWidth, window.innerHeight );
 	    renderer.domElement.style.position = 'absolute';
@@ -469,7 +466,7 @@
 	    }, false );
 	
 /* 	    var button = document.getElementById( 'helix' );
-	    button.addEventListener( 'click', function ( event ) {
+	    button.addEventListener( 'click', function ( kevent ) {
 	
 	        transform( targets.helix, 2000 );
 	
@@ -509,17 +506,16 @@
 	                .to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
 	                .easing( TWEEN.Easing.Exponential.InOut )
 	                .start();
-	
 	    }
 	
-	    new TWEEN.Tween( this )
+	    new TWEEN.Tween(this)
 	            .to({}, duration * 2 )
-	            .onUpdate( render )
+	            .onUpdate(render)
 	            .start();
 	
 	}
 	
-	function onWindowResize() {	
+	function onWindowResize(){	
 	    camera.aspect = window.innerWidth / window.innerHeight;
 	    camera.updateProjectionMatrix();
 	
@@ -529,7 +525,7 @@
 	
 	}
 	
-	function animate() {	
+	function animate(){	
 	    requestAnimationFrame( animate );	
 	    TWEEN.update();	
 	    controls.update();
@@ -578,8 +574,7 @@
 	      var content1 = "";
 	      var content2 = "";
 	      var cnt = num;
-	      console.log("page : " + page);
-	      console.log("cnt : " + num);	      
+	      
 	      if(page > 1 && page < num){
 	         console.log("------in Page-------------");
 	         content1 += "<div><img src = /resources/book/prevPage.jpg onclick='prevPage();'/>"+ "</div>";
@@ -600,12 +595,8 @@
 	      
 	      else if( page == cnt){
 	         console.log("------in Last Page-------------");
-	        /*  var obj = document.getElementsByClassName("nextPage");
-	         while(obj.length>0){
-	               obj[0].parentNode.removeChild(obj[0]);
-	            } */
 	         content2 += "<div style='display:none'><button onclick='nextPage();'>" + "</button>"+"</div>";
-	         target2.html(content2);   
+	         target2.html(content2);
 	         content1 += "<div><img src = /resources/book/prevPage.jpg onclick='prevPage();'/>"+ "</div>";
 	         target1.html(content1);
 	         return;
