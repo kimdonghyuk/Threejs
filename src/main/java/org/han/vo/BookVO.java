@@ -2,6 +2,8 @@ package org.han.vo;
 
 import java.sql.Date;
 
+import org.springframework.stereotype.Service;
+@Service
 public class BookVO {
 	
 	private Integer bno;
