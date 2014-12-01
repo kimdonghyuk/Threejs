@@ -30,7 +30,7 @@ public class BookController {
 	@RequestMapping("/sample")
 	public void sample(){}
 	
-	// µµ°¨ ÀüÃ¼º¸±â È­¸é smaple list ajax·Î ½÷ÁÖ±â
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ È­ï¿½ï¿½ smaple list ajaxï¿½ï¿½ ï¿½ï¿½ï¿½Ö±ï¿½
 	@RequestMapping("/sample/list")
 	public @ResponseBody List<PageVO> serviceList(
 			@RequestParam(value = "page", defaultValue = "1")int page){
