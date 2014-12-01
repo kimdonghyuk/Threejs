@@ -2,8 +2,8 @@ package org.han.service;
 
 import javax.inject.Inject;
 
-import org.han.VO.UserVO;
 import org.han.mapper.UserMapper;
+import org.han.vo.UserVO;
 import org.springframework.stereotype.Service;
 
 @Service
