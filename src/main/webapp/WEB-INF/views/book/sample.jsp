@@ -96,10 +96,8 @@
 	
 	.element .number {
 		position: absolute;
-		top: 20px;
-		right: 20px;
-		font-size: 12px;
-		color: rgba(127, 255, 255, 0.75);
+		top: 5px;
+		right: 100%;
 	}
 	
 	.element .symbol {
@@ -310,7 +308,6 @@
 	})();
 	
 /*end makeTable............................................................................................................. */	
-	
 	var camera, scene, renderer;
 	var controls;
 
@@ -320,8 +317,7 @@
 
 	//var tableData = makeTable();
 	// console.log("Table data:" + tableData); 
-	//console.log(table);
-	
+	//console.log(table);	
 /*Start main..................................................................................................................*/
 	
  	init();
@@ -330,8 +326,7 @@
 	// 애니메이션 함수 실행 
 
 /**/	
-	function init() {
-	
+	function init() {	
 	    camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 );
 	    camera.position.z = 3000;
 	
@@ -345,11 +340,12 @@
 	        element.style.backgroundColor = 'rgba(0, 250, 85,' + ( Math.random() * 0.01 + 0.1 ) + ')';
 	        // class 이름을 element로 잡은 부분에 배경색 스타일에 투명도를 넣고 그 값을 랜덤으로 지정해줌 rgba(0,127,127, 투명도)
 	
-/* 	        var number = document.createElement( 'div' );                                                   // 'div'요소를 element에 추가
+/*  	        var number = document.createElement( 'div' );                                                   // 'div'요소를 element에 추가
 	        number.className = 'number';                                                                    // 'div'에 class이름을 number로 잡음.
+	        number.innerHTML = '<img src = /resources/book/images/minus.png>';
 	        number.textContent = i + 1;                                                                 // 한개원소에 들어간 정보의 갯수만큼 나눠준 뒤에 + 1을 하여 원소에 번호를 붙여줌.
 	        element.appendChild( number ); */
-	
+	        
 	        var symbol = document.createElement( 'div' );
 	        symbol.className = 'symbol';
 	        symbol.textContent = tableData[i].title
@@ -358,9 +354,11 @@
 			// "H", "<a href = http://www.naver.com><img src = /resources/ko.jpg width='100' height='100'></a>", "1.00794", 1, 1,
 	        
 			var details = document.createElement( 'div' );
+			var fileurl = "/han/file/regphoto/";
            	details.className = 'details';
-           	details.innerHTML = '<img src = /resources/book/images/'+ tableData[ i ].contfile +' width = "280px" height = "180px"></div>';
-           	element.appendChild( details );
+           	details.innerHTML = '<img src = ' + fileurl + tableData[ i ].contfile +' width = "280px" height = "180px"></div>';
+/*            	details.innerHTML = '<img src = /resources/book/images/'+ tableData[ i ].contfile +' width = "280px" height = "180px"></div>'; */
+          	element.appendChild( details );
 	        // 각 원소별 풀네임 + 방사능번호 하단 두줄 밀어넣어주기
 	
 	        
@@ -377,7 +375,7 @@
 	        object.position.y = - ( tableData[i].y* 180 ) + 950;	
 	        targets.table.push( object );
 	
-	    }
+	    } 
 	
 	    // sphere
 	
@@ -513,6 +511,7 @@
 	            .onUpdate(render)
 	            .start();
 	
+	    
 	}
 	
 	function onWindowResize(){	
@@ -562,7 +561,6 @@
 					data[i].y = tempY;					
 				}
 				tableData = data;
-				console.log("next cnt : " + tableData[0].cnt);
 				makeBtn(tableData[0].cnt);
 			}});
 	}

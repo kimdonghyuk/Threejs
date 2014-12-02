@@ -29,12 +29,13 @@ public class BookController {
 	
 	@RequestMapping("/sample")
 	public void sample(){}
-	
-	// ���� ��ü���� ȭ�� smaple list ajax�� ���ֱ�
+
+
 	@RequestMapping("/sample/list")
 	public @ResponseBody List<PageVO> serviceList(
 			@RequestParam(value = "page", defaultValue = "1")int page){
 		return bookService.readPage(page);
 	}
+
 	
 }

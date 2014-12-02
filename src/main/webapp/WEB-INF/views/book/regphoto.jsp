@@ -87,118 +87,131 @@
     <div class="container">
         <div class="row-fluid">
             <div class="span6">
-                <h1>나만의도감</h1>
+                <h1>사진 올리기</h1>
 	        </div>
-	            <div class="span6">
-	                <ul class="breadcrumb pull-right">
-	                    <li><a href="/index">Home</a> <span class="divider">/</span></li>
-	                    <li class="active">나만의도감</li>
-	                </ul>
-	            </div>
+	            
 	        </div>
 	    </div>
-	</section>
+	</section>	
 	
 	<!-- / .title -->
     <div style="height: 40px; padding: 5px;" >
-        <a class="btn btn-success btn-large pull-left" href="/index" style="margin:10px; border-radius: 5px;">도감 등록</a>
         <a class="btn-success btn-large pull-right" href="/book/regphoto">사진 올리기</a>
         <a class="btn-success btn-large pull-right" href="/book/regist">새 도감 만들기</a>
     </div>
     
-<!--사진 등록꾸민곳 -->
-<section id="about-us" class="container main">
-    <div class="row-fluid">
-        <div class="span8 offset2" style="border: solid; border-color: green; opacity: 0.7;">
-            <div class="blog" style="opacity: 1;">
-                <form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="">
-                    <label>여기에 제목을 적어주세요</label>
-                    <input type="text" class="input-block-level" required="required">
-                    <label>사진을 등록해주세요</label>
-                    <input type="file" multiple="" class="btn btn-primary btn-small">
-                    <p class="insertImg"><p class="help-block">선택된 사진이 없어요...</p></p>
-                    <!-- 본문 들어갈 부분 -->
-                    <label>일기 내용을 적어주세요</label>
-                    <textarea name="message" id="message" required="required" class="input-block-level" rows="8"></textarea>
-                    <button type="submit" class="btn btn-primary btn-large pull-right">다썼다~ >▽<</button>
-                </form>
-                <!-- End Blog Item -->
-                <div class="gap"></div>
-            </div>
-        </div>
-    </div>
-</section>
+	<!--사진 등록꾸민곳 -->
+	<section id="about-us" class="container main">
+	    <div class="row-fluid">
+	        <div class="span8 offset2" style="border: solid; border-color: green; opacity: 0.7;">
+	            <div class="blog" style="opacity: 1;">
+	            
+	            	<form target="zero" action="/han/file/upload" method="post" enctype="multipart/form-data" >
+					<input type='file' name='file'><input type='submit' value="UPLOAD">
+					</form>
+					
+					<iframe name="zero" width="0" height="0" >
+					</iframe>
+					
+	                <ul class="fileUL"></ul>	
+	                    
+                   	<p class="help-block">선택된 사진이 없어요...</p>
+				
 
-<footer id="footer" style="opacity: 0.7; position: absolute; bottom: auto; width: 100%; background-color: black;">
-    <div class="container">
-        <div class="row-fluid">
-            <div class="span12" style="margin-top:-15px">
-                &copy; Bit58th 한잔해!!                
-                <a id="gototop" class="gototop pull-right" href="#"><i class="icon-angle-up"></i></a>
-            </div>
-            <!--/Goto Top-->
-        </div>
-    </div>
-</footer>
+					<form method="post" action="createPicture" accept-charset="utf-8">
+					
+						<label> 도감을 선택해주세요. </label>
+						<select class="form-control" name="bno"
+								style="width: 250px; opacity: 0.9"></select>
+						
+	                    <label>여기에 제목을 적어주세요</label>
+	                    <textarea name="title"  required="required" class="input-block-level"></textarea>
+	                    	
+	                    <ul class="uploadUL"></ul>	
+	                    
+	                    <label>일기 내용을 적어주세요</label>
+	                    <textarea name="cont" required="required" class="input-block-level" rows="8"></textarea>
+	                    <button type="submit" class="btn btn-primary btn-large pull-right">다썼다~ >▽<</button>
+	                </form>
+	                
+	                <!-- End Blog Item -->
+	                <div class="gap"></div>
+	            </div>
+	        </div>
+	    </div>
+	</section>
+
+	<footer id="footer" style="opacity: 0.7; position: absolute; bottom: auto; width: 100%; background-color: black;">
+	    <div class="container">
+	        <div class="row-fluid">
+	            <div class="span12" style="margin-top:-15px">
+	                &copy; Bit58th 한잔해!!
+	            </div>
+	            <!--/Goto Top-->
+	        </div>
+	    </div>
+	</footer>
 
 
-<!--  Login form -->
-<div class="modal hide fade in" id="loginForm" aria-hidden="false">
-    <div class="modal-header">
-        <i class="icon-remove" data-dismiss="modal" aria-hidden="true"></i>
-        <h4>Login Form</h4>
-    </div>
-    <!--Modal Body-->
-    <div class="modal-body">
-        <form class="form-inline" action="index" method="post" id="form-login">
-            <input type="text" class="input-small" placeholder="Email">
-            <input type="password" class="input-small" placeholder="Password">
-            <label class="checkbox">
-                <input type="checkbox"> Remember me
-            </label>
-            <button type="submit" class="btn btn-primary">Sign in</button>
-        </form>
-        <a href="#">Forgot your password?</a>
-    </div>
-    <!--/Modal Body-->
-</div>
-<!--  /Login form -->
+<!--.......... Login form ................................................................................................-->
+	<div class="modal hide fade in" id="loginForm" aria-hidden="false">
+	    <div class="modal-header">
+	        <i class="icon-remove" data-dismiss="modal" aria-hidden="true"></i>
+	        <h4>Login Form</h4>
+	    </div>
+	    <!--Modal Body-->
+	    <div class="modal-body">
+	        <form class="form-inline" action="index" method="post" id="form-login">
+	            <input type="text" class="input-small" placeholder="Email">
+	            <input type="password" class="input-small" placeholder="Password">
+	            <label class="checkbox">
+	                <input type="checkbox"> Remember me
+	            </label>
+	            <button type="submit" class="btn btn-primary">Sign in</button>
+	        </form>
+	        <a href="#">Forgot your password?</a>
+	    </div>
+	    <!--/Modal Body-->
+	</div>
+	<!--  /Login form -->
 
 <script src="/resources/js/vendor/jquery-1.9.1.min.js"></script>
 <script src="/resources/js/vendor/bootstrap.min.js"></script>
 <script src="/resources/js/main.js"></script>
 
-<!--script문..................................................................................................................-->
+<!--script문...............................................................................................................-->
 <script type="text/javascript">
-    $(function() {
-        var Page = (function() {
-
-            var $navArrows = $( '#nav-arrows' ),
-                    slitslider = $( '#slider' ).slitslider( {
-                        autoplay : true
-                    } ),
-
-                    init = function() {
-                        initEvents();
-                    },
-                    initEvents = function() {
-                        $navArrows.children( ':last' ).on( 'click', function() {
-                            slitslider.next();
-                            return false;
-                        });
-
-                        $navArrows.children( ':first' ).on( 'click', function() {
-                            slitslider.previous();
-                            return false;
-                        });
-                    };
-
-            return { init : init };
-
-        })();
-
-        Page.init();
-    });
+    
+	$(document).ready(getlist());
+    
+	function getlist(){
+		console.log("-----------list------------------")
+		var url = "regphoto/select"					// url을 호출한 뒤 선택한 bno 값을 더해줌.
+		var target = $(".form-control");
+		var content = "<option value=" + "'default'>도감선택란</option>";
+		$.getJSON(url, function (data) {			// 해당 url에 담겨져있는 Jsondata를 parameter값으로 받음.
+			$.each(data, function (key, val) {	// for each문을 돌려서 key값을 잡고 val값을 item 배열에 넣어줌.
+				content += "<option name=bno value=" + val.bno +">" + val.title + "</option>";
+				
+			});
+				target.html(content);
+			});
+		};    
+/*     "<input type='hidden' name='bno' value='" + val.bno + "'>" */
+    
+ 	function updateResult(data){
+		alert(data);
+		$(".uploadUL").append("<input type='hidden' name='contfile' value='"+data.fileName+"'></p>");
+		
+		if(data.suffix == '.jpg'){
+			$(".fileUL").append("<p><a href='/han/file/down?src="+data.fileName+"'><image class='thumb' src='/han/file/regphoto/"+data.fileName+"'/></p>");
+			/* $(".uploadUL").append("<li><image class='thumb' data-src='"+data.fileName+"' src='/web/file/view/"+ data.fileName+"'/></a></li>"); */
+		}else{
+			$(".fileUL").append("<p><a href='/han/file/down?src="+data.fileName+"'><image class='thumb' data-src='"+data.fileName+"'src='/resources/book/images/icon.jpg'/></a></p>");
+		}
+}
+    
+/*.........................................................................................................................*/    
 </script>
 <!-- /SL Slider -->
 

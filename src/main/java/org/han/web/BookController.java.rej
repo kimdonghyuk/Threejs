@@ -1,22 +1,204 @@
 diff a/src/main/java/org/han/web/BookController.java b/src/main/java/org/han/web/BookController.java	(rejected hunks)
-@@ -29,12 +29,20 @@
- 	
- 	@RequestMapping("/sample")
- 	public void sample(){}
-+<<<<<<< HEAD
- 	
- 	// ���� ��ü���� ȭ�� smaple list ajax�� ���ֱ�
-+=======
-+
-+>>>>>>> 96782209b0c62d563aaca5395358ed6bf629fa4d
- 	@RequestMapping("/sample/list")
- 	public @ResponseBody List<PageVO> serviceList(
- 			@RequestParam(value = "page", defaultValue = "1")int page){
- 		return bookService.readPage(page);
- 	}
-+<<<<<<< HEAD
-+=======
-+
-+>>>>>>> 96782209b0c62d563aaca5395358ed6bf629fa4d
- 	
- }
+@@ -36,187 +36,199 @@
+  @RequestMapping("/book/*")
+  public class BookController {
+  
+++<<<<<<< HEAD
+ +	private static Logger logger = LoggerFactory.getLogger("UploadTest");
+ +	
+ +	static String UPLOAD_DIR = "c:\\han\\";
+ +	
+ +	private boolean isImage(String fileName, String suffix) {
+ +
+ +		if (suffix.contains(".jpg")) {
+ +			return true;
+ +		}
+ +		return false;
+ +	}
+ +
+ +	private void createThumbnail(File origin) throws Exception {
+ +
+ +		BufferedImage originalImage = ImageIO.read(origin);
+ +		BufferedImage thumbnailImage = new BufferedImage(
+ +				originalImage.getWidth() / 2, originalImage.getHeight() / 2,
+ +				BufferedImage.TYPE_INT_RGB);
+ +
+ +		Graphics2D g = thumbnailImage.createGraphics();
+ +		g.drawImage(originalImage, 0, 0, thumbnailImage.getWidth(),
+ +				thumbnailImage.getHeight(), null);
+ +
+ +		File outputFile = new File(UPLOAD_DIR + "s_" + origin.getName());
+ +
+ +		ImageIO.write(thumbnailImage, "jpg", outputFile);
+ +	}
+ +	
+  	@Inject
+  	PageService bookService;
+- <<<<<<< HEAD
+  	
+ +	@Inject
+ +	BookService service;
+- =======
+- >>>>>>> bf8170e0cc7954fd153ca8d27ad2d0408c121db8
+++	
+++	@Inject
+++	PageService bookService;
+ +	
+ +	@Inject
+ +	BookService service;
+ +
+  	@RequestMapping("/main")
+ -	public void search(){}
+ +	public void search(){
+ +		
+ +	}
+ +	
+ +	@RequestMapping("/main/list")
+ +	public @ResponseBody List<BookVO> mainlist(
+ +			@RequestParam(value ="page", defaultValue = "1")String page){
+ +		
+ +		return service.read(page);
+ +	}
+  	
+  	@RequestMapping("/regist")
+ -	public void regist(){}
+ +	public void regist(){
+ +		
+ +	}
+ +	
+ +	@RequestMapping("/registdata")
+ +	public String createdate(@ModelAttribute BookVO vo){
+ +		vo.setUserid("han03");
+ +		System.out.println(vo.toString());
+ +		service.create(vo);
+ +		return "redirect:main";
+ +	}
+ +	
+ +
+ +	@RequestMapping(value ="/book/upload", produces="text/html; charset=UTF-8")@ResponseBody
+ +	public String uploadFile(MultipartFile contfile) throws Exception {
+ +		
+ +		if (contfile.isEmpty()) {
+ +			return "NONE";
+ +		}
+ +
+ +		byte[] buffer = new byte[1024 * 8];
+ +		String fileName = UUID.randomUUID() + "_" + contfile.getOriginalFilename();
+ +
+ +		String suffix = fileName.substring(fileName.lastIndexOf("."));
+ +
+ +		logger.info("SUFFIX :" + suffix);
+ +		logger.info("FileName : "+fileName);
+ +
+ +		InputStream in = contfile.getInputStream();
+ +
+ +		File uploadedFile = new File(UPLOAD_DIR + fileName);
+ +
+ +		OutputStream fos = new FileOutputStream(uploadedFile);
+ +
+ +		while (true) {
+ +			int count = in.read(buffer);
+ +			if (count == -1) {
+ +				break;
+ +			}
+ +			fos.write(buffer);
+ +			
+ +		}
+ +
+ +		fos.flush();
+ +		fos.close();
+ +
+ +		logger.info("-------------------");
+ +
+ +		logger.info(fileName);
+ +		logger.info("-------------------");
+ +
+ +		boolean isImage = isImage(fileName, suffix);
+ +		if (isImage) {
+ +			createThumbnail(uploadedFile);
+ +		}
+ +
+ +		String jsObjStr = "{fileName:'" + fileName + "',isImage:" + isImage
+ +				+ ", suffix:'" + suffix + "'}";
+ +
+ +		String str = "<script>parent.updateResult(" + jsObjStr + ");</script>";
+ +		
+ +		logger.info(str);
+ +
+ +		return str;
+ +	}
+ +			
+ +	@RequestMapping(value = "/view/{path}", produces = "image/jpeg")
+ +	public @ResponseBody byte[] viewFile(@RequestParam("path") String path)
+ +			throws Exception {
+ +
+ +		ByteArrayOutputStream bos = new ByteArrayOutputStream();
+ +
+ +		byte[] buffer = new byte[1024 * 8];
+ +
+ +		InputStream fin = new FileInputStream(UPLOAD_DIR + path + ".jpg");
+ +
+ +		while (true) {
+ +			int count = fin.read(buffer);
+ +			if (count == -1) {
+ +				break;
+ +			}
+ +			bos.write(buffer, 0, count);
+ +		}
+ +		fin.close();
+ +
+ +		return bos.toByteArray();
+ +	}
+  	
+  	@RequestMapping("/regphoto")
+ -	public void regPhoto(){}
+ +	public void regPhoto(){
+ +		
+ +	}
+ +
+ +	
+ +<<<<<<< HEAD
+++<<<<<<< HEAD
+ +	
+ +	
+ +	@RequestMapping("/sample")	
+ +	public void sample(){}
+  	
+ +=======
+ +	@RequestMapping("/sample")
+ +	public void sample(){
+ +	}
+ +	
+ +>>>>>>> bf8170e0cc7954fd153ca8d27ad2d0408c121db8
+++=======
++ 	@RequestMapping("/sample")
++ 	public void sample(){}
++ 
++ 
+++>>>>>>> login logic complete
+  	@RequestMapping("/sample/list")
+  	public @ResponseBody List<PageVO> serviceList(
+  			@RequestParam(value = "page", defaultValue = "1")int page){
+  		return bookService.readPage(page);
+  	}
+++<<<<<<< HEAD
+++=======
++ 
+++>>>>>>> login logic complete
+  	
+ +	@RequestMapping("/regphoto/select")
+ +	public @ResponseBody List<BookVO> selectBook(){
+ +		return bookService.selectBook();
+ +	}
+ +	
+ +	@RequestMapping("/createPicture")
+ +	public String createPicture(@ModelAttribute PageVO vo){
+ +		/*vo.setContfile("null");*/
+ +//		vo.setBno(2);
+ +		vo.setUserid("han07");
+ +		System.out.println(vo.toString());
+ +		bookService.createPicture(vo);;
+ +		return "redirect:main";
+ +	}
+ +
+  }

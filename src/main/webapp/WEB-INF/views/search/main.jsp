@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding ="UTF-8"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -34,6 +35,7 @@
                 padding-top: 0px;
             }
         }
+<<<<<<< HEAD
         
         body {
 	        background-image: url(/resources/images/search/search_back.jpg);
@@ -50,6 +52,16 @@
 		    max-height: 600px; /* modal창의 최대 높이를 조정 */
 		    padding: 15px;
 		}
+=======
+    body{
+        background-image: url(/resources/images/tag/search_back.jpg);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-color: #464646;
+        }
+>>>>>>> 48ba7efd99344cdfa60f33e1c0e482566f8877f6
     </style>
     
 </head>

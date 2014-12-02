@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding ="UTF-8"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -61,7 +62,7 @@
                         <li><a href="/diary/main">관찰일기</a></li> 
                         <li><a href="/mypages/main">My Pages</a></li>
                         <li class="login">
-                            <a data-toggle="modal" href="#loginForm"><i class="icon-lock"></i></a>
+                            <a data-toggle="modal" href="#loginModal"><i class="icon-lock"></i></a>
                         </li>
                     </ul>        
                 </div><!--/.nav-collapse -->
@@ -154,7 +155,7 @@
 
     <!--/Slider-->
 
-<footer id="footer" style="opacity: 0.7; position: absolute; bottom: auto; width: 100%; background-color: black;">
+<footer id="footer" style="opacity: 0.5; position: absolute; bottom: auto; width: 100%; background-color: black;">
     <div class="container">
         <div class="row-fluid">
             <div class="span12" style="margin-top:-15px">
@@ -166,25 +167,40 @@
     </div>
 </footer>
 <!--  Login form -->
-<div class="modal hide fade in" id="loginForm" aria-hidden="false">
-    <div class="modal-header">
-        <i class="icon-remove" data-dismiss="modal" aria-hidden="true"></i>
-        <h4>Login Form</h4>
+    <div class="modal hide fade" id="loginModal">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">✕</button>
+            <h3 style="text-align: center">로그인</h3>
+        </div>
+        <div class="modal-body" style="text-align:center;">
+            <div class="row-fluid">
+                <div class="span10 offset1">
+                    <div id="modalTab">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="login">
+                                <form method="post" action='' name="login_form">
+                                    <p><input type="text" class="span12" name="eid" id="email" placeholder="Email"></p>
+                                    <p><input type="password" class="span12" name="passwd" placeholder="Password"></p>
+                                    <p><button type="submit" class="btn btn-primary">Sign in</button>
+                                        <a href="#forgotpassword" data-toggle="tab">Forgot Password?</a>
+                                    </p>
+                                </form>
+                            </div>
+                            <div class="tab-pane fade" id="forgotpassword">
+                                <form method="post" action='' name="forgot_password">
+                                    <p>Hey this stuff happens, send us your email and we'll reset it for you!</p>
+                                    <input type="text" class="span12" name="eid" id="email" placeholder="Email">
+                                    <p><button type="submit" class="btn btn-primary">Submit</button>
+                                        <a href="#login" data-toggle="tab">Wait, I remember it now!</a>
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <!--Modal Body-->
-    <div class="modal-body">
-        <form class="form-inline" action="/index" method="post" id="form-login">
-            <input type="text" class="input-small" placeholder="Email">
-            <input type="password" class="input-small" placeholder="Password">
-            <label class="checkbox">
-                <input type="checkbox"> Remember me
-            </label>
-            <button type="submit" class="btn btn-primary">Sign in</button>
-        </form>
-        <a href="#">Forgot your password?</a>
-    </div>
-    <!--/Modal Body-->
-</div>
 <!--  /Login form -->
 
 <script src="resources/js/vendor/jquery-1.9.1.min.js"></script>
