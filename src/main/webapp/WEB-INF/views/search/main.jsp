@@ -35,7 +35,6 @@
                 padding-top: 0px;
             }
         }
-<<<<<<< HEAD
         
         body {
 	        background-image: url(/resources/images/search/search_back.jpg);
@@ -52,16 +51,6 @@
 		    max-height: 600px; /* modal창의 최대 높이를 조정 */
 		    padding: 15px;
 		}
-=======
-    body{
-        background-image: url(/resources/images/tag/search_back.jpg);
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
-        background-color: #464646;
-        }
->>>>>>> 48ba7efd99344cdfa60f33e1c0e482566f8877f6
     </style>
     
 </head>
