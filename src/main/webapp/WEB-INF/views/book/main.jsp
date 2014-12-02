@@ -114,10 +114,7 @@
     
     <div id="album"><div id="album_dogam1" >    		
     	
-    	<c:forEach items="${read}" var="list">
-			<li>${list.bno}<a href ='sample?bno=${list.bno}'> ${list.title}</a> ${list.contfile}</li>
-		</c:forEach>
-    	<a href="/book/sample">
+		<a href="/book/sample">
     		<img src = "/resources/book/images/book_travel.jpg" style="width:200px; height:200px; margin-left:15%; " /></a>
     		<div style="width:200px; height:20px; margin-left:15%; text-align:center;">2014.05.27 꽃놀이 여행</div>  
     	</div>
@@ -165,6 +162,35 @@
 <script src="/resources/js/vendor/jquery-1.9.1.min.js"></script>
 <script src="/resources/js/vendor/bootstrap.min.js"></script>
 <script src="/resources/js/main.js"></script>
+<script>
+
+	var tableData = [];
+	var page = 1;
+	
+	(function makeTable(){
+		console.log("data Start");
+		var i = 0;
+		var target = $("#album_dogam1");
+		var content = "";
+		$.ajax({
+			url: "/book/main/list?page=" + page,
+			dataType:"json",
+			async:false,
+			success:function(data){
+				
+				for(var i= 0, len = data.length; i < len ; i++){
+					content+= "<a href='/book/sample?bno=" + data[i].bno +"'>" 
+					+ "<img src = '/resources/book/images/" + data[i].contfile 
+					+ "'style='width:200px; height:200px; margin-left:15%;'/></a>"
+					+"<div style='width:200px; height:20px; margin-left:15%; text-align:center;'>" 
+					+ data[i].title + "</div>"
+					
+				}
+				target.html(content);
+			}});
+	})();
+	
+</script>
 
 </body>
 </html>

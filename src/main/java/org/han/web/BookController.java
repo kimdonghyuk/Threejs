@@ -61,21 +61,28 @@ public class BookController {
 	
 	@Inject
 	PageService bookService;
+<<<<<<< HEAD
 	
 	@Inject
 	BookService service;
+=======
+>>>>>>> bf8170e0cc7954fd153ca8d27ad2d0408c121db8
 	
+	@Inject
+	BookService service;
+
 	@RequestMapping("/main")
-	public void search(@RequestParam(value="listArr", defaultValue="")String[] list){
-		
-		/*@RequestMapping("/read")
-		public void read(@RequestParam(value="typeArr", defaultValue="")String[] types,
-				@ModelAttribute PageMaker pm, Model model){
-			pm.setTypeArr(types);
-			model.addAttribute("read", service.read(pm));
-		}*/
+	public void search(){
 		
 	}
+	
+	@RequestMapping("/main/list")
+	public @ResponseBody List<BookVO> mainlist(
+			@RequestParam(value ="page", defaultValue = "1")String page){
+		
+		return service.read(page);
+	}
+	
 	@RequestMapping("/regist")
 	public void regist(){
 		
@@ -143,8 +150,6 @@ public class BookController {
 		return str;
 	}
 			
-	/*@RequestMapping(value = "/view/{path}", produces = "image/jpeg")
-	public @ResponseBody byte[] viewFile(@PathVariable("path") String path)*/
 	@RequestMapping(value = "/view/{path}", produces = "image/jpeg")
 	public @ResponseBody byte[] viewFile(@RequestParam("path") String path)
 			throws Exception {
@@ -173,11 +178,18 @@ public class BookController {
 	}
 
 	
+<<<<<<< HEAD
 	
 	
 	@RequestMapping("/sample")	
 	public void sample(){}
 	
+=======
+	@RequestMapping("/sample")
+	public void sample(){
+	}
+	
+>>>>>>> bf8170e0cc7954fd153ca8d27ad2d0408c121db8
 	@RequestMapping("/sample/list")
 	public @ResponseBody List<PageVO> serviceList(
 			@RequestParam(value = "page", defaultValue = "1")int page){
@@ -198,6 +210,5 @@ public class BookController {
 		bookService.createPicture(vo);;
 		return "redirect:main";
 	}
-	
 
 }
