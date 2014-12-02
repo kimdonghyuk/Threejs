@@ -113,6 +113,10 @@
     </div>
     
     <div id="album"><div id="album_dogam1" >    		
+    	
+    	<c:forEach items="${read}" var="list">
+			<li>${list.bno}<a href ='sample?bno=${list.bno}'> ${list.title}</a> ${list.contfile}</li>
+		</c:forEach>
     	<a href="/book/sample">
     		<img src = "/resources/book/images/book_travel.jpg" style="width:200px; height:200px; margin-left:15%; " /></a>
     		<div style="width:200px; height:20px; margin-left:15%; text-align:center;">2014.05.27 꽃놀이 여행</div>  

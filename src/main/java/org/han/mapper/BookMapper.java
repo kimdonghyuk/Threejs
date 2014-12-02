@@ -1,12 +1,5 @@
 package org.han.mapper;
 
-<<<<<<< HEAD
-public interface BookMapper {
-
-	
-	
-}
-=======
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
@@ -19,7 +12,7 @@ public interface BookMapper {
 
 	@Select("select rownum rn, bno, userid, title, contfile, regdate, ceil(cnt/3) cnt "
 			+ " from("
-			+ " select  /*+INDEX(tbl_book pk_book) */ "
+			+ " select  /*+INDEX_DESC(tbl_book pk_book) */ "
 			+ " rownum rn, bno, userid, title, contfile, regdate, count(bno) over() cnt"
 			+ " from tbl_book"
 			+ " where bno > 0"
@@ -39,4 +32,3 @@ public interface BookMapper {
 	@Delete("delete from tbl_book where bno = #{bno}")
 	public void delete(String bno);
 }
->>>>>>> dogam page create

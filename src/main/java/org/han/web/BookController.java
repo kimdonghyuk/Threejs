@@ -8,23 +8,19 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.List;
 import java.util.UUID;
 
 import javax.imageio.ImageIO;
 import javax.inject.Inject;
 
-<<<<<<< HEAD
-import org.han.service.PageService;
-import org.han.vo.PageVO;
-=======
 import org.han.service.BookService;
+import org.han.service.PageService;
+import org.han.util.PageMaker;
 import org.han.vo.BookVO;
-import org.han.vo.ThreeVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
->>>>>>> dogam page create
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,7 +34,7 @@ public class BookController {
 
 	private static Logger logger = LoggerFactory.getLogger("UploadTest");
 	
-	static String UPLOAD_DIR = "c:\\zzz\\";
+	static String UPLOAD_DIR = "c:\\han\\";
 	
 	private boolean isImage(String fileName, String suffix) {
 
@@ -65,14 +61,18 @@ public class BookController {
 	}
 	
 	@Inject
-<<<<<<< HEAD
 	PageService bookService;
-=======
 	BookService service;
->>>>>>> dogam page create
 	
 	@RequestMapping("/main")
-	public void search(){
+	public void search(@RequestParam(value="listArr", defaultValue="")String[] list){
+		
+		/*@RequestMapping("/read")
+		public void read(@RequestParam(value="typeArr", defaultValue="")String[] types,
+				@ModelAttribute PageMaker pm, Model model){
+			pm.setTypeArr(types);
+			model.addAttribute("read", service.read(pm));
+		}*/
 		
 	}
 	@RequestMapping("/regist")
@@ -141,8 +141,10 @@ public class BookController {
 		return str;
 	}
 			
-	@RequestMapping(value = "/regist/{path}", produces = "image/jpeg")
-	public @ResponseBody byte[] viewFile(@PathVariable("path") String path)
+	/*@RequestMapping(value = "/view/{path}", produces = "image/jpeg")
+	public @ResponseBody byte[] viewFile(@PathVariable("path") String path)*/
+	@RequestMapping(value = "/view/{path}", produces = "image/jpeg")
+	public @ResponseBody byte[] viewFile(@RequestParam("path") String path)
 			throws Exception {
 
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -164,25 +166,13 @@ public class BookController {
 	}
 	
 	@RequestMapping("/regphoto")
-	public void regPhoto(){}
+	public void regPhoto(){
+		
+	}
 	
 	@RequestMapping("/sample")
-	public void sample(){}
-	
-<<<<<<< HEAD
-	// ���� ��ü���� ȭ�� smaple list ajax�� ���ֱ�
-=======
-	/*// ���� ��ü���� ȭ�� smaple list ajax�� ���ֱ�
->>>>>>> dogam page create
-	@RequestMapping("/sample/list")
-	public @ResponseBody List<PageVO> serviceList(
-			@RequestParam(value = "page", defaultValue = "1")int page){
-<<<<<<< HEAD
-		return bookService.readPage(page);
+	public void sample(){
+		
 	}
-=======
-		return service.list(page);
-	}*/
->>>>>>> dogam page create
-	
+		
 }
