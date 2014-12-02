@@ -11,13 +11,13 @@ import org.han.vo.PageVO;
 public interface PageMapper {	
 	
 	@Insert("insert into tbl_page(pno, bno, userid, title, cont, contfile)"
-			+ "values(seq_page.nextval, #{bno}, #{userid}, #{title}, #{cont}, #{contfile})")
+			+ " values(seq_page.nextval, #{bno}, #{userid}, #{title}, #{cont}, #{contfile})")
 	public void createPicture(PageVO vo);
 	
 	@Select("select"
 			+ " rownum rn, pno, bno, title, userid, regdate, cont, contfile, ceil(cnt/9) cnt "
 			+ " from( "
-			+ " select  /*+INDEX(tbl_three pk_page) */ "
+			+ " select  /*+INDEX(tbl_page pk_page) */ "
 			+ " rownum rn, pno, bno, title, userid, regdate, cont, contfile, count(pno) over() cnt "
 			+ " from tbl_page "
 			+ " where pno > 0) "

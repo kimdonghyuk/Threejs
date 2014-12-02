@@ -111,17 +111,32 @@
     <div class="row-fluid">
         <div class="span8 offset2" style="border: solid; border-color: green; opacity: 0.7;">
             <div class="blog" style="opacity: 1;">
-                <form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="">
+            
+            	<form target="zero" action="/han/file/upload" method="post" enctype="multipart/form-data" >
+				<input type='file' name='file'><input type='submit' value="UPLOAD">
+				</form>
+				
+				<iframe name="zero" width="0" height="0" >
+				</iframe>
+
+                    <ul class="fileUL"></ul>	
+                    
+                   	<p class="help-block">선택된 사진이 없어요...</p>
+			            
+                <form method="post" action="createPicture" accept-charset="utf-8">
                     <label>여기에 제목을 적어주세요</label>
-                    <input type="text" class="input-block-level" required="required">
-                    <label>사진을 등록해주세요</label>
-                    <input type="file" multiple="" class="btn btn-primary btn-small">
-                    <p class="insertImg"><p class="help-block">선택된 사진이 없어요...</p></p>
+                    <textarea name="title"  required="required" class="input-block-level"></textarea>
+                    <!-- <input name="contfile" type="file" multiple="" class="btn btn-primary btn-small">
+                    <p class="insertImg">
+                    	<p class="help-block">선택된 사진이 없어요...</p> -->
+                    	
+                    <ul class="uploadUL"></ul>	
                     <!-- 본문 들어갈 부분 -->
                     <label>일기 내용을 적어주세요</label>
-                    <textarea name="message" id="message" required="required" class="input-block-level" rows="8"></textarea>
+                    <textarea name="cont" required="required" class="input-block-level" rows="8"></textarea>
                     <button type="submit" class="btn btn-primary btn-large pull-right">다썼다~ >▽<</button>
                 </form>
+                
                 <!-- End Blog Item -->
                 <div class="gap"></div>
             </div>
@@ -142,7 +157,7 @@
 </footer>
 
 
-<!--  Login form -->
+<!--.......... Login form ................................................................................................-->
 <div class="modal hide fade in" id="loginForm" aria-hidden="false">
     <div class="modal-header">
         <i class="icon-remove" data-dismiss="modal" aria-hidden="true"></i>
@@ -168,7 +183,7 @@
 <script src="/resources/js/vendor/bootstrap.min.js"></script>
 <script src="/resources/js/main.js"></script>
 
-<!--script문..................................................................................................................-->
+<!--script문...............................................................................................................-->
 <script type="text/javascript">
     $(function() {
         var Page = (function() {
@@ -198,7 +213,21 @@
         })();
 
         Page.init();
-    });
+    });   
+    
+ 	function updateResult(data){
+		alert(data);
+		$(".uploadUL").append("<input type='hidden' name='contfile' value='"+data.fileName+"'></p>");
+		
+		if(data.suffix == '.jpg'){
+			$(".fileUL").append("<p><a href='/han/file/down?src="+data.fileName+"'><image class='thumb' src='/han/file/regphoto/"+data.fileName+"'/></p>");
+			/* $(".uploadUL").append("<li><image class='thumb' data-src='"+data.fileName+"' src='/web/file/view/"+ data.fileName+"'/></a></li>"); */
+		}else{
+			$(".fileUL").append("<p><a href='/han/file/down?src="+data.fileName+"'><image class='thumb' data-src='"+data.fileName+"' src='/resources/book/images/icon.jpg'/></a></p>");
+		}
+}
+    
+/*.........................................................................................................................*/    
 </script>
 <!-- /SL Slider -->
 

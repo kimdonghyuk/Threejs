@@ -171,8 +171,30 @@ public class BookController {
 	}
 	
 	@RequestMapping("/sample")
+<<<<<<< HEAD
 	public void sample(){
 		
 	}
 		
+=======
+	public void sample(){}
+	
+	
+	public @ResponseBody List<PageVO> serviceList(
+			@RequestParam(value = "page", defaultValue = "1")int page){
+		return bookService.readPage(page);
+	}
+	
+	@RequestMapping("/createPicture")
+	public String createPicture(@ModelAttribute PageVO vo){
+		/*vo.setContfile("null");*/
+		vo.setBno(2);
+		vo.setUserid("han07");
+		System.out.println(vo.toString());
+		bookService.createPicture(vo);;
+		return "redirect:main";
+	}
+	
+
+>>>>>>> db51c1ef66d432c746091e4ca001ee422946945a
 }
