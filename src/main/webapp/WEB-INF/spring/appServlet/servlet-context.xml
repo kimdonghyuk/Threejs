@@ -11,7 +11,32 @@
 
 
 	<!-- Enables the Spring MVC @Controller programming model -->
+	
+	 <!-- Annotation Controller 설정-->
+     <context:component-scan base-package="org.han.web" >    
+        <context:exclude-filter type="annotation" expression="org.han.util.UserAuthInterceptor"/>
+    </context:component-scan>
+	
+
+	 <!-- Spring3 Validator 처리, String3 Interceptor URL Mapping -->
 	<annotation-driven />
+	
+	
+	<!-- interceptor 처리/ Login -->
+	 <interceptors>
+        <interceptor>
+            <mapping path="/book/main" />
+            <mapping path="/diary/main" />
+            <mapping path="/favor/main" />
+            
+      
+            <beans:bean class="org.han.util.UserAuthInterceptor"></beans:bean>
+        </interceptor>
+        </interceptors>
+        <!-- end interceptor -->
+        
+        
+        
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources directory -->
@@ -34,6 +59,7 @@
         <beans:property name= "maxUploadSize" value="1000000" />
 <!--         <beans:property name= "uploadTempDir" value="/zzz" /> -->
     </beans:bean >
+ 
 
 	<context:component-scan base-package="org.han.web" />
 
