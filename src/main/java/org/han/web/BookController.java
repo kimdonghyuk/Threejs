@@ -21,6 +21,7 @@ import org.han.vo.PageVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -61,19 +62,22 @@ public class BookController {
 	
 	@Inject
 	PageService bookService;
-	BookService service;
 	
+	@Inject
+	BookService service;
+
 	@RequestMapping("/main")
-	public void search(@RequestParam(value="listArr", defaultValue="")String[] list){
-		
-		/*@RequestMapping("/read")
-		public void read(@RequestParam(value="typeArr", defaultValue="")String[] types,
-				@ModelAttribute PageMaker pm, Model model){
-			pm.setTypeArr(types);
-			model.addAttribute("read", service.read(pm));
-		}*/
+	public void search(){
 		
 	}
+	
+	@RequestMapping("/main/list")
+	public @ResponseBody List<BookVO> mainlist(
+			@RequestParam(value ="page", defaultValue = "1")String page){
+		
+		return service.read(page);
+	}
+	
 	@RequestMapping("/regist")
 	public void regist(){
 		
@@ -140,8 +144,6 @@ public class BookController {
 		return str;
 	}
 			
-	/*@RequestMapping(value = "/view/{path}", produces = "image/jpeg")
-	public @ResponseBody byte[] viewFile(@PathVariable("path") String path)*/
 	@RequestMapping(value = "/view/{path}", produces = "image/jpeg")
 	public @ResponseBody byte[] viewFile(@RequestParam("path") String path)
 			throws Exception {
@@ -171,7 +173,6 @@ public class BookController {
 	
 	@RequestMapping("/sample")
 	public void sample(){
-		
 	}
 	
 	@RequestMapping("/sample/list")
