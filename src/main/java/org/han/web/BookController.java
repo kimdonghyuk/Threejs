@@ -8,6 +8,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.List;
 import java.util.UUID;
 
 import javax.imageio.ImageIO;
@@ -15,14 +16,12 @@ import javax.inject.Inject;
 
 import org.han.service.BookService;
 import org.han.service.PageService;
-import org.han.util.PageMaker;
 import org.han.vo.BookVO;
+import org.han.vo.PageVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -43,7 +42,7 @@ public class BookController {
 		}
 		return false;
 	}
-	//thumbnail 그림파일 만들어주는 부분
+
 	private void createThumbnail(File origin) throws Exception {
 
 		BufferedImage originalImage = ImageIO.read(origin);
@@ -62,6 +61,8 @@ public class BookController {
 	
 	@Inject
 	PageService bookService;
+	
+	@Inject
 	BookService service;
 	
 	@RequestMapping("/main")
@@ -86,8 +87,9 @@ public class BookController {
 		System.out.println(vo.toString());
 		service.create(vo);
 		return "redirect:main";
-	}		
-	//file => contfile
+	}
+	
+
 	@RequestMapping(value ="/book/upload", produces="text/html; charset=UTF-8")@ResponseBody
 	public String uploadFile(MultipartFile contfile) throws Exception {
 		
@@ -169,26 +171,28 @@ public class BookController {
 	public void regPhoto(){
 		
 	}
+
 	
-	@RequestMapping("/sample")
-<<<<<<< HEAD
-	public void sample(){
-		
-	}
-		
-=======
+	
+	
+	@RequestMapping("/sample")	
 	public void sample(){}
 	
-	
+	@RequestMapping("/sample/list")
 	public @ResponseBody List<PageVO> serviceList(
 			@RequestParam(value = "page", defaultValue = "1")int page){
 		return bookService.readPage(page);
 	}
 	
+	@RequestMapping("/regphoto/select")
+	public @ResponseBody List<BookVO> selectBook(){
+		return bookService.selectBook();
+	}
+	
 	@RequestMapping("/createPicture")
 	public String createPicture(@ModelAttribute PageVO vo){
 		/*vo.setContfile("null");*/
-		vo.setBno(2);
+//		vo.setBno(2);
 		vo.setUserid("han07");
 		System.out.println(vo.toString());
 		bookService.createPicture(vo);;
@@ -196,5 +200,4 @@ public class BookController {
 	}
 	
 
->>>>>>> db51c1ef66d432c746091e4ca001ee422946945a
 }

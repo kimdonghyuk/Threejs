@@ -511,6 +511,7 @@
 	            .onUpdate(render)
 	            .start();
 	
+	    
 	}
 	
 	function onWindowResize(){	

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.han.mapper.PageMapper;
+import org.han.vo.BookVO;
 import org.han.vo.PageVO;
 import org.springframework.stereotype.Service;
 
@@ -30,5 +31,7 @@ public class PageService {
 		mapper.updatePage(vo);
 	}
 
-	
+	public List<BookVO> selectBook(){
+		return mapper.selectBook();
+	}
 }

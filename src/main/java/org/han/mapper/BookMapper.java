@@ -1,9 +1,5 @@
 package org.han.mapper;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 101edb11c909e14e7dac4dd960cb08427af77f98
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
