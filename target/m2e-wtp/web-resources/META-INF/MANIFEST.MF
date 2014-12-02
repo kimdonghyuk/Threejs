@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
+Built-By: MyCom
+=======
 Built-By: DongHyuk
+>>>>>>> db51c1ef66d432c746091e4ca001ee422946945a
 Build-Jdk: 1.8.0_20
 Created-By: Maven Integration for Eclipse
 

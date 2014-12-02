@@ -228,7 +228,7 @@
 		//class이름이 filename인 부분에 히든값으로 fileName을 추가 시켜준다.
 		$(".filename").append("<input type='hidden' name='contfile' value= '"+data.fileName+"'>");
 		if(data.suffix == '.jpg'){
-			$(".uploadUL").append("<li><image class='thumb' data-src='"+data.fileName+"' src='/book/regist/"+ "s_" + data.fileName+"'/></li>");
+			$(".uploadUL").append("<li><image class='thumb' data-src='"+data.fileName+"' src='/book/view/"+ data.fileName+"'/></li>");
 		}else{
 			$(".uploadUL").append("<li><image class='thumb' data-src='"+data.fileName+"' src='/resources/images/logo.png'/></li>");
 		}

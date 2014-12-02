@@ -1,6 +1,9 @@
 package org.han.mapper;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 101edb11c909e14e7dac4dd960cb08427af77f98
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
@@ -13,7 +16,7 @@ public interface BookMapper {
 
 	@Select("select rownum rn, bno, userid, title, contfile, regdate, ceil(cnt/3) cnt "
 			+ " from("
-			+ " select  /*+INDEX(tbl_book pk_book) */ "
+			+ " select  /*+INDEX_DESC(tbl_book pk_book) */ "
 			+ " rownum rn, bno, userid, title, contfile, regdate, count(bno) over() cnt"
 			+ " from tbl_book"
 			+ " where bno > 0"
