@@ -8,6 +8,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.List;
 import java.util.UUID;
 
 import javax.imageio.ImageIO;
@@ -15,14 +16,12 @@ import javax.inject.Inject;
 
 import org.han.service.BookService;
 import org.han.service.PageService;
-import org.han.util.PageMaker;
 import org.han.vo.BookVO;
+import org.han.vo.PageVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -171,15 +170,11 @@ public class BookController {
 	}
 	
 	@RequestMapping("/sample")
-<<<<<<< HEAD
 	public void sample(){
 		
 	}
-		
-=======
-	public void sample(){}
 	
-	
+	@RequestMapping("/sample/list")
 	public @ResponseBody List<PageVO> serviceList(
 			@RequestParam(value = "page", defaultValue = "1")int page){
 		return bookService.readPage(page);
@@ -194,7 +189,5 @@ public class BookController {
 		bookService.createPicture(vo);;
 		return "redirect:main";
 	}
-	
 
->>>>>>> db51c1ef66d432c746091e4ca001ee422946945a
 }
