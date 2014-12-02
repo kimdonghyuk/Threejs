@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
-Built-By: DongHyuk
-=======
-Built-By: ￪ﾹﾀ￬ﾜﾤ￭ﾘﾕ
->>>>>>> 96782209b0c62d563aaca5395358ed6bf629fa4d
-Build-Jdk: 1.8.0_20
+Built-By: PPG
+Build-Jdk: 1.8.0_11
 Created-By: Maven Integration for Eclipse
 
