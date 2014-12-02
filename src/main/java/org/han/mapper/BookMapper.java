@@ -1,9 +1,5 @@
 package org.han.mapper;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 101edb11c909e14e7dac4dd960cb08427af77f98
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
@@ -22,7 +18,7 @@ public interface BookMapper {
 			+ " where bno > 0"
 			+ " )"
 			+ " where rn > (#{page}-1)*3 and rn <= (#{page}*3)")
-	public List<BookVO> read(String bno);
+	public List<BookVO> read(String page);
 	
 	@Insert("insert into tbl_book(bno, userid, title, contfile)"
 			+ " values(seq_book.nextval, #{userid}, #{title}, #{contfile})")

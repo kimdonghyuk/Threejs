@@ -10,7 +10,7 @@ public interface UserMapper {
 	
 	
 	@Select
-	("select * from tbl_user where userid=#{userid}")
+	("select * from tbl_user where userid=#{userid} and pw=#{pw}")
 	public UserVO readInfo(UserVO vo);
 	
 	@Insert

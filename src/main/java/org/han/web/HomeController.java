@@ -46,7 +46,14 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/index")
+<<<<<<< HEAD
 	public void mainPage(){}
+=======
+	public void main(){
+		
+	}
+	
+>>>>>>> login logic complete
 
 	
 }

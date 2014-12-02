@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding ="UTF-8"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -34,7 +35,7 @@
                 padding-top: 0px;
             }
         }
-          body{
+    body{
         background-image: url(/resources/images/tag/search_back.jpg);
         background-position: center center;
         background-repeat: no-repeat;
@@ -42,12 +43,6 @@
         background-size: cover;
         background-color: #464646;
         }
-       	body {
-		background-image: url("/resources/images/sample/search_main_background.png");
-    	background-repeat : no repeat;
-    	background-size : cover;
-		}
-        
     </style>
     
 </head>

@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.han.vo.BookVO;
 import org.han.vo.PageVO;
 
 public interface PageMapper {	
@@ -30,4 +31,8 @@ public interface PageMapper {
 	@Update("update tbl_page set title=#{title}, cont=#{cont}, contfile=#{contfile} where pno=#{pno}")
 	public void updatePage(PageVO vo);
 
+	
+	@Select("select * from tbl_book"
+			+ " order by title")
+	public List<BookVO> selectBook();
 }
