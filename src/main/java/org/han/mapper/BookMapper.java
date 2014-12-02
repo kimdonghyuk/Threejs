@@ -1,12 +1,6 @@
 package org.han.mapper;
 
-<<<<<<< HEAD
-public interface BookMapper {
 
-	
-	
-}
-=======
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
@@ -39,4 +33,3 @@ public interface BookMapper {
 	@Delete("delete from tbl_book where bno = #{bno}")
 	public void delete(String bno);
 }
->>>>>>> dogam page create

@@ -118,7 +118,6 @@
 				
 				<iframe name="zero" width="0" height="0" >
 				</iframe>
-
                     <ul class="fileUL"></ul>	
                     
                    	<p class="help-block">선택된 사진이 없어요...</p>
@@ -223,7 +222,7 @@
 			$(".fileUL").append("<p><a href='/han/file/down?src="+data.fileName+"'><image class='thumb' src='/han/file/regphoto/"+data.fileName+"'/></p>");
 			/* $(".uploadUL").append("<li><image class='thumb' data-src='"+data.fileName+"' src='/web/file/view/"+ data.fileName+"'/></a></li>"); */
 		}else{
-			$(".fileUL").append("<p><a href='/han/file/down?src="+data.fileName+"'><image class='thumb' data-src='"+data.fileName+"' src='/resources/book/images/icon.jpg'/></a></p>");
+			$(".fileUL").append("<p><a href='/han/file/down?src="+data.fileName+"'><image class='thumb' data-src='"+data.fileName+"'src='/resources/book/images/icon.jpg'/></a></p>");
 		}
 }
     

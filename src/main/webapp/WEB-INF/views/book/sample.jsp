@@ -354,8 +354,10 @@
 			// "H", "<a href = http://www.naver.com><img src = /resources/ko.jpg width='100' height='100'></a>", "1.00794", 1, 1,
 	        
 			var details = document.createElement( 'div' );
+			var fileurl = "/han/file/regphoto/";
            	details.className = 'details';
-          	details.innerHTML = '<img src = /resources/book/images/'+ tableData[ i ].contfile +' width = "280px" height = "180px"></div>';
+           	details.innerHTML = '<img src = ' + fileurl + tableData[ i ].contfile +' width = "280px" height = "180px"></div>';
+/*            	details.innerHTML = '<img src = /resources/book/images/'+ tableData[ i ].contfile +' width = "280px" height = "180px"></div>'; */
           	element.appendChild( details );
 	        // 각 원소별 풀네임 + 방사능번호 하단 두줄 밀어넣어주기
 	
