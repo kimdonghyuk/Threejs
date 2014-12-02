@@ -19,6 +19,7 @@ public class PageServiceTest {
 	
 	@Inject
 	PageService service;
+
 	
 	@Test
 	public void InsertTest() {
@@ -34,8 +35,10 @@ public class PageServiceTest {
 
 	@Test
 	public void readTest(){
-		
-		logger.info(service.readPage(2));		
+		PageVO vo = new PageVO();
+		vo.setBno(2);
+		vo.setPage(1);
+		logger.info(service.readPage(vo));		
 		
 	}
 	

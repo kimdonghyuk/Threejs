@@ -165,7 +165,6 @@
 <script>
 
 	var tableData = [];
-	var page = 1;
 	
 	(function makeTable(){
 		console.log("data Start");
@@ -173,7 +172,7 @@
 		var target = $("#album_dogam1");
 		var content = "";
 		$.ajax({
-			url: "/book/main/list?page=" + page,
+			url: "/book/main/list",
 			dataType:"json",
 			async:false,
 			success:function(data){

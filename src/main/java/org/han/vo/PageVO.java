@@ -15,8 +15,16 @@ public class PageVO {
 	private String contfile;
 	private Date regdate;
 	private Integer cnt;
+	private Integer page;
 	
 	
+	
+	public Integer getPage() {
+		return page;
+	}
+	public void setPage(Integer page) {
+		this.page = page;
+	}
 	public Integer getCnt(){
 		return cnt;
 	}	
@@ -71,8 +79,11 @@ public class PageVO {
 	public String toString() {
 		return "PageVO [pno=" + pno + ", bno=" + bno + ", userid=" + userid
 				+ ", title=" + title + ", cont=" + cont + ", contfile="
-				+ contfile + ", regdate=" + regdate + ", cnt=" + cnt + "]";
+				+ contfile + ", regdate=" + regdate + ", cnt=" + cnt
+				+ ", page=" + page + "]";
 	}
+	
+
 	
 
 }

@@ -19,8 +19,13 @@ public class PageService {
 		mapper.createPicture(vo);
 	}
 	
-	public List<PageVO> readPage(int page){
-		return mapper.readPage(page);
+//	public List<PageVO> readPage(int page, int bno){
+//		return mapper.readPage(page, bno);
+//	}
+	
+	public List<PageVO> readPage(PageVO vo){
+		System.out.println(vo);
+		return mapper.readPage(vo);
 	}
 	
 	public void deletePage(int pno){
@@ -33,5 +38,9 @@ public class PageService {
 
 	public List<BookVO> selectBook(){
 		return mapper.selectBook();
+	}
+	
+	public PageVO read(PageVO vo){
+		return mapper.read(vo);
 	}
 }

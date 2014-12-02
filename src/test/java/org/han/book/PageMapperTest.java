@@ -31,10 +31,10 @@ public class PageMapperTest {
 		mapper.createPicture(vo);
 	}
 	
-	@Test
-	public void readTest(){
-		logger.info(mapper.readPage(2));
-	}
+//	@Test
+//	public void readTest(){
+//		logger.info(mapper.readPage(2,2));
+//	}
 	
 	@Test
 	public void deleteTest(){

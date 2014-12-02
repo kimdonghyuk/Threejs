@@ -18,7 +18,7 @@ public interface BookMapper {
 			+ " where bno > 0"
 			+ " )"
 			+ " where rn > (#{page}-1)*3 and rn <= (#{page}*3)")
-	public List<BookVO> read(String page);
+	public List<BookVO> read(String page);	
 	
 	@Insert("insert into tbl_book(bno, userid, title, contfile)"
 			+ " values(seq_book.nextval, #{userid}, #{title}, #{contfile})")

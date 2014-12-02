@@ -21,9 +21,10 @@ public interface PageMapper {
 			+ " select  /*+INDEX(tbl_page pk_page) */ "
 			+ " rownum rn, pno, bno, title, userid, regdate, cont, contfile, count(pno) over() cnt "
 			+ " from tbl_page "
-			+ " where pno > 0) "
+			+ " where pno > 0 and bno = #{bno}"
+			+ ") "
 			+ " where rn > (#{page}-1)*9 and rn <= (#{page}*9) ")
-	public List<PageVO> readPage(int page);
+	public List<PageVO> readPage(PageVO vo);
 	
 	@Delete("delete from tbl_page where pno=#{pno}")
 	public void deletePage(int pno);
@@ -35,4 +36,9 @@ public interface PageMapper {
 	@Select("select * from tbl_book"
 			+ " order by title")
 	public List<BookVO> selectBook();
+	
+	@Select("select * from tbl_page"
+			+ " where bno = #{bno}")
+	public PageVO read(PageVO vo);
+	
 }

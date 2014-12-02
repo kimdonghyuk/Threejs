@@ -276,17 +276,19 @@
 /* make Table...............................................................................................................  */
 	var tableData = [];
 	var page = 1;
-	
-	console.log("page : " + page);
+	var bookNo = 0;
 	
 	(function makeTable(){
+		bookNo = ${number};
 		
 		var i = 0;
 		var xStart = 5;
 		var yStart = 3;	
+		console.log("page : " + page);
+		console.log("bookNo : " + bookNo);
 		
 		$.ajax({
-			url: "/book/sample/list?page=" + page,
+			url: "/book/sample/list?page=" + page + "&bno="+bookNo,
 			dataType:"json",
 			async:false,
 			success:function(data){
@@ -539,12 +541,17 @@
 		while(obj.length>0){
 			obj[0].parentNode.removeChild(obj[0]);
 		}
+		
+		bookNo = ${number};
+		
 		var i = 0;
 		var xStart = 5;
 		var yStart = 3;	
+		console.log("page : " + page);
+		console.log("bookNo : " + bookNo);
 		
 		$.ajax({
-			url: "/book/sample/list?page=" + page,
+			url: "/book/sample/list?page=" + page + "&bno="+bookNo,
 			dataType:"json",
 			async:false,
 			success:function(data){
