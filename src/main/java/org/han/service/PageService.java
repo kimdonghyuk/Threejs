@@ -24,7 +24,6 @@ public class PageService {
 //	}
 	
 	public List<PageVO> readPage(PageVO vo){
-		System.out.println(vo);
 		return mapper.readPage(vo);
 	}
 	
