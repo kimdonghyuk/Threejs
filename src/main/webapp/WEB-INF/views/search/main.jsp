@@ -74,9 +74,7 @@
                         <li><a href="/favor/main">즐겨찾기</a></li>
                         <li><a href="/diary/main">관찰일지</a></li> 
                         <li><a href="/mypages/main">My Pages</a></li>
-                        <li class="login">
-                            <a data-toggle="modal" href="#loginModal"><i class="icon-lock"></i></a>
-                        </li>
+                        <li class="login" id="login"> <a href="/user/login">Login</a></li>
                     </ul>        
                 </div><!--/.nav-collapse -->
             </div>
@@ -204,6 +202,23 @@
 
 <script type="text/javascript">
 	// tagcloud 위치값 연산
+	
+window.onload = function getCookie( cookieName )
+ {
+     var search = cookieName + "=";
+     var cookie = document.cookie;
+     // 현재 쿠키가 존재할 경우
+     if( cookie.length > 0 )
+     {
+    	 $("#login").html("<a href='/user/logout'>LogOut</a>");
+    	
+     }
+         
+ }
+
+	
+	
+	
     var maxwidth = document.getElementById('ts1').clientWidth;
     var width = parseInt(maxwidth) / 2 + 25;
     var maxheight = document.getElementById('ts1').clientHeight;

@@ -73,8 +73,8 @@
                         <li><a href="/favor/main">즐겨찾기</a></li>
                         <li><a href="/diary/main">관찰일기</a></li> 
                         <li><a href="/mypages/main">My Pages</a></li>
-                        <li class="login">
-                            <a data-toggle="modal" href="#loginForm"><i class="icon-lock"></i></a>
+                       <li class="login">
+                        <a href='/user/logout'>LogOut</a>
                         </li>
                     </ul>        
                 </div><!--/.nav-collapse -->
