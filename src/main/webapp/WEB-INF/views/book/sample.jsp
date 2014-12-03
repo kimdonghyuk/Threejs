@@ -211,7 +211,7 @@
 					
 					<div id="mCont" style="width:100%; text-align:center;">
 					</div>
-					
+					</div>					
 				</div>
 				
 				<div class="modal-footer">
