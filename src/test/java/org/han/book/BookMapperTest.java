@@ -44,7 +44,7 @@ public class BookMapperTest {
 	//Delete no Test
 	@Test
 	public void DeleteTest() {
-		service.delete("2");
+		service.delete(2);
 	}
 
 }

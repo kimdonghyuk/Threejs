@@ -118,15 +118,32 @@
 	    </div>
 
 		<div class="sample span12" style="height: 50px; padding: 5px;">
-			<a href="#" class="btn-social btn-small pull-right">
+			
+			<!-- Start Update Modal -->
+			<a href="#testForm" role="button" class="btn-social btn-small pull-right" data-toggle="modal">
 				<i class="icon-trash icon-white"></i> <span><strong>삭제</strong></span>
 			</a>
-			<a href="#" class="btn-social btn-small pull-right">
-				<i class="icon-edit icon-white"></i> <span><strong>수정</strong></span>
-			</a>
-			
+			 
+			<!-- 모달 -->
+			<div class="modal fade" id="testForm" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+			  <div class="modal-header">
+			    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			    <h3 id="myModalLabel">도감 삭제</h3>
+			  </div>
+			  <div class="modal-body">
+			    <label> 도감을 선택해주세요. </label>
+						<select class="form-control" name="bno"
+								style="width: 250px; opacity: 0.9"></select>
+			  </div>
+			  <div class="modal-footer">
+			    <button class="btn" data-dismiss="modal" aria-hidden="true">닫기</button>
+			    <button class="btn btn-primary">삭제</button>
+			  </div>
+			</div>
+			<!-- End Update Modal -->
 			
 		</div>
+		
 		<!-- Album list Screen page -->    
 		<div class="container">
 			<div class="row">
@@ -204,6 +221,22 @@
 				target.html(content);
 			}});
 	})();
+	
+	$(document).ready(getlist());
+	    
+		function getlist(){
+			console.log("-----------list------------------")
+			var url = "main/list"					// url을 호출한 뒤 선택한 bno 값을 더해줌.
+			var target = $(".form-control");
+			var content = "<option value=" + "'default'>도감선택란</option>";
+			$.getJSON(url, function (data) {			// 해당 url에 담겨져있는 Jsondata를 parameter값으로 받음.
+				$.each(data, function (key, val) {	// for each문을 돌려서 key값을 잡고 val값을 item 배열에 넣어줌.
+					content += "<option name=bno value=" + val.bno +">" + val.title + "</option>";
+					
+				});
+					target.html(content);
+				});
+			};
 	
 </script>
 

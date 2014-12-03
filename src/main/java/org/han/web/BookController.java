@@ -41,6 +41,11 @@ public class BookController {
       return service.read(page);
    }
    
+   @RequestMapping("/main/delete")
+   public @ResponseBody void deleteDogam(int bno){
+	   service.delete(bno);
+   }
+   
    @RequestMapping("/regist")
    public void regist(){}
    
