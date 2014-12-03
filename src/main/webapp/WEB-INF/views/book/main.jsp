@@ -63,6 +63,10 @@
 	.registDogam:hover{
 		opacity : 0.7;	
 	}
+	
+	.span4{
+		background-image: url("/resources/book/background/book_showlist_background.jpg")
+	}
 </style>    
 </head>
 
@@ -105,23 +109,36 @@
             </div>
 
     </section>
-<div id="back" style="height: 600px;">    
-    <!-- / .title -->
-    <div class="sample" style="height: 150px; padding: 5px;" >
-        <a class="btn-success btn-large pull-right" id="updatePicture" href="/book/regphoto">사진 올리기</a>
-        <a class="btn-success btn-large pull-right" id="registDogam" href="/book/regist">새 도감 만들기</a>
-    </div>
-    
-    <div id="album"><div id="album_dogam1" >    		
-    	
-		<a href="/book/sample">
-    		<img src = "/resources/book/images/book_travel.jpg" style="width:200px; height:200px; margin-left:15%; " /></a>
-    		<div style="width:200px; height:20px; margin-left:15%; text-align:center;">2014.05.27 꽃놀이 여행</div>  
-    	</div>
-    </div> 
-</div>
-</div>
-    
+	<!-- Dogam UI Set -->
+	<div id="back" style="height: 600px;">    
+	    <!-- btn Set -->
+	    <div class="sample" style="height: 100px; padding: 5px;" >
+	        <a class="btn-success btn-large pull-right" id="updatePicture" href="/book/regphoto">사진 올리기</a>
+	        <a class="btn-success btn-large pull-right" id="registDogam" href="/book/regist">새 도감 만들기</a>
+	    </div>
+
+		<div class="sample span12" style="height: 50px; padding: 5px;">
+			<a href="#" class="btn-social btn-small pull-right">
+				<i class="icon-trash icon-white"></i> <span><strong>삭제</strong></span>
+			</a>
+			<a href="#" class="btn-social btn-small pull-right">
+				<i class="icon-edit icon-white"></i> <span><strong>수정</strong></span>
+			</a>
+			
+			
+		</div>
+		<!-- Album list Screen page -->    
+		<div class="container">
+			<div class="row">
+				<ul class="thumbnails">
+					
+				</ul>
+			</div>
+		</div>
+	           
+		<!-- End Album list -->
+	</div>
+    <!-- End Dogam -->
 <footer id="footer" style="opacity: 0.7; position: absolute; bottom: auto; width: 100%; background-color: black;">
     <div class="container">
         <div class="row-fluid">
@@ -133,7 +150,6 @@
         </div>
     </div>
 </footer>
-
 
 <!--  Login form -->
 <div class="modal hide fade in" id="loginForm" aria-hidden="false">
@@ -169,21 +185,21 @@
 	(function makeTable(){
 		console.log("data Start");
 		var i = 0;
-		var target = $("#album_dogam1");
+		var target = $(".thumbnails");
 		var content = "";
 		$.ajax({
 			url: "/book/main/list",
 			dataType:"json",
 			async:false,
 			success:function(data){
-				
+		
 				for(var i= 0, len = data.length; i < len ; i++){
-					content+= "<a href='/book/sample?bno=" + data[i].bno +"'>" 
-					+ "<img src = '/resources/book/images/" + data[i].contfile 
-					+ "'style='width:200px; height:200px; margin-left:15%;'/></a>"
-					+"<div style='width:200px; height:20px; margin-left:15%; text-align:center;'>" 
-					+ data[i].title + "</div>"
-					
+					content+= "<li class='span4'><div class='thumbnail'>"
+					+ "<a href='/book/sample?bno=" + data[i].bno + "'><img src = '/resources/book/images/" + data[i].contfile + "'></a>"
+					+ "<div class='caption'>"
+					+ "<h3 style = 'text-align:center;'>" + data[i].title + "</h3>" 
+					+"</div></div></li>";
+										
 				}
 				target.html(content);
 			}});
