@@ -73,8 +73,8 @@ public class AttachController {
 		String suffix = fileName.substring(fileName.lastIndexOf("."));
 		// 확장명을 판단하기 위해서 filename의 .뒷부분을 잘라서 확장명을 가져온다.
 		
-		logger.info(fileName);
-		logger.info("SUFFIX :" + suffix);
+//		logger.info(fileName);
+//		logger.info("SUFFIX :" + suffix);
 		// 확장명을 logger로 찍어 확인해본다.
 		
 		InputStream in = file.getInputStream();
@@ -92,9 +92,9 @@ public class AttachController {
 		fos.close();
 		// 해당경로로  빨대를 꽂아 밀어넣어주고 close처리해줌.
 		
-		logger.info("-------------------");
-		logger.info(fileName);
-		logger.info("-------------------");
+//		logger.info("-------------------");
+//		logger.info(fileName);
+//		logger.info("-------------------");
 
 		boolean isImage = isImage(fileName, suffix);
 		// boolean타입의 변수 isImage에 파일이름과 확장명을 통해서 받은 파일이 jpg 파일인지 확인해줌.
@@ -108,7 +108,7 @@ public class AttachController {
 				+ ", suffix:'" + suffix + "'}";
 
 		String str = "<script>parent.updateResult(" + jsObjStr + ");</script>";
-		logger.info("str위에 : " + fileName);
+//		logger.info("str위에 : " + fileName);
 		return str;
 	}
 
@@ -145,7 +145,7 @@ public class AttachController {
 	@RequestMapping(value = "/regphoto/{path}", produces = "image/jpeg")
 	public @ResponseBody byte[] viewFile(@PathVariable("path") String path) throws Exception {
 		
-		logger.info("regphoto/path : " + path);
+//		logger.info("regphoto/path : " + path);
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
 		InputStream fin = new FileInputStream(UPLOAD_DIR + path + ".jpg");
 		buffer(fin, bos);

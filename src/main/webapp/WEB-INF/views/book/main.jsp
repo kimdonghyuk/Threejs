@@ -112,14 +112,8 @@
         <a class="btn-success btn-large pull-right" id="registDogam" href="/book/regist">새 도감 만들기</a>
     </div>
     
-    <div id="album"><div id="album_dogam1" >    		
-    	
-		<a href="/book/sample">
-    		<img src = "/resources/book/images/book_travel.jpg" style="width:200px; height:200px; margin-left:15%; " /></a>
-    		<div style="width:200px; height:20px; margin-left:15%; text-align:center;">2014.05.27 꽃놀이 여행</div>  
-    	</div>
+    <div id="album"><div id="album_dogam1" ></div>
     </div> 
-</div>
 </div>
     
 <footer id="footer" style="opacity: 0.7; position: absolute; bottom: auto; width: 100%; background-color: black;">
