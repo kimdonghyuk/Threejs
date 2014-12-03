@@ -82,7 +82,7 @@
                         <li class="active"><a href="/diary/main">관찰일기</a></li> 
                         <li><a href="/mypages/main">My Page</a></li>
                         <li class="login">
-                            <a data-toggle="modal" href="#loginModal"><i class="icon-lock"></i></a>
+                        <a href='/user/logout'>LogOut</a>
                         </li>
                     </ul>        
                 </div><!--/.nav-collapse -->

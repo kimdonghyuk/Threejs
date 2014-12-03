@@ -28,9 +28,14 @@ public class UserController {
 	@RequestMapping("/create")
 	public String createUser(@ModelAttribute UserVO vo, Model model){
 		
-		service.createUser(vo);
-		model.addAttribute("user" , vo);
-		return "/index";
+		try {
+			service.createUser(vo);
+			return "redirect:/index";
+			
+		} catch (Exception e) {
+			model.addAttribute("msg","이미 해당 아이디가 존재합니다");
+			return "/user/regist";
+		}
 		
 	}
 	
@@ -42,18 +47,18 @@ public class UserController {
 		
 		
 		if (vo2 == null){
-			model.addAttribute("error", "ID 또는 Pw 가 일치하지 않습니다.");		
+//			model.addAttribute("error", "<script>alert('ID또는 비밀번호가 맞지 않습니다.')</script>");
+			model.addAttribute("error", "ID또는 비밀번호가 맞지 않습니다.");
+			
 			return "/user/login";
 			
 		}else{
 			
 			model.addAttribute("read", service.readInfo(vo));
 			Cookie cookie = new Cookie("login", service.readInfo(vo).getUserid());
-			cookie.setMaxAge(180);
+			cookie.setMaxAge(60*30);
 			cookie.setPath("/");
 			response.addCookie(cookie);
-			
-			System.out.println("userController_ login 성공 : "+cookie.getName());
 			
 			return "redirect:/index";
 		}		
@@ -90,9 +95,9 @@ public class UserController {
 					response.addCookie(cookie);
 				}
 			}
-			System.out.println("로그아웃 성공!!!");
 			return "redirect:/index";		
 		
 	}
-	
+	@RequestMapping("/regist")
+	public void regist(@ModelAttribute UserVO vo, Model model){}
 }

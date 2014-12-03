@@ -172,7 +172,7 @@
                         <li><a href="/diary/main">관찰일기</a></li> 
                         <li><a href="/mypages/main">My Pages</a></li>
                         <li class="login">
-                            <a data-toggle="modal" href="#loginForm"><i class="icon-lock"></i></a>
+                        <a href='/user/logout'>LogOut</a>
                         </li>
                     </ul>        
                 </div><!--/.nav-collapse -->
@@ -198,7 +198,7 @@
 	<div class="modal fade" id="testForm" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
 		<div class = "modal-dialog modal-sm">
 			<div class="modal-content">
-				<div class="modal-header">
+				<div class="modal-header" style="text-align:center;">
 					<button type="button" class="close" data-dismiss="modal">✕</button>
 					<h3 id="mTitle" style="text-align: center;">
 					<!-- 제목 들어가는 부분 -->
@@ -211,11 +211,10 @@
 					
 					<div id="mCont" style="width:100%; text-align:center;">
 					</div>
+					
 				</div>
 				
 				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" onclick="insertModal()"> 수 정 </button>
-<!-- 					<button type="button" class="btn btn-primary" onclick="deleteModal()"> 삭 제 </button> -->
 				</div>
 			</div>
 		</div>		
@@ -290,6 +289,12 @@
 	var page = 1;
 	var bookNo = 0;
 	
+	var camera, scene, renderer;
+	var controls;
+
+	var objects = [];
+	var targets = { table: [], sphere: []};
+	
 	(function makeTable(){
 		bookNo = ${number};
 		
@@ -321,12 +326,6 @@
 	})();
 	
 /*end makeTable................................................................................................*/	
-	var camera, scene, renderer;
-	var controls;
-
-	var objects = [];
-	var targets = { table: [], sphere: []};
-	
 /*Start main...................................................................................................*/
 
  	init();
@@ -352,7 +351,7 @@
 	        var number = document.createElement( 'div' );
 	        number.className = 'number';
  	        number.id = tableData[i].pno;
-	        element.appendChild( number ); 
+	        element.appendChild(number);
 	        
 	        var symbol = document.createElement( 'div' );
 	        symbol.className = 'symbol';
@@ -458,14 +457,11 @@
 	                		Math.random() * duration + duration )
 	                .easing( TWEEN.Easing.Exponential.InOut )
 	                .start();
-	    }
-	
+	    }	
 	    new TWEEN.Tween(this)
 	            .to({}, duration * 2 )
 	            .onUpdate(render)
-	            .start();
-	
-	    
+	            .start();	    
 	}
 	
 	function onWindowResize(){	
@@ -474,8 +470,7 @@
 	
 	    renderer.setSize( window.innerWidth, window.innerHeight );
 	
-	    render();
-	
+	    render();	
 	}
 	
 	function animate(){	
@@ -524,8 +519,7 @@
 	}
 	
 	
-  function makeBtn(num){
-	  
+  function makeBtn(num){	  
       var target1 = $(".prevPage")
       var target2 = $(".nextPage")
       var content1 = "";
@@ -568,22 +562,23 @@
    }
   
   	function clickModal(title, contfile, cont, pno){
-/*   		console.log("title : " + title );
-  		console.log("contfile : " + contfile );
-  		console.log("cont : " + cont ); */
   	  	var fileurl = "/han/file/regphoto/";
+  		
   		var tarTitle = $("#mTitle");
   		var tarContfile = $("#mContfile");
   		var tarCont = $("#mCont");
-  		var tarPno = $(".modal-footer");
+  		var targetbtn = $(".modal-footer");
+  		
   		var conContfile = "";
-  		var sendPno = "";
+  		var makeBtn = "";
   		
   		console.log(pno);
   		conContfile += '<img src = ' + fileurl + contfile + '>';
-		sendPno += "<button type='button' class='btn btn-primary'" + "onclick='deleteModal("+ pno +")'> 삭 제 </button>"
-  		
-  		tarPno.html(sendPno);
+  		makeBtn += "<button type='button' class='btn btn-primary'" + "onclick='deleteModal(" + pno +")'> 삭 제 </button>"
+					+ "<button type='button' class='btn btn-primary'" + "onclick='insertModal(\""
+					+ title + "\",\"" + contfile + "\",\"" + cont + "\",\"" + pno + "\")'>" + "수 정 </button>";
+				
+		targetbtn.html(makeBtn);
   		tarTitle.html(title);
   		tarCont.html(cont);
   		tarContfile.html(conContfile);  		
@@ -604,7 +599,6 @@
 	}		
 
 	function deleteModal(num){
-		console.log("getPno : " + num);
 		$.post(url='/book/sample/delete',
 				{pno:num},
 				function(data){
@@ -615,8 +609,75 @@
 				});
 	}
 	
-	function insertModal(){
+	function insertModal(title, contfile, cont, pno){
+		// make insert modal
+/* 		var tarTitle = document.getElementsByClassName("modal-header"); */
 		
+		var fileurl = "/han/file/regphoto/";
+		
+		var tarTitle = $(".modal-header");
+		var tarCont = $(".modal-body");
+		var tarBtn = $(".modal-footer");
+		
+		var titleCont = "";
+		var bodyCont = "";
+		var footerCont = "";
+		
+		titleCont += "<input id='modal-title' type='text' style='text-align: center;' value= " + title + ">";
+		bodyCont += '<img src = ' + fileurl + contfile + '><br>'
+					+"<textarea id='modal-cont'>" + cont + "</textarea>";
+		footerCont += "<button type='button' class='btn btn-primary'" + "onclick='insertLogic(\""
+						+ contfile + "\",\"" + pno + "\")'> 완 료 </button>";
+			
+		tarTitle.html(titleCont);
+		tarCont.html(bodyCont);
+		tarBtn.html(footerCont);		
+	}
+	
+	function insertLogic(fileName,num){
+		var mTitle = document.getElementById('modal-title').value;
+		var mCont = document.getElementById('modal-cont').value;
+
+		$.post(url='sample/update',
+				{title:mTitle,
+				cont:mCont,
+				contfile:fileName,
+				pno:num},
+				function(data){
+					againTable();
+					init();
+					animate();
+					$("#testForm").modal('hide');
+					initModal(mTitle, mCont, fileName, num);
+				});
+	}
+	
+	function initModal(title, cont, contfile, pno){
+		
+		console.log("-------------init start----------------")
+		var fileurl = "/han/file/regphoto/";
+		
+		var tarTitle = $(".modal-header");
+		var tarCont = $(".modal-body");
+		var tarBtn = $(".modal-footer");
+		
+		var titleCont = "";
+		var bodyCont = "";
+		var footerCont = "";
+		
+		console.log(cont, contfile);
+		
+		titleCont += "<button type='button' class='close' data-dismiss='modal'>✕</button>"
+					+ "<h3 id='mTitle' style='text-align: center;'>" + title + "</h3>";
+		bodyCont += "<div id='mContfile' style='width:100%;'><img src='/han/file/regphoto/'" + contfile + "'></div>"
+					+ "<div id='mCont' style='width:100%; text-align:center;'>" + cont + "</div>";
+		footerCont += "<button type='button' class='btn btn-primary'" + "onclick='deleteModal(" + pno +")'> 삭 제 </button>"
+						+ "<button type='button' class='btn btn-primary'" + "onclick='insertModal(\""
+						+ title + "\",\"" + contfile + "\",\"" + cont + "\",\"" + pno + "\")'>" + "수 정 </button>";
+					
+		tarTitle.html(titleCont);
+		tarCont.html(bodyCont);
+		tarBtn.html(footerCont);
 	}
 	
 </script>

@@ -87,6 +87,11 @@ public class BookController {
 	   bookService.deletePage(pno);
    }
    
+   @RequestMapping("/sample/update")
+   public @ResponseBody void updatePicture(@ModelAttribute PageVO vo){
+	   bookService.updatePage(vo);
+   }
+   
    @RequestMapping("/createPicture")
    public String createPicture(@ModelAttribute PageVO vo){
       /*vo.setContfile("null");*/
