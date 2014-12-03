@@ -40,7 +40,12 @@ public class UserServiceTest {
 		vo.setUserid("han06");
 		vo.setPw("han06");
 		vo.setEmail("han06@han.net");
-		service.createUser(vo);
+		try {
+			service.createUser(vo);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	@Test
