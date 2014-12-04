@@ -29,7 +29,7 @@ public class BookService {
 		mapper.update(vo);
 	}
 	
-	public void delete(String bno){
+	public void delete(int bno){
 		mapper.delete(bno);
 	}
 }

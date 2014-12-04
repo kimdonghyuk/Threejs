@@ -30,5 +30,5 @@ public interface BookMapper {
 	public void update(BookVO vo);
 	
 	@Delete("delete from tbl_book where bno = #{bno}")
-	public void delete(String bno);
+	public void delete(int bno);
 }

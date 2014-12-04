@@ -121,8 +121,8 @@
     	<div class="span8 offset2" style="border: solid; border-color: green; opacity: 0.7;">
             <div class="blog" style="opacity: 1;">
             	<ul class="uploadUL"> </ul>
-            	<form target="zero" action="upload"  method="post" enctype="multipart/form-data">
-					<input type='file' name='contfile'><input type='submit' value="UPLOAD">
+            	<form target="zero" action="/han/file/upload"  method="post" enctype="multipart/form-data">
+					<input type='file' name='file'><input type='submit' value="UPLOAD">
 				</form>
 				<iframe name="zero" width="0px" height="0px">
 				</iframe>
@@ -149,18 +149,6 @@
         </div>
     </div>
 	</section>
-
-<footer id="footer" style="opacity: 0.7; position: absolute; bottom: auto; width: 100%; background-color: black;">
-    <div class="container">
-        <div class="row-fluid">
-            <div class="span12" style="margin-top:-15px">
-                &copy; Bit58th 한잔해!!                
-                <a id="gototop" class="gototop pull-right" href="#"><i class="icon-angle-up"></i></a>
-            </div>
-            <!--/Goto Top-->
-        </div>
-    </div>
-</footer>
 
 	<!--  Login form -->
 	<div class="modal hide fade in" id="loginForm" aria-hidden="false">
@@ -228,7 +216,7 @@
 		//class이름이 filename인 부분에 히든값으로 fileName을 추가 시켜준다.
 		$(".filename").append("<input type='hidden' name='contfile' value= '"+data.fileName+"'>");
 		if(data.suffix == '.jpg'){
-			$(".uploadUL").append("<li><image class='thumb' data-src='"+data.fileName+"' src='/book/view/"+ data.fileName+"'/></li>");
+			$(".uploadUL").append("<li><image class='thumb' data-src='"+data.fileName+"' src='/han/file/regphoto/"+ data.fileName+"'/></li>");
 		}else{
 			$(".uploadUL").append("<li><image class='thumb' data-src='"+data.fileName+"' src='/resources/images/logo.png'/></li>");
 		}

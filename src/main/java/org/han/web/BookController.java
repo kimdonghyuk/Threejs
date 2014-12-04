@@ -41,6 +41,11 @@ public class BookController {
       return service.read(page);
    }
    
+   @RequestMapping("/main/delete")
+   public @ResponseBody void deleteDogam(int bno){
+	   service.delete(bno);
+   }
+   
    @RequestMapping("/regist")
    public void regist(){}
    
@@ -80,6 +85,11 @@ public class BookController {
    @RequestMapping("/sample/delete")
    public @ResponseBody void deletePicture(int pno){
 	   bookService.deletePage(pno);
+   }
+   
+   @RequestMapping("/sample/update")
+   public @ResponseBody void updatePicture(@ModelAttribute PageVO vo){
+	   bookService.updatePage(vo);
    }
    
    @RequestMapping("/createPicture")

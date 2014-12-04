@@ -40,6 +40,16 @@
 			padding-top: 0px;}
 	}
     
+    .insertBtn{
+    	background-color: #faff00;
+    	border-color: #0094ff;
+    	opacity : 0.7;
+    }
+    
+    .insertBtn:hover{
+    	background-color: rgba(0, 0, 255, 0.2);
+    }
+    
     .btn-success{    	
     	margin : 5px;
     	width : 119px;	
@@ -198,7 +208,7 @@
 	<div class="modal fade" id="testForm" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
 		<div class = "modal-dialog modal-sm">
 			<div class="modal-content">
-				<div class="modal-header">
+				<div class="modal-header" style="text-align:center;">
 					<button type="button" class="close" data-dismiss="modal">✕</button>
 					<h3 id="mTitle" style="text-align: center;">
 					<!-- 제목 들어가는 부분 -->
@@ -211,11 +221,10 @@
 					
 					<div id="mCont" style="width:100%; text-align:center;">
 					</div>
+					</div>					
 				</div>
 				
 				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" onclick="insertModal()"> 수 정 </button>
-<!-- 					<button type="button" class="btn btn-primary" onclick="deleteModal()"> 삭 제 </button> -->
 				</div>
 			</div>
 		</div>		
@@ -252,27 +261,6 @@
     </div>
 </footer>
 
-<!--Login form...............................................................................................-->
-<div class="modal hide fade in" id="loginForm" aria-hidden="false">
-    <div class="modal-header">
-        <i class="icon-remove" data-dismiss="modal" aria-hidden="true"></i>
-        <h4>Login Form</h4>
-    </div>
-    <!--Modal Body-->
-    <div class="modal-body">
-        <form class="form-inline" action="/index" method="post" id="form-login">
-            <input type="text" class="input-small" placeholder="Email">
-            <input type="password" class="input-small" placeholder="Password">
-            <label class="checkbox">
-                <input type="checkbox"> Remember me
-            </label>
-            <button type="submit" class="btn btn-primary">Sign in</button>
-        </form>
-        <a href="#">Forgot your password?</a>
-    </div>
-    <!--/Modal Body-->
-</div>
-<!--/Login form..............................................................................................-->
  
 <!--java script문 시작.........................................................................................--> 
 <script src="/resources/js/vendor/jquery-1.9.1.min.js"></script>
@@ -289,6 +277,12 @@
 	var tableData = [];
 	var page = 1;
 	var bookNo = 0;
+	
+	var camera, scene, renderer;
+	var controls;
+
+	var objects = [];
+	var targets = { table: [], sphere: []};
 	
 	(function makeTable(){
 		bookNo = ${number};
@@ -321,12 +315,6 @@
 	})();
 	
 /*end makeTable................................................................................................*/	
-	var camera, scene, renderer;
-	var controls;
-
-	var objects = [];
-	var targets = { table: [], sphere: []};
-	
 /*Start main...................................................................................................*/
 
  	init();
@@ -352,7 +340,7 @@
 	        var number = document.createElement( 'div' );
 	        number.className = 'number';
  	        number.id = tableData[i].pno;
-	        element.appendChild( number ); 
+	        element.appendChild(number);
 	        
 	        var symbol = document.createElement( 'div' );
 	        symbol.className = 'symbol';
@@ -458,14 +446,11 @@
 	                		Math.random() * duration + duration )
 	                .easing( TWEEN.Easing.Exponential.InOut )
 	                .start();
-	    }
-	
+	    }	
 	    new TWEEN.Tween(this)
 	            .to({}, duration * 2 )
 	            .onUpdate(render)
-	            .start();
-	
-	    
+	            .start();	    
 	}
 	
 	function onWindowResize(){	
@@ -474,8 +459,7 @@
 	
 	    renderer.setSize( window.innerWidth, window.innerHeight );
 	
-	    render();
-	
+	    render();	
 	}
 	
 	function animate(){	
@@ -492,7 +476,6 @@
 		console.log("in againTable !")
 		var obj = document.getElementsByClassName("element");
 		while(obj.length>0){
-			console.log("delete object");
 			obj[0].parentNode.removeChild(obj[0]);
 		}
 		
@@ -524,8 +507,7 @@
 	}
 	
 	
-  function makeBtn(num){
-	  
+  function makeBtn(num){	  
       var target1 = $(".prevPage")
       var target2 = $(".nextPage")
       var content1 = "";
@@ -568,22 +550,22 @@
    }
   
   	function clickModal(title, contfile, cont, pno){
-/*   		console.log("title : " + title );
-  		console.log("contfile : " + contfile );
-  		console.log("cont : " + cont ); */
   	  	var fileurl = "/han/file/regphoto/";
+  		
   		var tarTitle = $("#mTitle");
   		var tarContfile = $("#mContfile");
   		var tarCont = $("#mCont");
-  		var tarPno = $(".modal-footer");
+  		var targetbtn = $(".modal-footer");
+  		
   		var conContfile = "";
-  		var sendPno = "";
+  		var makeBtn = "";
   		
-  		console.log(pno);
   		conContfile += '<img src = ' + fileurl + contfile + '>';
-		sendPno += "<button type='button' class='btn btn-primary'" + "onclick='deleteModal("+ pno +")'> 삭 제 </button>"
-  		
-  		tarPno.html(sendPno);
+  		makeBtn += "<button type='button' class='btn btn-primary'" + "onclick='deleteModal(" + pno +")'> 삭 제 </button>"
+					+ "<button type='button' class='btn btn-primary'" + "onclick='insertModal(\""
+					+ title + "\",\"" + contfile + "\",\"" + cont + "\",\"" + pno + "\")'>" + "수 정 </button>";
+				
+		targetbtn.html(makeBtn);
   		tarTitle.html(title);
   		tarCont.html(cont);
   		tarContfile.html(conContfile);  		
@@ -604,7 +586,6 @@
 	}		
 
 	function deleteModal(num){
-		console.log("getPno : " + num);
 		$.post(url='/book/sample/delete',
 				{pno:num},
 				function(data){
@@ -615,9 +596,101 @@
 				});
 	}
 	
-	function insertModal(){
+	function insertModal(title, contfile, cont, pno){
+		// make insert modal
+/* 		var tarTitle = document.getElementsByClassName("modal-header"); */
 		
+		var fileurl = "/han/file/regphoto/";
+		
+		var tarTitle = $(".modal-header");
+		var tarCont = $(".modal-body");
+		var tarBtn = $(".modal-footer");
+		
+		var titleCont = "";
+		var bodyCont = "";
+		var footerCont = "";
+		
+		titleCont += "<input id='modal-title' type='tex/t' style='text-align: center;' value= " + title + ">";
+		bodyCont += "<div id='modalInsertPicture'>"
+					+ "<img src = '" + fileurl + contfile + "'></div>"
+					+ "<form target='zero' action='/han/file/upload' method='post' enctype='multipart/form-data'>"
+					+ "<input type='file' name='file'><input type='submit' value='수 정'>	</form>"
+ 					+ "<iframe name='zero' width='0' height='0'></iframe>"
+					+ "<textarea id='modal-cont'>" + cont + "</textarea>";
+ 		footerCont += "<button type='button' class='btn btn-primary'" + "onclick='insertLogic(\""
+						+ contfile + "\",\"" + pno + "\")'> 완 료 </button>";
+			
+		tarTitle.html(titleCont);
+		tarCont.html(bodyCont);
+		tarBtn.html(footerCont);		
 	}
+	
+	function updateResult(data){		
+		
+		var tarBtn = $(".modal-footer");
+		var footerCont = "";
+		
+		if(data.suffix == '.jpg'){
+			var target = $("#modalInsertPicture");
+			var content = "";
+			
+			content += "<input id='getFileName' type='hidden' value='" + data.fileName + "'>"
+						+ "<image id='thumb' src='/han/file/regphoto/" + data.fileName + "'/></p>"
+			target.html(content);
+			/* $(".uploadUL").append("<li><image class='thumb' data-src='"+data.fileName+"' src='/web/file/view/"+ data.fileName+"'/></a></li>"); */
+		}else{
+			$("#modalInsertPicture").html("<image id='thumb' data-src='"+data.fileName+"'src='/resources/book/images/icon.jpg'/></a></p>");
+		}
+	}
+	
+	
+	function insertLogic(fileName,num){
+		var mTitle = document.getElementById('modal-title').value;
+		var mCont = document.getElementById('modal-cont').value;
+		var mfileName = document.getElementById('getFileName').value;
+		console.log("fileName : " + mfileName);
+		
+		$.post(url='sample/update',
+				{title:mTitle,
+				cont:mCont,
+				contfile:mfileName,
+				pno:num},
+				function(data){
+					againTable();
+					init();
+					animate();
+					$("#testForm").modal('hide');
+					initModal(mTitle, mCont, mfileName, num);
+				});
+	}
+	
+	function initModal(title, cont, contfile, pno){
+		
+		console.log("-------------init start----------------")
+		var fileurl = "/han/file/regphoto/";
+		
+		var tarTitle = $(".modal-header");
+		var tarCont = $(".modal-body");
+		var tarBtn = $(".modal-footer");
+		
+		var titleCont = "";
+		var bodyCont = "";
+		var footerCont = "";
+				
+		titleCont += "<button type='button' class='close' data-dismiss='modal'>✕</button>"
+					+ "<h3 id='mTitle' style='text-align: center;'>" + title + "</h3>";
+		bodyCont += "<div id='mContfile' style='width:100%;'><img src='/han/file/regphoto/'" + contfile + "'></div>"
+					+ "<br>"
+					+ "<div id='mCont' style='width:100%; text-align:center;'>" + cont + "</div>";
+		footerCont += "<button type='button' class='btn btn-primary'" + "onclick='deleteModal(" + pno +")'> 삭 제 </button>"
+						+ "<button type='button' class='btn btn-primary'" + "onclick='insertModal(\""
+						+ title + "\",\"" + contfile + "\",\"" + cont + "\",\"" + pno + "\")'>" + "수 정 </button>";
+					
+		tarTitle.html(titleCont);
+		tarCont.html(bodyCont);
+		tarBtn.html(footerCont);
+	}
+
 	
 </script>
 </body>
