@@ -46,22 +46,22 @@
 	    ul {list-style-type:none;}
         
         body {
-	        /* background-image: url(/resources/images/search/search_back.jpg);
-	        background-position: center center;
-	        background-repeat: no-repeat;
-	        background-attachment: fixed;
-	        background-size: cover; */
-	        background-color: #464646;
-	        font-family: 'Nanum Gothic', serif;
-        }
-        
-        #back {
-        	background-image: url(/resources/images/search/search_back.jpg);
+	        background-image: url(/resources/images/search/search_back.jpg);
 	        background-position: center center;
 	        background-repeat: no-repeat;
 	        background-attachment: fixed;
 	        background-size: cover;
 	        background-color: #464646;
+	        font-family: 'Nanum Gothic', serif;
+        }
+        
+        #back {
+        	/* background-image: url(/resources/images/search/search_back.jpg);
+	        background-position: center center;
+	        background-repeat: no-repeat;
+	        background-attachment: fixed;
+	        background-size: cover;
+	        background-color: #464646; */
         }
         
         /* modal 크기 */
@@ -170,17 +170,10 @@
 	<div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
 	    <div class="modal-dialog modal-sm">
 	        <div class="modal-content">
-<<<<<<< HEAD
 	            <div class="modal-header">
 	                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
 	                <p class="str1 modal-title text-center" id="myModalLabel">명진아 봐라</p>
 	            </div>
-=======
-	            <!-- <div class="modal-header">
-	                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-	                <h4 class="modal-title" id="myModalLabel">명진형 봐라요</h4>
-	            </div> -->
->>>>>>> 0c8b0e84f154d282edbf79a24f7adbb184fe0037
 	            <div id="modal-body" class="modal-body">
 	                <a>으아아아아 모달</a>
 	            </div>
