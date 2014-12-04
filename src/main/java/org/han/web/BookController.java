@@ -40,6 +40,11 @@ public class BookController {
       
       return service.read(page);
    }
+     
+   @RequestMapping("/main/show")
+   public @ResponseBody BookVO show(@RequestParam(value="bno", defaultValue="") int bno, Model model){
+	   return service.showdata(bno);
+   }
    
    @RequestMapping("/main/delete")
    public @ResponseBody void deleteDogam(int bno){
