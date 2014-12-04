@@ -46,6 +46,18 @@
 body {
 	background-color: lightblue;
 }
+
+.center-button {
+	height: 50px;
+	width: 200px;
+	margin: auto;
+}
+
+.center-button-in {
+	margin: 3px; 0
+	margin-top: 10px;
+	border-radius: 5px;
+}
 </style>
 </head>
 
@@ -94,20 +106,31 @@ body {
 	<div id="menu" style="height: 600px; padding: 20px 20px 20px 20px">
 		<div id="container" style="max-width: 700px; margin: auto">
 			<h3>*회원 정보*</h3>
-
-
-			<form action="update">
-
+<h4>${error}<h4>
+			<form action="modify">
 				<ul>
 					<li>경험치: ${user.exp}</li>
 					<li>${user.userid}</li>
-					<li>E-mail: ${user.email}</li>
+					<li>E-mail: <input type="text" name="email"	value="${user.email}"></li>
+					<li>변경 할 비밀번호: <input type="password" name="pw" value="${user.pw}"></li>
 				</ul>
 
-				<input type="hidden" name="userid" value="${user.userid}">
+				<input type="hidden" name="userid" value="${user.userid}"> 
+				<input type="hidden" name="exp" value="${user.exp}">
+
 				<button type="submit"
 					class="btn btn-primary btn-large pull-right button-radius">정보수정</button>
 			</form>
+
+<!-- 버튼배치가 이상하지만 윤형오빠가 나두라고 했다 -->
+			<form action="delete">
+				<input type="hidden" name="userid" value="${user.userid}"> 
+				<input type="hidden" name="pw" value="${user.pw}">
+
+				<button type="submit"
+					class="btn btn-primary btn-large pull-right button-radius">계정삭제</button>
+			</form>
+
 		</div>
 	</div>
 
