@@ -16,7 +16,7 @@ public class UserService {
 		return mapper.readInfo(vo);
 	}
 	
-	public void createUser(UserVO vo){
+	public void createUser(UserVO vo) throws Exception{
 		mapper.createUser(vo);
 	}
 	public void updateUser(UserVO vo){

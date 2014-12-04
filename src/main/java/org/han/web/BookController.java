@@ -40,20 +40,34 @@ public class BookController {
       
       return service.read(page);
    }
+     
+   @RequestMapping("/main/show")
+   public @ResponseBody BookVO show(@RequestParam(value="bno", defaultValue="") int bno, Model model){
+	   return service.showdata(bno);
+   }
+   
+   @RequestMapping("/main/delete")
+   public @ResponseBody void deleteDogam(int bno){
+	   service.delete(bno);
+   }
    
    @RequestMapping("/regist")
    public void regist(){}
    
    @RequestMapping("/registdata")
    public String createdate(@ModelAttribute BookVO vo){
-      vo.setUserid("han03");
-      System.out.println(vo.toString());
+      vo.setUserid("han07");
       service.create(vo);
       return "redirect:main";
    }      
    
    @RequestMapping("/regphoto")
    public void regPhoto(){}
+   
+	@RequestMapping("/regphoto/select")
+	public @ResponseBody List<BookVO> selectBook(){
+		return bookService.selectBook();
+	}   
    
    
    @RequestMapping("/sample")
@@ -65,7 +79,6 @@ public class BookController {
 //   public @ResponseBody List<PageVO> serviceList(
 //         @RequestParam(value = "page", defaultValue = "1")int page,
 //         @RequestParam(value = "bno", defaultValue = "2")int bno){
-//	   System.out.println("page,bno : " + page + "," + bno);
 //      return bookService.readPage(page,bno);
 //   }
    
@@ -74,12 +87,21 @@ public class BookController {
       return bookService.readPage(vo);
    }
    
+   @RequestMapping("/sample/delete")
+   public @ResponseBody void deletePicture(int pno){
+	   bookService.deletePage(pno);
+   }
+   
+   @RequestMapping("/sample/update")
+   public @ResponseBody void updatePicture(@ModelAttribute PageVO vo){
+	   bookService.updatePage(vo);
+   }
+   
    @RequestMapping("/createPicture")
    public String createPicture(@ModelAttribute PageVO vo){
       /*vo.setContfile("null");*/
 //      vo.setBno(2);
       vo.setUserid("han07");
-      System.out.println(vo.toString());
       bookService.createPicture(vo);;
       return "redirect:main";
    }

@@ -20,6 +20,9 @@ public interface BookMapper {
 			+ " where rn > (#{page}-1)*3 and rn <= (#{page}*3)")
 	public List<BookVO> read(String page);	
 	
+	@Select("select title, contfile from tbl_book where bno = #{bno}")
+	public BookVO showdata(int bno);
+	
 	@Insert("insert into tbl_book(bno, userid, title, contfile)"
 			+ " values(seq_book.nextval, #{userid}, #{title}, #{contfile})")
 	public void create(BookVO vo);
@@ -30,5 +33,5 @@ public interface BookMapper {
 	public void update(BookVO vo);
 	
 	@Delete("delete from tbl_book where bno = #{bno}")
-	public void delete(String bno);
+	public void delete(int bno);
 }

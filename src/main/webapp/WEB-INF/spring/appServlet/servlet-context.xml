@@ -23,7 +23,7 @@
 	
 	
 	<!-- interceptor 처리/ Login -->
-	 <interceptors>
+<!-- 	 <interceptors>
         <interceptor>
             <mapping path="/book/main" />
             <mapping path="/diary/main" />
@@ -32,7 +32,7 @@
       
             <beans:bean class="org.han.util.UserAuthInterceptor"></beans:bean>
         </interceptor>
-        </interceptors>
+        </interceptors> -->
         <!-- end interceptor -->
         
         

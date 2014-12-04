@@ -34,14 +34,25 @@
     	@media screen and (max-width: 979px) {
 		body {
 			padding-top: 0px;
+			}
 		}
-	}
-    
+		
+        .container{
+           text-shadow: #000000 0.2em 0.2em 0.4em;
+        }
+        
+        #slide-show{
+        height:80%;
+        width:100%;
+        }
+		body{
+		 	background-color:black;
+		}   
     </style>
     
 </head>
 
-<body>
+<body onLoad = "viewCookie()">
 
     <!--Header-->
     <header class="navbar navbar-fixed-top">
@@ -61,9 +72,7 @@
                         <li><a href="/favor/main">즐겨찾기</a></li>
                         <li><a href="/diary/main">관찰일기</a></li> 
                         <li><a href="/mypages/main">My Pages</a></li>
-                        <li class="login">
-                            <a data-toggle="modal" href="#loginModal"><i class="icon-lock"></i></a>
-                        </li>
+                        <li class="login" id ="login" ><a href="/user/login">Login</a></li>
                     </ul>        
                 </div><!--/.nav-collapse -->
             </div>
@@ -73,7 +82,7 @@
 
 
     <!--Slider-->
-    <section id="slide-show">
+    <section id="slide-show" >
         <div id="slider" class="sl-slider-wrapper">
 
             <!--Slider Items-->
@@ -82,7 +91,6 @@
                 <div class="sl-slide item1" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
                     <div class="sl-slide-inner">
                         <div class="container">
-                            <img class="pull-right" src="/resources/images/sample/slider/img1.png" alt="" />
                             <h2>검색</h2>
                             <h3 class="gap">지금 눈앞에 보이는 그거 같이 찾아볼까요???</h3>
                             <a class="btn btn-large btn-transparent" href="/search/main">자세히보기</a>
@@ -97,7 +105,6 @@
                 <div class="sl-slide item2" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
                     <div class="sl-slide-inner">
                         <div class="container">
-                            <img class="pull-right" src="/resources/images/sample/slider/img4.png" alt="" />
                             <h2>도감만들기</h2>
                             <h3 class="gap">내가 본것들 예쁘게 담아서 친구한테 자랑해야지~!</h3>
                             <a class="btn btn-large btn-transparent" href="/book/main">자세히보기</a>
@@ -108,7 +115,6 @@
                 <div class="sl-slide item2" data-orientation="horizontal" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
                     <div class="sl-slide-inner">
                         <div class="container">
-                            <img class="pull-right" src="/resources/images/sample/slider/img3.png" alt="" />
                             <h2>관찰일기</h2>
                             <h3 class="gap">시간이 지나면 어떻게 변하는지 기록해보자!!</h3>
                             <a class="btn btn-large btn-transparent" href="/diary/main">자세히보기</a>
@@ -121,10 +127,9 @@
                 <!--Slider Item2-->
 
                 <!--Slider Item3-->
-                <div class="sl-slide item3" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
+                <div class="sl-slide item3" data-orientation="vertical" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
                     <div class="sl-slide-inner">
                         <div class="container">
-                            <img class="pull-right" src="/resources/images/sample/slider/img2.png" alt="" />
                             <h2>즐겨찾기</h2>
                             <h3 class="gap">우리 그때 그 놀이 하고 또 놀까??</h3>
                             <a class="btn btn-large btn-transparent" href="/favor/main">자세히보기</a>
@@ -155,7 +160,7 @@
 
     <!--/Slider-->
 
-<footer id="footer" style="opacity: 0.5; position: absolute; bottom: auto; width: 100%; background-color: black;">
+<footer id="footer" style="opacity: 0.3; position: absolute; bottom: auto; width: 100%; background-color: white;">
     <div class="container">
         <div class="row-fluid">
             <div class="span12" style="margin-top:-15px">
@@ -166,42 +171,6 @@
         </div>
     </div>
 </footer>
-<!--  Login form -->
-    <div class="modal hide fade" id="loginModal">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">✕</button>
-            <h3 style="text-align: center">로그인</h3>
-        </div>
-        <div class="modal-body" style="text-align:center;">
-            <div class="row-fluid">
-                <div class="span10 offset1">
-                    <div id="modalTab">
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="login">
-                                <form method="post" action='' name="login_form">
-                                    <p><input type="text" class="span12" name="eid" id="email" placeholder="Email"></p>
-                                    <p><input type="password" class="span12" name="passwd" placeholder="Password"></p>
-                                    <p><button type="submit" class="btn btn-primary">Sign in</button>
-                                        <a href="#forgotpassword" data-toggle="tab">Forgot Password?</a>
-                                    </p>
-                                </form>
-                            </div>
-                            <div class="tab-pane fade" id="forgotpassword">
-                                <form method="post" action='' name="forgot_password">
-                                    <p>Hey this stuff happens, send us your email and we'll reset it for you!</p>
-                                    <input type="text" class="span12" name="eid" id="email" placeholder="Email">
-                                    <p><button type="submit" class="btn btn-primary">Submit</button>
-                                        <a href="#login" data-toggle="tab">Wait, I remember it now!</a>
-                                    </p>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-<!--  /Login form -->
 
 <script src="resources/js/vendor/jquery-1.9.1.min.js"></script>
 <script src="resources/js/vendor/bootstrap.min.js"></script>
@@ -213,6 +182,25 @@
 
 <!-- SL Slider -->
 <script type="text/javascript"> 
+
+/**
+ * 쿠키값 추출
+ * @param cookieName 쿠키명
+ */
+ window.onload = function getCookie( cookieName )
+ {
+     var search = cookieName + "=";
+     var cookie = document.cookie;
+     // 현재 쿠키가 존재할 경우
+     if( cookie.length > 0 )
+     {
+    	 $("#login").html("<a href='/user/logout'>LogOut</a>");
+    	
+     }
+         
+ }
+
+
 $(function() {
     var Page = (function() {
 

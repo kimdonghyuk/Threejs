@@ -40,6 +40,16 @@
 			padding-top: 0px;}
 	}
     
+    .insertBtn{
+    	background-color: #faff00;
+    	border-color: #0094ff;
+    	opacity : 0.7;
+    }
+    
+    .insertBtn:hover{
+    	background-color: rgba(0, 0, 255, 0.2);
+    }
+    
     .btn-success{    	
     	margin : 5px;
     	width : 119px;	
@@ -83,8 +93,8 @@
 	.element{
 		width: 270px;
 		height: 300px;
-		box-shadow: 0px 0px 12px rgba(0, 250, 85, 0.5);
-		border: 2px solid rgba(0, 250, 85, 0.25);
+		box-shadow: 0px 0px 12px rgba(0, 250, 85, 0.6);
+		border: 2px solid rgba(0, 250, 85, 0.4);
 		text-align: center;
 		cursor: pointer;
 	}
@@ -100,15 +110,22 @@
 		right: 100%;
 	}
 	
-	.element .symbol {
+	.symbol{
+		font-size : 40px;
+		font-weight: bold;
+		padding : 5px;
+		color: rgba(0, 0, 0, 0.6);
+		text-align: center;
+		text-shadow: 0 0 10px rgba(0, 250, 85, 0.50);
+	}
+	
+/* 	.element .symbol {
 		position: absolute;
-		left: 0px;
-		right: 0px;
-		font-size: 40px;
+		font-size: 100px;
 		font-weight: bold;
 		color: rgba(255, 255, 255, 0.8);
 		text-shadow: 0 0 10px rgba(0, 250, 85, 0.50);
-	}
+	} */
 	
 	.element .details {
 		position: absolute;
@@ -118,20 +135,6 @@
 		font-size: 12px;
 		color: rgba(0, 250, 85, 0.8);
 	}
-	
-/* 	#table{
-		color: rgba(0, 255, 0, 0.6);
-		background: transparent;
-		border:solid;
-		cursor: pointer;
-	}
-
-	#sphere{
-		color: rgba(0, 255, 0, 0.6);
-		background: transparent;
-		border:solid;
-		cursor: pointer;
-	} */
 		
 	#table:hover {
 		background-color: rgba(0, 0, 255, 0.2);
@@ -142,16 +145,16 @@
 	}
 	
 	.prevPage:hover{
-		opacity : 0.7
+		opacity : 0.9
 	}
 	
 	.nextPage:hover{
-		opacity : 0.7
+		opacity : 0.9
 	}
 	
 	button:active {
 		color: #000000;
-		background-color: rgba(0, 0, 255, 0.5);
+		background-color: rgba(0, 0, 255, 0.8);
 	}    
     </style>
     
@@ -159,7 +162,7 @@
 
 <body>
 
-<!--Header Start ...........................................................................................................-->
+<!--Header Start ..............................................................................................-->
    <!--Header-->
     <header class="navbar navbar-fixed-top">
         <div class="navbar-inner">
@@ -179,7 +182,7 @@
                         <li><a href="/diary/main">관찰일기</a></li> 
                         <li><a href="/mypages/main">My Pages</a></li>
                         <li class="login">
-                            <a data-toggle="modal" href="#loginForm"><i class="icon-lock"></i></a>
+                        <a href='/user/logout'>LogOut</a>
                         </li>
                     </ul>        
                 </div><!--/.nav-collapse -->
@@ -187,29 +190,47 @@
         </div>
     </header>
     <!-- /header -->
-<!--/header end..............................................................................................................-->
+<!--/header end................................................................................................-->
     
-<!-- seconde header..........................................................................................................-->
+<!-- seconde header ...........................................................................................-->
 
-       <section class="title">
-        <div class="container">
-            <div class="row-fluid">
-                <div class="span6">
-                    <h1>나만의 도감</h1>
-                </div> 
-                <!--<div class="span6">
-                    <ul class="breadcrumb pull-right">
-                        <li><a href="/index">Home</a> <span class="divider">/</span></li>
-                        <li class="active">나만의 도감</li>
-                    </ul>
-                </div> -->
-            </div>
-        </div>
-    </section>
-<!--/second header end.......................................................................................................-->
+	<section class="title">
+	<div class="container">
+		<div class="row-fluid">
+			<div class="span6">
+				<h1>나만의 도감</h1>
+			</div>
+		</div>
+	</div>
+	</section>
 
-<!--Three.js Satart..........................................................................................................-->
+<!-- modal code start ........................................................................................-->
+	<div class="modal fade" id="testForm" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+		<div class = "modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header" style="text-align:center;">
+					<button type="button" class="close" data-dismiss="modal">✕</button>
+					<h3 id="mTitle" style="text-align: center;">
+					<!-- 제목 들어가는 부분 -->
+					</h3>
+				</div>
+				
+				<div class="modal-body text-center">
+					<div id="mContfile" style="width:100%;">
+					</div>
+					
+					<div id="mCont" style="width:100%; text-align:center;">
+					</div>
+					</div>					
+				</div>
+				
+				<div class="modal-footer">
+				</div>
+			</div>
+		</div>		
+	</div>
 
+<!--Three.js Satart...........................................................................................-->
 <div id="back" style="height: 600px;"> 
 	<div class="menu">
 		<button class="btn btn-primary pull-left" id="table">TABLE</button>
@@ -222,12 +243,13 @@
 		<div class="prevPage"></div>	
 		<div class="nextPage"></div>
 	
-<!--/Three.js Area End.......................................................................................................-->
-<!--Menu Div.................................................................................................................-->
+<!--/Three.js Area End........................................................................................-->
+<!--Menu Div..................................................................................................-->
 	</div>
 	</div>
 	
-<footer id="footer" style="opacity: 0.7; position: absolute; bottom: auto; width: 100%; background-color: black;">
+<footer id="footer" 
+	style="opacity: 0.7; position: absolute; bottom: auto; width: 100%; background-color: black;">
     <div class="container">
         <div class="row-fluid">
             <div class="span12" style="margin-top:-15px">
@@ -239,30 +261,8 @@
     </div>
 </footer>
 
-<!--Login form...............................................................................................................-->
-<div class="modal hide fade in" id="loginForm" aria-hidden="false">
-    <div class="modal-header">
-        <i class="icon-remove" data-dismiss="modal" aria-hidden="true"></i>
-        <h4>Login Form</h4>
-    </div>
-    <!--Modal Body-->
-    <div class="modal-body">
-        <form class="form-inline" action="/index" method="post" id="form-login">
-            <input type="text" class="input-small" placeholder="Email">
-            <input type="password" class="input-small" placeholder="Password">
-            <label class="checkbox">
-                <input type="checkbox"> Remember me
-            </label>
-            <button type="submit" class="btn btn-primary">Sign in</button>
-        </form>
-        <a href="#">Forgot your password?</a>
-    </div>
-    <!--/Modal Body-->
-</div>
-<!--/Login form..............................................................................................................-->
-    
-    
-<!--java script문 시작........................................................................................................--> 
+ 
+<!--java script문 시작.........................................................................................--> 
 <script src="/resources/js/vendor/jquery-1.9.1.min.js"></script>
 <script src="/resources/js/vendor/bootstrap.min.js"></script>
 <script src="/resources/js/main.js"></script>
@@ -273,10 +273,16 @@
 
 <script>
  
-/* make Table...............................................................................................................  */
+/* make Table.................................................................................................*/
 	var tableData = [];
 	var page = 1;
 	var bookNo = 0;
+	
+	var camera, scene, renderer;
+	var controls;
+
+	var objects = [];
+	var targets = { table: [], sphere: []};
 	
 	(function makeTable(){
 		bookNo = ${number};
@@ -300,7 +306,6 @@
 					if(tempX > 12){
 						tempX -= 9;
 					}
-					console.log(tempX, tempY);
 					data[i].x = tempX;
 					data[i].y = tempY;
 				}
@@ -309,26 +314,16 @@
 			}});
 	})();
 	
-/*end makeTable............................................................................................................. */	
-	var camera, scene, renderer;
-	var controls;
+/*end makeTable................................................................................................*/	
+/*Start main...................................................................................................*/
 
-	var objects = [];
-	var targets = { table: [], sphere: []};
-/* 	var targets = { table: [], sphere: [], helix: [], grid: [] }; */
-
-	//var tableData = makeTable();
-	// console.log("Table data:" + tableData); 
-	//console.log(table);	
-/*Start main..................................................................................................................*/
-	
  	init();
 	// 초기화 함수 실행
 	animate();
 	// 애니메이션 함수 실행 
 
 /**/	
-	function init() {	
+	function init() {
 	    camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 );
 	    camera.position.z = 3000;
 	
@@ -337,33 +332,33 @@
 	    // table
 	    for ( var i = 0; i < tableData.length; i++ ) {
 	
-	        var element = document.createElement( 'div' );                                                  // 'div'요소를 element에 추가
-	        element.className = 'element';                                                                  // 'div'에 class이름을 element로 잡음.
+	        var element = document.createElement( 'div' );
+	        element.className = 'element';
 	        element.style.backgroundColor = 'rgba(0, 250, 85,' + ( Math.random() * 0.01 + 0.1 ) + ')';
 	        // class 이름을 element로 잡은 부분에 배경색 스타일에 투명도를 넣고 그 값을 랜덤으로 지정해줌 rgba(0,127,127, 투명도)
-	
-/*  	        var number = document.createElement( 'div' );                                                   // 'div'요소를 element에 추가
-	        number.className = 'number';                                                                    // 'div'에 class이름을 number로 잡음.
-	        number.innerHTML = '<img src = /resources/book/images/minus.png>';
-	        number.textContent = i + 1;                                                                 // 한개원소에 들어간 정보의 갯수만큼 나눠준 뒤에 + 1을 하여 원소에 번호를 붙여줌.
-	        element.appendChild( number ); */
+        	
+	        var number = document.createElement( 'div' );
+	        number.className = 'number';
+ 	        number.id = tableData[i].pno;
+	        element.appendChild(number);
 	        
 	        var symbol = document.createElement( 'div' );
 	        symbol.className = 'symbol';
 	        symbol.textContent = tableData[i].title
-	        element.appendChild( symbol ); 
+	        element.appendChild( symbol );
 	        // 각 원소별 축약어 띄어주기
-			// "H", "<a href = http://www.naver.com><img src = /resources/ko.jpg width='100' height='100'></a>", "1.00794", 1, 1,
 	        
 			var details = document.createElement( 'div' );
 			var fileurl = "/han/file/regphoto/";
            	details.className = 'details';
-           	details.innerHTML = '<img src = ' + fileurl + tableData[ i ].contfile +' width = "280px" height = "180px"></div>';
-/*            	details.innerHTML = '<img src = /resources/book/images/'+ tableData[ i ].contfile +' width = "280px" height = "180px"></div>'; */
+           	details.innerHTML =  '<a data-toggle="modal" href="#testForm"' + "onclick='clickModal(\""+
+           			tableData[i].title + "\",\"" + tableData[i].contfile + "\",\"" + tableData[i].cont + 
+           			"\",\"" + tableData[i].pno + "\")'>"
+           		+ '<img src = ' + fileurl + tableData[ i ].contfile
+           		+ ' width = "280px" height = "180px"></a></div>';
           	element.appendChild( details );
 	        // 각 원소별 풀네임 + 방사능번호 하단 두줄 밀어넣어주기
-	
-	        
+		        
 	        var object = new THREE.CSS3DObject( element );
 	        object.position.x = Math.random() * 4000 - 2000;
 	        object.position.y = Math.random() * 4000 - 2000;
@@ -375,12 +370,10 @@
 	        var object = new THREE.Object3D();
 	        object.position.x = ( tableData[i].x * 140 ) - 1150;
 	        object.position.y = - ( tableData[i].y* 180 ) + 950;	
-	        targets.table.push( object );
-	
+	        targets.table.push( object );	
 	    } 
 	
-	    // sphere
-	
+	    // sphere	
 	    var vector = new THREE.Vector3();
 	    var length = 9;
 	    
@@ -402,51 +395,12 @@
 	        object.lookAt( vector );	
 	        targets.sphere.push( object );
 	    }
-	
-/* 	    // helix	
-	    var vector = new THREE.Vector3();
 	    
-	    for ( var i = 0, l = objects.length; i < l; i ++ ) {
-	
-	        var phi = i * 0.175 + Math.PI;
-	
-	        var object = new THREE.Object3D();
-	
-	        object.position.x = 900 * Math.sin( phi );
-	        object.position.y = - ( i * 8 ) + 450;
-	        object.position.z = 900 * Math.cos( phi );
-	
-	        vector.x = object.position.x * 2;
-	        vector.y = object.position.y;
-	        vector.z = object.position.z * 2;
-	
-	        object.lookAt( vector );
-	
-	        targets.helix.push( object );
-	
-	    }
-	
-	    // grid
-	
-	    for ( var i = 0; i < objects.length; i ++ ) {
-	
-	        var object = new THREE.Object3D();
-	
-	        object.position.x = ( ( i % 3 ) * 400 ) - 400;
-	        object.position.y = ( - ( Math.floor( i / 3 ) % 3 ) * 400 ) + 400;
-	        object.position.z = ( Math.floor( i / 9 ) ) * 500 - 1000;
-	
-	        targets.grid.push( object );
-	
-	    } */
-	
-	    //
 	    renderer = new THREE.CSS3DRenderer();
 	    renderer.setSize( window.innerWidth, window.innerHeight );
 	    renderer.domElement.style.position = 'absolute';
 	    document.getElementById( 'maincontainer' ).appendChild( renderer.domElement );
-	
-	    
+		
 		// Zoom Control Parts
 	    controls = new THREE.TrackballControls( camera, renderer.domElement );
 	    controls.rotateSpeed = 0.5;			// 뭔진 모르겠지만 이 값이 크면 상당히 격동적으로 움직임.
@@ -465,23 +419,7 @@
 	        transform( targets.sphere, 2000 );	
 	    }, false );
 	
-/* 	    var button = document.getElementById( 'helix' );
-	    button.addEventListener( 'click', function ( kevent ) {
-	
-	        transform( targets.helix, 2000 );
-	
-	    }, false );
-	
-	    var button = document.getElementById( 'grid' );
-	    button.addEventListener( 'click', function ( event ) {
-	
-	        transform( targets.grid, 2000 );
-	
-	    }, false ); */
-	
 	    transform( targets.table, 2000 );
-	
-	    //
 	
 	    window.addEventListener( 'resize', onWindowResize, false );
 	
@@ -498,22 +436,21 @@
 	        var target = targets[ i ];
 	
 	        new TWEEN.Tween( object.position )
-	                .to( { x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration )
+	                .to( { x: target.position.x, y: target.position.y, z: target.position.z }, 
+	                		Math.random() * duration + duration )
 	                .easing( TWEEN.Easing.Exponential.InOut )
 	                .start();
 	
 	        new TWEEN.Tween( object.rotation )
-	                .to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
+	                .to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, 
+	                		Math.random() * duration + duration )
 	                .easing( TWEEN.Easing.Exponential.InOut )
 	                .start();
-	    }
-	
+	    }	
 	    new TWEEN.Tween(this)
 	            .to({}, duration * 2 )
 	            .onUpdate(render)
-	            .start();
-	
-	    
+	            .start();	    
 	}
 	
 	function onWindowResize(){	
@@ -522,8 +459,7 @@
 	
 	    renderer.setSize( window.innerWidth, window.innerHeight );
 	
-	    render();
-	
+	    render();	
 	}
 	
 	function animate(){	
@@ -537,6 +473,7 @@
 	}	
 	
 	function againTable(){
+		console.log("in againTable !")
 		var obj = document.getElementsByClassName("element");
 		while(obj.length>0){
 			obj[0].parentNode.removeChild(obj[0]);
@@ -546,9 +483,7 @@
 		
 		var i = 0;
 		var xStart = 5;
-		var yStart = 3;	
-		console.log("page : " + page);
-		console.log("bookNo : " + bookNo);
+		var yStart = 3;
 		
 		$.ajax({
 			url: "/book/sample/list?page=" + page + "&bno="+bookNo,
@@ -563,7 +498,6 @@
 					if(tempX > 12){
 						tempX -= 9;						
 					}
-					console.log(tempX, tempY);
 					data[i].x = tempX;
 					data[i].y = tempY;					
 				}
@@ -573,55 +507,191 @@
 	}
 	
 	
-	  function makeBtn(num){
-	      var target1 = $(".prevPage")
-	      var target2 = $(".nextPage")
-	      var content1 = "";
-	      var content2 = "";
-	      var cnt = num;
-	      
-	      if(page > 1 && page < num){
-	         console.log("------in Page-------------");
-	         content1 += "<div><img src = /resources/book/prevPage.jpg onclick='prevPage();'/>"+ "</div>";
-	         content2 += "<div><img src = /resources/book/nextPage.jpg onclick='nextPage();'/>"+ "</div>";
-	         target1.html(content1);
-	         target2.html(content2);
-	         return;
-	      }
-	      
-	      else if(page == 1){
-	         console.log("------in First Page-------------");
-	         content1 += "<div style='display:none'><img src = /resources/book/prevPage.jpg onclick='prevPage();'/>"+ "</div>";
-	         content2 += "<div><img src = /resources/book/nextPage.jpg onclick='nextPage();'>" +  "</button>"+"</div>";
-	         target1.html(content1);
-	         target2.html(content2);   
-	         return;
-	      }
-	      
-	      else if( page == cnt){
-	         console.log("------in Last Page-------------");
-	         content2 += "<div style='display:none'><button onclick='nextPage();'>" + "</button>"+"</div>";
-	         target2.html(content2);
-	         content1 += "<div><img src = /resources/book/prevPage.jpg onclick='prevPage();'/>"+ "</div>";
-	         target1.html(content1);
-	         return;
-	      }
-	   }
-	   
+  function makeBtn(num){	  
+      var target1 = $(".prevPage")
+      var target2 = $(".nextPage")
+      var content1 = "";
+      var content2 = "";
+      var cnt = num;
+      
+      if(page > 1 && page < num){
+         console.log("------in Page-------------");
+         content1 += "<div><img src = /resources/book/prevPage.jpg onclick='prevPage();'/>"+ "</div>";
+         content2 += "<div><img src = /resources/book/nextPage.jpg onclick='nextPage();'/>"+ "</div>";
+         target1.html(content1);
+         target2.html(content2);
+         return;
+      }
+      
+      else if(cnt == 1 ){
+    	  console.log("------small data-------------");
+    	  return;
+      }
+      
+      else if(page == 1){
+         console.log("------in First Page-------------");
+         content1 += "<div style='display:none'><img src = /resources/book/prevPage.jpg onclick='prevPage();'/>"+ 
+         				"</div>";
+         content2 += "<div><img src = /resources/book/nextPage.jpg onclick='nextPage();'>" +  
+         				"</button>"+"</div>";
+         target1.html(content1);
+         target2.html(content2);   
+         return;
+      }
+      
+      else if( page == cnt){
+         console.log("------in Last Page-------------");
+         content2 += "<div style='display:none'><button onclick='nextPage();'>" + "</button>"+"</div>";
+         target2.html(content2);
+         content1 += "<div><img src = /resources/book/prevPage.jpg onclick='prevPage();'/>"+ "</div>";
+         target1.html(content1);
+         return;
+      }
+   }
+  
+  	function clickModal(title, contfile, cont, pno){
+  	  	var fileurl = "/han/file/regphoto/";
+  		
+  		var tarTitle = $("#mTitle");
+  		var tarContfile = $("#mContfile");
+  		var tarCont = $("#mCont");
+  		var targetbtn = $(".modal-footer");
+  		
+  		var conContfile = "";
+  		var makeBtn = "";
+  		
+  		conContfile += '<img src = ' + fileurl + contfile + '>';
+  		makeBtn += "<button type='button' class='btn btn-primary'" + "onclick='deleteModal(" + pno +")'> 삭 제 </button>"
+					+ "<button type='button' class='btn btn-primary'" + "onclick='insertModal(\""
+					+ title + "\",\"" + contfile + "\",\"" + cont + "\",\"" + pno + "\")'>" + "수 정 </button>";
+				
+		targetbtn.html(makeBtn);
+  		tarTitle.html(title);
+  		tarCont.html(cont);
+  		tarContfile.html(conContfile);  		
+  	}
+  	
 	function nextPage(){
 		page = page + 1;
 		againTable();
 		init();
 		animate();
-	};
+	}
 	
 	function prevPage(){
 		page = page - 1;
 		againTable();
 		init();
 		animate();
+	}		
+
+	function deleteModal(num){
+		$.post(url='/book/sample/delete',
+				{pno:num},
+				function(data){
+					againTable();
+					init();
+					animate();
+					$("#testForm").modal('hide');
+				});
+	}
+	
+	function insertModal(title, contfile, cont, pno){
+		// make insert modal
+/* 		var tarTitle = document.getElementsByClassName("modal-header"); */
+		
+		var fileurl = "/han/file/regphoto/";
+		
+		var tarTitle = $(".modal-header");
+		var tarCont = $(".modal-body");
+		var tarBtn = $(".modal-footer");
+		
+		var titleCont = "";
+		var bodyCont = "";
+		var footerCont = "";
+		
+		titleCont += "<input id='modal-title' type='tex/t' style='text-align: center;' value= " + title + ">";
+		bodyCont += "<div id='modalInsertPicture'>"
+					+ "<img src = '" + fileurl + contfile + "'></div>"
+					+ "<form target='zero' action='/han/file/upload' method='post' enctype='multipart/form-data'>"
+					+ "<input type='file' name='file'><input type='submit' value='수 정'>	</form>"
+ 					+ "<iframe name='zero' width='0' height='0'></iframe>"
+					+ "<textarea id='modal-cont'>" + cont + "</textarea>";
+ 		footerCont += "<button type='button' class='btn btn-primary'" + "onclick='insertLogic(\""
+						+ contfile + "\",\"" + pno + "\")'> 완 료 </button>";
+			
+		tarTitle.html(titleCont);
+		tarCont.html(bodyCont);
+		tarBtn.html(footerCont);		
+	}
+	
+	function updateResult(data){		
+		
+		var tarBtn = $(".modal-footer");
+		var footerCont = "";
+		
+		if(data.suffix == '.jpg'){
+			var target = $("#modalInsertPicture");
+			var content = "";
+			
+			content += "<input id='getFileName' type='hidden' value='" + data.fileName + "'>"
+						+ "<image id='thumb' src='/han/file/regphoto/" + data.fileName + "'/></p>"
+			target.html(content);
+			/* $(".uploadUL").append("<li><image class='thumb' data-src='"+data.fileName+"' src='/web/file/view/"+ data.fileName+"'/></a></li>"); */
+		}else{
+			$("#modalInsertPicture").html("<image id='thumb' data-src='"+data.fileName+"'src='/resources/book/images/icon.jpg'/></a></p>");
+		}
+	}
+	
+	
+	function insertLogic(fileName,num){
+		var mTitle = document.getElementById('modal-title').value;
+		var mCont = document.getElementById('modal-cont').value;
+		var mfileName = document.getElementById('getFileName').value;
+		console.log("fileName : " + mfileName);
+		
+		$.post(url='sample/update',
+				{title:mTitle,
+				cont:mCont,
+				contfile:mfileName,
+				pno:num},
+				function(data){
+					againTable();
+					init();
+					animate();
+					$("#testForm").modal('hide');
+					initModal(mTitle, mCont, mfileName, num);
+				});
+	}
+	
+	function initModal(title, cont, contfile, pno){
+		
+		console.log("-------------init start----------------")
+		var fileurl = "/han/file/regphoto/";
+		
+		var tarTitle = $(".modal-header");
+		var tarCont = $(".modal-body");
+		var tarBtn = $(".modal-footer");
+		
+		var titleCont = "";
+		var bodyCont = "";
+		var footerCont = "";
+				
+		titleCont += "<button type='button' class='close' data-dismiss='modal'>✕</button>"
+					+ "<h3 id='mTitle' style='text-align: center;'>" + title + "</h3>";
+		bodyCont += "<div id='mContfile' style='width:100%;'><img src='/han/file/regphoto/'" + contfile + "'></div>"
+					+ "<br>"
+					+ "<div id='mCont' style='width:100%; text-align:center;'>" + cont + "</div>";
+		footerCont += "<button type='button' class='btn btn-primary'" + "onclick='deleteModal(" + pno +")'> 삭 제 </button>"
+						+ "<button type='button' class='btn btn-primary'" + "onclick='insertModal(\""
+						+ title + "\",\"" + contfile + "\",\"" + cont + "\",\"" + pno + "\")'>" + "수 정 </button>";
+					
+		tarTitle.html(titleCont);
+		tarCont.html(bodyCont);
+		tarBtn.html(footerCont);
 	}
 
+	
 </script>
 </body>
 </html>

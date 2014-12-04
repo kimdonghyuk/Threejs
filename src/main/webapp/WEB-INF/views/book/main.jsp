@@ -63,6 +63,10 @@
 	.registDogam:hover{
 		opacity : 0.7;	
 	}
+	
+	.span4{
+		background-image: url("/resources/book/background/book_showlist_background.jpg")
+	}
 </style>    
 </head>
 
@@ -86,7 +90,7 @@
                         <li><a href="/diary/main">관찰일기</a></li> 
                         <li><a href="/mypages/main">My Pages</a></li>
                         <li class="login">
-                            <a data-toggle="modal" href="#loginForm"><i class="icon-lock"></i></a>
+                        <a href='/user/logout'>LogOut</a>
                         </li>
                     </ul>        
                 </div><!--/.nav-collapse -->
@@ -105,23 +109,93 @@
             </div>
 
     </section>
-<div id="back" style="height: 600px;">    
-    <!-- / .title -->
-    <div class="sample" style="height: 150px; padding: 5px;" >
-        <a class="btn-success btn-large pull-right" id="updatePicture" href="/book/regphoto">사진 올리기</a>
-        <a class="btn-success btn-large pull-right" id="registDogam" href="/book/regist">새 도감 만들기</a>
-    </div>
-    
-    <div id="album"><div id="album_dogam1" >    		
-    	
-		<a href="/book/sample">
-    		<img src = "/resources/book/images/book_travel.jpg" style="width:200px; height:200px; margin-left:15%; " /></a>
-    		<div style="width:200px; height:20px; margin-left:15%; text-align:center;">2014.05.27 꽃놀이 여행</div>  
-    	</div>
-    </div> 
-</div>
-</div>
-    
+	<!-- Dogam UI Set -->
+	<div id="back" style="height: 600px;">    
+	    <!-- btn Set -->
+	    <div class="sample" style="height: 100px; padding: 5px;" >
+	        <a class="btn-success btn-large pull-right" id="updatePicture" href="/book/regphoto">사진 올리기</a>
+	        <a class="btn-success btn-large pull-right" id="registDogam" href="/book/regist">새 도감 만들기</a>
+	    </div>
+
+		<div class="sample span12" style="height: 50px; padding: 5px;">
+			
+			<!-- Start Delete Modal -->
+			<a href="#testForm" role="button" class="btn-social btn-small pull-right" data-toggle="modal">
+				<i class="icon-trash icon-white"></i> <span><strong>삭제</strong></span>
+			</a>
+			 
+			<!-- 모달 -->
+			<div class="modal fade" id="testForm" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+			  <div class="modal-header">
+			    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			    <h3 id="myModalLabel">도감 삭제</h3>
+			  </div>
+			  <div class="modal-body">
+			    <label> 도감을 선택해주세요. </label>
+						<select id="delBook" class="form-control" name="bno"
+								style="width: 250px; opacity: 0.9"></select>
+			  </div>
+			  <div class="modal-footer" id="delmodal">
+			    <button class="btn" data-dismiss="modal" aria-hidden="true">닫기</button>
+			    <!-- <button class="btn btn-primary" onclick="deleteBook();">삭제</button> -->
+			  </div>
+			</div>
+			<!-- End Delete Modal -->
+			
+			<!-- Start Update Modal -->
+			<a href="#updateForm" role="button" class="btn-social btn-small pull-right" data-toggle="modal">
+				<i class="icon-edit icon-white"></i> <span><strong>수정</strong></span>
+			</a>
+			 
+			<!-- 모달 -->
+			<div class="modal fade" id="updateForm" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+			  <div class="modal-header">
+			    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			    <h3 id="myModalLabel">도감 수정</h3>
+			  </div>
+			  <div class="modal-body">
+			    <label> 도감을 선택해주세요. </label>
+						<select id="UpdateBook" class="form-control" name="bno"
+								style="width: 250px; opacity: 0.9" onchange="showlist(this.value)"></select> <!-- ,showimg(this.value) -->
+			  </div>
+			  <!-- start update setting -->
+			  <form method="post" action="updatedata" accept-charset="utf-8">
+				  <div class="showmeplz"></div>
+				  <ul class="filename"></ul>
+                  <button type="submit" class="btn btn-primary btn-large pull-right">다썼다~ >▽<</button>
+			  </form>
+			  
+			  <ul class="uploadUL"> </ul>
+            	
+            	<form target="zero" action="/han/file/upload"  method="post" enctype="multipart/form-data">
+					<input type='file' name='file'><input type='submit' value="UPLOAD">
+				
+				  <div class="showimgplz"></div>
+				</form>
+				<iframe name="zero" width="0px" height="0px">
+				</iframe>
+			  <!-- end update setting -->
+			  <div class="modal-footer" id="updatemodal">
+			    <button class="btn" data-dismiss="modal" aria-hidden="true">수정</button>
+			    <!-- <button class="btn btn-primary" onclick="deleteBook();">삭제</button> -->
+			  </div>
+			</div>
+			<!-- End Update Modal -->
+			
+		</div>
+		
+		<!-- Album list Screen page -->    
+		<div class="container">
+			<div class="row">
+				<ul class="thumbnails">
+					
+				</ul>
+			</div>
+		</div>
+	           
+		<!-- End Album list -->
+	</div>
+    <!-- End Dogam -->
 <footer id="footer" style="opacity: 0.7; position: absolute; bottom: auto; width: 100%; background-color: black;">
     <div class="container">
         <div class="row-fluid">
@@ -133,7 +207,6 @@
         </div>
     </div>
 </footer>
-
 
 <!--  Login form -->
 <div class="modal hide fade in" id="loginForm" aria-hidden="false">
@@ -169,26 +242,135 @@
 	(function makeTable(){
 		console.log("data Start");
 		var i = 0;
-		var target = $("#album_dogam1");
+		var target = $(".thumbnails");
 		var content = "";
 		$.ajax({
 			url: "/book/main/list",
 			dataType:"json",
 			async:false,
 			success:function(data){
-				
+		
 				for(var i= 0, len = data.length; i < len ; i++){
-					content+= "<a href='/book/sample?bno=" + data[i].bno +"'>" 
-					+ "<img src = '/resources/book/images/" + data[i].contfile 
-					+ "'style='width:200px; height:200px; margin-left:15%;'/></a>"
-					+"<div style='width:200px; height:20px; margin-left:15%; text-align:center;'>" 
-					+ data[i].title + "</div>"
-					
+					content+= "<li class='span4'><div class='thumbnail'>"
+					+ "<a href='/book/sample?bno=" + data[i].bno + "'><img src = '/resources/book/images/" + data[i].contfile + "'></a>"
+					+ "<div class='caption'>"
+					+ "<h3 style = 'text-align:center;'>" + data[i].title + "</h3>" 
+					+"</div></div></li>";
+										
 				}
+				tabledata = data;
 				target.html(content);
 			}});
 	})();
 	
+	$(document).ready(getlist());
+		function getlist(){
+			console.log("-----------list------------------")
+			var url = "main/list"					// url을 호출한 뒤 선택한 bno 값을 더해줌.
+			var target = $(".form-control");
+			var target1 = $("#delmodal");
+			var target2 = $("#updatemodal");
+			var content = "<option value=" + "'default'>도감선택란</option>";
+			var content1 ="<button class='btn btn-primary' onclick='deleteBook();'>삭제</button>";	
+			var content2 ="<button class='btn btn-primary' onclick='updateBook();'>수정</button>";
+			$.getJSON(url, function (data) {			// 해당 url에 담겨져있는 Jsondata를 parameter값으로 받음.
+				$.each(data, function (key, val) {	// for each문을 돌려서 key값을 잡고 val값을 item 배열에 넣어줌.
+					content += "<option name=bno value=" + val.bno +">" + val.title + "</option>";
+					
+				});
+					target.html(content);
+					target1.html(content1);
+					target2.html(content2);
+				});
+			};
+			
+			function deleteBook(){
+				var num = document.getElementById('delBook').value;
+				$.post(url='main/delete',
+						{bno:num},
+						function(data){
+							$("#testForm").modal('hide');
+							reTable();	
+						})
+			}
+	
+			function reTable(){
+				console.log("data Start");
+				var i = 0;
+				var target = $(".thumbnails");
+				var content = "";
+				$.ajax({
+					url: "/book/main/list",
+					dataType:"json",
+					async:false,
+					success:function(data){
+				
+						for(var i= 0, len = data.length; i < len ; i++){
+							content+= "<li class='span4'><div class='thumbnail'>"
+							+ "<a href='/book/sample?bno=" + data[i].bno + "'><img src = '/resources/book/images/" + data[i].contfile + "'></a>"
+							+ "<div class='caption'>"
+							+ "<h3 style = 'text-align:center;'>" + data[i].title + "</h3>" 
+							+"</div></div></li>";
+												
+						}
+						tabledata = data;
+						target.html(content);
+					}});
+			}
+					
+			function showlist(value){
+				var bno = value;
+				var target = $(".showmeplz");
+				var target1 = $(".showimgplz");
+				var content = "";
+				var content1 = "";
+				$.ajax({
+					url: "/book/main/show?bno=" + bno ,
+					dataType:"json",
+					async:false,
+					success:function(data){
+						content += "<label>제목:<input type='text' name='title' placeholder ='" + data.title + "' autofocus></label>";
+						/* +"<label>사진:<img src = /han/file/regphoto/" + data.contfile + " style = 'width : 50%; height : 50%;'></label>"; */
+						content1 += "<label>사진:<img src = /han/file/regphoto/" + data.contfile + " style = 'width : 50%; height : 50%;'></label>";
+						tabledata = data;
+						target.html(content);
+						target1.html(content1);
+					}});
+				
+			}
+			
+			function showimg(value){
+				var bno = value;
+				console.log("img" + bno);
+				var target = $(".showimgplz");
+				var content = "";
+				$.ajax({
+					url: "/book/main/show?bno=" + bno ,
+					dataType:"json",
+					async:false,
+					success:function(data){
+						console.log(data.contfile);
+						var path = data.contfile;
+						console.log("path:" +path);
+						content += "<label>사진:<img src = /han/file/regphoto/" +path + " style = 'width : 50%; height : 50%;'></label>";
+						
+						target.html(content);
+					}});
+				
+			}
+			
+			function updateResult(data){
+		    	
+				console.log(data);
+				//class이름이 filename인 부분에 히든값으로 fileName을 추가 시켜준다.
+				$(".filename").append("<input type='hidden' name='contfile' value= '"+data.fileName+"'>");
+				if(data.suffix == '.jpg'){
+					$(".uploadUL").append("<li><image class='thumb' data-src='"+data.fileName+"' src='/han/file/regphoto/"+ data.fileName+"'/></li>");
+				}else{
+					$(".uploadUL").append("<li><image class='thumb' data-src='"+data.fileName+"' src='/resources/images/logo.png'/></li>");
+				}
+			}
+			
 </script>
 
 </body>

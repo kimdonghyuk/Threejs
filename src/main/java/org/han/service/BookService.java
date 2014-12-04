@@ -21,6 +21,10 @@ public class BookService {
 		return mapper.read(page);
 	}
 	
+	public BookVO showdata(int bno){
+		return mapper.showdata(bno);
+	}
+	
 	public void create(BookVO vo){
 		mapper.create(vo);
 	}
@@ -29,7 +33,7 @@ public class BookService {
 		mapper.update(vo);
 	}
 	
-	public void delete(String bno){
+	public void delete(int bno){
 		mapper.delete(bno);
 	}
 }
