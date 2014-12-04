@@ -1,5 +1,8 @@
 package org.han.vo;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class FavorVO {
 
 	private Integer fno;
