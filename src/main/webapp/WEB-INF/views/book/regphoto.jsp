@@ -196,8 +196,7 @@
 			});
 				target.html(content);
 			});
-		};    
-/*     "<input type='hidden' name='bno' value='" + val.bno + "'>" */
+		};
     
  	function updateResult(data){
 		alert(data);

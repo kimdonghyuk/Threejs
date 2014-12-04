@@ -60,6 +60,8 @@ body h4 {
     box-shadow: none;
 }
 .btn.btn-transparent {
+	box-shadow:  #000000 0.2em 0.2em 0.4em;
+    text-shadow: #000000 0.2em 0.2em 0.4em;
     border: 3px solid #fff;
     background: transparent;
     color: #fff;
