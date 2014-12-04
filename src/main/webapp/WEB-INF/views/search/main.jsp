@@ -6,7 +6,6 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -29,15 +28,35 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/resources/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="/resources/images/ico/apple-touch-icon-57-precomposed.png">
     
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/hanna.css">
     <style>
+    	@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
         @media screen and (max-width: 979px){
             body{
                 padding-top: 0px;
             }
         }
         
+        /* body {font-family:arial, sans-serif;} */
+	    #ts1 li a{
+	        text-decoration:none;
+	        /* color:white; */
+	        color:black;
+	    }
+	    ul {list-style-type:none;}
+        
         body {
-	        background-image: url(/resources/images/search/search_back.jpg);
+	        /* background-image: url(/resources/images/search/search_back.jpg);
+	        background-position: center center;
+	        background-repeat: no-repeat;
+	        background-attachment: fixed;
+	        background-size: cover; */
+	        background-color: #464646;
+	        font-family: 'Nanum Gothic', serif;
+        }
+        
+        #back {
+        	background-image: url(/resources/images/search/search_back.jpg);
 	        background-position: center center;
 	        background-repeat: no-repeat;
 	        background-attachment: fixed;
@@ -45,16 +64,35 @@
 	        background-color: #464646;
         }
         
+        /* modal 크기 */
         .modal-body {
 		    position: relative;
 		    overflow-y: auto; /* 내용이 바디의 크기를 넘어가면 y축 스크롤바가 생긴다 */
 		    max-height: 600px; /* modal창의 최대 높이를 조정 */
 		    padding: 15px;
 		}
+		
+		/* blur */
+		.bgBlur:before {
+		  content: '';
+		  position: absolute;
+		  top: 0; left:0; right:0; bottom:0;
+		  background: inherit;
+		  z-index:-1;
+		  filter: blur(6px); 
+		  -webkit-filter: blur(6px); 
+		  -moz-filter: blur(6px);
+		  -o-filter: blur(6px);
+		  filter:url(#blur);
+		}
+		
+		.str1 {
+			font-size: 30px;
+		}
     </style>
     
 </head>
-<body>
+<body class="bgBlur">
 
    <!--Header-->
     <header class="navbar navbar-fixed-top">
@@ -98,7 +136,7 @@
 
 <div id="back" style="height: 600px;"> 
 
-    <h4 class="center">유사한 이미지를 선택해주세요</h4>
+    <p class="str1 question center">유사한 이미지를 선택해주세요</p>
     <!--tagClout-->
     <div id="ts1" style="max-width:800px; height:500px;   margin: auto;  ">
         <!-- <ul>
@@ -130,54 +168,14 @@
 </footer>
 <!--/Footer-->
 
-
-
-
-<!--  Login form -->
-    <div class="modal hide fade" id="loginModal">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">✕</button>
-            <h3 style="text-align: center">로그인</h3>
-        </div>
-        <div class="modal-body" style="text-align:center;">
-            <div class="row-fluid">
-                <div class="span10 offset1">
-                    <div id="modalTab">
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="login">
-                                <form method="post" action='' name="login_form">
-                                    <p><input type="text" class="span12" name="eid" id="email" placeholder="Email"></p>
-                                    <p><input type="password" class="span12" name="passwd" placeholder="Password"></p>
-                                    <p><button type="submit" class="btn btn-primary">Sign in</button>
-                                        <a href="#forgotpassword" data-toggle="tab">Forgot Password?</a>
-                                    </p>
-                                </form>
-                            </div>
-                            <div class="tab-pane fade" id="forgotpassword">
-                                <form method="post" action='' name="forgot_password">
-                                    <p>Hey this stuff happens, send us your email and we'll reset it for you!</p>
-                                    <input type="text" class="span12" name="eid" id="email" placeholder="Email">
-                                    <p><button type="submit" class="btn btn-primary">Submit</button>
-                                        <a href="#login" data-toggle="tab">Wait, I remember it now!</a>
-                                    </p>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-<!--  /Login form -->
-
 <!-- Result Modal -->
 	<div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
 	    <div class="modal-dialog modal-sm">
 	        <div class="modal-content">
-	            <!-- <div class="modal-header">
-	                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-	                <h4 class="modal-title" id="myModalLabel">명진아 봐라</h4>
-	            </div> -->
+	            <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+	                <p class="str1 modal-title text-center" id="myModalLabel">명진아 봐라</p>
+	            </div>
 	            <div id="modal-body" class="modal-body">
 	                <a>뭘봐 병시나</a>
 	            </div>
@@ -224,15 +222,13 @@
 			dataType:"json",
 			async:false,
 			success:function(data){
-				//$.each(data, function(key,val){
-					console.log(data);
-					str += "<h3 class='resultTitle'>제목이 들어갈 부분 : "+data.title+"</h3>" + 
-					"<img src='/resources/images/tag/"+data.contfile+"'><br>" + 
-					"<p>"+data.cont+"</p>" + 
-					"<button type='button' class='btn btn-primary btn-lg'>관련 컨텐츠</button>";
-					
-					resultSno = data.sno;
-				//});
+				console.log(data);
+				str += "<img src='/resources/images/tag/"+data.contfile+"'><br>" + 
+				"<p>"+data.cont+"</p>" + 
+				"<button type='button' class='btn btn-primary btn-lg'>관련 컨텐츠</button>";
+				
+				resultSno = data.sno;
+				$(".modal-title").html(data.title);
 			}
 		});
 		$("#modal-body").html(str);
@@ -253,21 +249,25 @@
 	// 질문 생성
 	function setQuestion(arr){
 	    var str = "<ul>"; // innerHTML에 들어갈 문장
+	    var questionStr =""; // 질문내용
 	    $.each(arr, function(key,val){
+	    	console.log(val);
+	    	questionStr = val.question;
 	    	if(val.res == "y"){
 				str += "<li class='span3'>" +
 				"<a href='javascript:setResult(\""+val.rootSet+"\")'>" +
-				val.question +
+				"<img src='/resources/images/search/"+val.img+"'>" + 
 				"</a></li>"
 	    	}else{
 				str += "<li class='span3'>" +
 				"<a href='javascript:rootQuestion(\""+val.rootSet+"\",\""+val.rootStr+"\")'>" +
-				val.question +
+				"<img src='/resources/images/search/"+val.img+"'>" + 
 				"</a></li>"
 			}
 	    });
 	    str += "</ul>";
 	    $("#ts1").html(str);
+		$(".question").html(questionStr);
 	    
 	    // 생성된 리스트를 tagcloud로 적용시켜준다
 		$('#ts1').tagcloud({centrex:width, centrey:height, init_motion_x:10, init_motion_y:10 });
@@ -293,6 +293,7 @@
 		});
 		str += "</ul>";
 	    $("#ts1").html(str);
+	    $(".question").html("선택해주세요");
 	    
 	    // 생성된 리스트를 tagcloud로 적용시켜준다
 		$('#ts1').tagcloud({centrex:width, centrey:height, init_motion_x:10, init_motion_y:10 });
@@ -307,13 +308,7 @@
 </script>
 
 <style type="text/css">
-    body {font-family:arial, sans-serif;}
-    #ts1 li a{
-        text-decoration:none;
-        /* color:white; */
-        color:black;
-    }
-    ul {list-style-type:none;}
+    
 </style>
 <!--end tagCloud-->
 
