@@ -40,6 +40,16 @@
 			padding-top: 0px;}
 	}
     
+    .insertBtn{
+    	background-color: #faff00;
+    	border-color: #0094ff;
+    	opacity : 0.7;
+    }
+    
+    .insertBtn:hover{
+    	background-color: rgba(0, 0, 255, 0.2);
+    }
+    
     .btn-success{    	
     	margin : 5px;
     	width : 119px;	
@@ -251,27 +261,6 @@
     </div>
 </footer>
 
-<!--Login form...............................................................................................-->
-<div class="modal hide fade in" id="loginForm" aria-hidden="false">
-    <div class="modal-header">
-        <i class="icon-remove" data-dismiss="modal" aria-hidden="true"></i>
-        <h4>Login Form</h4>
-    </div>
-    <!--Modal Body-->
-    <div class="modal-body">
-        <form class="form-inline" action="/index" method="post" id="form-login">
-            <input type="text" class="input-small" placeholder="Email">
-            <input type="password" class="input-small" placeholder="Password">
-            <label class="checkbox">
-                <input type="checkbox"> Remember me
-            </label>
-            <button type="submit" class="btn btn-primary">Sign in</button>
-        </form>
-        <a href="#">Forgot your password?</a>
-    </div>
-    <!--/Modal Body-->
-</div>
-<!--/Login form..............................................................................................-->
  
 <!--java script문 시작.........................................................................................--> 
 <script src="/resources/js/vendor/jquery-1.9.1.min.js"></script>
@@ -487,7 +476,6 @@
 		console.log("in againTable !")
 		var obj = document.getElementsByClassName("element");
 		while(obj.length>0){
-			console.log("delete object");
 			obj[0].parentNode.removeChild(obj[0]);
 		}
 		
@@ -572,7 +560,6 @@
   		var conContfile = "";
   		var makeBtn = "";
   		
-  		console.log(pno);
   		conContfile += '<img src = ' + fileurl + contfile + '>';
   		makeBtn += "<button type='button' class='btn btn-primary'" + "onclick='deleteModal(" + pno +")'> 삭 제 </button>"
 					+ "<button type='button' class='btn btn-primary'" + "onclick='insertModal(\""
@@ -623,10 +610,14 @@
 		var bodyCont = "";
 		var footerCont = "";
 		
-		titleCont += "<input id='modal-title' type='text' style='text-align: center;' value= " + title + ">";
-		bodyCont += '<img src = ' + fileurl + contfile + '><br>'
-					+"<textarea id='modal-cont'>" + cont + "</textarea>";
-		footerCont += "<button type='button' class='btn btn-primary'" + "onclick='insertLogic(\""
+		titleCont += "<input id='modal-title' type='tex/t' style='text-align: center;' value= " + title + ">";
+		bodyCont += "<div id='modalInsertPicture'>"
+					+ "<img src = '" + fileurl + contfile + "'></div>"
+					+ "<form target='zero' action='/han/file/upload' method='post' enctype='multipart/form-data'>"
+					+ "<input type='file' name='file'><input type='submit' value='수 정'>	</form>"
+ 					+ "<iframe name='zero' width='0' height='0'></iframe>"
+					+ "<textarea id='modal-cont'>" + cont + "</textarea>";
+ 		footerCont += "<button type='button' class='btn btn-primary'" + "onclick='insertLogic(\""
 						+ contfile + "\",\"" + pno + "\")'> 완 료 </button>";
 			
 		tarTitle.html(titleCont);
@@ -634,21 +625,42 @@
 		tarBtn.html(footerCont);		
 	}
 	
+	function updateResult(data){		
+		
+		var tarBtn = $(".modal-footer");
+		var footerCont = "";
+		
+		if(data.suffix == '.jpg'){
+			var target = $("#modalInsertPicture");
+			var content = "";
+			
+			content += "<input id='getFileName' type='hidden' value='" + data.fileName + "'>"
+						+ "<image id='thumb' src='/han/file/regphoto/" + data.fileName + "'/></p>"
+			target.html(content);
+			/* $(".uploadUL").append("<li><image class='thumb' data-src='"+data.fileName+"' src='/web/file/view/"+ data.fileName+"'/></a></li>"); */
+		}else{
+			$("#modalInsertPicture").html("<image id='thumb' data-src='"+data.fileName+"'src='/resources/book/images/icon.jpg'/></a></p>");
+		}
+	}
+	
+	
 	function insertLogic(fileName,num){
 		var mTitle = document.getElementById('modal-title').value;
 		var mCont = document.getElementById('modal-cont').value;
-
+		var mfileName = document.getElementById('getFileName').value;
+		console.log("fileName : " + mfileName);
+		
 		$.post(url='sample/update',
 				{title:mTitle,
 				cont:mCont,
-				contfile:fileName,
+				contfile:mfileName,
 				pno:num},
 				function(data){
 					againTable();
 					init();
 					animate();
 					$("#testForm").modal('hide');
-					initModal(mTitle, mCont, fileName, num);
+					initModal(mTitle, mCont, mfileName, num);
 				});
 	}
 	
@@ -664,12 +676,11 @@
 		var titleCont = "";
 		var bodyCont = "";
 		var footerCont = "";
-		
-		console.log(cont, contfile);
-		
+				
 		titleCont += "<button type='button' class='close' data-dismiss='modal'>✕</button>"
 					+ "<h3 id='mTitle' style='text-align: center;'>" + title + "</h3>";
 		bodyCont += "<div id='mContfile' style='width:100%;'><img src='/han/file/regphoto/'" + contfile + "'></div>"
+					+ "<br>"
 					+ "<div id='mCont' style='width:100%; text-align:center;'>" + cont + "</div>";
 		footerCont += "<button type='button' class='btn btn-primary'" + "onclick='deleteModal(" + pno +")'> 삭 제 </button>"
 						+ "<button type='button' class='btn btn-primary'" + "onclick='insertModal(\""
@@ -679,6 +690,7 @@
 		tarCont.html(bodyCont);
 		tarBtn.html(footerCont);
 	}
+
 	
 </script>
 </body>
