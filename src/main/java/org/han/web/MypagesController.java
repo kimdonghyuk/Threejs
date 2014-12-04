@@ -28,25 +28,26 @@ public class MypagesController {
 
 		for (Cookie cookie : cookies) {
 
+			System.out.println("getName: " + cookie.getName());
+			System.out.println("getValue: " + cookie.getValue());
+
 			if (cookie.getName().equals("login")) {
-
 				userid = cookie.getValue();
-
 			}
 
 		}
-		
-		vo.setUserid(userid);
-
 		try {
-			model.addAttribute("user", service.readInfo(vo));
+			vo.setUserid(userid);
 			System.out.println("userid: " + userid);
+			model.addAttribute("user", service.readInfo(vo));
 			return "mypages/main";
+
 		} catch (Exception e) {
+
 			model.addAttribute("error", "Login이 필요한 페이지 입니다.");
 			return "user/login";
 		}
-	
+
 	}
 
 	@RequestMapping("/update")
@@ -60,7 +61,6 @@ public class MypagesController {
 		return "mypages/update";
 	}
 
-	
 	@RequestMapping("/modify")
 	public String modify(@ModelAttribute UserVO vo, Model model) {
 
@@ -75,7 +75,7 @@ public class MypagesController {
 			return "mypages/update";
 		}
 	}
-	
+
 	@RequestMapping("/delete")
 	public String delete(@ModelAttribute UserVO vo, Model model) {
 
