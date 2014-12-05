@@ -36,6 +36,11 @@ public class BookMapperTest {
 	}
 	
 	@Test
+	public void showdataTest() {
+		BookVO var = service.showdata(2);
+		System.out.println(var.toString());
+	}
+	@Test
 	public void UpdateTest() {
 		vo.setBno(2);
 		vo.setTitle("Update Junit Test");
