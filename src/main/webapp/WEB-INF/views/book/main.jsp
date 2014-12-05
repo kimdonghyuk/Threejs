@@ -67,6 +67,10 @@
 	.span4{
 		background-image: url("/resources/book/background/book_showlist_background.jpg")
 	}
+	
+	.thumbnail {
+		padding:15px;
+	}
 </style>    
 </head>
 
@@ -149,41 +153,29 @@
 			 
 			<!-- 모달 -->
 			<div class="modal fade" id="updateForm" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
-			  <div class="modal-header">
-			    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			    <h3 id="myModalLabel">도감 수정</h3>
-			  </div>
-			  <div class="modal-body">
-			    <label> 도감을 선택해주세요. </label>
-						<select id="UpdateBook" class="form-control" name="bno"
-								style="width: 250px; opacity: 0.9" onchange="showlist(this.value)"></select> <!-- ,showimg(this.value) -->
-			  </div>
-			  <!-- start update setting -->
-			  <form method="post" action="updatedata" accept-charset="utf-8">
-				  <div class="showmeplz"></div>
-				  <ul class="filename"></ul>
-                  <button type="submit" class="btn btn-primary btn-large pull-right">다썼다~ >▽<</button>
-			  </form>
-			  
-			  <ul class="uploadUL"> </ul>
-            	
-            	<form target="zero" action="/han/file/upload"  method="post" enctype="multipart/form-data">
-					<input type='file' name='file'><input type='submit' value="UPLOAD">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						<h3 id="mTitle" style="text-align: center;">
+						<!-- 제목 들어가는 부분 -->
+						</h3>
+				</div>
 				
-				  <div class="showimgplz"></div>
-				</form>
-				<iframe name="zero" width="0px" height="0px">
-				</iframe>
-			  <!-- end update setting -->
-			  <div class="modal-footer" id="updatemodal">
-			    <button class="btn" data-dismiss="modal" aria-hidden="true">수정</button>
-			    <!-- <button class="btn btn-primary" onclick="deleteBook();">삭제</button> -->
-			  </div>
+				<div class="modal-body text-center">
+					<label> 도감을 선택해주세요. </label>
+						<select id="UpdateBook" class="form-control" name="bno"
+								style="width: 250px; opacity: 0.9" onchange="showlist(this.value)"></select>
+					<div id="mContfile" style="width:100%;">
+					</div>
+					
+				</div>		
+				<div class="modal-footer" id="updatemodal"></div>			
 			</div>
+			  <!-- end update setting -->
+			  
 			<!-- End Update Modal -->
-			
 		</div>
-		
+		<!-- End btn -->
+			
 		<!-- Album list Screen page -->    
 		<div class="container">
 			<div class="row">
@@ -249,10 +241,9 @@
 			dataType:"json",
 			async:false,
 			success:function(data){
-		
 				for(var i= 0, len = data.length; i < len ; i++){
 					content+= "<li class='span4'><div class='thumbnail'>"
-					+ "<a href='/book/sample?bno=" + data[i].bno + "'><img src = '/resources/book/images/" + data[i].contfile + "'></a>"
+					+ "<a href='/book/sample?bno=" + data[i].bno + "'><img src = '/han/file/regphoto/" + data[i].contfile + "'></a>"
 					+ "<div class='caption'>"
 					+ "<h3 style = 'text-align:center;'>" + data[i].title + "</h3>" 
 					+"</div></div></li>";
@@ -272,7 +263,7 @@
 			var target2 = $("#updatemodal");
 			var content = "<option value=" + "'default'>도감선택란</option>";
 			var content1 ="<button class='btn btn-primary' onclick='deleteBook();'>삭제</button>";	
-			var content2 ="<button class='btn btn-primary' onclick='updateBook();'>수정</button>";
+			//var content2 ="<button class='btn btn-primary' onclick='updateBook();'>수정</button>";
 			$.getJSON(url, function (data) {			// 해당 url에 담겨져있는 Jsondata를 parameter값으로 받음.
 				$.each(data, function (key, val) {	// for each문을 돌려서 key값을 잡고 val값을 item 배열에 넣어줌.
 					content += "<option name=bno value=" + val.bno +">" + val.title + "</option>";
@@ -280,7 +271,7 @@
 				});
 					target.html(content);
 					target1.html(content1);
-					target2.html(content2);
+					//target2.html(content2);
 				});
 			};
 			
@@ -307,7 +298,7 @@
 				
 						for(var i= 0, len = data.length; i < len ; i++){
 							content+= "<li class='span4'><div class='thumbnail'>"
-							+ "<a href='/book/sample?bno=" + data[i].bno + "'><img src = '/resources/book/images/" + data[i].contfile + "'></a>"
+							+ "<a href='/book/sample?bno=" + data[i].bno + "'><img src = '/han/file/regphoto/" + data[i].contfile + "'></a>"
 							+ "<div class='caption'>"
 							+ "<h3 style = 'text-align:center;'>" + data[i].title + "</h3>" 
 							+"</div></div></li>";
@@ -320,25 +311,48 @@
 					
 			function showlist(value){
 				var bno = value;
-				var target = $(".showmeplz");
-				var target1 = $(".showimgplz");
-				var content = "";
-				var content1 = "";
+				var mtitle = $("#mTitle");
+				var mcontfile = $("#mContfile");
+				//var mbtn = $("#updatemodal");
+				var contitle = "";
+				var concontfile = "";
+				//var conbtn ="";
 				$.ajax({
 					url: "/book/main/show?bno=" + bno ,
 					dataType:"json",
 					async:false,
 					success:function(data){
+<<<<<<< HEAD
 						content += "<label>제목:<input type='text' name='title' placeholder ='" + data.title + "' autofocus></label>";
 						content1 += "<label>사진:<img src = /han/file/regphoto/" + data.contfile + " style = 'width : 50%; height : 50%;'></label>";
 						tabledata = data;
 						target.html(content);
 						target1.html(content1);
+=======
+						//contitle += "<label>제목:<input type='text' name='title' placeholder ='" + data.title + "' autofocus></label>";
+						/* +"<label>사진:<img src = /han/file/regphoto/" + data.contfile + " style = 'width : 50%; height : 50%;'></label>"; */
+						concontfile += "<div id='modalInsertPicture'>" 
+						+"<label>사진:<img src = /han/file/regphoto/" + data.contfile + " style = 'width : 50%; height : 50%;'></label></div>"
+						+ "<form target='zero' id ='zerodata' action='/han/file/upload'  method='post' enctype='multipart/form-data'>"
+						+ "<label>제목:<input type='text' id='retitle' placeholder ='" + data.title + "' autofocus></label>"
+						+ "<input type='file' name='file'><input type='hidden' name='title' value=" + data.title + ">"
+						+ "<input type='hidden' name=bno value=" + data.bno + ">"
+						+ "<input type='hidden' name=contfile value=" + data.contfile + ">"
+						+ "<input type='submit' value='사진수정'>"
+						+ "</form>"
+						+ "<iframe name='zero' width='0px' height='0px'></iframe>";
+						console.log(concontfile);
+						/* conbtn += "<button type='button' class='btn btn-primary'" + "onclick='insertModal(\""
+						+ data.title + "\",\"" + data.contfile + "\",\"" + data.bno + "\")'>" + "수 정 </button>"; */
+						//mtitle.html(contitle);
+						mcontfile.html(concontfile);
+						//mbtn.html(conbtn);
+>>>>>>> 3f04ec91e22e8c1fd2c603e709d34f6c1a1584e0
 					}});
 				
 			}
 			
-			function showimg(value){
+			/* function showimg(value){
 				var bno = value;
 				console.log("img" + bno);
 				var target = $(".showimgplz");
@@ -356,18 +370,56 @@
 						target.html(content);
 					}});
 				
-			}
+			} */
 			
 			function updateResult(data){
-		    	
-				console.log(data);
-				//class이름이 filename인 부분에 히든값으로 fileName을 추가 시켜준다.
-				$(".filename").append("<input type='hidden' name='contfile' value= '"+data.fileName+"'>");
-				if(data.suffix == '.jpg'){
-					$(".uploadUL").append("<li><image class='thumb' data-src='"+data.fileName+"' src='/han/file/regphoto/"+ data.fileName+"'/></li>");
-				}else{
-					$(".uploadUL").append("<li><image class='thumb' data-src='"+data.fileName+"' src='/resources/images/logo.png'/></li>");
+				var zero = document.getElementById('zerodata');
+				var rename = document.getElementById('retitle').value;
+				console.log(rename);
+				console.log(rename.length);
+				console.log(zero.title);
+				
+				if(rename.length != 0){
+					zero.title.value = rename;
+					console.log(zero.title.value);
 				}
+				
+				//class이름이 filename인 부분에 히든값으로 fileName을 추가 시켜준다.
+				//$(".filename").append("<input type='hidden' name='contfile' value= '"+data.fileName+"'>");
+				if(data.suffix == '.jpg'){
+					var target = $("#modalInsertPicture");
+					var mbtn = $("#updatemodal");
+					var content = "";
+					var conbtn ="";
+					content += "<input id='getFileName' type='hidden' value='" + data.fileName + "'>"
+								+ "<image id='thumb' src='/han/file/regphoto/" + data.fileName + "'/></p>";
+					
+					conbtn += "<button type='button' class='btn btn-primary'" + "onclick='insertModal(\""
+					+ zero.title.value + "\",\"" + data.fileName + "\",\"" + zero.bno.value + "\")'>" + "수 정 </button>";			
+					console.log(content);
+					console.log(conbtn);
+					target.html(content);
+					mbtn.html(conbtn);
+					//$(".uploadUL").append("<li><image class='thumb' data-src='"+data.fileName+"' src='/han/file/regphoto/"+ data.fileName+"'/></li>");
+				}else{
+					$("#modalInsertPicture").html("<image id='thumb' data-src='"+data.fileName+"'src='/resources/images/logo.png'/></a></p>");
+				}
+			}
+			
+			function insertModal(title,fileName,bno){
+				console.log("filename....:" + fileName);
+				console.log("bno....:" + bno);
+				console.log("title....:" + title);
+				$.post(url='main/update',
+						{title:title,
+						contfile:fileName,
+						bno:bno
+						},
+						function(data){
+							$("#updateForm").modal('hide');
+							reTable();	
+						})
+				
 			}
 			
 </script>
