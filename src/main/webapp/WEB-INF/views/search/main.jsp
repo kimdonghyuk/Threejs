@@ -37,13 +37,15 @@
             }
         }
         
-        /* body {font-family:arial, sans-serif;} */
 	    #ts1 li a{
 	        text-decoration:none;
 	        /* color:white; */
 	        color:black;
 	    }
-	    ul {list-style-type:none;}
+	    
+	    #ts1 ul {
+	    	list-style-type:none;
+	    }
         
         body {
 	        background-image: url(/resources/images/search/search_back.jpg);
@@ -89,6 +91,25 @@
 		.str1 {
 			font-size: 30px;
 		}
+		
+		.resultCont{
+			font-size: 12px;
+			line-height: 1.6em;
+		}
+		
+		.btn {
+			font-family: 'Nanum Gothic', serif;
+			border-radius: 5px;
+		}
+		
+		#relatedContList {
+			display: none;
+		}
+		
+		.resThumb {
+			width: 200px;
+		}
+		
     </style>
     
 </head>
@@ -134,15 +155,10 @@
 
 <div id="back" style="height: 600px;"> 
 
-    <p class="str1 question center">유사한 이미지를 선택해주세요</p>
+    <p class="str1 question center">질문이 들어갈 부분</p>
     <!--tagClout-->
     <div id="ts1" style="max-width:800px; height:500px;   margin: auto;  ">
-        <!-- <ul>
-            <li class="span3"><a href="#6" rel="5"><img src="/resources/images/tag/꽃.png"></a></li>
-            <li class="span3"><a href="#8" rel="15"><img src="/resources/images/tag/나무.png" ></a></li>
-            <li class="span3"><a href="#9" rel="20"><img src="/resources/images/tag/나뭇잎.png" ></a></li>
-            <li class="span3"><a href="#10"rel="15"><img src="/resources/images/tag/일체형꽃잎2.png" ></a></li>
-        </ul>
+        <!-- 
         <nav id="nav-arrows" class="nav-arrows">
             <span class="nav-arrow-prev"><i class="icon-angle-left"></i></span>
             <span class="nav-arrow-next"><i class="icon-angle-right"></i></span>
@@ -171,11 +187,24 @@
 	    <div class="modal-dialog modal-sm">
 	        <div class="modal-content">
 	            <div class="modal-header">
-	                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
-	                <p class="str1 modal-title text-center" id="myModalLabel">명진아 봐라</p>
+	                <!-- <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button> -->
+	                <p class="str1 modal-title text-center" id="myModalLabel">제목이 들어갈 부분</p>
 	            </div>
-	            <div id="modal-body" class="modal-body">
-	                <a>으아아아아 모달</a>
+	            <br>
+	            <div class="modal-body">
+	                <div class="resultPic text-center">사진이 들어갈 부분</div>
+	                <br>
+	                <div class="resultCont"></div>
+		            <br>
+		            <button type='button' class='listButton btn btn-primary btn-lg'>관련 컨텐츠</button>
+		            <br><br>
+		            <div id="relatedContList" class="fade">
+			            <ul>
+			            	<li>꽃머겅</li>
+			            	<li>누가누가 자연훼손을 잘 하나</li>
+			            	<li>쓰레기 무단 투기</li>
+			            </ul>
+					</div>
 	            </div>
 	            <!-- <div class="modal-footer">
 	                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -199,24 +228,17 @@
 <script src="/resources/js/search/arr.js"></script>
 
 <script type="text/javascript">
-	// tagcloud 위치값 연산
 	
-window.onload = function getCookie( cookieName )
- {
-     var search = cookieName + "=";
-     var cookie = document.cookie;
-     // 현재 쿠키가 존재할 경우
-     if( cookie.length > 0 )
-     {
-    	 $("#login").html("<a href='/user/logout'>LogOut</a>");
-    	
-     }
-         
- }
+	window.onload = function getCookie( cookieName ){
+		var search = cookieName + "=";
+		var cookie = document.cookie;
+		// 현재 쿠키가 존재할 경우
+		if( cookie.length > 0 ){
+			$("#login").html("<a href='/user/logout'>LogOut</a>");
+		}
+	}
 
-	
-	
-	
+	// tagcloud 위치값 연산
     var maxwidth = document.getElementById('ts1').clientWidth;
     var width = parseInt(maxwidth) / 2 + 25;
     var maxheight = document.getElementById('ts1').clientHeight;
@@ -226,6 +248,24 @@ window.onload = function getCookie( cookieName )
     var rootArr = new Array(); // 전체 질문들을 모아두는 배열
 	var roots = new Array(); // 선택경로를 담아두는 배열
 	var resultSno = 0; // 관련컨텐츠 호출시 사용될 변수
+	
+	// 검색결과 관련컨텐츠 토글
+	$(".listButton").click(function(){
+		var target = document.getElementById("relatedContList");
+		if(target.style.display == "none"){
+			target.style.display = "block";
+		}else{
+			target.style.display = "none";
+		}
+	});
+	/* function contentList(){
+		var target = document.getElementById("relatedContList");
+		if(target.style.display == "none"){
+			target.style.display = "block";
+		}else{
+			target.style.display = "none";
+		}
+	} */
 	
 	// 검색결과 화면
 	function resultBody(num){
@@ -238,17 +278,16 @@ window.onload = function getCookie( cookieName )
 			async:false,
 			success:function(data){
 				console.log(data);
-				str += "<img src='/resources/images/tag/"+data.contfile+"'><br>" + 
-				"<p>"+data.cont+"</p>" + 
-				"<button type='button' class='btn btn-primary btn-lg'>관련 컨텐츠</button>";
-				
+
 				resultSno = data.sno;
-				$(".modal-title").html(data.title);
+				$(".modal-title").html("<strong>" + data.title + "<strong>");
+				$(".resultPic").html("<img src='/resources/images/search/img/"+data.contfile+"'>");
+				$(".resultCont").html(data.cont);
+				document.getElementById("relatedContList").style.display = "none";
 			}
 		});
-		$("#modal-body").html(str);
 	}
-
+	
 	// 경로에 따른 질문을 걸러냄
 	function rootQuestion(rootSet,rootStr){
 	    var questionArr = new Array(); // 질문을 모아두는 배열
@@ -271,12 +310,12 @@ window.onload = function getCookie( cookieName )
 	    	if(val.res == "y"){
 				str += "<li class='span3'>" +
 				"<a href='javascript:setResult(\""+val.rootSet+"\")'>" +
-				"<img src='/resources/images/search/"+val.img+"'>" + 
+				"<img src='/resources/images/search/tag/"+val.img+"'>" + 
 				"</a></li>"
 	    	}else{
 				str += "<li class='span3'>" +
 				"<a href='javascript:rootQuestion(\""+val.rootSet+"\",\""+val.rootStr+"\")'>" +
-				"<img src='/resources/images/search/"+val.img+"'>" + 
+				"<img src='/resources/images/search/tag/"+val.img+"'>" + 
 				"</a></li>"
 			}
 	    });
@@ -300,15 +339,15 @@ window.onload = function getCookie( cookieName )
 			success:function(data){
 				$.each(data, function(key,val){
 					str += "<li class='span3'>" +
-					"<a onclick='resultBody("+val.sno+")' data-toggle='modal' data-target='#resultModal'>" +
-					"<img src='/resources/images/tag/"+val.contfile+"'>" + 
+					"<a class='resThumb' onclick='resultBody("+val.sno+")' data-toggle='modal' data-target='#resultModal'>" +
+					"<img src='/resources/images/search/img/"+val.contfile+"'>" + 
 					"</a></li>"
 				});
 			}
 		});
 		str += "</ul>";
 	    $("#ts1").html(str);
-	    $(".question").html("선택해주세요");
+	    $(".question").html("검색결과입니다.");
 	    
 	    // 생성된 리스트를 tagcloud로 적용시켜준다
 		$('#ts1').tagcloud({centrex:width, centrey:height, init_motion_x:10, init_motion_y:10 });

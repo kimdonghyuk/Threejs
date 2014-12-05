@@ -51,6 +51,11 @@ public class BookController {
 	   service.delete(bno);
    }
    
+   @RequestMapping("main/update")
+   public @ResponseBody void updateBook(@ModelAttribute BookVO vo){
+	   service.update(vo);
+   }
+   
    @RequestMapping("/regist")
    public void regist(){}
    
