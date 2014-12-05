@@ -330,7 +330,6 @@
 					async:false,
 					success:function(data){
 						content += "<label>제목:<input type='text' name='title' placeholder ='" + data.title + "' autofocus></label>";
-						/* +"<label>사진:<img src = /han/file/regphoto/" + data.contfile + " style = 'width : 50%; height : 50%;'></label>"; */
 						content1 += "<label>사진:<img src = /han/file/regphoto/" + data.contfile + " style = 'width : 50%; height : 50%;'></label>";
 						tabledata = data;
 						target.html(content);
