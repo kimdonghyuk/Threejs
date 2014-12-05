@@ -11,7 +11,17 @@ public class DiaryVO {
 	private String contfile;
 	private Date regdate;
 	private String tag;
+	private Integer rcount;
+	private Integer cnt;
 	
+	
+	
+	public Integer getCnt() {
+		return cnt;
+	}
+	public void setCnt(Integer cnt) {
+		this.cnt = cnt;
+	}
 	public Integer getDno() {
 		return dno;
 	}
@@ -53,13 +63,20 @@ public class DiaryVO {
 	}
 	public void setTag(String tag) {
 		this.tag = tag;
+	}	
+	
+	public Integer getRcount() {
+		return rcount;
+	}
+	public void setRcount(Integer rcount) {
+		this.rcount = rcount;
 	}
 	
 	@Override
 	public String toString() {
 		return "DiaryVO [dno=" + dno + ", userid=" + userid + ", title="
 				+ title + ", cont=" + cont + ", contfile=" + contfile
-				+ ", regdate=" + regdate + ", tag=" + tag + "]";
+				+ ", regdate=" + regdate + ", tag=" + tag + ", rcount="
+				+ rcount + ", cnt=" + cnt + "]";
 	}
-
 }
