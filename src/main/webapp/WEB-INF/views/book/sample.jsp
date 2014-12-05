@@ -610,7 +610,7 @@
 		var bodyCont = "";
 		var footerCont = "";
 		
-		titleCont += "<input id='modal-title' type='tex/t' style='text-align: center;' value= " + title + ">";
+		titleCont += "<input id='modal-title' type='tex/t' style='text-align: center;' value= " + title + ">"
 		bodyCont += "<div id='modalInsertPicture'>"
 					+ "<img src = '" + fileurl + contfile + "'></div>"
 					+ "<form target='zero' action='/han/file/upload' method='post' enctype='multipart/form-data'>"
@@ -644,16 +644,21 @@
 	}
 	
 	
-	function insertLogic(fileName,num){
+	function insertLogic(mfileName,num){
 		var mTitle = document.getElementById('modal-title').value;
 		var mCont = document.getElementById('modal-cont').value;
-		var mfileName = document.getElementById('getFileName').value;
-		console.log("fileName : " + mfileName);
+		var fileName = document.getElementById('getFileName');
+	
+		if(isNull(fileName)){
+			fileName = mfileName;}
+		else{
+			fileName = fileName.value; 
+		}
 		
 		$.post(url='sample/update',
 				{title:mTitle,
 				cont:mCont,
-				contfile:mfileName,
+				contfile:fileName,
 				pno:num},
 				function(data){
 					againTable();
@@ -691,6 +696,10 @@
 		tarBtn.html(footerCont);
 	}
 
+	function isNull(obj){
+		return (typeof obj != "undefined" && obj !=null && obj != "")? false:true;
+	}
+	
 	
 </script>
 </body>

@@ -31,7 +31,12 @@ public class UserServiceTest {
 	public void resadTest() {
 		
 		vo.setUserid("han00");
-		logger.info(service.readInfo(vo).toString());
+		try {
+			logger.info(service.readInfo(vo).toString());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 	
@@ -53,13 +58,23 @@ public class UserServiceTest {
 		vo.setUserid("han06");
 		vo.setPw("han00");
 		vo.setEmail("han00@han.net");
-		service.updateUser(vo);
+		try {
+			service.updateUser(vo);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	@Test
 	public void deleteTest(){
 		vo.setUserid("han06");
-		service.deleteUser(vo);
+		try {
+			service.deleteUser(vo);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

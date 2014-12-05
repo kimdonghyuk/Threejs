@@ -10,7 +10,7 @@ public class ContVO {
 	private String cont;
 	private String contfile;
 	private Date regdate;
-	private String userid;
+	private String cate;
 	public Integer getCno() {
 		return cno;
 	}
@@ -47,18 +47,17 @@ public class ContVO {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
-	public String getUserid() {
-		return userid;
+	public String getCate() {
+		return cate;
 	}
-	public void setUserid(String userid) {
-		this.userid = userid;
+	public void setCate(String cate) {
+		this.cate = cate;
 	}
 	
 	@Override
 	public String toString() {
 		return "ContVO [cno=" + cno + ", sno=" + sno + ", title=" + title
 				+ ", cont=" + cont + ", contfile=" + contfile + ", regdate="
-				+ regdate + ", userid=" + userid + "]";
+				+ regdate + ", cate=" + cate + "]";
 	}
-	
 }

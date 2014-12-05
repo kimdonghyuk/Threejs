@@ -56,13 +56,11 @@
         body{
 	    	background-image : url("/resources/images/diary/wall06.jpg");
 	    	background-repeat : no repeat;
-	    	background-size : cover;
-    	}
+	    	background-size : cover;}
     </style>
     
 </head>
 <body>
-
     <!--Header-->
     <header class="navbar navbar-fixed-top">
         <div class="navbar-inner">
@@ -91,7 +89,6 @@
     </header>
     <!-- /header -->
 
-
     <!-- / .title -->
     <section class="title">
         <div class="container">
@@ -103,7 +100,9 @@
         </div>
     </section>
     <!-- / .title -->
+	
 
+    
     <div class="center-button">
         <a href="/index" class="btn btn-primary pull-left center-button-in">전체보기</a>
         <a href="/diary/write" class="btn btn-primary pull-right center-button-in">일기쓰기</a>
@@ -113,54 +112,65 @@
         <div class="row-fluid">
             <div class="span8 offset2">
                 <div class="blog">
-                    <div class="blog-item well">
-                        <a><h2>우왕 애벌레다~</h2></a>
-                        <div class="blog-meta clearfix">
-                            <p class="pull-left">
-                                <!-- 기본정보 들어가는 부분 -->
-                              <i class="icon-user"></i> 글쓴이 <a href="#">키므네</a> | <i class="icon-folder-close"></i> 관찰대상 <a href="#">장수풍뎅이</a> | <i class="icon-calendar"></i> Sept 16th, 2012
-                          </p>
-                          <p class="pull-right"><i class="icon-comment pull"></i> <a href="/blog-item#comments">덧글 3개</a></p>
-                        </div>
-                          <p><img src="/resources/images/sample/lava.PNG" width="100%" alt="" /></p>
-                            <!-- 본문 들어갈 부분 -->
-                          <p>흙 많이 먹고 무럭무럭 자라라~</p>
-                          <a class="btn btn-link" href="#">덧글보기 <i class="icon-angle-right"></i></a>
-                    </div>
-                  <!-- End Blog Item -->
-
-                  <div class="blog-item well">
-                    <a href="#"><h2>어므나~</h2></a>
-                    <div class="blog-meta clearfix">
-                        <p class="pull-left">
-                          <i class="icon-user"></i> 글쓴이 <a href="#">김은왜</a> | <i class="icon-folder-close"></i> 관찰대상 <a href="#">장수풍뎅이</a> | <i class="icon-calendar"></i> Sept 16th, 2012
-                      </p>
-                      <p class="pull-right"><i class="icon-comment pull"></i> <a href="/blog-item#comments">덧글 2개</a></p>
-                    </div>
-                      <p><img src="/resources/images/sample/ultra.PNG" width="100%" alt="" /></p>
-                      <p>우왕 뻔데기가 풍뎅이가 되었어요~</p>
-
-                      <a class="btn btn-link" href="#">덧글보기 <i class="icon-angle-right"></i></a>
-                  </div>
-              <!-- End Blog Item -->
+                
+                   <c:forEach items="${list}" var="table">
+	                    <div class="blog-item well" id="diaryTitle">
+	                        <a><h2> ${table.title} </h2></a>
+	                        <div class="blog-meta clearfix">
+	                            <p class="pull-left" id="diaryMenu">
+	                                <!-- 기본정보 들어가는 부분 -->
+	                              <i class="icon-user"></i> 글쓴이 <a href="#"> ${table.userid } </a> | 
+	                              <i class="icon-folder-close"></i> 관찰대상 <a href="#"> ${table.tag } </a> | 
+	                              <i class="icon-calendar"></i> 2014.12.04
+	                          	</p>
+	                         	 <p class="pull-right" id="diaryReply">
+	                         	 	<c:choose>
+	                         	 	<c:when test="${table.rcount==0}">
+	                          			<i class="icon-comment pull"></i> <a href="/blog-item#comments">덧글 0개</a></c:when>
+	                          		<c:when test="${table.rcount>0}">
+	                          			<i class="icon-comment pull"></i> <a href="/blog-item#comments">덧글 ${table.rcount}개</a></c:when>
+	                          		</c:choose>
+	                          	</p>
+	                        </div>
+	                        <div id="diaryCont">
+	                          <p><img src="/han/file/regphoto/${table.contfile}" width="100%" alt="" /></p>
+	                            <!-- 본문 들어갈 부분 -->
+	                          <p> ${table.cont} </p>
+	                        </div>  
+	                          <a class="btn btn-link" id="diary_replyList" href="#">덧글보기 <i class="icon-angle-right"></i></a>
+	                    </div>
+                  </c:forEach>
 
                 <div class="gap"></div>
                     <!-- Paginationa -->
                   <div class="pagination">
-                    <ul>
-                        <li><a href="#"><i class="icon-angle-left"></i></a></li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#"><i class="icon-angle-right"></i></a></li>
+                    <ul>					                    
+                    	<!-- 이전 버튼 만들기  -->
+                    	<c:if test="${pageMaker.first - 1 > 0}">
+							<li><a href="javascript:goPage(${pageMaker.first}-5)">
+							<i class="icon-angle-left"></i></a></li>
+						</c:if>
+                  
+                    	<!-- 페이지 번호 만들기 -->
+                       	<c:forEach begin="${pageMaker.first}" end="${pageMaker.last}" var="idx">
+                       		<c:if test="${idx-1 < pageMaker.cnt }">
+                       			<li><a href="javascript:goPage(${idx})">${idx}</a></li>
+                       		</c:if>
+                      	</c:forEach>
+                       	
+                       	<!-- 다음 버튼 만들기 -->
+                       	<c:if test="${pageMaker.last < pageMaker.cnt}">
+                       		<li><a href="javascript:goPage(${pageMaker.last}+1)">
+                       		<i class="icon-angle-right"></i></a></li>
+                       	</c:if>
                     </ul>
                   </div>
                 </div>
             </div>
         </div>
     </section>
+    
+    
 	<footer id="footer" style="opacity: 0.7; position: absolute; bottom: auto; width: 100%; background-color: black;">
 	    <div class="container">
 	        <div class="row-fluid">
@@ -172,46 +182,25 @@
 	        </div>
 	    </div>
 	</footer>
-<!--  Login form -->
-    <div class="modal hide fade" id="loginModal">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">✕</button>
-            <h3 style="text-align: center">로그인</h3>
-        </div>
-        <div class="modal-body" style="text-align:center;">
-            <div class="row-fluid">
-                <div class="span10 offset1">
-                    <div id="modalTab">
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="login">
-                                <form method="post" action='' name="login_form">
-                                    <p><input type="text" class="span12" name="eid" id="email" placeholder="Email"></p>
-                                    <p><input type="password" class="span12" name="passwd" placeholder="Password"></p>
-                                    <p><button type="submit" class="btn btn-primary">Sign in</button>
-                                        <a href="#forgotpassword" data-toggle="tab">Forgot Password?</a>
-                                    </p>
-                                </form>
-                            </div>
-                            <div class="tab-pane fade" id="forgotpassword">
-                                <form method="post" action='' name="forgot_password">
-                                    <p>Hey this stuff happens, send us your email and we'll reset it for you!</p>
-                                    <input type="text" class="span12" name="eid" id="email" placeholder="Email">
-                                    <p><button type="submit" class="btn btn-primary">Submit</button>
-                                        <a href="#login" data-toggle="tab">Wait, I remember it now!</a>
-                                    </p>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-<!--  /Login form -->
+	
+	<form method='get' accept-charset="utf-8" name='diaryForm'>
+		<input type='hidden' name='dno'>
+		<input type='hidden' name='page' value='${pageMaker.page}'>
+	</form>
 
 <script src="/resources/js/vendor/jquery-1.9.1.min.js"></script>
 <script src="/resources/js/vendor/bootstrap.min.js"></script>
 <script src="/resources/js/main.js"></script>
+
+<script>
+
+	function goPage(num) {
+		console.log(num);
+		document.diaryForm.page.value = num;
+		document.diaryForm.submit();
+	}
+
+</script>
 
 </body>
 </html>
