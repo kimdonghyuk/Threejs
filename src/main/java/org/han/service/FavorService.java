@@ -6,6 +6,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.han.mapper.FavorMapper;
+import org.han.vo.ContVO;
 import org.han.vo.FavorVO;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,12 @@ public class FavorService {
 	public List<FavorVO> list(String userid)
 	{
 		return mapper.list(userid);
+	}
+	
+	
+	public ContVO contList(Integer cno)
+	{
+		return mapper.contList(cno);
 	}
 	
 }
