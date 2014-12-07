@@ -29,7 +29,7 @@
     
     <style>  
     	
-        .diary{
+    	.diary{
             width: 775px;
             margin: auto;
         }
@@ -46,7 +46,7 @@
             margin-top: 10px;
             border-radius: 5px;
         }
-    
+        
         @media screen and (max-width: 979px){
             body{
                 padding-top: 0px;
@@ -100,9 +100,7 @@
         </div>
     </section>
     <!-- / .title -->
-	
 
-    
     <div class="center-button">
         <a href="/index" class="btn btn-primary pull-left center-button-in">전체보기</a>
         <a href="/diary/write" class="btn btn-primary pull-right center-button-in">일기쓰기</a>
@@ -123,21 +121,26 @@
 	                              <i class="icon-folder-close"></i> 관찰대상 <a href="#"> ${table.tag } </a> | 
 	                              <i class="icon-calendar"></i> 2014.12.04
 	                          	</p>
-	                         	 <p class="pull-right" id="diaryReply">
-	                         	 	<c:choose>
-	                         	 	<c:when test="${table.rcount==0}">
-	                          			<i class="icon-comment pull"></i> <a href="/blog-item#comments">덧글 0개</a></c:when>
-	                          		<c:when test="${table.rcount>0}">
-	                          			<i class="icon-comment pull"></i> <a href="/blog-item#comments">덧글 ${table.rcount}개</a></c:when>
-	                          		</c:choose>
-	                          	</p>
+	                          		<p class="pull-right" id="btnArea">
+	                          			<i class="icon-pencil"></i> 
+	                          			<a href="#insertForm" onclick="insertDiary(${table.dno})"> 수 정</a>
+
+	                          			<i class="icon-eraser"></i> 
+	                          			<a href="/diary/deleteDiary?dno=${table.dno}"> 삭 제</a>
+	                          			<%--<i class="icon-eraser"></i> <a href="javascript:deleteDiary(${table.dno})"> 삭 제</a> --%>
+	                          		</p>
 	                        </div>
 	                        <div id="diaryCont">
 	                          <p><img src="/han/file/regphoto/${table.contfile}" width="100%" alt="" /></p>
 	                            <!-- 본문 들어갈 부분 -->
-	                          <p> ${table.cont} </p>
+	                          <p style='font-family: sans-serif;'> ${table.cont} </p>
 	                        </div>  
-	                          <a class="btn btn-link" id="diary_replyList" href="#">덧글보기 <i class="icon-angle-right"></i></a>
+	                        <c:choose>
+	                        	<c:when test="${table.rcount==0}">
+	                          		<a class="btn btn-link" id="diary_replyList" href="#">덧글보기(0) <i class="icon-angle-right"></i></a></c:when>
+	                          	<c:when test="${table.rcount>0}">
+	                          		<a class="btn btn-link" id="diary_replyList" href="#">덧글보기(${table.rcount}) <i class="icon-angle-right"></i></a></c:when>
+	                        </c:choose>  			                          	
 	                    </div>
                   </c:forEach>
 
@@ -169,8 +172,7 @@
             </div>
         </div>
     </section>
-    
-    
+        
 	<footer id="footer" style="opacity: 0.7; position: absolute; bottom: auto; width: 100%; background-color: black;">
 	    <div class="container">
 	        <div class="row-fluid">
@@ -182,6 +184,34 @@
 	        </div>
 	    </div>
 	</footer>
+	
+	<div class="modal fade" id="insertForm" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+		<div class = "modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header" style="text-align:center;">
+					<button type="button" class="close" data-dismiss="modal">✕</button>
+					<h3 id="mTitle" style="text-align: center;">
+					<!-- 제목 들어가는 부분 -->
+					</h3>
+				</div>
+				
+				<!-- <div class="modal-body text-center">
+					<div id="mContfile" style="width:100%;">
+					</div>
+					
+					<div id="mTag" style="width:100%;">
+					</div>
+					
+					<div id="mCont" style="width:100%; text-align:center;">
+					</div>
+					</div>					
+				</div>
+				
+				<div class="modal-footer"> -->
+				</div>
+			</div>
+		</div>
+	
 	
 	<form method='get' accept-charset="utf-8" name='diaryForm'>
 		<input type='hidden' name='dno'>
@@ -200,7 +230,21 @@
 		document.diaryForm.submit();
 	}
 
-</script>
+	// 삭제 키 누르면 확인한번 해주고 삭제해주기 위해 스크립트문 제작.
+	function deleteDiary(dno){
+		console.log(dno);
+	}
 
+	function insertDiary(dno, title, cont, contfile, tag){
+		console.log("dno : " + dno);
+		console.log("title : " + title);
+		console.log("cont : " + cont);
+		console.log("contfile : " + contfile);
+		console.log("tag : " + tag);
+		
+		
+
+	}
+</script>
 </body>
 </html>

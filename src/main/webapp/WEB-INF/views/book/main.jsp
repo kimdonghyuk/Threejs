@@ -322,13 +322,11 @@
 					dataType:"json",
 					async:false,
 					success:function(data){
-<<<<<<< HEAD
 						content += "<label>제목:<input type='text' name='title' placeholder ='" + data.title + "' autofocus></label>";
 						content1 += "<label>사진:<img src = /han/file/regphoto/" + data.contfile + " style = 'width : 50%; height : 50%;'></label>";
 						tabledata = data;
 						target.html(content);
 						target1.html(content1);
-=======
 						//contitle += "<label>제목:<input type='text' name='title' placeholder ='" + data.title + "' autofocus></label>";
 						/* +"<label>사진:<img src = /han/file/regphoto/" + data.contfile + " style = 'width : 50%; height : 50%;'></label>"; */
 						concontfile += "<div id='modalInsertPicture'>" 
@@ -347,7 +345,6 @@
 						//mtitle.html(contitle);
 						mcontfile.html(concontfile);
 						//mbtn.html(conbtn);
->>>>>>> 3f04ec91e22e8c1fd2c603e709d34f6c1a1584e0
 					}});
 				
 			}
