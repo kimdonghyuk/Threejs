@@ -38,12 +38,20 @@ public class DiaryController {
 		service.createDiary(vo);
 		return "redirect:main";
 	}
-	
+	  
 	@RequestMapping("/deleteDiary")
 	public String deleteDiary(@RequestParam(value="dno",defaultValue="")int dno){
-		System.out.println(dno);
 		service.deleteDiary(dno);
 		return "redirect:main";
 	}
+	
+	@RequestMapping("/update")
+	public String updateDiary(@ModelAttribute DiaryVO vo){
+		System.out.println(vo.toString());
+		service.updateDiary(vo);
+		return "redirect:/diary/main";
+	}
+	
+	
 	
 }
