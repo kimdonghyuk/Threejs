@@ -52,6 +52,28 @@ public class favorController {
 
 	}
 	
+	@RequestMapping("list")
+	@ResponseBody
+	public List<FavorVO> list(@ModelAttribute FavorVO vo, Model model,HttpServletRequest request){
+		Cookie[] cookies = request.getCookies();
+		String userid = null;
+
+		for (Cookie cookie : cookies) {
+
+			System.out.println("getName: " + cookie.getName());
+			System.out.println("getValue: " + cookie.getValue());
+
+			if (cookie.getName().equals("login")) {
+				userid = cookie.getValue();
+			}
+
+		}
+
+		List<FavorVO> list=service.list(userid);
+		return list;
+		
+	}
+	
 	
 	@RequestMapping("/detail")
 	@ResponseBody
@@ -60,5 +82,7 @@ public class favorController {
 		return service.contList(cno);
 		
 	}
+	
+
 
 }

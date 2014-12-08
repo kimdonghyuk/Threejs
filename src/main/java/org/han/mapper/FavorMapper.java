@@ -18,7 +18,7 @@ public interface FavorMapper {
 // 즐겨찾기 삭제
 	@Delete
 	("DELETE FROM tbl_favor WHERE fno = #{fno}")
-	public void delFavor(FavorVO vo);
+	public void delFavor(Integer fno);
 
 //	userid에 해당하는 즐겨찾기 리스트
 	@Select
