@@ -17,7 +17,8 @@
     <link rel="stylesheet" href="/resources/css/font-awesome.min.css">
     <link rel="stylesheet" href="/resources/css/main.css">
     <link rel="stylesheet" href="/resources/css/sl-slide.css">
-
+	<link rel="stylesheet" href="/resources/css/book/style.css" type="text/css"/>
+	
     <script src="/resources/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 
     <!-- Le fav and touch icons -->
@@ -65,12 +66,21 @@
 	}
 	
 	.span4{
-		background-image: url("/resources/book/background/book_showlist_background.jpg")
+		/* background-image: url("/resources/book/background/book_showlist_background.jpg") */
 	}
 	
-	.thumbnail {
-		padding:15px;
+	#card-3:hover {
+		-moz-transform: scale(1.2) rotate(0deg);
+   	 	-webkit-transform: scale(1.2) rotate(0deg); 
 	}
+	
+	/* .thumbnail {
+		padding:15px;
+  		-webkit-column-gap: 1.5em;
+  		-webkit-column-rule: 1px solid #ccc;
+  		border:10px solid #ccc;
+  		shadow :rgba(1,1,0,1) 0 -15px 10px;
+	} */
 </style>    
 </head>
 
@@ -111,7 +121,7 @@
                     <h1>나만의도감</h1>
                 </div>
             </div>
-
+		</div>
     </section>
 	<!-- Dogam UI Set -->
 	<div id="back" style="height: 600px;">    
@@ -146,8 +156,9 @@
 			</div>
 			<!-- End Delete Modal -->
 			
+			
 			<!-- Start Update Modal -->
-			<a href="#updateForm" role="button" class="btn-social btn-small pull-right" data-toggle="modal">
+			<a onclick='resetModal();' href="#updateForm" role="button" class="btn-social btn-small pull-right" data-toggle="modal">
 				<i class="icon-edit icon-white"></i> <span><strong>수정</strong></span>
 			</a>
 			 
@@ -188,6 +199,8 @@
 		<!-- End Album list -->
 	</div>
     <!-- End Dogam -->
+    
+    <ul>tset1<li><h3>test2</h3></li></ul>
 <footer id="footer" style="opacity: 0.7; position: absolute; bottom: auto; width: 100%; background-color: black;">
     <div class="container">
         <div class="row-fluid">
@@ -242,7 +255,7 @@
 			async:false,
 			success:function(data){
 				for(var i= 0, len = data.length; i < len ; i++){
-					content+= "<li class='span4'><div class='thumbnail'>"
+					content+= "<li class='span4' id='card-3'><div class='thumbnail'>"
 					+ "<a href='/book/sample?bno=" + data[i].bno + "'><img src = '/han/file/regphoto/" + data[i].contfile + "'></a>"
 					+ "<div class='caption'>"
 					+ "<h3 style = 'text-align:center;'>" + data[i].title + "</h3>" 
@@ -412,6 +425,10 @@
 							reTable();	
 						})
 				
+			}
+			
+			function resetModal(){
+				$("#mContfile").html("");	
 			}
 			
 </script>
