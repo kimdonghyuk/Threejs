@@ -43,7 +43,7 @@ public class FavorServiceTest {
 	@Test
 	public void delFavor(){
 		vo.setFno(4);
-		service.del(vo);
+		service.del(vo.getFno());
 	}
 
 }
