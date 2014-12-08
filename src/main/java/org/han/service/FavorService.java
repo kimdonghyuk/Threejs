@@ -21,8 +21,8 @@ public class FavorService {
 		mapper.addFavor(vo);
 	}
 	
-	public void del(FavorVO vo){
-		mapper.delFavor(vo);
+	public void del(Integer fno){
+		mapper.delFavor(fno);
 	}
 
 	public List<FavorVO> list(String userid)
@@ -35,5 +35,6 @@ public class FavorService {
 	{
 		return mapper.contList(cno);
 	}
+	
 	
 }

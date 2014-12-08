@@ -100,12 +100,12 @@
             <div class="well span3" style="border: 3px solid green;">
                 <ul class="nav nav-list">
                 
-                    <li class="nav-header" style="border: 1px;">즐겨찾기 항목</li>
+                    <li class="nav-header" style="border: 1px;" id="favorlist">즐겨찾기 항목</li>
                 <!-- favor 리스트 불러오기 -->
-                <c:forEach items="${list}" var="item">
-                    <li><a href="javascript:contList(${item.cno})"><i class="icon-star"></i>${item.cate}+${item.title}</li>
+                <%-- <c:forEach items="${list}" var="item">
+                    <li><a href="javascript:contList(${item.cno})"><i class="icon-star"></i>${item.cate}${item.title}</li>
 				
-				</c:forEach>
+				</c:forEach> --%>
 				
                 </ul>
             </div>
@@ -123,10 +123,10 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="span4" style="">
-                        <a href="#" class="thumbnail">
+                    <div class="span4" id = "contimg">
+                        <a href="#">
                             <img src="/resources/images/sample/img2.jpg">
-                        </a>
+                       </a>
                     </div>
                     <div class="span5" id="contDetail">
                         <p>
@@ -152,16 +152,45 @@
 
 /* $(document).ready(); */
 
+$(document).ready(function(){
+		 favorlist();
+	});
+	
+function favorlist(){
+    $.post("list", function(data){
+    	console.log(data);
+    	var list =""
+        var targer = $('#favorlist');
+        
+        $.each (data , function (key , val) {
+            console.log(key,val);
+            list +=
+			
+            console.log(list);
+        });
+        target.html(list);
+    });
+};
+
+
+
 function contList(cno){
 	
  	var result = {cno:cno}
 	$.post("detail",result,function(data){
 		
-		console.log(data);
+		console.log(data);		
 		console.log(data.cno);
+		
 		/*  var title = document.getElementById("title");*/
-		var title = document.getElementByClass("favortitle");
-		title.html('<p>'+'data.title'+'</p>');	
+		
+		var title = $('#title');
+		var contdetail = $('#contDetail');
+		var contimg=$('#contimg');
+		
+		title.html('<p>'+data.title+'</p>');
+		contdetail.html('<p>'+data.cont+'</p>');
+		contimg.html("<img src="+'/resources/images/sample/img2.jpg'+">");
 	}
 )};
 	
