@@ -107,16 +107,25 @@
         <div class="row-fluid">
             <div class="span8 offset2">
                 <div class="blog">
-                        <form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="">
+                		
+                		<form target="zero" action="/han/file/upload" method="post" enctype="multipart/form-data" >
+							<input type='file' name='file'><input type='submit' value="UPLOAD">
+						</form>
+						<iframe name="zero" width="0" height="0" ></iframe>
+						
+						<ul class="fileUL"></ul>
+                
+                        <form method="post" action="createDiary" accept-charset="utf-8">
                             <label>여기에 제목을 적어주세요</label>
-                            <input type="text" class="input-block-level" required="required">
-                            <label>사진을 등록해주세요</label>
-                            <input type="file" multiple="" class="btn btn-primary btn-small button-radius">
-                            <p class="insertImg"><p class="help-block">선택된 사진이 없어요...</p></p>
+                            <input name="title" class="input-block-level" required="required">
+                            <label>태그를 등록해주세요</label>
+                            <input name="tag" class="input-block-level" required="required">
+                            <ul class="uploadUL">
+                            </ul>
                             <!-- 본문 들어갈 부분 -->
                             <label>일기 내용을 적어주세요</label>
-                            <textarea name="message" id="message" required="required" class="input-block-level" rows="8"></textarea>
-                            <button type="submit" class="btn btn-primary btn-large pull-right button-radius">다썼다~ >▽<</button>
+                            <textarea name="cont" id="message" required="required" class="input-block-level" rows="8"></textarea>
+                            <input type="submit" class="btn btn-primary btn-large pull-right button-radius" value="등 록">
                         </form>
                     <!-- End Blog Item -->
                     <div class="gap"></div>
@@ -135,45 +144,28 @@
 	        </div>
 	    </div>
 	</footer>
-<!--  Login form -->
-    <div class="modal hide fade" id="loginModal">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">✕</button>
-            <h3 style="text-align: center">로그인</h3>
-        </div>
-        <div class="modal-body" style="text-align:center;">
-            <div class="row-fluid">
-                <div class="span10 offset1">
-                    <div id="modalTab">
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="login">
-                                <form method="post" action='' name="login_form">
-                                    <p><input type="text" class="span12" name="eid" id="email" placeholder="Email"></p>
-                                    <p><input type="password" class="span12" name="passwd" placeholder="Password"></p>
-                                    <p><button type="submit" class="btn btn-primary">Sign in</button>
-                                        <a href="#forgotpassword" data-toggle="tab">Forgot Password?</a>
-                                    </p>
-                                </form>
-                            </div>
-                            <div class="tab-pane fade" id="forgotpassword">
-                                <form method="post" action='' name="forgot_password">
-                                    <p>Hey this stuff happens, send us your email and we'll reset it for you!</p>
-                                    <input type="text" class="span12" name="eid" id="email" placeholder="Email">
-                                    <p><button type="submit" class="btn btn-primary">Submit</button>
-                                        <a href="#login" data-toggle="tab">Wait, I remember it now!</a>
-                                    </p>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-<!--  /Login form -->
+
 <script src="/resources/js/vendor/jquery-1.9.1.min.js"></script>
 <script src="/resources/js/vendor/bootstrap.min.js"></script>
 <script src="/resources/js/main.js"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+<script>
+
+/*file Upload...........................................................................................*/
+ 	function updateResult(data){
+		console.log(data.fileName);
+		$(".uploadUL").append("<input type='hidden' name='contfile' value='"+data.fileName+"'></p>");
+		
+		if(data.suffix == '.jpg'){
+			$(".fileUL").append("<p><a href='/han/file/down?src="+data.fileName+"'><image class='thumb' src='/han/file/regphoto/"+data.fileName+"'/></p>");
+			/* $(".uploadUL").append("<li><image class='thumb' data-src='"+data.fileName+"' src='/web/file/view/"+ data.fileName+"'/></a></li>"); */
+		}else{
+			$(".fileUL").append("<p><a href='/han/file/down?src="+data.fileName+"'><image class='thumb' data-src='"+data.fileName+"' src='/resources/book/images/icon.jpg'/></a></p>");
+		}
+}
+
+</script>
 
 </body>
 </html>
