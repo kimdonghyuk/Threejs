@@ -25,6 +25,7 @@ public class DiaryController {
 	@RequestMapping("/main")
 	public void readDiary(@RequestParam(value="page", defaultValue="1")String[] types,
 			@ModelAttribute PageMaker pm, Model model){
+		pm.setUserid("han07");
 		model.addAttribute("list", service.readDiary(pm));
 	}
 	
@@ -38,12 +39,20 @@ public class DiaryController {
 		service.createDiary(vo);
 		return "redirect:main";
 	}
-	
+	  
 	@RequestMapping("/deleteDiary")
 	public String deleteDiary(@RequestParam(value="dno",defaultValue="")int dno){
-		System.out.println(dno);
 		service.deleteDiary(dno);
 		return "redirect:main";
 	}
+	
+	@RequestMapping("/update")
+	public String updateDiary(@ModelAttribute DiaryVO vo){
+		System.out.println(vo.toString());
+		service.updateDiary(vo);
+		return "redirect:/diary/main";
+	}
+	
+	
 	
 }

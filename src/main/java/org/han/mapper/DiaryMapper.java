@@ -27,6 +27,11 @@ public interface DiaryMapper {
 			+ " where dno=#{dno}")
 	public void updateDiary(DiaryVO vo);
 	
+	@Update("update tbl_diaryset "
+			+ " rcount=rcount+1"
+			+ " where dno=#{dno};")
+	public void updateRcount(int dno);
+	
 	@Delete("delete from tbl_diary"
 			+ " where dno=#{dno}")
 	public void deleteDiary(int dno);

@@ -35,8 +35,8 @@ public class PageService {
 		mapper.updatePage(vo);
 	}
 
-	public List<BookVO> selectBook(){
-		return mapper.selectBook();
+	public List<BookVO> selectBook(PageVO vo){
+		return mapper.selectBook(vo);
 	}
 	
 	public PageVO read(PageVO vo){

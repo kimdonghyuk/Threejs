@@ -16,6 +16,7 @@
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width">
 
+
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="/resources/css/bootstrap-responsive.min.css">
@@ -37,15 +38,24 @@
 	href="/resources/images/ico/apple-touch-icon-57-precomposed.png">
 
 <style>
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
 @media screen and (max-width: 979px) {
-	body {
+body {
 		padding-top: 0px;
 	}
 }
 
 body {
-	background-color: lightblue;
+	background-color: lightblue;﻿
 }
+
+p{
+        font-size:xx-large;
+        font-family: 'Hanna', serif;
+        ﻿
+        }
 
 .center-button {
 	height: 50px;
@@ -58,6 +68,8 @@ body {
 	margin-top: 10px;
 	border-radius: 5px;
 }
+
+
 </style>
 </head>
 
@@ -103,32 +115,39 @@ body {
 
 	<!-- 회원정보 리스트  -->
 
-	<div id="menu" style="height: 600px; padding: 20px 20px 20px 20px">
+	<div id="menu" style="height: 80%; padding: 20px 20px 20px 20px">
 		<div id="container" style="max-width: 700px; margin: auto">
-			<h3>*회원 정보*</h3>
+			<p>회원 정보</p>
+			<br>
+			<br>
 <h4>${error}<h4>
 			<form action="modify">
-				<ul>
-					<li>경험치: ${user.exp}</li>
-					<li>${user.userid}</li>
-					<li>E-mail: <input type="text" name="email"	value="${user.email}"></li>
-					<li>변경 할 비밀번호: <input type="password" name="pw" value="${user.pw}"></li>
-				</ul>
+				
+					<p>경험치: ${user.exp}</p>
+					<br>
+					<p>ID : ${user.userid}</p>
+					<br>
+					<p>E-mail: <input type="text" name="email"	value="${user.email}"></p>
+					<br>
+					<p>변경 할 비밀번호: <input type="password" name="pw" value="${user.pw}"></p>
+					<br>
 
 				<input type="hidden" name="userid" value="${user.userid}"> 
 				<input type="hidden" name="exp" value="${user.exp}">
 
-				<button type="submit"
-					class="btn btn-primary btn-large pull-right button-radius">정보수정</button>
+				<!-- <button type="submit"
+					class="btn btn-primary btn-large pull-right button-radius">정보수정</button> -->
+				
+				<button type = "submit" align="left" class="btn btn-primary btn-large">정보수정</button>
 			</form>
 
 <!-- 버튼배치가 이상하지만 윤형오빠가 나두라고 했다 -->
+			<br>
 			<form action="delete">
 				<input type="hidden" name="userid" value="${user.userid}"> 
 				<input type="hidden" name="pw" value="${user.pw}">
 
-				<button type="submit"
-					class="btn btn-primary btn-large pull-right button-radius">계정삭제</button>
+				<button type="submit" align="right" class="btn btn-primary btn-large button-radius">계정삭제</button>
 			</form>
 
 		</div>

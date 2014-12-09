@@ -113,9 +113,9 @@
                 
                    <c:forEach items="${list}" var="table">
 	                    <div class="blog-item well" id="diaryTitle">
-	                        <a><h2> ${table.title} </h2></a>
-	                        <div class="blog-meta clearfix">
-	                            <p class="pull-left" id="diaryMenu">
+	                        <a id="diaryTitle_${table.dno}"><h2> ${table.title} </h2></a>
+	                        <div class="blog-meta clearfix" id ="diaryTag_${table.dno}">
+	                            <p class="pull-left">
 	                                <!-- 기본정보 들어가는 부분 -->
 	                              <i class="icon-user"></i> 글쓴이 <a href="#"> ${table.userid } </a> | 
 	                              <i class="icon-folder-close"></i> 관찰대상 <a href="#"> ${table.tag } </a> | 
@@ -123,24 +123,28 @@
 	                          	</p>
 	                          		<p class="pull-right" id="btnArea">
 	                          			<i class="icon-pencil"></i> 
-	                          			<a href="#insertForm" onclick="insertDiary(${table.dno})"> 수 정</a>
+	                          			<a href="javascript:insertDiary(${table.dno}, '${table.title}','${table.cont}','${table.contfile }','${table.tag}')"> 수 정</a>
 
 	                          			<i class="icon-eraser"></i> 
 	                          			<a href="/diary/deleteDiary?dno=${table.dno}"> 삭 제</a>
-	                          			<%--<i class="icon-eraser"></i> <a href="javascript:deleteDiary(${table.dno})"> 삭 제</a> --%>
 	                          		</p>
 	                        </div>
-	                        <div id="diaryCont">
-	                          <p><img src="/han/file/regphoto/${table.contfile}" width="100%" alt="" /></p>
+	                        <div id="diaryCont_${table.dno}">
+	                          <p><img src="/han/file/regphoto/${table.contfile}" width="100%" alt="등록된 이미지가 없습니다." /></p>
 	                            <!-- 본문 들어갈 부분 -->
 	                          <p style='font-family: sans-serif;'> ${table.cont} </p>
-	                        </div>  
-	                        <c:choose>
-	                        	<c:when test="${table.rcount==0}">
-	                          		<a class="btn btn-link" id="diary_replyList" href="#">덧글보기(0) <i class="icon-angle-right"></i></a></c:when>
-	                          	<c:when test="${table.rcount>0}">
-	                          		<a class="btn btn-link" id="diary_replyList" href="#">덧글보기(${table.rcount}) <i class="icon-angle-right"></i></a></c:when>
-	                        </c:choose>  			                          	
+	                        </div>
+	                        <div id="diaryReply">
+	                        	 <c:choose>
+									<c:when test="${table.rcount==0}">
+								  		<a class="btn btn-link" id="replyView" onclick="replylist(${table.dno})">덧글보기(0) <i class="icon-angle-right"></i></a>
+								  		<div id="replyFrame_${table.dno}"></div> </c:when>
+								  	<c:when test="${table.rcount>0}">
+								  		<a class="btn btn-link" id="replyView" onclick="replylist(${table.dno})">덧글보기(${table.rcount}) <i class="icon-angle-right"></i></a>
+								  		<div id="replyFrame_${table.dno}"></div>
+								  		</c:when>
+								</c:choose>
+	                        </div>          	
 	                    </div>
                   </c:forEach>
 
@@ -188,26 +192,12 @@
 	<div class="modal fade" id="insertForm" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
 		<div class = "modal-dialog modal-sm">
 			<div class="modal-content">
-				<div class="modal-header" style="text-align:center;">
-					<button type="button" class="close" data-dismiss="modal">✕</button>
-					<h3 id="mTitle" style="text-align: center;">
-					<!-- 제목 들어가는 부분 -->
-					</h3>
-				</div>
-				
-				<!-- <div class="modal-body text-center">
-					<div id="mContfile" style="width:100%;">
+					<div class="modal-header" style="text-align:center;">
+						<button type="button" class="close" data-dismiss="modal">✕</button>
+						<h3 id="mTitle" style="text-align: center;">
+						<!-- 제목 들어가는 부분 -->
+						</h3>
 					</div>
-					
-					<div id="mTag" style="width:100%;">
-					</div>
-					
-					<div id="mCont" style="width:100%; text-align:center;">
-					</div>
-					</div>					
-				</div>
-				
-				<div class="modal-footer"> -->
 				</div>
 			</div>
 		</div>
@@ -222,7 +212,7 @@
 <script src="/resources/js/vendor/bootstrap.min.js"></script>
 <script src="/resources/js/main.js"></script>
 
-<script>
+<script type="text/javascript">
 
 	function goPage(num) {
 		console.log(num);
@@ -234,17 +224,223 @@
 	function deleteDiary(dno){
 		console.log(dno);
 	}
+	
+ 	function updateResult(data){
+		alert(data);
+		$(".uploadUL").append("<input type='hidden' name='contfile' value='"+data.fileName+"'></p>");
+		
+		if(data.suffix == '.jpg'){
+			$(".fileUL").append("<p><a href='/han/file/down?src="+data.fileName+"'><image class='thumb' src='/han/file/regphoto/"+data.fileName+"'/></p>");
+			/* $(".uploadUL").append("<li><image class='thumb' data-src='"+data.fileName+"' src='/web/file/view/"+ data.fileName+"'/></a></li>"); */
+		}else{
+			$(".fileUL").append("<p><a href='/han/file/down?src="+data.fileName+"'><image class='thumb' data-src='"+data.fileName+"'src='/resources/book/images/icon.jpg'/></a></p>");
+		}
+}	
 
 	function insertDiary(dno, title, cont, contfile, tag){
-		console.log("dno : " + dno);
-		console.log("title : " + title);
-		console.log("cont : " + cont);
-		console.log("contfile : " + contfile);
-		console.log("tag : " + tag);
 		
+		var insertTitle = document.getElementById('checkInsert');
 		
-
+		if(isNull(insertTitle)){
+			// target 선언부분
+			var titleTarget = document.getElementById('diaryTitle_' + dno);
+			var tagTarget = document.getElementById('diaryTag_' + dno);
+			var contTarget = document.getElementById('diaryCont_' + dno);
+			var btnTarget = document.getElementById('reply_' + dno);
+			
+			// content 선언부분
+			var fileurl = "/han/file/regphoto/";
+			var titleContent = "";
+			var tagContent = "";
+			var conContent = "";
+			var btnContent = "";
+			
+			// 밀어줄 content 제작 부분
+			titleContent += "<p> Title : <input type='textarea' id='checkInsert' row='3' cols='100' placeholder='" + title + "'></p>";
+			tagContent += "<p class='pull-left'> Tag : <input type='textarea' id='insertTag' row='2' cols='50' placeholder='" + tag + "'></p>";
+			conContent += "<p><div id='insertPicture'>"
+							+ "<img src = '" + fileurl + contfile + "'></p></div>"
+							+ "<form target='zero' action='/han/file/upload' method='post' enctype='multipart/form-data'>"
+							+ "<input type='file' name='file'><input type='submit' value='수 정'>	</form>"
+							+ "<iframe name='zero' width='0' height='0'></iframe>"
+							+ "<input type='textarea' placeholder='" + cont + "' id='insertCont'></textarea>";						
+			btnContent += "<button type='button' class='pull-right' style='border-radius: 5px; background-color:#EEEDC0; opacity:0.8;'" 
+							+ "onclick='insertComplete(" + dno + ",\"" + contfile + "\")'> 완 료 </button>";
+							
+			// innerHTML 밀어넣어 주는 부분
+			titleTarget.innerHTML = titleContent;
+			tagTarget.innerHTML = tagContent;
+			contTarget.innerHTML = conContent;
+			btnTarget.innerHTML = btnContent;
+		}
+		else{
+			alert("이미 수정중인 게시물이 있습니다.");
+			return;
+		}
 	}
+	
+	function updateResult(data){
+
+		var btnTarget = $("#insertPicture");
+		var btnContent = "";
+		
+		if(data.suffix == '.jpg'){
+			btnContent += "<input id='getFileName' type='hidden' value='" + data.fileName + "'>"
+						+ "<img id='thumb' src='/han/file/regphoto/" + data.fileName + "'/></p>";
+			btnTarget.html(btnContent);
+			/* $(".uploadUL").append("<li><image class='thumb' data-src='"+data.fileName+"' src='/web/file/view/"+ data.fileName+"'/></a></li>"); */
+		}else{
+			$("#insertPicture").innerHTML("<img id='thumb' data-src='"+data.fileName+"'src='/resources/book/images/icon.jpg'/></a></p>");
+		}
+	}
+	
+	function insertComplete(num, mfileName){
+		
+		var insertTitle = document.getElementById('checkInsert').value;
+		var insertCont = document.getElementById('insertCont').value;
+		var insertTag = document.getElementById('insertTag').value; 
+		var fileName = document.getElementById('getFileName');
+
+		if(isNull(fileName)){
+			fileName = mfileName;}
+		else{
+			fileName = fileName.value; 
+		}
+		
+ 		$.post(url='/diary/update',
+				{title:insertTitle,
+				cont:insertCont,
+				contfile:fileName,
+				tag:insertTag,
+				dno:num},
+				function(data){
+					location.reload();
+				});
+	}
+	
+	function replylist(num){		
+		
+		var checkReply = document.getElementById('checkReply_'+num);			
+		var target = document.getElementById('registReply');
+		
+		if(isNull(checkReply)){
+			var replyTarget = document.getElementById('replyFrame_' + num);
+			var replyContent = "<input id='checkReply_" + num + "' type='hidden' value='check'>"
+								+ "<div><input type='text' maxlength='100' style='margin-left:5%;' id='createReply_" + num + "' placeholder='댓글입력란 (최대 100글자)' >"
+								+ "<input type='button' class='pull-right' id='registReply' onclick='createReply("+ num +")' value='등 록'></div>";
+			
+			$.post(url='/diary/reply/read',
+					{dno:num},
+					function(data){
+						$.each(data, function(key, val){
+							console.log(val);
+							replyContent += "<div id='reply_" + num + "'>"
+											+ "<ul>[" + val.userid + "]<div id='replyCont_" + val.rno + "'>[내용 : " + val.reply + "]"
+											+ "<input type='button' value=' 수 정 ' class='pull-right' onclick='updateReply(" + val.rno + ",\"" + val.reply +"\"," + num + ")'>"
+											+ "<input type='button' value=' 삭 제 ' class='pull-right' onclick='deleteReply(" + val.rno + ",\"" + val.dno +"\")'></div></div>";
+						});
+						replyTarget.innerHTML = replyContent;
+					});
+		}
+		else{
+			var obj = document.getElementById("replyFrame_" + num);
+			while(obj.hasChildNodes()){
+				obj.removeChild(obj.firstChild);
+			}
+		}
+		
+	}
+	
+/* 	function createReply(num){
+		createDoReply(num);
+		upRcount(num);
+	} */
+	
+	function deleteReply(numRno,numDno){
+		deleteDoReply(numRno);
+		downRcount(numDno);
+	}
+
+	function createReply(num){
+		var createCont = document.getElementById('createReply_'+ num).value;
+		console.log(num);
+		console.log(createCont);
+ 		$.post(url="/diary/reply/create",
+				{dno:num,
+				reply:createCont},
+				function(data){					
+					console.log("in create Reply getNum : " + num);
+					var obj = document.getElementById("replyFrame_" + num);
+					while(obj.hasChildNodes()){
+						obj.removeChild(obj.firstChild);
+					}
+					upRcount(num);					
+					replylist(num);
+				});
+	}
+	
+	function deleteDoReply(num){
+		console.log("in deleteFunction rno : " + num);
+		
+		$.post(url='/diary/reply/delete',
+				{rno:num},
+				function(data){
+					console.log("ok delete Reply");
+					location.reload();
+				});
+	}
+	
+	function upRcount(num){
+		$.post(url='/diary/reply/upcount',
+				{dno:num},
+				function(data){
+					console.log("ok update Rcount");
+				});
+	}
+	
+	function downRcount(num){
+		$.post(url='/diary/reply/downcount',
+				{dno:num},
+				function(data){
+					console.log("ok down Rcount");
+				});
+	}
+	
+	function updateReply(rno, cont, num){
+		console.log("get rno : " + rno);
+		console.log("get reply : " + cont);
+		console.log("get dno : " + num);
+		var replyTarget = document.getElementById('replyCont_' + rno);
+		
+		var insertCont = "";
+		
+		insertCont += "<input type='text' maxlength='100' style='margin-left:3%;' id='insertText_" + rno + "' placeholder='"
+					+ cont + "'><input type='button' class='pull-right' onclick='insertComplete(" + rno + "," + num + ",\"" + cont + "\")' value='수 정'>"; 
+					
+		replyTarget.innerHTML = insertCont;
+		console.log("complete insert");
+	}
+	
+	function insertComplete(num,numDno,cont){
+		var insertCont = document.getElementById('insertText_' + num).value;
+		
+		$.post(url='/diary/reply/update',
+				{rno:num,
+				reply:insertCont},
+				function(data){
+					console.log("insert reply content complete");
+					replylist(numDno);
+				});		
+	}
+	
+	
+	function isNull(obj){
+		return (typeof obj != "undefined" && obj !=null && obj != "")? false:true;
+	}
+
+
+	
+	
 </script>
 </body>
 </html>

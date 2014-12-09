@@ -8,6 +8,7 @@ public class PageMaker {
 	private int perPage;			// 페이지당 글 갯수 = 3
 	private int first;				// 화면 첫번째 페이지 = 1
 	private int last;				// 화면 마지막 페이지 = 5
+	private String userid;
 	
 	public static int getNumber(String str) {
 		try {
@@ -44,6 +45,15 @@ public class PageMaker {
 	}
 	
 	
+	
+	public String getUserid() {
+		return userid;
+	}
+
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+
 	public int getPage() {
 		return page;
 	}
@@ -85,7 +95,7 @@ public class PageMaker {
 	public String toString() {
 		return "PageMaker [page=" + page + ", cnt=" + cnt + ", lineCount="
 				+ lineCount + ", perPage=" + perPage + ", first=" + first
-				+ ", last=" + last + "]";
-	}	
-	
+				+ ", last=" + last + ", userid=" + userid + "]";
+	}
+
 }

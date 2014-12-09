@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding ="UTF-8"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -35,7 +34,7 @@
             }
         }
         body{
-            background-color: lightblue;
+            background:url("../resources/images/favor/favor.jpg");
         }
         .center-button{
             height: 50px;
@@ -46,6 +45,34 @@
             margin: 3px;0
             margin-top: 10px;
             border-radius: 5px;
+        }
+        #falist{
+        
+			background: -moz-linear-gradient(45deg,  rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(45deg,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(45deg,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(45deg,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* IE10+ */
+			background: linear-gradient(45deg,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+        }
+        li{
+        	font-size: large;
+        	color:black;
+        	z-index:1;
+        	line-height:1.2em;
+        }
+        p{
+        font-size:x-large;
+        line-height:1.5em;
+       
+        }
+        img{
+        border-radius: 30px;
+        display:block;
+        margin-left:auto;
+        margin-right:auto;
         }
 
     </style>
@@ -96,46 +123,41 @@
 <!-- 즐겨찾기 리스트 뿌려줄곳 -->
 
     <div id="menu" style="height: 600px; padding-top: 20px">
-        <div class="sidebar-nav">
-            <div class="well span3" style="border: 3px solid green;">
-                <ul class="nav nav-list">
-                
-                    <li class="nav-header" style="border: 1px;" id="favorlist">즐겨찾기 항목</li>
-                <!-- favor 리스트 불러오기 -->
-                <%-- <c:forEach items="${list}" var="item">
-                    <li><a href="javascript:contList(${item.cno})"><i class="icon-star"></i>${item.cate}${item.title}</li>
-				
-				</c:forEach> --%>
-				
-                </ul>
-            </div>
-        </div>
-        <!-- 즐겨찾기 항목 상세설명 -->
-        <div class="row">
-            <div class="span9" style="border: 3px solid green" >
-             <div class="row">
-                    <div class="span9" >
-						<div class = "favortitle">
-                        <h4><strong id="title" class="pull-left" style="padding-top: 10px; margin-left: 15px;">놀이 제목</strong></h4>
-                        </div>
-                        <h5 class="pull-right" style="padding-bottom: 5px; margin-right: 10px;">즐겨찾기 해제 <a href="즐겨찾기 삭제"><i class="icon-star"></i> </a></h5>
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="span4" id = "contimg">
-                        <a href="#">
-                            <img src="/resources/images/sample/img2.jpg">
-                       </a>
-                    </div>
-                    <div class="span5" id="contDetail">
-                        <p>
-                            Lorem ipsum dolor sit amet, id nec conceptam conclusionemque. Et eam tation option. Utinam salutatus ex eum. Ne mea dicit tibique facilisi, ea mei omittam explicari conclusionemque, ad nobis propriae quaerendum sea.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    	<div class="container">
+	    	<div class = "row-fluid">
+		        <div class="sidebar-nav">
+		            <div class="well span3" id=falist style="border: 3px solid antiquewhite; margin:auto; border-radius: 30px;">
+		                <ul class="nav nav-list">
+		                
+		                    <li class="nav-header" style="border: 1px;" id="favorlist">즐겨찾기 항목</li>
+		                <!-- favor 리스트 불러오기 -->
+						
+		                </ul>
+		            </div>
+		        </div>
+		        <!-- 즐겨찾기 항목 상세설명 -->
+		    
+		            <div class="span9" style="border: 3px solid antiquewhite; border-radius: 30px;" >
+		             
+		                    <div class="span12" >
+								<div class = "favortitle">
+		                        <h4><strong id="title" class="pull-left" style="padding-top: 10px; margin-left: 15px;">놀이 제목</strong></h4>
+		                        </div>
+		                        <h5 class="pull-right"  id="delfavor" style="padding-bottom: 5px; margin-right: 10px;">즐겨찾기 해제 
+		                        <a href="즐겨찾기 삭제"><i class="icon-star"></i> </a></h5>
+		
+		                    </div>
+		             
+		                
+		                  
+		                    <div class="span11" id="contDetail">
+		                        <p>놀이 설명 입니다.</p>
+		                    </div>
+		               
+		            </div>
+	        	</div>
+	        </div>
+	   
 
         <!-- 설명 끝 -->
     </div>
@@ -158,15 +180,11 @@ $(document).ready(function(){
 	
 function favorlist(){
     $.post("list", function(data){
-    	console.log(data);
-    	var list =""
-        var targer = $('#favorlist');
-        
-        $.each (data , function (key , val) {
-            console.log(key,val);
-            list +=
-			
-            console.log(list);
+    	var list ="<li>즐겨찾기 목록</li>"
+        var target = $('#favorlist');       
+        $.each (data , function (key , val) {         
+            list +="<li><a href=javascript:contList("+val.cno+","+val.fno+")> <i class='icon-star'></i>"
+            		+val.cate+val.title+"</li><br>"			
         });
         target.html(list);
     });
@@ -174,28 +192,34 @@ function favorlist(){
 
 
 
-function contList(cno){
+function contList(cno,fno){
 	
- 	var result = {cno:cno}
+ 	var result = {cno:cno , fno:fno}
 	$.post("detail",result,function(data){
-		
-		console.log(data);		
-		console.log(data.cno);
-		
+		console.log(data.fno);
+		console.log(data.contfile);
+	
 		/*  var title = document.getElementById("title");*/
 		
 		var title = $('#title');
 		var contdetail = $('#contDetail');
 		var contimg=$('#contimg');
+		var delfavor = $('#delfavor');
 		
 		title.html('<p>'+data.title+'</p>');
-		contdetail.html('<p>'+data.cont+'</p>');
-		contimg.html("<img src="+'/resources/images/sample/img2.jpg'+">");
+		contdetail.html("<img src='/resources/images/favor/"+data.contfile+"' vspace='10' align = 'center'>"+'<p>'+data.cont+'</p>'); 
+		/* contdetail.html("<textarea id = 'cont' cols='100' rows='10' readonly='readonly'>"+data.cont+"</textarea>") */
+		/*    contdetail.html("<img src='/resources/images/favor/"+data.contfile+"' vspace='10' align = left>"); */ 
+		/* contimg.html("<img src='/resources/book/images/ko.jpg' vspace='10' border-radius:'30px'>"); */
+		delfavor.html("즐겨찾기 해제<a href='delFavor?fno="+data.fno+"'><i class='icon-star'></i></a>");
 	}
 )};
+
 	
 
 </script>
+
+
 
 
 </body>

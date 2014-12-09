@@ -37,15 +37,31 @@
 	href="/resources/images/ico/apple-touch-icon-57-precomposed.png">
 
 <style>
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+            
 @media screen and (max-width: 979px) {
 	body {
 		padding-top: 0px;
 	}
 }
 
-body {
-	background-color: lightblue;
-}
+	body {
+	
+	background:url("../resources/images/mypage/backpage.jpg") no-repeat;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+		
+		}
+	
+	p{
+	        color:white;
+	        font-size:xx-large;
+	        font-family: 'Hanna', serif;
+	        ﻿
+	  }
 </style>
 </head>
 
@@ -93,16 +109,21 @@ body {
 
 	<div id="menu" style="height: 600px; padding: 20px 20px 20px 20px">
 		<div id="container" style="max-width: 700px; margin: auto">
-			<h3>*회원 정보*</h3>
-
+			<p>회원 정보</p>
+			<br>
+			<br>
+			<br>
 
 			<form action="update">
-
-				<ul>
-					<li>경험치: ${user.exp}</li>
-					<li>${user.userid}</li>
-					<li>E-mail: ${user.email}</li>
-				</ul>
+					<p>경험치: ${user.exp}</p>
+					<br>
+					<br>
+					<p>ID : ${user.userid}</p>
+					<br>
+					<br>
+					<p>E-mail: ${user.email}</p>
+					<br>
+					<br>
 
 				<input type="hidden" name="userid" value="${user.userid}">
 				<button type="submit"
@@ -111,22 +132,10 @@ body {
 		</div>
 	</div>
 
-	<!-- 리스트 끝 -->
 
 
 
-	<footer id="footer"
-		style="opacity: 0.7; position: absolute; bottom: auto; width: 100%; background-color: black;">
-	<div class="container">
-		<div class="row-fluid">
-			<div class="span12" style="margin-top: -15px">
-				&copy; Bit58th 한잔해!! <a id="gototop" class="gototop pull-right"
-					href="#"><i class="icon-angle-up"></i></a>
-			</div>
-			<!--/Goto Top-->
-		</div>
-	</div>
-	</footer>
+	
 
 
 	<script src="/resources/js/vendor/jquery-1.9.1.min.js"></script>

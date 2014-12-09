@@ -29,6 +29,10 @@ public class DiaryService {
 		mapper.updateDiary(vo);
 	}
 	
+	public void updateRcount(int dno){
+		mapper.updateRcount(dno);
+	}
+	
 	public void deleteDiary(int dno){
 		mapper.deleteDiary(dno);
 	}

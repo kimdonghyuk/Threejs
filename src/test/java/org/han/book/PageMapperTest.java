@@ -31,10 +31,14 @@ public class PageMapperTest {
 		mapper.createPicture(vo);
 	}
 	
-//	@Test
-//	public void readTest(){
-//		logger.info(mapper.readPage(2,2));
-//	}
+	@Test
+	public void readTest(){
+		PageVO vo = new PageVO();
+		vo.setBno(2);
+		vo.setUserid("han07");
+		vo.setPage(1);
+		logger.info(mapper.readPage(vo));
+	}
 	
 	@Test
 	public void deleteTest(){
