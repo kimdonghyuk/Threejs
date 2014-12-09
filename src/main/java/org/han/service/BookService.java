@@ -17,8 +17,8 @@ public class BookService {
 	@Inject
 	BookVO vo;
 	
-	public List<BookVO> read(String page){
-		return mapper.read(page);
+	public List<BookVO> read(BookVO vo){
+		return mapper.read(vo);
 	}
 	
 	public BookVO showdata(int bno){
