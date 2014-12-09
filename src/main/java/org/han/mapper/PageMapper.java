@@ -34,8 +34,9 @@ public interface PageMapper {
 
 	
 	@Select("select * from tbl_book"
+			+ " where userid = #{userid}"
 			+ " order by title")
-	public List<BookVO> selectBook();
+	public List<BookVO> selectBook(PageVO vo);
 	
 	@Select("select * from tbl_page"
 			+ " where bno = #{bno}")

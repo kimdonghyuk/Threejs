@@ -3,6 +3,8 @@ package org.han.web;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 
 import org.han.service.BookService;
 import org.han.service.PageService;
@@ -35,10 +37,24 @@ public class BookController {
    public void search(){}
    
    @RequestMapping("/main/list")
-   public @ResponseBody List<BookVO> mainlist(
-         @RequestParam(value ="page", defaultValue = "1")String page){
-      
-      return service.read(page);
+   public @ResponseBody List<BookVO> mainlist(HttpServletRequest request,@ModelAttribute BookVO vo)
+   {
+	  
+	   Cookie[] cookies = request.getCookies();
+	      String userid = null;
+
+	      for (Cookie cookie : cookies) {
+
+	         System.out.println("getName: " + cookie.getName());
+	         System.out.println("getValue: " + cookie.getValue());
+
+	         if (cookie.getName().equals("login")) {
+	            userid = cookie.getValue();
+	         }
+
+	      }
+	      vo.setUserid(userid);
+	      return service.read(vo);
    }
      
    @RequestMapping("/main/show")
@@ -60,18 +76,45 @@ public class BookController {
    public void regist(){}
    
    @RequestMapping("/registdata")
-   public String createdate(@ModelAttribute BookVO vo){
-      vo.setUserid("han07");
-      service.create(vo);
-      return "redirect:main";
+   public String createdate(HttpServletRequest request, @ModelAttribute BookVO vo){
+	   Cookie[] cookies = request.getCookies();
+	   String userid = null;
+
+	   for (Cookie cookie : cookies) {
+
+		   System.out.println("getName: " + cookie.getName());
+		   System.out.println("getValue: " + cookie.getValue());
+
+		   if (cookie.getName().equals("login")) {
+			   userid = cookie.getValue();
+		   }
+
+	   }
+	   vo.setUserid(userid);
+	   service.create(vo);
+	   return "redirect:main";
    }      
    
    @RequestMapping("/regphoto")
    public void regPhoto(){}
    
 	@RequestMapping("/regphoto/select")
-	public @ResponseBody List<BookVO> selectBook(){
-		return bookService.selectBook();
+	public @ResponseBody List<BookVO> selectBook(HttpServletRequest request, @ModelAttribute PageVO vo){
+		Cookie[] cookies = request.getCookies();
+		String userid = null;
+
+		for (Cookie cookie : cookies) {
+
+			System.out.println("getName: " + cookie.getName());
+			System.out.println("getValue: " + cookie.getValue());
+
+			if (cookie.getName().equals("login")) {
+				userid = cookie.getValue();
+			}
+
+		}
+		vo.setUserid(userid);
+		return bookService.selectBook(vo);
 	}   
    
    
@@ -103,11 +146,22 @@ public class BookController {
    }
    
    @RequestMapping("/createPicture")
-   public String createPicture(@ModelAttribute PageVO vo){
-      /*vo.setContfile("null");*/
-//      vo.setBno(2);
-      vo.setUserid("han07");
-      bookService.createPicture(vo);;
+   public String createPicture(HttpServletRequest request, @ModelAttribute PageVO vo){
+	   Cookie[] cookies = request.getCookies();
+	   String userid = null;
+
+	   for (Cookie cookie : cookies) {
+
+		   System.out.println("getName: " + cookie.getName());
+		   System.out.println("getValue: " + cookie.getValue());
+
+		   if (cookie.getName().equals("login")) {
+			   userid = cookie.getValue();
+		   }
+
+	   }
+	   vo.setUserid(userid);
+	   bookService.createPicture(vo);;
       return "redirect:main";
    }
 

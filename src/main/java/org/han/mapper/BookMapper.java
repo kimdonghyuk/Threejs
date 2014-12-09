@@ -4,21 +4,27 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.han.vo.BookVO;
 
 public interface BookMapper {
 
-	@Select("select rownum rn, bno, userid, title, contfile, regdate, ceil(cnt/3) cnt "
-			+ " from("
-			+ " select  /*+INDEX_DESC(tbl_book pk_book) */ "
+	//@Select("select rownum rn, bno, userid, title, contfile, regdate, ceil(cnt/3) cnt "
+	//		+ " from("
+	//		+ " select  /*+INDEX_DESC(tbl_book pk_book) */ "
+	//		+ " rownum rn, bno, userid, title, contfile, regdate, count(bno) over() cnt"
+	//		+ " from tbl_book"
+	//		+ " where bno > 0 and userid = #{userid}"
+	//		+ " )"
+	//		+ " where rn > (#{page}-1)*3 and rn <= (#{page}*3)")
+	//public List<BookVO> read(String page);	
+	@Select(" select  /*+INDEX_DESC(tbl_book pk_book) */"
 			+ " rownum rn, bno, userid, title, contfile, regdate, count(bno) over() cnt"
 			+ " from tbl_book"
-			+ " where bno > 0"
-			+ " )"
-			+ " where rn > (#{page}-1)*3 and rn <= (#{page}*3)")
-	public List<BookVO> read(String page);	
+			+ " where bno > 0 and userid = #{userid}")
+	public List<BookVO> read(BookVO vo);
 	
 	@Select("select * from tbl_book where bno = #{bno}")
 	public BookVO showdata(int bno);
