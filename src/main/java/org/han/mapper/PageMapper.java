@@ -21,7 +21,7 @@ public interface PageMapper {
 			+ " select  /*+INDEX(tbl_page pk_page) */ "
 			+ " rownum rn, pno, bno, title, userid, regdate, cont, contfile, count(pno) over() cnt "
 			+ " from tbl_page "
-			+ " where pno > 0 and bno = #{bno}"
+			+ " where pno > 0 and bno = #{bno} and userid=#{userid}"
 			+ ") "
 			+ " where rn > (#{page}-1)*9 and rn <= (#{page}*9) ")
 	public List<PageVO> readPage(PageVO vo);
@@ -34,8 +34,9 @@ public interface PageMapper {
 
 	
 	@Select("select * from tbl_book"
+			+ " where userid = #{userid}"
 			+ " order by title")
-	public List<BookVO> selectBook();
+	public List<BookVO> selectBook(PageVO vo);
 	
 	@Select("select * from tbl_page"
 			+ " where bno = #{bno}")

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.han.service.SearchService;
+import org.han.vo.ContVO;
 import org.han.vo.SearchVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,5 +33,11 @@ public class SearchController {
 	public @ResponseBody SearchVO result(
 			@RequestParam(value="sno", defaultValue="") int sno){
 		return service.result(sno);
+	}
+	
+	@RequestMapping("/setCont")
+	public @ResponseBody List<ContVO> setCont(
+			@RequestParam(value="sno", defaultValue="") int sno){
+		return service.setCont(sno);
 	}
 }

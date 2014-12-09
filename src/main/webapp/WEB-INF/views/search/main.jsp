@@ -70,12 +70,12 @@
         .modal-body {
 		    position: relative;
 		    overflow-y: auto; /* 내용이 바디의 크기를 넘어가면 y축 스크롤바가 생긴다 */
-		    max-height: 600px; /* modal창의 최대 높이를 조정 */
+		    max-height: 500px; /* modal창의 최대 높이를 조정 */
 		    padding: 15px;
 		}
 		
 		/* blur */
-		.bgBlur:before {
+		/* .bgBlur:before {
 		  content: '';
 		  position: absolute;
 		  top: 0; left:0; right:0; bottom:0;
@@ -86,7 +86,7 @@
 		  -moz-filter: blur(6px);
 		  -o-filter: blur(6px);
 		  filter:url(#blur);
-		}
+		} */
 		
 		.str1 {
 			font-size: 30px;
@@ -107,7 +107,8 @@
 		}
 		
 		.resThumb {
-			width: 200px;
+			width: 300px;
+			border-radius: 30px;
 		}
 		
     </style>
@@ -198,7 +199,7 @@
 		            <br>
 		            <button type='button' class='listButton btn btn-primary btn-lg'>관련 컨텐츠</button>
 		            <br><br>
-		            <div id="relatedContList" class="fade">
+		            <div id="relatedContList">
 			            <ul>
 			            	<li>꽃머겅</li>
 			            	<li>누가누가 자연훼손을 잘 하나</li>
@@ -252,6 +253,26 @@
 	// 검색결과 관련컨텐츠 토글
 	$(".listButton").click(function(){
 		var target = document.getElementById("relatedContList");
+		var str = "<ul>";
+		$.ajax({
+			type:"post",
+			url:"/search/setCont/",
+			data:{sno:resultSno},
+			dataType:"json",
+			async:false,
+			success:function(data){
+				console.log("data: " + data);
+				if(data == ""){
+					str += "관련 컨텐츠가 없습니다.";
+				}else{
+					$.each(data, function(key,val){
+						str += "<li>" + val.title + "</li>";
+					});
+				}
+			}
+		});
+		$("#relatedContList").html(str);
+		
 		if(target.style.display == "none"){
 			target.style.display = "block";
 		}else{
@@ -340,7 +361,7 @@
 				$.each(data, function(key,val){
 					str += "<li class='span3'>" +
 					"<a class='resThumb' onclick='resultBody("+val.sno+")' data-toggle='modal' data-target='#resultModal'>" +
-					"<img src='/resources/images/search/img/"+val.contfile+"'>" + 
+					"<img src='/resources/images/search/img/"+val.contfile+"' style='border-radius: 30px'>" + 
 					"</a></li>"
 				});
 			}

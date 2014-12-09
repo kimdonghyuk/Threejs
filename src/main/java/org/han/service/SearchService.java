@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.han.mapper.SearchMapper;
+import org.han.vo.ContVO;
 import org.han.vo.SearchVO;
 import org.springframework.stereotype.Service;
 
@@ -20,5 +21,9 @@ public class SearchService {
 	
 	public SearchVO result(int sno){
 		return mapper.result(sno);
+	}
+	
+	public List<ContVO> setCont(int sno){
+		return mapper.setCont(sno);
 	}
 }

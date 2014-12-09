@@ -27,4 +27,9 @@ public class SearchServiceTest {
 	public void resultTest() {
 		logger.info(service.result(3));
 	}
+	
+	@Test
+	public void setContTest() {
+		logger.info(service.setCont(5));
+	}
 }

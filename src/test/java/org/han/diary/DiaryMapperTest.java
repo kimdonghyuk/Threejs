@@ -33,6 +33,8 @@ public class DiaryMapperTest {
 	@Test
 	public void readTest(){
 		PageMaker pm = new PageMaker();
+		pm.setUserid("han07");
+		pm.setPage(1);
 		System.out.println(mapper.readDiary(pm).toString());
 	}
 	

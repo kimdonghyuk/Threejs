@@ -11,7 +11,14 @@ public class BookVO {
 	private String title;
 	private String contfile;
 	private Date regdate;
+	private Integer page;
 	
+	public Integer getPage() {
+		return page;
+	}
+	public void setPage(Integer page) {
+		this.page = page;
+	}
 	public Integer getBno() {
 		return bno;
 	}
@@ -45,7 +52,9 @@ public class BookVO {
 	@Override
 	public String toString() {
 		return "BookVO [bno=" + bno + ", userid=" + userid + ", title=" + title
-				+ ", contfile=" + contfile + ", regdate=" + regdate + "]";
+				+ ", contfile=" + contfile + ", regdate=" + regdate + ", page="
+				+ page + "]";
 	}
+	
 	
 }

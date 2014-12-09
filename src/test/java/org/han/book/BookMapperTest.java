@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.han.mapper.BookMapper;
 import org.han.service.BookService;
 import org.han.vo.BookVO;
 import org.junit.Test;
@@ -16,6 +17,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class BookMapperTest {
 
 	@Inject
+	BookMapper mapper;
+	
+	@Inject
 	BookService service;
 	
 	@Inject
@@ -23,8 +27,8 @@ public class BookMapperTest {
 	
 	@Test
 	public void ReadTest() {
-		List<BookVO> list = service.read("1");
-		System.out.println(list);
+		//List<BookVO> list = service.read("1");
+		//System.out.println(list);
 	}
 	
 	@Test
@@ -50,6 +54,16 @@ public class BookMapperTest {
 	@Test
 	public void DeleteTest() {
 		service.delete(2);
+	}
+	
+	@Test
+	public void SelectMapper(){
+		
+		vo.setUserid("han03");
+		//vo.setPage(1);
+		List<BookVO> bvo = service.read(vo);
+		System.out.println(bvo.toString());
+		
 	}
 
 }
