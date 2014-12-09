@@ -11,6 +11,7 @@ public class ContVO {
 	private String contfile;
 	private Date regdate;
 	private String cate;
+	private Integer fno;
 	public Integer getCno() {
 		return cno;
 	}
@@ -53,11 +54,17 @@ public class ContVO {
 	public void setCate(String cate) {
 		this.cate = cate;
 	}
-	
+	public Integer getFno() {
+		return fno;
+	}
+	public void setFno(Integer fno) {
+		this.fno = fno;
+	}
 	@Override
 	public String toString() {
 		return "ContVO [cno=" + cno + ", sno=" + sno + ", title=" + title
 				+ ", cont=" + cont + ", contfile=" + contfile + ", regdate="
-				+ regdate + ", cate=" + cate + "]";
+				+ regdate + ", cate=" + cate + ", fno=" + fno + "]";
 	}
+	
 }

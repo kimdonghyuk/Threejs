@@ -53,8 +53,7 @@ public class favorController {
 	}
 	
 	@RequestMapping("list")
-	@ResponseBody
-	public List<FavorVO> list(@ModelAttribute FavorVO vo, Model model,HttpServletRequest request){
+	public @ResponseBody List<FavorVO> list(@ModelAttribute FavorVO vo, Model model,HttpServletRequest request){
 		Cookie[] cookies = request.getCookies();
 		String userid = null;
 
@@ -77,10 +76,19 @@ public class favorController {
 	
 	@RequestMapping("/detail")
 	@ResponseBody
-	public ContVO contList(@RequestParam(value="cno", defaultValue="") Integer cno){
-				
-		return service.contList(cno);
+	public ContVO contList(@ModelAttribute ContVO vo,Model model){
+		ContVO vo2 = service.contList(vo.getCno());
+		vo2.setFno(vo.getFno());
+//		System.out.println(vo2);
+		return vo2;
 		
+	}
+	
+	@RequestMapping("/delFavor")
+	public String delete(@RequestParam(value="fno" , defaultValue="") Integer fno){
+		
+		service.del(fno);
+		return "redirect:main";
 	}
 	
 
