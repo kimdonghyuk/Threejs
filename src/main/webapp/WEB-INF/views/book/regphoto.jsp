@@ -113,7 +113,7 @@
 					<iframe name="zero" width="0" height="0" >
 					</iframe>
 					
-	                <ul class="fileUL"></ul>	
+	                <ul class="fileUL"></ul>
 	                    
                    	<p class="help-block">선택된 사진이 없어요...</p>
 				
@@ -185,8 +185,7 @@
 	$(document).ready(getlist());
     
 	function getlist(){
-		console.log("-----------list------------------")
-		var url = "regphoto/select"					// url을 호출한 뒤 선택한 bno 값을 더해줌.
+		var url = "regphoto/select";					// url을 호출한 뒤 선택한 bno 값을 더해줌.
 		var target = $(".form-control");
 		var content = "<option value=" + "'default'>도감선택란</option>";
 		$.getJSON(url, function (data) {			// 해당 url에 담겨져있는 Jsondata를 parameter값으로 받음.

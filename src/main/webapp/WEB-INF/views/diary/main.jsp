@@ -212,7 +212,7 @@
 <script src="/resources/js/vendor/bootstrap.min.js"></script>
 <script src="/resources/js/main.js"></script>
 
-<script>
+<script type="text/javascript">
 
 	function goPage(num) {
 		console.log(num);
@@ -318,7 +318,7 @@
 				});
 	}
 	
-	function replylist(num){
+	function replylist(num){		
 		
 		var checkReply = document.getElementById('checkReply_'+num);			
 		var target = document.getElementById('registReply');
@@ -326,15 +326,18 @@
 		if(isNull(checkReply)){
 			var replyTarget = document.getElementById('replyFrame_' + num);
 			var replyContent = "<input id='checkReply_" + num + "' type='hidden' value='check'>"
-								+ "<div><input type='text' style='heigth:20px;' id='createReply_" + num + "' placeholder='댓글을 입력해주세요.' >"
+								+ "<div><input type='text' maxlength='100' style='margin-left:5%;' id='createReply_" + num + "' placeholder='댓글입력란 (최대 100글자)' >"
 								+ "<input type='button' class='pull-right' id='registReply' onclick='createReply("+ num +")' value='등 록'></div>";
 			
 			$.post(url='/diary/reply/read',
 					{dno:num},
 					function(data){
 						$.each(data, function(key, val){
+							console.log(val);
 							replyContent += "<div id='reply_" + num + "'>"
-											+ "<ul class='replySub_" + val.dno + "'<li>[글쓴이 : " + val.userid + "][내용 : " + val.reply + "]</ul></div>"
+											+ "<ul>[" + val.userid + "]<div id='replyCont_" + val.rno + "'>[내용 : " + val.reply + "]"
+											+ "<input type='button' value=' 수 정 ' class='pull-right' onclick='updateReply(" + val.rno + ",\"" + val.reply +"\"," + num + ")'>"
+											+ "<input type='button' value=' 삭 제 ' class='pull-right' onclick='deleteReply(" + val.rno + ",\"" + val.dno +"\")'></div></div>";
 						});
 						replyTarget.innerHTML = replyContent;
 					});
@@ -348,30 +351,88 @@
 		
 	}
 	
-	function createReply(num){
-		updateReply(num);
+/* 	function createReply(num){
+		createDoReply(num);
 		upRcount(num);
+	} */
+	
+	function deleteReply(numRno,numDno){
+		deleteDoReply(numRno);
+		downRcount(numDno);
 	}
 
-	function updateReply(num){
-		var createCont = document.getElementById('createReply_'+num).value;
-		
-		$.post(url="/diary/reply/create",
+	function createReply(num){
+		var createCont = document.getElementById('createReply_'+ num).value;
+		console.log(num);
+		console.log(createCont);
+ 		$.post(url="/diary/reply/create",
 				{dno:num,
 				reply:createCont},
+				function(data){					
+					console.log("in create Reply getNum : " + num);
+					var obj = document.getElementById("replyFrame_" + num);
+					while(obj.hasChildNodes()){
+						obj.removeChild(obj.firstChild);
+					}
+					upRcount(num);					
+					replylist(num);
+				});
+	}
+	
+	function deleteDoReply(num){
+		console.log("in deleteFunction rno : " + num);
+		
+		$.post(url='/diary/reply/delete',
+				{rno:num},
 				function(data){
+					console.log("ok delete Reply");
 					location.reload();
 				});
 	}
 	
 	function upRcount(num){
-		var result= {dno:num};
 		$.post(url='/diary/reply/upcount',
-				result,
+				{dno:num},
 				function(data){
 					console.log("ok update Rcount");
 				});
 	}
+	
+	function downRcount(num){
+		$.post(url='/diary/reply/downcount',
+				{dno:num},
+				function(data){
+					console.log("ok down Rcount");
+				});
+	}
+	
+	function updateReply(rno, cont, num){
+		console.log("get rno : " + rno);
+		console.log("get reply : " + cont);
+		console.log("get dno : " + num);
+		var replyTarget = document.getElementById('replyCont_' + rno);
+		
+		var insertCont = "";
+		
+		insertCont += "<input type='text' maxlength='100' style='margin-left:3%;' id='insertText_" + rno + "' placeholder='"
+					+ cont + "'><input type='button' class='pull-right' onclick='insertComplete(" + rno + "," + num + ",\"" + cont + "\")' value='수 정'>"; 
+					
+		replyTarget.innerHTML = insertCont;
+		console.log("complete insert");
+	}
+	
+	function insertComplete(num,numDno,cont){
+		var insertCont = document.getElementById('insertText_' + num).value;
+		
+		$.post(url='/diary/reply/update',
+				{rno:num,
+				reply:insertCont},
+				function(data){
+					console.log("insert reply content complete");
+					replylist(numDno);
+				});		
+	}
+	
 	
 	function isNull(obj){
 		return (typeof obj != "undefined" && obj !=null && obj != "")? false:true;

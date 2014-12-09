@@ -32,7 +32,7 @@ public class ReplyController {
 	}
 	
 	@RequestMapping("/delete")
-	public @ResponseBody void deleteReply(@ModelAttribute int rno){
+	public @ResponseBody void deleteReply(@RequestParam(value="rno", defaultValue="") String rno){
 		service.deleteReply(rno);
 	}
 	
@@ -45,4 +45,10 @@ public class ReplyController {
 	public @ResponseBody void updateRcount(@RequestParam(value="dno", defaultValue ="") String dno){
 		service.updateRcount(dno);
 	}
+	
+	@RequestMapping("/downcount")
+	public @ResponseBody void downcount(@RequestParam(value="dno", defaultValue="") String dno){
+		service.downRcount(dno);
+	}
+	
 }

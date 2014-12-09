@@ -26,12 +26,16 @@ public class ReplyService {
 		mapper.updateReply(vo);
 	}
 	
-	public void deleteReply(int rno){
+	public void deleteReply(String rno){
 		mapper.deleteReply(rno);
 	}
 	
 	public void updateRcount(String dno){
 		mapper.updateRcount(dno);
+	}
+	
+	public void downRcount(String dno){
+		mapper.downRcount(dno);
 	}
 	
 }
