@@ -30,4 +30,8 @@ public class ReplyService {
 		mapper.deleteReply(rno);
 	}
 	
+	public void updateRcount(String dno){
+		mapper.updateRcount(dno);
+	}
+	
 }

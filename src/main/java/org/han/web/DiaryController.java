@@ -25,6 +25,7 @@ public class DiaryController {
 	@RequestMapping("/main")
 	public void readDiary(@RequestParam(value="page", defaultValue="1")String[] types,
 			@ModelAttribute PageMaker pm, Model model){
+		pm.setUserid("han07");
 		model.addAttribute("list", service.readDiary(pm));
 	}
 	

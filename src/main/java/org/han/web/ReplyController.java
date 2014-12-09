@@ -27,6 +27,7 @@ public class ReplyController {
 	
 	@RequestMapping("/create")
 	public @ResponseBody void createReply(@ModelAttribute ReplyVO vo){
+		vo.setUserid("han07");
 		service.createReply(vo);
 	}
 	
@@ -40,4 +41,8 @@ public class ReplyController {
 		service.updateReply(vo);
 	}
 	
+	@RequestMapping("/upcount")
+	public @ResponseBody void updateRcount(@RequestParam(value="dno", defaultValue ="") String dno){
+		service.updateRcount(dno);
+	}
 }

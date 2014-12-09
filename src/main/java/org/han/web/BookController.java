@@ -89,6 +89,7 @@ public class BookController {
    
    @RequestMapping("/sample/list")
    public @ResponseBody List<PageVO> serviceList(@ModelAttribute PageVO vo){
+	  vo.setUserid("han07");
       return bookService.readPage(vo);
    }
    

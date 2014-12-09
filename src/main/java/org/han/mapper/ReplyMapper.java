@@ -29,4 +29,9 @@ public interface ReplyMapper {
 			+ " where rno=#{rno}")
 	public void deleteReply(int rno);
 	
+	@Update("update tbl_diary"
+			+ " set rcount=rcount+1"
+			+ " where dno=#{dno}")
+	public void updateRcount(String dno);
+	
 }

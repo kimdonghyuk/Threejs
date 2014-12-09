@@ -21,7 +21,7 @@ public interface PageMapper {
 			+ " select  /*+INDEX(tbl_page pk_page) */ "
 			+ " rownum rn, pno, bno, title, userid, regdate, cont, contfile, count(pno) over() cnt "
 			+ " from tbl_page "
-			+ " where pno > 0 and bno = #{bno}"
+			+ " where pno > 0 and bno = #{bno} and userid=#{userid}"
 			+ ") "
 			+ " where rn > (#{page}-1)*9 and rn <= (#{page}*9) ")
 	public List<PageVO> readPage(PageVO vo);

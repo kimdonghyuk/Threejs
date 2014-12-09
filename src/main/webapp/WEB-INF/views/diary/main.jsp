@@ -283,7 +283,6 @@
 
 		var btnTarget = $("#insertPicture");
 		var btnContent = "";
-		console.log("in function : " + data.fileName);
 		
 		if(data.suffix == '.jpg'){
 			btnContent += "<input id='getFileName' type='hidden' value='" + data.fileName + "'>"
@@ -321,24 +320,21 @@
 	
 	function replylist(num){
 		
-		var checkReply = document.getElementById('checkReply');			
+		var checkReply = document.getElementById('checkReply_'+num);			
 		var target = document.getElementById('registReply');
 		
 		if(isNull(checkReply)){
 			var replyTarget = document.getElementById('replyFrame_' + num);
-			var replyContent = "<div><input type='text' style='heigth:20px;' id='createReply_" + num + "' placeholder='댓글을 입력해주세요.' >"
-								+ "<input type='button' class='pull-right' id='registReply' onclick='createReply()' value='등 록'></div>";
-
-				console.log("pass to replyView");
+			var replyContent = "<input id='checkReply_" + num + "' type='hidden' value='check'>"
+								+ "<div><input type='text' style='heigth:20px;' id='createReply_" + num + "' placeholder='댓글을 입력해주세요.' >"
+								+ "<input type='button' class='pull-right' id='registReply' onclick='createReply("+ num +")' value='등 록'></div>";
 			
 			$.post(url='/diary/reply/read',
 					{dno:num},
 					function(data){
 						$.each(data, function(key, val){
-							console.log(val);
 							replyContent += "<div id='reply_" + num + "'>"
-											+ "<input id='checkReply' type='hidden' value='check'>"
-											+ "<ul class='replySub_" + val.dno + "'<li>[글쓴이 : " + val.userid + "][내용 : " + val.reply + "]</ul></div>";
+											+ "<ul class='replySub_" + val.dno + "'<li>[글쓴이 : " + val.userid + "][내용 : " + val.reply + "]</ul></div>"
 						});
 						replyTarget.innerHTML = replyContent;
 					});
@@ -351,9 +347,30 @@
 		}
 		
 	}
+	
+	function createReply(num){
+		updateReply(num);
+		upRcount(num);
+	}
 
-	function createReply(){
-		console.log("in function")
+	function updateReply(num){
+		var createCont = document.getElementById('createReply_'+num).value;
+		
+		$.post(url="/diary/reply/create",
+				{dno:num,
+				reply:createCont},
+				function(data){
+					location.reload();
+				});
+	}
+	
+	function upRcount(num){
+		var result= {dno:num};
+		$.post(url='/diary/reply/upcount',
+				result,
+				function(data){
+					console.log("ok update Rcount");
+				});
 	}
 	
 	function isNull(obj){
