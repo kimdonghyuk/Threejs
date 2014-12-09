@@ -17,21 +17,27 @@ public interface ReplyMapper {
 	@Select(" select "
 			+ " dno, rno, userid, reply, regdate "
 			+ " from tbl_reply"
-			+ " where dno=#{dno}")
+			+ " where dno=#{dno}"
+			+ "order by rno")
 	public List<ReplyVO> readReply(int dno);
 	
 	@Update("update tbl_reply "
-			+ " set userid=#{userid}, reply=#{reply}"
-			+ " where dno=#{dno}")
+			+ " set reply=#{reply}"
+			+ " where rno=#{rno}")
 	public void updateReply(ReplyVO vo);
 	
 	@Delete("delete tbl_reply"
 			+ " where rno=#{rno}")
-	public void deleteReply(int rno);
+	public void deleteReply(String rno);
 	
 	@Update("update tbl_diary"
 			+ " set rcount=rcount+1"
 			+ " where dno=#{dno}")
 	public void updateRcount(String dno);
+	
+	@Update("update tbl_diary"
+			+ " set rcount=rcount-1"
+			+ " where dno=#{dno}")
+	public void downRcount(String dno);
 	
 }
