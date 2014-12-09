@@ -37,6 +37,9 @@
 	href="/resources/images/ico/apple-touch-icon-57-precomposed.png">
 
 <style>
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+            
 @media screen and (max-width: 979px) {
 	body {
 		padding-top: 0px;
@@ -46,6 +49,12 @@
 body {
 	background-color: lightblue;
 }
+
+p{
+        font-size:xx-large;
+        font-family: 'Hanna', serif;
+        ﻿
+        }
 </style>
 </head>
 
@@ -93,16 +102,21 @@ body {
 
 	<div id="menu" style="height: 600px; padding: 20px 20px 20px 20px">
 		<div id="container" style="max-width: 700px; margin: auto">
-			<h3>*회원 정보*</h3>
-
+			<p>회원 정보</p>
+			<br>
+			<br>
+			<br>
 
 			<form action="update">
-
-				<ul>
-					<li>경험치: ${user.exp}</li>
-					<li>${user.userid}</li>
-					<li>E-mail: ${user.email}</li>
-				</ul>
+					<p>경험치: ${user.exp}</p>
+					<br>
+					<br>
+					<p>ID : ${user.userid}</p>
+					<br>
+					<br>
+					<p>E-mail: ${user.email}</p>
+					<br>
+					<br>
 
 				<input type="hidden" name="userid" value="${user.userid}">
 				<button type="submit"
