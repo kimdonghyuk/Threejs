@@ -568,7 +568,7 @@
 		targetbtn.html(makeBtn);
   		tarTitle.html(title);
   		tarCont.html(cont);
-  		tarContfile.html(conContfile);  		
+  		tarContfile.html(conContfile);		
   	}
   	
 	function nextPage(){
