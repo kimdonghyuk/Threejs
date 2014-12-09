@@ -17,14 +17,14 @@
 function setArr(){
 
     // 대분류 : 검색 시작
-    rootArr.push({root:'s',item:'식물',img:'식물.png',rootStr:'p',rootSet:'p',res:'n',question:'어떤 종류인가요?'});
-    rootArr.push({root:'s',item:'동물',img:'동물.png',rootStr:'a',rootSet:'a',res:'n',question:'어떤 종류인가요?'});    // 미구현
-    rootArr.push({root:'s',item:'곤충',img:'곤충.png',rootStr:'b',rootSet:'b',res:'n',question:'어떤 종류인가요?'});    // 미구현
+//    rootArr.push({root:'s',item:'식물',img:'식물.png',rootStr:'p',rootSet:'p',res:'n',question:'어떤 종류인가요?'});
+//    rootArr.push({root:'s',item:'동물',img:'동물.png',rootStr:'a',rootSet:'a',res:'n',question:'어떤 종류인가요?'});    // 미구현
+//    rootArr.push({root:'s',item:'곤충',img:'곤충.png',rootStr:'b',rootSet:'b',res:'n',question:'어떤 종류인가요?'});    // 미구현
 
     // level1 : 식물 : 종류
-    rootArr.push({root:'p',item:'나무',img:'나무.png',rootStr:'1',rootSet:'p1',res:'n',question:'어떤 식물인가요?'});
-    rootArr.push({root:'p',item:'꽃',img:'꽃.png',rootStr:'2',rootSet:'p2',res:'n',question:'어떤 식물인가요?'});
-    rootArr.push({root:'p',item:'풀',img:'풀.png',rootStr:'3',rootSet:'p3',res:'n',question:'어떤 식물인가요?'});    // 미구현
+    rootArr.push({root:'s',item:'나무',img:'나무.png',rootStr:'p1',rootSet:'p1',res:'n',question:'어떤 식물인가요?'});
+    rootArr.push({root:'s',item:'꽃',img:'꽃.png',rootStr:'p2',rootSet:'p2',res:'n',question:'어떤 식물인가요?'});
+    rootArr.push({root:'s',item:'풀',img:'풀.png',rootStr:'p3',rootSet:'p3',res:'n',question:'어떤 식물인가요?'});    // 미구현
 
     //--------------------------------------------------------------------------------------
 
