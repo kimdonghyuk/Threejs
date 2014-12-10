@@ -34,7 +34,7 @@
             }
         }
         body{
-            background:url("../resources/images/favor/favor.jpg");
+            background:url("../resources/images/play/favor.jpg");
         }
         .center-button{
             height: 50px;
@@ -184,7 +184,7 @@ function favorlist(){
         var target = $('#favorlist');       
         $.each (data , function (key , val) {         
             list +="<li><a href=javascript:contList("+val.cno+","+val.fno+")> <i class='icon-star'></i>"
-            		+val.cate+val.title+"</li><br>"			
+            		+"["+val.cate+"]"+val.title+"</li><br>"			
         });
         target.html(list);
     });
@@ -207,7 +207,7 @@ function contList(cno,fno){
 		var delfavor = $('#delfavor');
 		
 		title.html('<p>'+data.title+'</p>');
-		contdetail.html("<img src='/resources/images/favor/"+data.contfile+"' vspace='10' align = 'center'>"+'<p>'+data.cont+'</p>'); 
+		contdetail.html("<img src='/resources/images/play/"+data.contfile+"' vspace='10' align = 'center'>"+'<p>'+data.cont+'</p>'); 
 		/* contdetail.html("<textarea id = 'cont' cols='100' rows='10' readonly='readonly'>"+data.cont+"</textarea>") */
 		/*    contdetail.html("<img src='/resources/images/favor/"+data.contfile+"' vspace='10' align = left>"); */ 
 		/* contimg.html("<img src='/resources/book/images/ko.jpg' vspace='10' border-radius:'30px'>"); */
