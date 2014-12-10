@@ -245,9 +245,8 @@
 					cont:getCont,
 					contfile:getFileName},
 					function(data){
-						location.reload();
+						history.back();
 					});
-			
 		}
 	}
 	

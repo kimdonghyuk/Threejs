@@ -705,7 +705,7 @@
 					animate();
 					$("#testForm").modal('hide');
 					initModal(mTitle, mCont, mfileName, num);
-				});
+				});	
 	}
 	
 
