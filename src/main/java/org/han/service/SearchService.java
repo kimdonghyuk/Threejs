@@ -15,8 +15,8 @@ public class SearchService {
 	@Inject
 	SearchMapper mapper;
 	
-	public List<SearchVO> setResult(String rootSet){
-		return mapper.setResult(rootSet);
+	public List<SearchVO> setResult(String rootSet, int page){
+		return mapper.setResult(rootSet, page);
 	}
 	
 	public SearchVO result(int sno){

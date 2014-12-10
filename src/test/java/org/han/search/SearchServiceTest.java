@@ -20,7 +20,7 @@ public class SearchServiceTest {
 	
 	@Test
 	public void setResultTest() {
-		logger.info(service.setResult("p1a1a1"));
+		logger.info(service.setResult("p1a1a1",1));
 	}
 	
 	@Test
