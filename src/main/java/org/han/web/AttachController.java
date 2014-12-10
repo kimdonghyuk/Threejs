@@ -39,7 +39,7 @@ public class AttachController {
 		// Thumbnail 이미지를 만들어 줌.
 		BufferedImage originalImage = ImageIO.read(origin);
 		BufferedImage thumbnailImage = new BufferedImage(
-				originalImage.getWidth() / 2, originalImage.getHeight() / 2,
+				(originalImage.getWidth() * 0)+100, (originalImage.getHeight() * 0)+100,
 				BufferedImage.TYPE_INT_RGB);
 
 		Graphics2D g = thumbnailImage.createGraphics();
