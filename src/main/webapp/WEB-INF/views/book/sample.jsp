@@ -548,7 +548,14 @@
       }
    }
   
+  
   	function clickModal(title, contfile, cont, pno){
+  		
+  		var checkModal = document.getElementById('modalInsertPicture');
+  		
+  		if(isNull(checkModal)){
+  			console.log("checkModal is null");
+  		
   	  	var fileurl = "/han/file/regphoto/";
   		
   		var tarTitle = $("#mTitle");
@@ -567,8 +574,40 @@
 		targetbtn.html(makeBtn);
   		tarTitle.html(title);
   		tarCont.html(cont);
-  		tarContfile.html(conContfile);		
-  	}
+  		tarContfile.html(conContfile);
+  		}
+  		else{
+  			console.log("insert init !");
+  			initModal(title, contfile, cont, pno);
+  		}
+  	}  	
+  	
+  	
+  	function initModal(title, contfile, cont, pno){
+  		
+ 	  	var fileurl = "/han/file/regphoto/";
+  		
+		var tarTitle = $(".modal-header");
+		var tarCont = $(".modal-body");
+		var tarBtn = $(".modal-footer");
+		
+		var titleCont = "";
+		var bodyCont = "";
+		var footerCont = "";
+		
+		titleCont += "<button type='button' class='close' data-dismiss='modal'>✕</button>"
+					+ "<h3 id='mTitle' style='text-align: center;''>" + title + "</h3>";
+		bodyCont += "<div id='mContfile' style='width:100%;'><img src = '" + fileurl + contfile + "'></div>"
+					+ "<div id='mCont' style='width:100%; text-align:center;'>" + cont + "</div>";
+		footerCont += "<button type='button' class='btn btn-primary'" + "onclick='deleteModal(" + pno +")'> 삭 제 </button>"
+					+ "<button type='button' class='btn btn-primary'" + "onclick='insertModal(\""
+					+ title + "\",\"" + contfile + "\",\"" + cont + "\",\"" + pno + "\")'>" + "수 정 </button>";
+					
+		tarTitle.html(titleCont);
+		tarCont.html(bodyCont);
+		tarBtn.html(footerCont);
+  	}  	
+  	
   	
 	function nextPage(){
 		page = page + 1;
@@ -577,6 +616,7 @@
 		animate();
 	}
 	
+	
 	function prevPage(){
 		page = page - 1;
 		againTable();
@@ -584,6 +624,7 @@
 		animate();
 	}		
 
+	
 	function deleteModal(num){
 		$.post(url='/book/sample/delete',
 				{pno:num},
@@ -595,9 +636,8 @@
 				});
 	}
 	
+	
 	function insertModal(title, contfile, cont, pno){
-		// make insert modal
-/* 		var tarTitle = document.getElementsByClassName("modal-header"); */
 		
 		var fileurl = "/han/file/regphoto/";
 		
@@ -624,6 +664,7 @@
 		tarBtn.html(footerCont);		
 	}
 	
+	
 	function updateResult(data){		
 		
 		var tarBtn = $(".modal-footer");
@@ -636,7 +677,6 @@
 			content += "<input id='getFileName' type='hidden' value='" + data.fileName + "'>"
 						+ "<image id='thumb' src='/han/file/regphoto/" + data.fileName + "'/></p>"
 			target.html(content);
-			/* $(".uploadUL").append("<li><image class='thumb' data-src='"+data.fileName+"' src='/web/file/view/"+ data.fileName+"'/></a></li>"); */
 		}else{
 			$("#modalInsertPicture").html("<image id='thumb' data-src='"+data.fileName+"'src='/resources/book/images/icon.jpg'/></a></p>");
 		}
@@ -668,32 +708,7 @@
 				});
 	}
 	
-	function initModal(title, cont, contfile, pno){
-		
-		console.log("-------------init start----------------")
-		var fileurl = "/han/file/regphoto/";
-		
-		var tarTitle = $(".modal-header");
-		var tarCont = $(".modal-body");
-		var tarBtn = $(".modal-footer");
-		
-		var titleCont = "";
-		var bodyCont = "";
-		var footerCont = "";
-				
-		titleCont += "<button type='button' class='close' data-dismiss='modal'>✕</button>"
-					+ "<h3 id='mTitle' style='text-align: center;'>" + title + "</h3>";
-		bodyCont += "<div id='mContfile' style='width:100%;'><img src='/han/file/regphoto/'" + contfile + "'></div>"
-					+ "<br>"
-					+ "<div id='mCont' style='width:100%; text-align:center;'>" + cont + "</div>";
-		footerCont += "<button type='button' class='btn btn-primary'" + "onclick='deleteModal(" + pno +")'> 삭 제 </button>"
-						+ "<button type='button' class='btn btn-primary'" + "onclick='insertModal(\""
-						+ title + "\",\"" + contfile + "\",\"" + cont + "\",\"" + pno + "\")'>" + "수 정 </button>";
-					
-		tarTitle.html(titleCont);
-		tarCont.html(bodyCont);
-		tarBtn.html(footerCont);
-	}
+
 
 	function isNull(obj){
 		return (typeof obj != "undefined" && obj !=null && obj != "")? false:true;
