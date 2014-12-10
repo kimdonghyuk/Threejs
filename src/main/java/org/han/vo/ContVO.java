@@ -2,10 +2,12 @@ package org.han.vo;
 
 import java.sql.Date;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class ContVO {
 
 	private Integer cno;
-	private Integer sno;
 	private String title;
 	private String cont;
 	private String contfile;
@@ -17,12 +19,6 @@ public class ContVO {
 	}
 	public void setCno(Integer cno) {
 		this.cno = cno;
-	}
-	public Integer getSno() {
-		return sno;
-	}
-	public void setSno(Integer sno) {
-		this.sno = sno;
 	}
 	public String getTitle() {
 		return title;
@@ -62,7 +58,7 @@ public class ContVO {
 	}
 	@Override
 	public String toString() {
-		return "ContVO [cno=" + cno + ", sno=" + sno + ", title=" + title
+		return "ContVO [cno=" + cno + ", title=" + title
 				+ ", cont=" + cont + ", contfile=" + contfile + ", regdate="
 				+ regdate + ", cate=" + cate + ", fno=" + fno + "]";
 	}

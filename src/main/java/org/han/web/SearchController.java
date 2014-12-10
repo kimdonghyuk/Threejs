@@ -26,7 +26,7 @@ public class SearchController {
 	@RequestMapping("/setResult")
 	public @ResponseBody List<SearchVO> setResult(
 			@RequestParam(value="page", defaultValue="1") int page,
-			@RequestParam(value="root", defaultValue="") String rootSet){
+			@RequestParam(value="rootSet", defaultValue="") String rootSet){
 		return service.setResult(rootSet,page);
 	}
 	

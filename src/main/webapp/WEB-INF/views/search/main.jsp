@@ -387,7 +387,6 @@
 	    var str = "<ul>"; // innerHTML에 들어갈 문장
 	    var questionStr =""; // 질문내용
 	    $.each(arr, function(key,val){
-	    	console.log(val);
 	    	questionStr = val.question;
 	    	if(val.res == "y"){
 				str += "<li class='span3'>" +
@@ -443,7 +442,7 @@
 		$.ajax({
 			type:"post",
 			url:"/search/setResult/",
-			data:{root:rootSet,page:num},
+			data:{rootSet:rootSet,page:num},
 			dataType:"json",
 			async:false,
 			success:function(data){

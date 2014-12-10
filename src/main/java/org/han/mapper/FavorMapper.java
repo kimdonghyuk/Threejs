@@ -22,7 +22,7 @@ public interface FavorMapper {
 
 //	userid에 해당하는 즐겨찾기 리스트
 	@Select
-	("select c.cno, c.sno, c.title, c.cont, c.contfile, c.cate, f.userid, f.fno" 
+	("select c.cno, c.title, c.cont, c.contfile, c.cate, f.userid, f.fno" 
 			+" from tbl_cont c, tbl_favor f"
 			+" where userid=#{userid} and c.cno=f.cno")
 	public List<FavorVO> list(String userid);
