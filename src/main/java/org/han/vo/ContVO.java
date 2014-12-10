@@ -2,6 +2,9 @@ package org.han.vo;
 
 import java.sql.Date;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class ContVO {
 
 	private Integer cno;
