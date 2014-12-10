@@ -34,8 +34,26 @@
         @media screen and (max-width: 979px){
             body{
                 padding-top: 0px;
+                padding-left:0px;
+				padding-right:0px;
+            }
+            
+            .container,.navbar,.footer {
+            	padding-left: 20px;
+				padding-right: 20px;
+            }
+            
+            .title {o
+            	padding-top:0px;
+				padding-bottom:0px;
             }
         }
+        
+        /* #ts1 {
+			max-width:800px;
+			height:500px;
+			margin: auto;
+	    } */
         
 	    #ts1 li a{
 	        text-decoration:none;
@@ -57,6 +75,10 @@
 	        font-family: 'Nanum Gothic', serif;
         }
         
+        p,strong {
+        	font-family: 'Nanum Gothic', serif;
+        }
+        
         #back {
         	/* background-image: url(/resources/images/search/search_back.jpg);
 	        background-position: center center;
@@ -64,6 +86,10 @@
 	        background-attachment: fixed;
 	        background-size: cover;
 	        background-color: #464646; */
+        }
+        
+        .question {
+        	color: ;
         }
         
         /* modal 크기 */
@@ -88,10 +114,6 @@
 		  filter:url(#blur);
 		} */
 		
-		.str1 {
-			font-size: 30px;
-		}
-		
 		.resultCont{
 			font-size: 12px;
 			line-height: 1.6em;
@@ -111,6 +133,36 @@
 			border-radius: 30px;
 		}
 		
+		.footer {
+			position: absolute;
+			left:0;
+			bottom:0px;
+			width:100%;
+			/* background-color: #343434; */
+			height:40px;
+			/* font-size: 12px;
+			color: white;
+			line-height: 4em; */
+		}
+		
+		.center-button{
+            /* height: 40px; */
+            width: 180px;
+            margin:auto;
+        }
+        
+        .prevBtn {
+        	display: none;
+        }
+        
+        .nextBtn {
+        	display: none;
+        }
+        
+        .modal-title {
+        	font-size: 30px;
+        }
+		
     </style>
     
 </head>
@@ -128,14 +180,14 @@
                 <a id="logo" class="pull-left" href="/index"></a>
                 <div class="nav-collapse collapse pull-right">
                     <ul class="nav">
-                        <li><a href="/index">메인화면</a></li>
-                        <li class="active"><a href="/search/main">검색</a></li>
-                        <li><a href="/book/main">나만의도감</a></li>
-                        <li><a href="/favor/main">즐겨찾기</a></li>
-                        <li><a href="/diary/main">관찰일지</a></li> 
+                        <li><a href="/index"><p>메인화면</p></a></li>
+                        <li class="active"><a href="/search/main"><p>검색</p></a></li>
+                        <li><a href="/book/main"><p>나만의도감</p></a></li>
+                        <li><a href="/favor/main"><p>즐겨찾기</p></a></li>
+                        <li><a href="/diary/main"><p>관찰일기</p></a></li> 
                         <li><a href="/mypages/main">My Pages</a></li>
                         <li class="login" id="login"> <a href="/user/login">Login</a></li>
-                    </ul>        
+                    </ul>
                 </div><!--/.nav-collapse -->
             </div>
         </div>
@@ -154,33 +206,32 @@
 </section>
 <!-- / .title -->
 
-<div id="back" style="height: 600px;"> 
-
-    <p class="str1 question center">질문이 들어갈 부분</p>
+<div id="back">
+    <div class="question text-center">질문이 들어갈 부분</div>
     <!--tagClout-->
-    <div id="ts1" style="max-width:800px; height:500px;   margin: auto;  ">
-        <!-- 
-        <nav id="nav-arrows" class="nav-arrows">
-            <span class="nav-arrow-prev"><i class="icon-angle-left"></i></span>
-            <span class="nav-arrow-next"><i class="icon-angle-right"></i></span>
-        </nav> -->
+    <div id="ts1" class="span8 offset2">질문 배열이 들어갈 부분. tagCloud</div>
+</div>
+
+<!--Footer-->
+<div class="footer">
+	<div class="center-button">
+        <a href="javascript:prevPage()" class="btn btn-primary pull-left prevBtn">이전</a>
+        <a href="javascript:nextPage()" class="btn btn-primary pull-right nextBtn">다음</a>
     </div>
 </div>
-    
-<!--Footer-->
-<footer id="footer">
+<!-- <footer id="footer">
     <div class="container">
         <div class="row-fluid">
-            <div class="span5 cp">
-                &copy; Bit58th 한잔해!!
+            <div class="span5">
+                Bit58th 한잔해!!
             </div>
             <div class="span1">
                 <a id="gototop" class="gototop pull-right" href="#"><i class="icon-angle-up"></i></a>
             </div>
-            <!--/Goto Top-->
+            /Goto Top
         </div>
     </div>
-</footer>
+</footer> -->
 <!--/Footer-->
 
 <!-- Result Modal -->
@@ -189,23 +240,17 @@
 	        <div class="modal-content">
 	            <div class="modal-header">
 	                <!-- <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button> -->
-	                <p class="str1 modal-title text-center" id="myModalLabel">제목이 들어갈 부분</p>
+	                <p class="modal-title text-center" id="myModalLabel">제목이 들어갈 부분</p>
 	            </div>
 	            <br>
 	            <div class="modal-body">
 	                <div class="resultPic text-center">사진이 들어갈 부분</div>
 	                <br>
-	                <div class="resultCont"></div>
+	                <div class="resultCont">내용이 들어갈 부분</div>
 		            <br>
 		            <button type='button' class='listButton btn btn-primary btn-lg'>관련 컨텐츠</button>
 		            <br><br>
-		            <div id="relatedContList">
-			            <ul>
-			            	<li>꽃머겅</li>
-			            	<li>누가누가 자연훼손을 잘 하나</li>
-			            	<li>쓰레기 무단 투기</li>
-			            </ul>
-					</div>
+		            <div id="relatedContList">관련컨텐츠 배열이 들어갈 부분</div>
 	            </div>
 	            <!-- <div class="modal-footer">
 	                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -240,15 +285,39 @@
 	}
 
 	// tagcloud 위치값 연산
-    var maxwidth = document.getElementById('ts1').clientWidth;
+    /* var maxwidth = document.getElementById('ts1').clientWidth;
     var width = parseInt(maxwidth) / 2 + 25;
     var maxheight = document.getElementById('ts1').clientHeight;
-    var height = parseInt(maxheight)/ 2 - 100;
+    var height = parseInt(maxheight)/ 2 - 100; */
+    
+    // 동적화면 계산
+    var bodyWidth = window.innerWidth;
+    var bodyHeight = window.innerHeight-255;
+    var maxwidth = document.getElementById('ts1').clientWidth;
+    var width = parseInt(maxwidth) / 2;
+    var height = parseInt(bodyHeight) / 4;
+    console.log(width,height);
+    $('#back').css('height',bodyHeight);
+    $('#ts1').css('height',bodyHeight-60);
+    // $('#back').css('width',bodyWidth);
+    window.onresize = function(event) {
+    	bodyWidth = window.innerWidth;
+    	bodyHeight = window.innerHeight-255;
+    	maxwidth = document.getElementById('ts1').clientWidth;
+    	$('#back').css('height',bodyHeight);
+    	$('#ts1').css('height',bodyHeight-60);
+    	var width = parseInt(maxwidth) / 2;
+        var height = parseInt(bodyHeight) / 4;
+    };
+    
+    
 
     // 검색로직
     var rootArr = new Array(); // 전체 질문들을 모아두는 배열
 	var roots = new Array(); // 선택경로를 담아두는 배열
 	var resultSno = 0; // 관련컨텐츠 호출시 사용될 변수
+	var page = 0;
+	var cnt = 0;
 	
 	// 검색결과 관련컨텐츠 토글
 	$(".listButton").click(function(){
@@ -279,14 +348,6 @@
 			target.style.display = "none";
 		}
 	});
-	/* function contentList(){
-		var target = document.getElementById("relatedContList");
-		if(target.style.display == "none"){
-			target.style.display = "block";
-		}else{
-			target.style.display = "none";
-		}
-	} */
 	
 	// 검색결과 화면
 	function resultBody(num){
@@ -326,7 +387,6 @@
 	    var str = "<ul>"; // innerHTML에 들어갈 문장
 	    var questionStr =""; // 질문내용
 	    $.each(arr, function(key,val){
-	    	console.log(val);
 	    	questionStr = val.question;
 	    	if(val.res == "y"){
 				str += "<li class='span3'>" +
@@ -342,33 +402,62 @@
 	    });
 	    str += "</ul>";
 	    $("#ts1").html(str);
-		$(".question").html(questionStr);
+		$(".question").html("<h2><strong>"+questionStr+"</strong></h2>");
 	    
 	    // 생성된 리스트를 tagcloud로 적용시켜준다
 		$('#ts1').tagcloud({centrex:width, centrey:height, init_motion_x:10, init_motion_y:10 });
 	}
 	
+	// 검색결과 페이징
+	function nextPage() {
+		setResult(roots.join(""),page++);
+		setPage();
+	}
+	
+	function prevPage(){
+		setResult(roots.join(""),page--);
+		setPage();
+	}
+	
+	function setPage(){
+		if(page*8 < cnt){
+			$(".nextBtn").css("display","block");
+		}else{
+			$(".nextBtn").css("display","none");
+		}
+		if(page > 1){
+			$(".prevBtn").css("display","block");
+		}else{
+			$(".prevBtn").css("display","none");
+		}
+	}
+	
 	// 검색결과 생성
-	function setResult(rootSet){
+	function setResult(rootSet, num){
+		if(page == 0){
+			page=1;
+			$(".nextBtn").css("display","block");
+		}
 		var str = "<ul>"; // innerHTML에 들어갈 문장
 		$.ajax({
 			type:"post",
 			url:"/search/setResult/",
-			data:{root:rootSet},
+			data:{rootSet:rootSet,page:num},
 			dataType:"json",
 			async:false,
 			success:function(data){
 				$.each(data, function(key,val){
+					cnt = val.cnt;
 					str += "<li class='span3'>" +
 					"<a class='resThumb' onclick='resultBody("+val.sno+")' data-toggle='modal' data-target='#resultModal'>" +
-					"<img src='/resources/images/search/img/"+val.contfile+"' style='border-radius: 30px'>" + 
+					"<img src='/resources/images/search/img/"+val.contfile+"' style='border: solid 3px white; border-radius: 30px;'>" + 
 					"</a></li>"
 				});
 			}
 		});
 		str += "</ul>";
 	    $("#ts1").html(str);
-	    $(".question").html("검색결과입니다.");
+	    $(".question").html("<h2><strong>검색결과입니다</strong></h2>.");
 	    
 	    // 생성된 리스트를 tagcloud로 적용시켜준다
 		$('#ts1').tagcloud({centrex:width, centrey:height, init_motion_x:10, init_motion_y:10 });

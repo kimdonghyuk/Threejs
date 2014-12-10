@@ -2,6 +2,9 @@ package org.han.vo;
 
 import java.sql.Date;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class SearchVO {
 
 	private Integer sno;
@@ -10,7 +13,14 @@ public class SearchVO {
 	private String contfile;
 	private Date regdate;
 	private String root;
+	private Integer cnt;
 	
+	public Integer getCnt() {
+		return cnt;
+	}
+	public void setCnt(Integer cnt) {
+		this.cnt = cnt;
+	}
 	public Integer getSno() {
 		return sno;
 	}
@@ -52,7 +62,7 @@ public class SearchVO {
 	public String toString() {
 		return "SearchVO [sno=" + sno + ", title=" + title + ", cont=" + cont
 				+ ", contfile=" + contfile + ", regdate=" + regdate + ", root="
-				+ root + "]";
+				+ root + ", cnt=" + cnt + "]";
 	}
 	
 }

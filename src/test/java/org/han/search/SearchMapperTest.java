@@ -20,7 +20,7 @@ public class SearchMapperTest {
 	
 	@Test
 	public void setResultTest() {
-		logger.info(mapper.setResult("p1a1a1"));
+		logger.info(mapper.setResult("p1a1a1",1));
 	}
 
 }

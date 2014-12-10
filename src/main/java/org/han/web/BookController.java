@@ -131,23 +131,7 @@ public class BookController {
 //   }
    
    @RequestMapping("/sample/list")
-   public @ResponseBody List<PageVO> serviceList(@ModelAttribute PageVO vo){
-	  vo.setUserid("han07");
-      return bookService.readPage(vo);
-   }
-   
-   @RequestMapping("/sample/delete")
-   public @ResponseBody void deletePicture(int pno){
-	   bookService.deletePage(pno);
-   }
-   
-   @RequestMapping("/sample/update")
-   public @ResponseBody void updatePicture(@ModelAttribute PageVO vo){
-	   bookService.updatePage(vo);
-   }
-   
-   @RequestMapping("/createPicture")
-   public String createPicture(HttpServletRequest request, @ModelAttribute PageVO vo){
+   public @ResponseBody List<PageVO> serviceList(HttpServletRequest request, @ModelAttribute PageVO vo){
 	   Cookie[] cookies = request.getCookies();
 	   String userid = null;
 
@@ -162,8 +146,37 @@ public class BookController {
 
 	   }
 	   vo.setUserid(userid);
-	   bookService.createPicture(vo);;
-      return "redirect:main";
+      return bookService.readPage(vo);
    }
+   
+   @RequestMapping("/sample/delete")
+   public @ResponseBody void deletePicture(int pno){
+	   bookService.deletePage(pno);
+   }
+   
+   @RequestMapping("/sample/update")
+   public @ResponseBody void updatePicture(@ModelAttribute PageVO vo){
+	   bookService.updatePage(vo);
+   }
+   
+   @RequestMapping("/createPicture")
+   public @ResponseBody void createPicture(HttpServletRequest request, @ModelAttribute PageVO vo){
+	   Cookie[] cookies = request.getCookies();
+	   String userid = null;
+
+	   for (Cookie cookie : cookies) {
+
+		   System.out.println("getName: " + cookie.getName());
+		   System.out.println("getValue: " + cookie.getValue());
+
+		   if (cookie.getName().equals("login")) {
+			   userid = cookie.getValue();
+		   }
+
+	   }
+	   vo.setUserid(userid);
+	   bookService.createPicture(vo);
+   }
+
 
 }
