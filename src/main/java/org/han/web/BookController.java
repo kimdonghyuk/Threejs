@@ -147,7 +147,7 @@ public class BookController {
    }
    
    @RequestMapping("/createPicture")
-   public String createPicture(HttpServletRequest request, @ModelAttribute PageVO vo){
+   public @ResponseBody void createPicture(HttpServletRequest request, @ModelAttribute PageVO vo){
 	   Cookie[] cookies = request.getCookies();
 	   String userid = null;
 
@@ -162,8 +162,8 @@ public class BookController {
 
 	   }
 	   vo.setUserid(userid);
-	   bookService.createPicture(vo);;
-      return "redirect:main";
+	   bookService.createPicture(vo);
    }
+
 
 }

@@ -103,26 +103,23 @@
 	<!--사진 등록꾸민곳 -->
 	<section id="about-us" class="container main">
 	    <div class="row-fluid">
-	        <div class="span8 offset2" style="border: solid; border-color: green; opacity: 0.7;">
+	        <div class="span8 offset2" style="border: solid; border-color: blue; opacity: 0.8;">
 	            <div class="blog" style="opacity: 1;">
-	            
+	            	
 	            	<form target="zero" action="/han/file/upload" method="post" enctype="multipart/form-data" >
-					<input type='file' name='file'><input type='submit' value="UPLOAD">
+					<input type='file' name='file' value='파일 추가'>
+					<input type='submit' value="UPLOAD">
 					</form>
 					
 					<iframe name="zero" width="0" height="0" >
 					</iframe>
 					
 	                <ul class="fileUL"></ul>
-	                    
-                   	<p class="help-block">선택된 사진이 없어요...</p>
-				
-
-					<form method="post" action="createPicture" accept-charset="utf-8">
 					
-						<label> 도감을 선택해주세요. </label>
-						<select class="form-control" name="bno"
-								style="width: 250px; opacity: 0.9"></select>
+
+<!-- 					<form method="post" action="createPicture" accept-charset="utf-8">
+					
+						
 						
 	                    <label>여기에 제목을 적어주세요</label>
 	                    <textarea name="title"  required="required" class="input-block-level"></textarea>
@@ -132,19 +129,22 @@
 	                    <label>일기 내용을 적어주세요</label>
 	                    <textarea name="cont" required="required" class="input-block-level" rows="8"></textarea>
 	                    <button type="submit" class="btn btn-primary btn-large pull-right">다썼다~ >▽<</button>
-	                </form>
+	                </form> -->
 	                
 	                <!-- End Blog Item -->
-	                <div class="gap"></div>
+	                
+	                <label> 도감을 선택해주세요. </label>
+						<select id="selectBook" style="width: 250px; opacity: 0.9"></select>
+	                
+	                <div class="btnArea"><button class='pull-right' onclick='regImage()'> 등 록 </button></div>
 	            </div>
 	        </div>
 	    </div>
 	</section>
 
-	<footer id="footer" style="opacity: 0.7; position: absolute; bottom: auto; width: 100%; background-color: black;">
+	<footer id="footer" style="opacity: 0.7; position: absolute; bottom:0px; width: 100%; background-color: black;">
 	    <div class="container">
-	        <div class="row-fluid">
-	            <div class="span12" style="margin-top:-15px">
+				<div class="span12" style="margin-top:-15px">
 	                &copy; Bit58th 한잔해!!
 	            </div>
 	            <!--/Goto Top-->
@@ -183,10 +183,11 @@
 <script type="text/javascript">
     
 	$(document).ready(getlist());
+	var updateCount = 1;
     
 	function getlist(){
 		var url = "regphoto/select";					// url을 호출한 뒤 선택한 bno 값을 더해줌.
-		var target = $(".form-control");
+		var target = $("#selectBook");
 		var content = "<option value=" + "'default'>도감선택란</option>";
 		$.getJSON(url, function (data) {			// 해당 url에 담겨져있는 Jsondata를 parameter값으로 받음.
 			$.each(data, function (key, val) {	// for each문을 돌려서 key값을 잡고 val값을 item 배열에 넣어줌.
@@ -198,16 +199,62 @@
 		};
     
  	function updateResult(data){
-		alert(data);
+ 		console.log(data);
+ 		console.log("updateCount  : " + updateCount);
+ 		
+ 		if(updateCount == 6){
+ 			alert("그림 파일은 최대 5개까지 등록 가능합니다.");
+ 			return;
+ 		}
+ 		
 		$(".uploadUL").append("<input type='hidden' name='contfile' value='"+data.fileName+"'></p>");
 		
-		if(data.suffix == '.jpg'){
-			$(".fileUL").append("<p><a href='/han/file/down?src="+data.fileName+"'><image class='thumb' src='/han/file/regphoto/"+data.fileName+"'/></p>");
-			/* $(".uploadUL").append("<li><image class='thumb' data-src='"+data.fileName+"' src='/web/file/view/"+ data.fileName+"'/></a></li>"); */
+		if(data.suffix == '.jpg' || data.suffix == '.gif' || data.suffix == '.png'){
+			var target = $(".fileUL");
+			var content = "";
+			
+			content += "<div class='span4' style='height:230px;'>"
+						+ "<div><input type='text' style='width:165px; heigth:30px; 'id='createTitle_" + updateCount + "' placeholder='제목'>"
+						+ "<input id='getFileName_" + updateCount + "' type='hidden' value='" + data.fileName + "'>"
+						+ "<image class='thumb' style='width:200px;'  id='createImg_" + updateCount + "' src='/han/file/regphoto/"+data.fileName+"'/></p>"
+						+ "<div style='margin:auto;'><input type='text' style='width:165px; heigth:30px;'  id='createCont_" + updateCount + "' placeholder='내용'><div></div>";
+			
+			target.append(content);
+			updateCount++;	
 		}else{
-			$(".fileUL").append("<p><a href='/han/file/down?src="+data.fileName+"'><image class='thumb' data-src='"+data.fileName+"'src='/resources/book/images/icon.jpg'/></a></p>");
-		}
+			alert("이미지 파일을 올려주세요.(jpg,gif,png 지원)");
+			return;
+		}	
 }
+ 		
+	function regImage(){
+		console.log("get updateCount : " + updateCount);
+		var selbox = document.getElementById("selectBook");
+		var getBno = selbox.options[selbox.selectedIndex].value;
+		console.log("Select Value : " + getBno);
+		
+		for(var i=1; i<updateCount; i++){
+			var getTitle = document.getElementById('createTitle_' + i).value;
+			var getFileName = document.getElementById('getFileName_' + i).value;
+			var getCont = document.getElementById('createCont_' + i).value;
+
+			
+			$.post(url='/book//createPicture',
+					{bno:getBno,
+					title:getTitle,
+					cont:getCont,
+					contfile:getFileName},
+					function(data){
+						location.reload();
+					});
+			
+		}
+	}
+	
+	function isNull(obj){
+		return (typeof obj != "undefined" && obj !=null && obj != "")? false:true;
+	}
+	
     
 /*.........................................................................................................................*/    
 </script>
