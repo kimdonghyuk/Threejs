@@ -131,8 +131,21 @@ public class BookController {
 //   }
    
    @RequestMapping("/sample/list")
-   public @ResponseBody List<PageVO> serviceList(@ModelAttribute PageVO vo){
-	  vo.setUserid("han07");
+   public @ResponseBody List<PageVO> serviceList(HttpServletRequest request, @ModelAttribute PageVO vo){
+	   Cookie[] cookies = request.getCookies();
+	   String userid = null;
+
+	   for (Cookie cookie : cookies) {
+
+		   System.out.println("getName: " + cookie.getName());
+		   System.out.println("getValue: " + cookie.getValue());
+
+		   if (cookie.getName().equals("login")) {
+			   userid = cookie.getValue();
+		   }
+
+	   }
+	   vo.setUserid(userid);
       return bookService.readPage(vo);
    }
    

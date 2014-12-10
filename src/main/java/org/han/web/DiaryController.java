@@ -1,6 +1,8 @@
 package org.han.web;
 
 import javax.inject.Inject;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 
 import org.han.service.DiaryService;
 import org.han.util.PageMaker;
@@ -24,8 +26,21 @@ public class DiaryController {
 	
 	@RequestMapping("/main")
 	public void readDiary(@RequestParam(value="page", defaultValue="1")String[] types,
-			@ModelAttribute PageMaker pm, Model model){
-		pm.setUserid("han07");
+			HttpServletRequest request, @ModelAttribute PageMaker pm, Model model){
+		   Cookie[] cookies = request.getCookies();
+		   String userid = null;
+
+		   for (Cookie cookie : cookies) {
+
+			   System.out.println("getName: " + cookie.getName());
+			   System.out.println("getValue: " + cookie.getValue());
+
+			   if (cookie.getName().equals("login")) {
+				   userid = cookie.getValue();
+			   }
+
+		   }
+		   pm.setUserid(userid);
 		model.addAttribute("list", service.readDiary(pm));
 	}
 	
@@ -34,8 +49,21 @@ public class DiaryController {
 	}
 	
 	@RequestMapping("/createDiary")
-	public String createDiary(@ModelAttribute DiaryVO vo){
-		vo.setUserid("han07");
+	public String createDiary(HttpServletRequest request, @ModelAttribute DiaryVO vo){
+		   Cookie[] cookies = request.getCookies();
+		   String userid = null;
+
+		   for (Cookie cookie : cookies) {
+
+			   System.out.println("getName: " + cookie.getName());
+			   System.out.println("getValue: " + cookie.getValue());
+
+			   if (cookie.getName().equals("login")) {
+				   userid = cookie.getValue();
+			   }
+
+		   }
+		   vo.setUserid(userid);
 		service.createDiary(vo);
 		return "redirect:main";
 	}
@@ -48,7 +76,6 @@ public class DiaryController {
 	
 	@RequestMapping("/update")
 	public String updateDiary(@ModelAttribute DiaryVO vo){
-		System.out.println(vo.toString());
 		service.updateDiary(vo);
 		return "redirect:/diary/main";
 	}

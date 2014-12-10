@@ -290,8 +290,6 @@
 		var i = 0;
 		var xStart = 5;
 		var yStart = 3;	
-		console.log("page : " + page);
-		console.log("bookNo : " + bookNo);
 		
 		$.ajax({
 			url: "/book/sample/list?page=" + page + "&bno="+bookNo,
@@ -310,6 +308,7 @@
 					data[i].y = tempY;
 				}
 				tableData = data;
+				console.log("Data : " + tableData);
 				makeBtn(tableData[0].cnt);
 			}});
 	})();
