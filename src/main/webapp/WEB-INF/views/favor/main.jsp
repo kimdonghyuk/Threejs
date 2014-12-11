@@ -74,6 +74,14 @@
         margin-left:auto;
         margin-right:auto;
         }
+        iframe{
+        width:100%;
+        height:400px;
+        border-radius: 30px;
+        display:block;
+        margin-left:auto;
+        margin-right:auto;
+        }
 
     </style>
 </head>
@@ -212,7 +220,7 @@ function contList(cno,fno){
 		
 		if(data.cate=="동요")
 			{
-			contdetail.html("<iframe width='640' height='390' src='"+data.cont+"'frameborder='0' allowfullscreen></iframe><p>*youtube 참고</p>"); 
+			contdetail.html("<iframe src='"+data.cont+"'frameborder='0' allowfullscreen></iframe><p>*youtube 참고</p>"); 
 			} else{
 			
 			
