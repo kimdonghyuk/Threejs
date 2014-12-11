@@ -54,9 +54,13 @@
         }
         
         body{
-	    	background-image : url("/resources/images/diary/wall06.jpg");
-	    	background-repeat : no repeat;
-	    	background-size : cover;}
+/* 	    	background-image : url("/resources/images/diary/wall06.jpg");
+	    	background-repeat : no repeat;*/
+			background-color : #D1D4F5;
+	    	background-size : cover;
+	    }
+	    
+	    
     </style>
     
 </head>
@@ -101,10 +105,6 @@
     </section>
     <!-- / .title -->
 
-    <div class="center-button">
-        <a href="/index" class="btn btn-primary pull-left center-button-in">전체보기</a>
-        <a href="/diary/write" class="btn btn-primary pull-right center-button-in">일기쓰기</a>
-    </div>
 
     <section id="about-us" class="container main">
         <div class="row-fluid">
@@ -119,9 +119,10 @@
 	                                <!-- 기본정보 들어가는 부분 -->
 	                              <i class="icon-user"></i> 글쓴이 <a href="#"> ${table.userid } </a> | 
 	                              <i class="icon-folder-close"></i> 관찰대상 <a href="#"> ${table.tag } </a> | 
-	                              <i class="icon-calendar"></i> 2014.12.04
+	                              <i class="icon-calendar"></i> ${table.regdate}
 	                          	</p>
 	                          		<p class="pull-right" id="btnArea">
+	                          			<i class="icon-book">  <a href="/diary/write">일기쓰기</a></i>
 	                          			<i class="icon-pencil"></i> 
 	                          			<a href="javascript:insertDiary(${table.dno}, '${table.title}','${table.cont}','${table.contfile }','${table.tag}')"> 수 정</a>
 
@@ -220,10 +221,6 @@
 		document.diaryForm.submit();
 	}
 
-	// 삭제 키 누르면 확인한번 해주고 삭제해주기 위해 스크립트문 제작.
-	function deleteDiary(dno){
-		console.log(dno);
-	}
 	
  	function updateResult(data){
 		alert(data);
@@ -235,7 +232,8 @@
 		}else{
 			$(".fileUL").append("<p><a href='/han/file/down?src="+data.fileName+"'><image class='thumb' data-src='"+data.fileName+"'src='/resources/book/images/icon.jpg'/></a></p>");
 		}
-}	
+	}
+ 	
 
 	function insertDiary(dno, title, cont, contfile, tag){
 		

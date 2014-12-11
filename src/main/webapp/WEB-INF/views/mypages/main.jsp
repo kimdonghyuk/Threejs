@@ -48,7 +48,7 @@
 
 	body {
 	
-	background:url("../resources/images/mypage/backpage.jpg") no-repeat;
+	background:url("../resources/images/mypage/mypage.jpg") no-repeat;
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;

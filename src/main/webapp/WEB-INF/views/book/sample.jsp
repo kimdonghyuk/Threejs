@@ -670,6 +670,10 @@
 		var tarBtn = $(".modal-footer");
 		var footerCont = "";
 		
+		console.log("get suffix : " + data.suffix );
+		console.log("get fileName : " + data.fileName );
+		
+		
 		if(data.suffix == '.jpg'){
 			var target = $("#modalInsertPicture");
 			var content = "";
@@ -705,7 +709,7 @@
 					animate();
 					$("#testForm").modal('hide');
 					initModal(mTitle, mCont, mfileName, num);
-				});
+				});	
 	}
 	
 
