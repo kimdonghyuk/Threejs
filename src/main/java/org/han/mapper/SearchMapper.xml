@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.han.mapper.SearchMapper">
+
+<select id="setCont" parameterType="org.han.mapper.SearchMapper" resultType="org.han.vo.SearchVO">
+<![CDATA[
+select
+	cno, title
+from
+	tbl_cont
+where
+	keyword
+in(
+]]>
+<foreach item="key" collection="keySet" separator=",">
+	#{key}
+</foreach>
+<![CDATA[
+)
+]]>
+</select>
+</mapper>

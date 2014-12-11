@@ -1,5 +1,7 @@
 package org.han.web;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -38,7 +40,10 @@ public class SearchController {
 	
 	@RequestMapping("/setCont")
 	public @ResponseBody List<ContVO> setCont(
-			@RequestParam(value="sno", defaultValue="") int sno){
-		return service.setCont(sno);
+			@RequestParam(value="keySet", defaultValue="") String keys){
+		System.out.println(keys);
+		String[] keySet = keys.split(",");
+		System.out.println(Arrays.toString(keySet));
+		return service.setCont(keySet);
 	}
 }

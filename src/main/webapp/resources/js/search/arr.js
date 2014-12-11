@@ -14,6 +14,8 @@
 // 식물-나무 분류 완료
 // 식물-꽃 분류 완료
 
+// 변경 - 잎분류 - 긴잎->긴잎, 넓적잎->넓적잎
+
 function setArr(){
 
     // 대분류 : 검색 시작
@@ -69,8 +71,8 @@ function setArr(){
     rootArr.push({root:'p1a1',item:'섞임',img:'꽃색섞임.png',rootStr:'f',rootSet:'p1a1f',res:'n',question:'꽃의 색을 골라주세요.'});
 
     // level4 : 식물-나무-봄-잎 : 잎의 모양
-    rootArr.push({root:'p1a2',item:'바늘',img:'잎바늘.png',rootStr:'a',rootSet:'p1a2a',res:'y',question:'잎의 모양을 골라주세요.'});
-    rootArr.push({root:'p1a2',item:'타원',img:'잎타원.png',rootStr:'b',rootSet:'p1a2b',res:'y',question:'잎의 모양을 골라주세요.'});
+    rootArr.push({root:'p1a2',item:'긴잎',img:'잎긴잎.png',rootStr:'a',rootSet:'p1a2a',res:'y',question:'잎의 모양을 골라주세요.'});
+    rootArr.push({root:'p1a2',item:'넓적잎',img:'잎넓적잎.png',rootStr:'b',rootSet:'p1a2b',res:'y',question:'잎의 모양을 골라주세요.'});
     rootArr.push({root:'p1a2',item:'불규칙',img:'잎불규칙.png',rootStr:'c',rootSet:'p1a2c',res:'y',question:'잎의 모양을 골라주세요.'});
 
     // level4 : 식물-나무-봄-열매 : 열매의 크기
@@ -89,8 +91,8 @@ function setArr(){
     rootArr.push({root:'p1b1',item:'섞임',img:'꽃색섞임.png',rootStr:'f',rootSet:'p1b1f',res:'n',question:'꽃의 색을 골라주세요.'});
 
     // level4 : 식물-나무-여름-잎 : 잎의 모양
-    rootArr.push({root:'p1b2',item:'바늘',img:'잎바늘.png',rootStr:'a',rootSet:'p1b2a',res:'y',question:'잎의 모양을 골라주세요.'});
-    rootArr.push({root:'p1b2',item:'타원',img:'잎타원.png',rootStr:'b',rootSet:'p1b2b',res:'y',question:'잎의 모양을 골라주세요.'});
+    rootArr.push({root:'p1b2',item:'긴잎',img:'잎긴잎.png',rootStr:'a',rootSet:'p1b2a',res:'y',question:'잎의 모양을 골라주세요.'});
+    rootArr.push({root:'p1b2',item:'넓적잎',img:'잎넓적잎.png',rootStr:'b',rootSet:'p1b2b',res:'y',question:'잎의 모양을 골라주세요.'});
     rootArr.push({root:'p1b2',item:'불규칙',img:'잎불규칙.png',rootStr:'c',rootSet:'p1b2c',res:'y',question:'잎의 모양을 골라주세요.'});
 
     // level4 : 식물-나무-여름-열매 : 열매의 크기
@@ -109,8 +111,8 @@ function setArr(){
     rootArr.push({root:'p1c1',item:'섞임',img:'꽃색섞임.png',rootStr:'f',rootSet:'p1c1f',res:'n',question:'꽃의 색을 골라주세요.'});
 
     // level4 : 식물-나무-가을-잎 : 잎의 모양
-    rootArr.push({root:'p1c1',item:'바늘',img:'잎바늘.png',rootStr:'a',rootSet:'p1c2a',res:'y',question:'잎의 모양을 골라주세요.'});
-    rootArr.push({root:'p1c2',item:'타원',img:'잎타원.png',rootStr:'b',rootSet:'p1c2b',res:'y',question:'잎의 모양을 골라주세요.'});
+    rootArr.push({root:'p1c1',item:'긴잎',img:'잎긴잎.png',rootStr:'a',rootSet:'p1c2a',res:'y',question:'잎의 모양을 골라주세요.'});
+    rootArr.push({root:'p1c2',item:'넓적잎',img:'잎넓적잎.png',rootStr:'b',rootSet:'p1c2b',res:'y',question:'잎의 모양을 골라주세요.'});
     rootArr.push({root:'p1c2',item:'불규칙',img:'잎불규칙.png',rootStr:'c',rootSet:'p1c2c',res:'y',question:'잎의 모양을 골라주세요.'});
 
     // level4 : 식물-나무-가을-열매 : 열매의 크기
@@ -129,8 +131,8 @@ function setArr(){
     rootArr.push({root:'p1d1',item:'섞임',img:'꽃색섞임.png',rootStr:'f',rootSet:'p1d1f',res:'n',question:'꽃의 색을 골라주세요.'});
 
     // level4 : 식물-나무-겨울-잎 : 잎의 모양
-    rootArr.push({root:'p1d2',item:'바늘',img:'잎바늘.png',rootStr:'a',rootSet:'p1d2a',res:'y',question:'잎의 모양을 골라주세요.'});
-    rootArr.push({root:'p1d2',item:'타원',img:'잎타원.png',rootStr:'b',rootSet:'p1d2b',res:'y',question:'잎의 모양을 골라주세요.'});
+    rootArr.push({root:'p1d2',item:'긴잎',img:'잎긴잎.png',rootStr:'a',rootSet:'p1d2a',res:'y',question:'잎의 모양을 골라주세요.'});
+    rootArr.push({root:'p1d2',item:'넓적잎',img:'잎넓적잎.png',rootStr:'b',rootSet:'p1d2b',res:'y',question:'잎의 모양을 골라주세요.'});
     rootArr.push({root:'p1d2',item:'불규칙',img:'잎불규칙.png',rootStr:'c',rootSet:'p1d2c',res:'y',question:'잎의 모양을 골라주세요.'});
 
     // level4 : 식물-나무-겨울-열매 : 열매의 크기

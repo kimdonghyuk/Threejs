@@ -44,7 +44,7 @@ public class MypagesController {
 
 		} catch (Exception e) {
 
-			model.addAttribute("error", "Login이 필요한 페이지 입니다.");
+			model.addAttribute("error", "로그인이 필요한 페이지 입니다.");
 			return "user/login";
 		}
 
