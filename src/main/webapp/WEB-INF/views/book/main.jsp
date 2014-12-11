@@ -38,10 +38,12 @@
 	
 	
 	body {
-		background-image: url("/resources/book/background/book_main_background.png");
+ 		background-image: url("/resources/book/background/book_Background.jpg");
+		background-color : #F5E0AA;
     	background-repeat : no repeat;
     	background-size : cover;
     	height:635px;
+    	
 	}
 	
 	@media screen and (max-width: 979px) {
@@ -73,14 +75,15 @@
    	 	-webkit-transform: scale(1.1) rotate(0deg);
    	 	-moz-transition: all 0.5s ease-in-out;
 		-webkit-transition: all 0.5s ease-in-out; 
-	}
+	}	
 	
 	.thumbnail {
+		margin-left:8%;
 		padding:15px;
-		border-radius: 15px;
-		border-width: 15px;
-		border : 15px;
-		-webkit-border-image:url("/resources/book/images/card_bg.jpg") 15 round;
+		border-radius: 5px;
+		border : 5px;
+		-webkit-border-image:url("/resources/book/images/note.png") 1 round;
+/* 		-webkit-border-image:url("/resources/book/images/card_bg.jpg") 15 round; */
   		/* -webkit-column-gap: 1.5em;
   		-webkit-column-rule: 1px solid #ccc;
   		border:10px solid #ccc;
@@ -88,15 +91,18 @@
 	}
 	
 	#imgset {
-		max-width : 320px;
-		height: 250px;
+		margin-left:10%;
+		padding: 30px;
+		max-width : 200px;
+		height: 200px;
+		radius: 5px;
 	}
 	
-	#imgset{
-		border-radius: 15px;
-		border : solid 5px #ccc;
-	
+	#btnArea{
+		margin:30px; 
+		font-size:25px;
 	}
+	
 </style>    
 </head>
 
@@ -142,17 +148,27 @@
 	<!-- Dogam UI Set -->
 	<div id="back" style="height: 600px;">    
 	    <!-- btn Set -->
-	    <div class="sample" style="height: 100px; padding: 5px;" >
-	        <a class="btn-success btn-large pull-right" id="updatePicture" href="/book/regphoto">사진 올리기</a>
-	        <a class="btn-success btn-large pull-right" id="registDogam" href="/book/regist">새 도감 만들기</a>
+	    <div class="sample" id="btnArea" style="padding:15px;" >
+	    	<div class="btnSelect"><a onclick='resetModal();' href="#updateForm" role="button" class="btn-social pull-right" data-toggle="modal">
+				<p><i class="icon-edit icon-white"></i> <strong>수 정 &nbsp</strong></p>  
+			</a></div>
+			
+			<div class="btnSelect"><a href="#testForm" role="button" class="btn-social pull-right" data-toggle="modal">
+				<p><i class="icon-trash icon-white"></i> <strong>삭 제 &nbsp &nbsp &nbsp</strong></p>
+			</a></div>
+			
+			<div class="btnSelect"><a href="/book/regphoto" role="button" class="btn-social pull-right">
+				<p><i class="icon-camera icon-white"></i><strong> 사진 등록 &nbsp &nbsp &nbsp </strong></p>
+			</a></div>
+			
+			<div class="btnSelect"><a href="/book/regist" role="button" class="btn-social pull-right">
+				<p><i class="icon-book icon-white"></i><strong> 도감 등록 &nbsp &nbsp &nbsp </strong></p>
+			</a></div>
 	    </div>
 
-		<div class="sample span12" style="height: 50px; padding: 5px;">
+		<div class="sample span12" style="height: 30px; padding: 5px;">
 			
-			<!-- Start Delete Modal -->
-			<a href="#testForm" role="button" class="btn-social btn-small pull-right" data-toggle="modal">
-				<i class="icon-trash icon-white"></i> <span><strong>삭제</strong></span>
-			</a>
+
 			 
 			<!-- 모달 -->
 			<div class="modal fade" id="testForm" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
@@ -173,11 +189,6 @@
 			<!-- End Delete Modal -->
 			
 			
-			<!-- Start Update Modal -->
-			<a onclick='resetModal();' href="#updateForm" role="button" class="btn-social btn-small pull-right" data-toggle="modal">
-				<i class="icon-edit icon-white"></i> <span><strong>수정</strong></span>
-			</a>
-			 
 			<!-- 모달 -->
 			<div class="modal fade" id="updateForm" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
 				<div class="modal-header">
@@ -193,7 +204,6 @@
 								style="width: 250px; opacity: 0.9" onchange="showlist(this.value)"></select>
 					<div id="mContfile" style="width:100%;">
 					</div>
-					
 				</div>		
 				<div class="modal-footer" id="updatemodal"></div>			
 			</div>
@@ -211,22 +221,20 @@
 				</ul>
 			</div>
 		</div>
-	           
-		<!-- End Album list -->
 	</div>
     <!-- End Dogam -->
     
-<footer id="footer" style="opacity: 0.7; position: absolute; bottom: auto; width: 100%; background-color: black;">
+<!-- <footer id="footer" style="opacity: 0.7; position: absolute; bottom: 0; width: 100%; background-color: black;">
     <div class="container">
         <div class="row-fluid">
             <div class="span12" style="margin-top:-15px">
                 &copy; Bit58th 한잔해!!                
                 <a id="gototop" class="gototop pull-right" href="#"><i class="icon-angle-up"></i></a>
             </div>
-            <!--/Goto Top-->
+            /Goto Top
         </div>
     </div>
-</footer>
+</footer> -->
 
 <!--  Login form -->
 <div class="modal hide fade in" id="loginForm" aria-hidden="false">
@@ -270,7 +278,7 @@
 			async:false,
 			success:function(data){
 				for(var i= 0, len = data.length; i < len ; i++){
-					content+= "<li class='span4' id='card-3'><div class='thumbnail'>"
+					content+= "<li class='span4' id='card-3'><div class='thumbnail' align='center' >"
 					+ "<a href='/book/sample?bno=" + data[i].bno + "'><img src = '/han/file/regphoto/" + data[i].contfile + "' id='imgset'></a>"
 					+ "<div class='caption'>"
 					+ "<h3 style = 'text-align:center;'>" + data[i].title + "</h3>" 
@@ -314,7 +322,6 @@
 			}
 	
 			function reTable(){
-				console.log("data Start");
 				var i = 0;
 				var target = $(".thumbnails");
 				var content = "";
@@ -323,10 +330,9 @@
 					dataType:"json",
 					async:false,
 					success:function(data){
-				
 						for(var i= 0, len = data.length; i < len ; i++){
-							content+= "<li class='span4' id='card-3'><div class='thumbnail'>"
-							+ "<a href='/book/sample?bno=" + data[i].bno + "'><img src = '/han/file/regphoto/" + data[i].contfile + "'></a>"
+							content+= "<li class='span4' id='card-3'><div class='thumbnail' align='center' >"
+							+ "<a href='/book/sample?bno=" + data[i].bno + "'><img src = '/han/file/regphoto/" + data[i].contfile + "' id='imgset'></a>"
 							+ "<div class='caption'>"
 							+ "<h3 style = 'text-align:center;'>" + data[i].title + "</h3>" 
 							+"</div></div></li>";

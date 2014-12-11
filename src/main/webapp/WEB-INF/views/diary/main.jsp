@@ -54,12 +54,15 @@
         }
         
         body{
-/* 	    	background-image : url("/resources/images/diary/wall06.jpg");
-	    	background-repeat : no repeat;*/
+ 	    	background-image : url("/resources/images/diary/book_Background.jpg");
+	    	background-repeat : no repeat;
 			background-color : #D1D4F5;
 	    	background-size : cover;
 	    }
 	    
+	    #diaryTitle{
+	    	background-color : #F5F1D3; 
+	    }
 	    
     </style>
     
@@ -178,18 +181,6 @@
         </div>
     </section>
         
-	<footer id="footer" style="opacity: 0.7; position: absolute; bottom: auto; width: 100%; background-color: black;">
-	    <div class="container">
-	        <div class="row-fluid">
-	            <div class="span12" style="margin-top:-15px">
-	                &copy; Bit58th 한잔해!!                
-	                <a id="gototop" class="gototop pull-right" href="#"><i class="icon-angle-up"></i></a>
-	            </div>
-	            <!--/Goto Top-->
-	        </div>
-	    </div>
-	</footer>
-	
 	<div class="modal fade" id="insertForm" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
 		<div class = "modal-dialog modal-sm">
 			<div class="modal-content">
@@ -374,6 +365,7 @@
 					}
 					upRcount(num);					
 					replylist(num);
+					location.reload();
 				});
 	}
 	
