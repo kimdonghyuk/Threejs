@@ -323,19 +323,37 @@
 	$(".listButton").click(function(){
 		var target = document.getElementById("relatedContList");
 		var str = "<ul>";
+		var keySet = "자연,";
+		console.log("toggle : " + roots + "," + roots[1]);
+		switch(roots[1]){
+		case "p2":
+			keySet += "꽃분류,";
+			console.log("keySet : " + keySet)
+			break;
+		case "p1":
+			keySet += "나무분류,";
+			switch(roots[3]){
+			case "1":
+				keySet += "꽃분류,";
+				break;
+			case "2":
+				keySet += "나뭇잎,";
+			}
+			break;
+		}
+		
 		$.ajax({
 			type:"post",
 			url:"/search/setCont/",
-			data:{sno:resultSno},
+			data:{keySet:keySet},
 			dataType:"json",
 			async:false,
 			success:function(data){
-				console.log("data: " + data);
 				if(data == ""){
 					str += "관련 컨텐츠가 없습니다.";
 				}else{
 					$.each(data, function(key,val){
-						str += "<li>" + val.title + "</li>";
+						str += "<li><a href=''>" + val.title + "</a></li>";
 					});
 				}
 			}
@@ -372,6 +390,9 @@
 	
 	// 경로에 따른 질문을 걸러냄
 	function rootQuestion(rootSet,rootStr){
+		console.log("rootStr : " + rootStr);
+		roots.push(rootStr);
+		console.log("roots : " + roots);
 	    var questionArr = new Array(); // 질문을 모아두는 배열
 	    var arrLen = rootArr.length;
 	    for(var i = 0,len = arrLen; i < len; i++ ){
@@ -394,10 +415,21 @@
 				"<img src='/resources/images/search/tag/"+val.img+"'>" + 
 				"</a></li>"
 	    	}else{
-				str += "<li class='span3'>" +
-				"<a href='javascript:rootQuestion(\""+val.rootSet+"\",\""+val.rootStr+"\")'>" +
-				"<img src='/resources/images/search/tag/"+val.img+"'>" + 
-				"</a></li>"
+	    		if(val.img == "포도.png"){
+	    			str += "<li class='span3'>" +
+					"<a href='javascript:rootQuestion(\""+val.rootSet+"\",\""+val.rootStr+"\")'>" +
+					"<img src='/resources/images/search/tag/"+val.img+"'>" + 
+					"</a></li>" +
+					"<li class='span3'>" +
+					"<a href='javascript:rootQuestion(\""+val.rootSet+"\",\""+val.rootStr+"\")'>" +
+					"<img src='/resources/images/search/tag/체리.png'>" + 
+					"</a></li>"
+	    		}else{
+					str += "<li class='span3'>" +
+					"<a href='javascript:rootQuestion(\""+val.rootSet+"\",\""+val.rootStr+"\")'>" +
+					"<img src='/resources/images/search/tag/"+val.img+"'>" + 
+					"</a></li>"
+	    		}
 			}
 	    });
 	    str += "</ul>";
@@ -434,10 +466,6 @@
 	
 	// 검색결과 생성
 	function setResult(rootSet, num){
-		if(page == 0){
-			page=1;
-			$(".nextBtn").css("display","block");
-		}
 		var str = "<ul>"; // innerHTML에 들어갈 문장
 		$.ajax({
 			type:"post",
@@ -462,6 +490,10 @@
 	    // 생성된 리스트를 tagcloud로 적용시켜준다
 		$('#ts1').tagcloud({centrex:width, centrey:height, init_motion_x:10, init_motion_y:10 });
 		
+		if(page == 0 && cnt > 8){
+			page=1;
+			$(".nextBtn").css("display","block");
+		}
 	}
 	
 	$(document).ready(function(){
