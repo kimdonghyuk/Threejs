@@ -183,8 +183,8 @@ function favorlist(){
     	var list ="<li>즐겨찾기 목록</li>"
         var target = $('#favorlist');       
         $.each (data , function (key , val) {         
-            list +="<li><a href=javascript:contList("+val.cno+","+val.fno+")> <i class='icon-star'></i>"
-            		+"["+val.cate+"]"+val.title+"</li><br>"			
+            list +="<a href=javascript:contList("+val.cno+","+val.fno+")>"
+            		+"<li>["+val.cate+"]"+val.title+"</li><br>"			
         });
         target.html(list);
     });
@@ -205,13 +205,24 @@ function contList(cno,fno){
 		var contdetail = $('#contDetail');
 		var contimg=$('#contimg');
 		var delfavor = $('#delfavor');
+	
+	
 		
 		title.html('<p>'+data.title+'</p>');
+		
+		if(data.cate=="동요")
+			{
+			contdetail.html("<iframe width='640' height='390' src='"+data.cont+"'frameborder='0' allowfullscreen></iframe><p>*youtube 참고</p>"); 
+			} else{
+			
+			
 		contdetail.html("<img src='/resources/images/play/"+data.contfile+"' vspace='10' align = 'center'>"+'<p>'+data.cont+'</p>'); 
-		/* contdetail.html("<textarea id = 'cont' cols='100' rows='10' readonly='readonly'>"+data.cont+"</textarea>") */
-		/*    contdetail.html("<img src='/resources/images/favor/"+data.contfile+"' vspace='10' align = left>"); */ 
-		/* contimg.html("<img src='/resources/book/images/ko.jpg' vspace='10' border-radius:'30px'>"); */
+			}
+		
 		delfavor.html("즐겨찾기 해제<a href='delFavor?fno="+data.fno+"'><i class='icon-star'></i></a>");
+	
+	
+	
 	}
 )};
 

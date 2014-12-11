@@ -25,6 +25,8 @@ public class FavorServiceTest {
 	@Inject
 	FavorVO vo;
 	
+
+	
 	
 	@Test
 	public void list() {
@@ -34,7 +36,9 @@ public class FavorServiceTest {
 	
 	@Test
 	public void addFavor(){
-		vo.setCno(4);
+
+		vo.setCno(181);
+		System.out.println(vo.getCno());
 		vo.setUserid("han01");
 		service.add(vo);
 	
