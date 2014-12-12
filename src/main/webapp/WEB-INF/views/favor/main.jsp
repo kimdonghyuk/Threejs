@@ -82,8 +82,8 @@
         margin-left:auto;
         margin-right:auto;
         }
-
-    </style>
+        
+     </style>
 </head>
 
 <body>
@@ -145,7 +145,7 @@
 		        </div>
 		        <!-- 즐겨찾기 항목 상세설명 -->
 		    
-		            <div class="span9" style="border: 3px solid antiquewhite; border-radius: 30px;" >
+		            <div id=falist class="span9" style="border: 3px solid antiquewhite; border-radius: 30px;" >
 		             
 		                    <div class="span12" >
 								<div class = "favortitle">
