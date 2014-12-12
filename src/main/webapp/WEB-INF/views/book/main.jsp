@@ -39,11 +39,10 @@
 	
 	body {
  		background-image: url("/resources/book/background/book_Background.jpg");
-		background-color : #F5E0AA;
-    	background-repeat : no repeat;
-    	background-size : cover;
-    	height:635px;
-    	
+    	background-position: center center;
+	    background-repeat: no-repeat;
+	    background-attachment: fixed;
+	    background-size: cover;
 	}
 	
 	@media screen and (max-width: 979px) {
@@ -65,17 +64,22 @@
 	.registDogam:hover{
 		opacity : 0.7;	
 	}
-	
-	.span4{
-		/* background-image: url("/resources/book/background/book_showlist_background.jpg") */
-	}
+
 	
 	#card-3:hover {
 		-moz-transform: scale(1.1) rotate(0deg);
    	 	-webkit-transform: scale(1.1) rotate(0deg);
    	 	-moz-transition: all 0.5s ease-in-out;
 		-webkit-transition: all 0.5s ease-in-out; 
-	}	
+	}
+	
+	#btnSelect:hover{
+		-moz-transform: scale(1.1) rotate(0deg);
+   	 	-webkit-transform: scale(1.1) rotate(0deg);
+   	 	-moz-transition: all 0.5s ease-in-out;
+		-webkit-transition: all 0.5s ease-in-out; 
+		
+	}
 	
 	.thumbnail {
 		margin-left:8%;
@@ -92,14 +96,24 @@
 	
 	#imgset {
 		margin-left:10%;
+		margin-top:10%;
 		padding: 30px;
 		max-width : 200px;
 		height: 200px;
-		radius: 5px;
+		padding: 0px;
+		border: 2px solid;
+		border-radius: 10px;
+		border-color: gray;
+	}
+	
+	.caption{
+		text-align:center;
+		margin-left:5%;
+		font-color: black;
 	}
 	
 	#btnArea{
-		margin:30px; 
+		margin:30px;
 		font-size:25px;
 	}
 	
@@ -332,7 +346,8 @@
 					success:function(data){
 						for(var i= 0, len = data.length; i < len ; i++){
 							content+= "<li class='span4' id='card-3'><div class='thumbnail' align='center' >"
-							+ "<a href='/book/sample?bno=" + data[i].bno + "'><img src = '/han/file/regphoto/" + data[i].contfile + "' id='imgset'></a>"
+							+ "<a href='/book/sample?bno=" + data[i].bno + "'>"
+							+ "<img src = '/han/file/regphoto/" + data[i].contfile + "' id='imgset' border='3'></a>"
 							+ "<div class='caption'>"
 							+ "<h3 style = 'text-align:center;'>" + data[i].title + "</h3>" 
 							+"</div></div></li>";

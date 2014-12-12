@@ -30,10 +30,12 @@
     <style>
     
     body{
-    	background-image : url("/resources/book/background/book_allview_background.jpg");
-    	background-repeat : no repeat;
-    	background-size : cover;
-    }
+    	background-image : url("/resources/book/background/sample_Background.jpg");
+		background-position: center center;
+	    background-repeat: no-repeat;
+	    background-attachment: fixed;
+	    background-size: cover;
+	    }
     
 	@media screen and (max-width: 979px){
 		body{
@@ -242,24 +244,9 @@
 		<div id="maincontainer"></div>		
 		<div class="prevPage"></div>	
 		<div class="nextPage"></div>
-	
-<!--/Three.js Area End........................................................................................-->
-<!--Menu Div..................................................................................................-->
 	</div>
 	</div>
-	
-<footer id="footer" 
-	style="opacity: 0.7; position: absolute; bottom: auto; width: 100%; background-color: black;">
-    <div class="container">
-        <div class="row-fluid">
-            <div class="span12" style="margin-top:-15px">
-                &copy; Bit58th 한잔해!!                
-                <a id="gototop" class="gototop pull-right" href="#"><i class="icon-angle-up"></i></a>
-            </div>
-            <!--/Goto Top-->
-        </div>
-    </div>
-</footer>
+
 
  
 <!--java script문 시작.........................................................................................--> 

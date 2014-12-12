@@ -58,6 +58,10 @@
 	    	background-repeat : no repeat;
 			background-color : #D1D4F5;
 	    	background-size : cover;
+		    background-position: center center;
+		    background-repeat: no-repeat;
+		    background-attachment: fixed;
+		    background-size: cover;
 	    }
 	    
 	    #diaryTitle{

@@ -44,6 +44,10 @@
     	
     	html {
 			background-image: url("/resources/book/background/book_Background.jpg");
+			background-position: center center;
+		    background-repeat: no-repeat;
+		    background-attachment: fixed;
+		    background-size: cover;
 			/* -webkit-background-size: cover;
 			-moz-background-size: cover;
 			-o-background-size: cover;
