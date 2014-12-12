@@ -324,11 +324,9 @@
 		var target = document.getElementById("relatedContList");
 		var str = "<ul>";
 		var keySet = "자연,";
-		console.log("toggle : " + roots + "," + roots[1]);
 		switch(roots[1]){
 		case "p2":
 			keySet += "꽃분류,";
-			console.log("keySet : " + keySet)
 			break;
 		case "p1":
 			keySet += "나무분류,";
@@ -352,7 +350,16 @@
 				if(data == ""){
 					str += "관련 컨텐츠가 없습니다.";
 				}else{
-					$.each(data, function(key,val){
+					var contArr = new Array();
+					var cnoSet = "";
+					for(var i=0; i<5; i++){
+						var arrLen = data.length;
+						var num = Math.floor((Math.random() * arrLen));
+						contArr.push(data[num]);
+						data.splice(num,1);
+						cnoSet += num + ",";
+					}
+					$.each(contArr, function(key,val){
 						str += "<li><a href=''>" + val.title + "</a></li>";
 					});
 				}
