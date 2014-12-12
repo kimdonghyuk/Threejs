@@ -39,17 +39,21 @@
     	width : 119px;	
     	text-align : center;
     	font-weight: bold;
-    	opacity : 0.8; 
+    	opacity : 0.8;
     	}
     	
-    	body {
-		background-image: url("/resources/book/background/book_main_background.png");
-    	background-repeat : no repeat;
-    	background-size : cover;
-    	height:600px;
-	}
-    	    
-        
+    	html {
+			background-image: url("/resources/book/background/book_Background.jpg");
+			background-position: center center;
+		    background-repeat: no-repeat;
+		    background-attachment: fixed;
+		    background-size: cover;
+			/* -webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover; */
+		}
+	
     </style>
     
 </head>
@@ -142,7 +146,7 @@
 	    </div>
 	</section>
 
-	<footer id="footer" style="opacity: 0.7; position: absolute; bottom:0px; width: 100%; background-color: black;">
+	<footer id="footer" style="opacity: 0.7; position: absolute; bottom:auto; width: 100%; background-color: black;">
 	    <div class="container">
 				<div class="span12" style="margin-top:-15px">
 	                &copy; Bit58th 한잔해!!
@@ -192,7 +196,6 @@
 		$.getJSON(url, function (data) {			// 해당 url에 담겨져있는 Jsondata를 parameter값으로 받음.
 			$.each(data, function (key, val) {	// for each문을 돌려서 key값을 잡고 val값을 item 배열에 넣어줌.
 				content += "<option name=bno value=" + val.bno +">" + val.title + "</option>";
-				
 			});
 				target.html(content);
 			});
@@ -220,11 +223,11 @@
 						+ "<div style='margin:auto;'><input type='text' style='width:165px; heigth:30px;'  id='createCont_" + updateCount + "' placeholder='내용'><div></div>";
 			
 			target.append(content);
-			updateCount++;	
+			updateCount++;
 		}else{
 			alert("이미지 파일을 올려주세요.(jpg,gif,png 지원)");
 			return;
-		}	
+		}
 }
  		
 	function regImage(){
