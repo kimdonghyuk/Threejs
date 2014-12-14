@@ -5,10 +5,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="org.han.mapper.SearchMapper">
 
-<select id="setCont" parameterType="org.han.mapper.SearchMapper" resultType="org.han.vo.SearchVO">
+<select id="setCont" parameterType="org.han.mapper.SearchMapper" resultType="org.han.vo.ContVO">
 <![CDATA[
 select
-	cno, title
+	cno, title, cate
 from
 	tbl_cont
 where
@@ -17,6 +17,24 @@ in(
 ]]>
 <foreach item="key" collection="keySet" separator=",">
 	#{key}
+</foreach>
+<![CDATA[
+)
+]]>
+</select>
+
+<select id="contList" parameterType="org.han.mapper.SearchMapper" resultType="org.han.vo.ContVO">
+<![CDATA[
+select
+	cno, title, cate
+from
+	tbl_cont
+where
+	cno
+in(
+]]>
+<foreach item="cno" collection="cnoSet" separator=",">
+	#{cno}
 </foreach>
 <![CDATA[
 )

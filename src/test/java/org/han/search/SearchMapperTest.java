@@ -27,11 +27,14 @@ public class SearchMapperTest {
 	
 	@Test
 	public void setCont() {
-//		ArrayList<String> arr = new ArrayList<String>();
-//		arr.add("옥수수");
-//		arr.add("개나리");
 		String[] arr = new String[] {"옥수수","개나리"};
 		logger.info(mapper.setCont(arr));
+	}
+	
+	@Test
+	public void viewCont() {
+		String[] arr = new String[] {"150","162","190"};
+		logger.info(mapper.contList(arr));
 	}
 
 }

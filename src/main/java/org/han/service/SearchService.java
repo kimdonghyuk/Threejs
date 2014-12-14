@@ -27,4 +27,12 @@ public class SearchService {
 	public List<ContVO> setCont(String[] keySet){
 		return mapper.setCont(keySet);
 	}
+	
+	public List<ContVO> contList(String[] cnoSet){
+		return mapper.contList(cnoSet);
+	}
+	
+	public ContVO viewCont(int cno){
+		return mapper.viewCont(cno);
+	}
 }
