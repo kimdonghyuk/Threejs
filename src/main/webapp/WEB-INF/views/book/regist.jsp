@@ -36,6 +36,8 @@
 		href="/resources/images/ico/apple-touch-icon-57-precomposed.png">
 	
 	<style>
+		@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+	
 		@media screen and (max-width: 979px) {
 			body {
 				padding-top: 0px;
@@ -56,6 +58,10 @@
     	background-size : cover;
     	height:600px;
 		}
+		
+		p, strong, ul, li, label {
+        	font-family: 'Nanum Gothic', serif;
+        }
 		
 	</style>
 
@@ -92,26 +98,20 @@
     <!-- /header -->
 
 	<section class="title">
-		<div class="container">
-			<div class="row-fluid">
-				<div class="span6">
-					<h1>나만의도감</h1>
-				</div>
-				<div class="span6">
-					<ul class="breadcrumb pull-right">
-						<li><a href="/index">메인화면</a> <span class="divider">/</span></li>
-						<li class="active">나만의도감</li>
-					</ul>
-				</div>
-			</div>
+        <div class="container">
+            <div class="row-fluid">
+                <div class="span6">
+                    <h1 style='font-family: Nanum Gothic, serif;'>나만의도감</h1>
+                </div>
+            </div>
 		</div>
-	</section>
+    </section>
 	
 <div id="back" style="height:635px;">	
 	<!-- / .title -->
     <div style="height: 40px; padding: 5px;" >
-        <a class="btn-success btn-large pull-right" href="/book/regphoto">사진 올리기</a>
-        <a class="btn-success btn-large pull-right" href="/book/regist">새 도감 만들기</a>
+        <a class="btn-success btn-large pull-right" href="/book/regphoto" style='font-family: Nanum Gothic, serif;'>사진 올리기</a>
+        <a class="btn-success btn-large pull-right" href="/book/regist" style='font-family: Nanum Gothic, serif;'>새 도감 만들기</a>
     </div>
 
 
@@ -122,7 +122,7 @@
             <div class="blog" style="opacity: 1;">
             	<ul class="uploadUL"> </ul>
             	<form target="zero" action="/han/file/upload"  method="post" enctype="multipart/form-data">
-					<input type='file' name='file'><input type='submit' value="UPLOAD">
+					<input type='file' name='file'><input type='submit' style='font-family: Nanum Gothic, serif;' value="UPLOAD">
 				</form>
 				<iframe name="zero" width="0px" height="0px">
 				</iframe>
@@ -141,7 +141,7 @@
                     <p class="insertImg"><p class="help-block">선택된 사진이 없어요...</p> -->
                     <!-- 본문 들어갈 부분 -->
                     <ul class="filename"></ul>
-                    <button type="submit" class="btn btn-primary btn-large pull-right">다썼다~ >▽<</button>
+                    <button type="submit" style='font-family: Nanum Gothic, serif;' class="btn btn-primary btn-large pull-right">도감 등록</button>
                 </form>
                 <!-- End Blog Item -->
                 <div class="gap"></div>
