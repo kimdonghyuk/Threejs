@@ -28,6 +28,7 @@
     <link rel="apple-touch-icon-precomposed" href="/resources/images/ico/apple-touch-icon-57-precomposed.png">
     
     <style>
+    	@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
         @media screen and (max-width: 979px){
             body{
                 padding-top: 0px;
@@ -52,6 +53,10 @@
 			-moz-background-size: cover;
 			-o-background-size: cover;
 			background-size: cover; */
+		}
+		
+		body{
+		    font-family: 'Nanum Gothic', serif;
 		}
 	
     </style>

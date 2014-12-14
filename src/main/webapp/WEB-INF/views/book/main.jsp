@@ -28,6 +28,7 @@
     <link rel="apple-touch-icon-precomposed" href="/resources/images/ico/apple-touch-icon-57-precomposed.png">
     
     <style>
+    @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 	.btn-success {
 		margin: 5px;
 		width: 119px;
@@ -43,6 +44,7 @@
 	    background-repeat: no-repeat;
 	    background-attachment: fixed;
 	    background-size: cover;
+	    font-family: 'Nanum Gothic', serif;
 	}
 	
 	@media screen and (max-width: 979px) {
@@ -133,7 +135,7 @@
                 <a id="logo" class="pull-left" href="/index"></a>
                 <div class="nav-collapse collapse pull-right">
                     <ul class="nav">
-                        <li><a href="/index">메인화면</a></li>
+                        <li><a href="/index"><p>메인화면</p></a></li>
                         <li><a href="/search/main">검색</a></li>
                         <li class="active"><a href="/book/main">나만의도감</a></li>
                         <li><a href="/favor/main">즐겨찾기</a></li>
