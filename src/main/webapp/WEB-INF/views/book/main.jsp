@@ -161,6 +161,7 @@
             </div>
 		</div>
     </section>
+    
 	<!-- Dogam UI Set -->
 	<div id="back" style="height: 600px;">    
 	    <!-- btn Set -->

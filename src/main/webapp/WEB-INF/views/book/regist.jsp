@@ -52,12 +52,30 @@
     	}
     	
     	body {
-		background-image: url("/resources/book/background/book_main_background.png");
-    	background-repeat : no repeat;
-    	background-size : cover;
-    	height:600px;
+ 		background-image: url("/resources/book/background/book_Background.jpg");
+    	background-position: center center;
+	    background-repeat: no-repeat;
+	    background-attachment: fixed;
+	    background-size: cover;
 	    font-family: 'Nanum Gothic', serif;
 		}
+		
+		#btnArea{
+		margin:30px;
+		font-size:25px;
+		}
+		
+		.aqua {
+			background: #F1FA50;
+			font-size: 12px;
+			color: #000000;
+			text-align: center;
+			border: solid 1px #A2C5D5;
+			background: -moz-linear-gradient(0%, 100%, 90deg, #F1F789, #ffffff);
+			background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffffff),
+				to(#F1F789));
+		}
+		
 		
 	</style>
 
@@ -97,13 +115,7 @@
 		<div class="container">
 			<div class="row-fluid">
 				<div class="span6">
-					<h1>나만의도감</h1>
-				</div>
-				<div class="span6">
-					<ul class="breadcrumb pull-right">
-						<li><a href="/index">메인화면</a> <span class="divider">/</span></li>
-						<li class="active">나만의도감</li>
-					</ul>
+					<h1>나만의도감 등록</h1>
 				</div>
 			</div>
 		</div>
@@ -111,16 +123,20 @@
 	
 <div id="back" style="height:635px;">	
 	<!-- / .title -->
-    <div style="height: 40px; padding: 5px;" >
-        <a class="btn-success btn-large pull-right" href="/book/regphoto">사진 올리기</a>
-        <a class="btn-success btn-large pull-right" href="/book/regist">새 도감 만들기</a>
-    </div>
-
+	    <div class="sample" id="btnArea" style="padding:15px;" >
+			<div class="btnSelect"><a href="/book/main" role="button" class="btn-social pull-right">
+				<p><i class="icon-list icon-white"></i><strong> 도감 목록 &nbsp &nbsp &nbsp </strong></p>
+			</a></div>
+			
+			<div class="btnSelect"><a href="/book/regphoto" role="button" class="btn-social pull-right">
+				<p><i class="icon-book icon-white"></i><strong> 사진 등록 &nbsp &nbsp &nbsp </strong></p>
+			</a></div>
+	    </div>
 
 	<!--도감 등록꾸민곳 -->
 	<section id="about-us" class="container main">
     <div class="row-fluid">
-    	<div class="span8 offset2" style="border: solid; border-color: green; opacity: 0.7;">
+    	<div class="span8 offset2" style="border: solid; border-color: white; opacity: 0.9;">
             <div class="blog" style="opacity: 1;">
             	<ul class="uploadUL"> </ul>
             	<form target="zero" action="/han/file/upload"  method="post" enctype="multipart/form-data">
@@ -134,7 +150,7 @@
 	</div>	
 	<br>
     <div class="row-fluid">
-        <div class="span8 offset2" style="border: solid; border-color: green; opacity: 0.7;">
+        <div class="span8 offset2" style="border: solid; border-color: white; opacity: 0.9;">
             <div class="blog" style="opacity: 1;">
                 <form method="post" action="registdata" accept-charset="utf-8">
                     <label>여기에 제목을 적어주세요</label>
@@ -143,7 +159,7 @@
                     <p class="insertImg"><p class="help-block">선택된 사진이 없어요...</p> -->
                     <!-- 본문 들어갈 부분 -->
                     <ul class="filename"></ul>
-                    <button type="submit" class="btn btn-primary btn-large pull-right">다썼다~ >▽<</button>
+                   <input type="submit" class="aqua btn-large pull-right button-radius" value="등 록">
                 </form>
                 <!-- End Blog Item -->
                 <div class="gap"></div>
