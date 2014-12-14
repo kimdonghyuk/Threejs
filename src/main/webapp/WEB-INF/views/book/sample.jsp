@@ -28,13 +28,15 @@
     <link rel="apple-touch-icon-precomposed" href="/resources/images/ico/apple-touch-icon-57-precomposed.png">
     
     <style>
+    	@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
     
     body{
-    	background-image : url("/resources/book/background/sample_Background.jpg");
-		background-position: center center;
-	    background-repeat: no-repeat;
-	    background-attachment: fixed;
-	    background-size: cover;
+	    	background-image : url("/resources/book/background/sample_Background.jpg");
+			background-position: center center;
+		    background-repeat: no-repeat;
+		    background-attachment: fixed;
+		    background-size: cover;
+	        font-family: 'Nanum Gothic', serif;
 	    }
     
 	@media screen and (max-width: 979px){
@@ -89,21 +91,21 @@
 		width: 50px;
 		text-align: right;
 		opacity:0.3;
-		cursor: pointer;	
+		cursor: pointer;
 	}
 	
 	.element{
 		width: 270px;
-		height: 300px;
+		height: 330px;
 		box-shadow: 0px 0px 12px rgba(0, 250, 85, 0.6);
-		border: 2px solid rgba(0, 250, 85, 0.4);
+		border: 4px solid rgba(255, 255, 255, 0.8);
 		text-align: center;
 		cursor: pointer;
 	}
 	
 	.element:hover {
 		box-shadow: 0px 0px 12px rgba(0, 255, 255, 0.75);
-		border: 1px solid rgba(127, 255, 255, 0.75);
+		border: 4px solid rgba(0, 85, 140, 0.9);
 	}
 	
 	.element .number {
@@ -113,10 +115,14 @@
 	}
 	
 	.symbol{
+<<<<<<< HEAD
 		font-family: Nanum Gothic, serif;
 		font-size : 40px;
+=======
+		font-size : 35px;
+>>>>>>> 1e36d2d2550ccaff078d7332db84f4009736d7ef
 		font-weight: bold;
-		padding : 5px;
+		padding : 10px;
 		color: rgba(0, 0, 0, 0.6);
 		text-align: center;
 		text-shadow: 0 0 10px rgba(0, 250, 85, 0.50);
@@ -138,13 +144,25 @@
 		font-size: 12px;
 		color: rgba(0, 250, 85, 0.8);
 	}
+	
+	#table{
+		width: 70px;
+		height: 35px;
+		text-align:center;
+	}
+	
+	#sphere{
+		width: 85px;
+		height: 35px;
+		text-align:center;
+	}
 		
 	#table:hover {
-		background-color: rgba(0, 0, 255, 0.2);
+		background-color: rgba(0, 0, 0, 0.3);
 	}
 	
 	#sphere:hover {
-		background-color: rgba(0, 0, 255, 0.2);
+		background-color: rgba(0, 0, 0, 0.3);
 	}
 	
 	.prevPage:hover{
@@ -157,7 +175,7 @@
 	
 	button:active {
 		color: #000000;
-		background-color: rgba(0, 0, 255, 0.8);
+		background-color: rgba(150, 150, 255, 0.8);
 	}    
 	
 	p, strong, ul, li, label{
@@ -235,14 +253,13 @@
 				<div class="modal-footer">
 				</div>
 			</div>
-		</div>		
-	</div>
+		</div>
 
 <!--Three.js Satart...........................................................................................-->
-<div id="back" style="height: 600px;"> 
+
 	<div class="menu">
-		<button class="btn btn-primary pull-left" id="table" style='font-family: Nanum Gothic, serif;'>TABLE</button>
-		<button class="btn btn-primary pull-right" id="sphere" style='font-family: Nanum Gothic, serif;'>SPHERE</button>
+		<button class="pull-left btn btn-transparent" id="table" style='font-family: Nanum Gothic, serif;'>TABLE</button>
+		<button class="pull-right btn btn-transparent" id="sphere" style='font-family: Nanum Gothic, serif;'>SPHERE</button>
 	</div>
 
 	<div id="back">
@@ -250,7 +267,6 @@
 		<div id="maincontainer"></div>		
 		<div class="prevPage"></div>	
 		<div class="nextPage"></div>
-	</div>
 	</div>
 
 

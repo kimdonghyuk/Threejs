@@ -45,6 +45,7 @@
 	    background-repeat: no-repeat;
 	    background-attachment: fixed;
 	    background-size: cover;
+	    font-family: 'Nanum Gothic', serif;
 	}
 	
 	@media screen and (max-width: 979px) {
@@ -163,6 +164,7 @@
             </div>
 		</div>
     </section>
+    
 	<!-- Dogam UI Set -->
 	<div id="back" style="height: 600px;">    
 	    <!-- btn Set -->
