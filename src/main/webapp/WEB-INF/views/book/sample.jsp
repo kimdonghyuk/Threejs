@@ -28,13 +28,15 @@
     <link rel="apple-touch-icon-precomposed" href="/resources/images/ico/apple-touch-icon-57-precomposed.png">
     
     <style>
+    	@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
     
     body{
-    	background-image : url("/resources/book/background/sample_Background.jpg");
-		background-position: center center;
-	    background-repeat: no-repeat;
-	    background-attachment: fixed;
-	    background-size: cover;
+	    	background-image : url("/resources/book/background/sample_Background.jpg");
+			background-position: center center;
+		    background-repeat: no-repeat;
+		    background-attachment: fixed;
+		    background-size: cover;
+	        font-family: 'Nanum Gothic', serif;
 	    }
     
 	@media screen and (max-width: 979px){
@@ -89,21 +91,21 @@
 		width: 50px;
 		text-align: right;
 		opacity:0.3;
-		cursor: pointer;	
+		cursor: pointer;
 	}
 	
 	.element{
 		width: 270px;
-		height: 300px;
+		height: 330px;
 		box-shadow: 0px 0px 12px rgba(0, 250, 85, 0.6);
-		border: 2px solid rgba(0, 250, 85, 0.4);
+		border: 4px solid rgba(255, 255, 255, 0.8);
 		text-align: center;
 		cursor: pointer;
 	}
 	
 	.element:hover {
 		box-shadow: 0px 0px 12px rgba(0, 255, 255, 0.75);
-		border: 1px solid rgba(127, 255, 255, 0.75);
+		border: 4px solid rgba(0, 85, 140, 0.9);
 	}
 	
 	.element .number {
@@ -113,9 +115,14 @@
 	}
 	
 	.symbol{
+<<<<<<< HEAD
+		font-family: Nanum Gothic, serif;
 		font-size : 40px;
+=======
+		font-size : 35px;
+>>>>>>> 1e36d2d2550ccaff078d7332db84f4009736d7ef
 		font-weight: bold;
-		padding : 5px;
+		padding : 10px;
 		color: rgba(0, 0, 0, 0.6);
 		text-align: center;
 		text-shadow: 0 0 10px rgba(0, 250, 85, 0.50);
@@ -137,13 +144,25 @@
 		font-size: 12px;
 		color: rgba(0, 250, 85, 0.8);
 	}
+	
+	#table{
+		width: 70px;
+		height: 35px;
+		text-align:center;
+	}
+	
+	#sphere{
+		width: 85px;
+		height: 35px;
+		text-align:center;
+	}
 		
 	#table:hover {
-		background-color: rgba(0, 0, 255, 0.2);
+		background-color: rgba(0, 0, 0, 0.3);
 	}
 	
 	#sphere:hover {
-		background-color: rgba(0, 0, 255, 0.2);
+		background-color: rgba(0, 0, 0, 0.3);
 	}
 	
 	.prevPage:hover{
@@ -156,8 +175,13 @@
 	
 	button:active {
 		color: #000000;
-		background-color: rgba(0, 0, 255, 0.8);
+		background-color: rgba(150, 150, 255, 0.8);
 	}    
+	
+	p, strong, ul, li, label{
+        	font-family: 'Nanum Gothic', serif;
+        }
+	
     </style>
     
 </head>
@@ -177,11 +201,11 @@
                 <a id="logo" class="pull-left" href="/index"></a>
                 <div class="nav-collapse collapse pull-right">
                     <ul class="nav">
-                        <li><a href="/index">메인화면</a></li>
-                        <li><a href="/search/main">검색</a></li>
-                        <li class="active"><a href="/book/main">나만의도감</a></li>
-                        <li><a href="/favor/main">즐겨찾기</a></li>
-                        <li><a href="/diary/main">관찰일기</a></li> 
+                        <li><a href="/index"><p>메인화면</p></a></li>
+                        <li><a href="/search/main"><p>검색</p></a></li>
+                        <li class="active"><a href="/book/main"><p>나만의도감</p></a></li>
+                        <li><a href="/favor/main"><p>즐겨찾기</p></a></li>
+                        <li><a href="/diary/main"><p>관찰일기</p></a></li> 
                         <li><a href="/mypages/main">My Pages</a></li>
                         <li class="login">
                         <a href='/user/logout'>LogOut</a>
@@ -200,7 +224,7 @@
 	<div class="container">
 		<div class="row-fluid">
 			<div class="span6">
-				<h1>나만의 도감</h1>
+				<h1 style='font-family: Nanum Gothic, serif;'>나만의 도감</h1>
 			</div>
 		</div>
 	</div>
@@ -212,7 +236,7 @@
 			<div class="modal-content">
 				<div class="modal-header" style="text-align:center;">
 					<button type="button" class="close" data-dismiss="modal">✕</button>
-					<h3 id="mTitle" style="text-align: center;">
+					<h3 id="mTitle" style="text-align: center; font-family: Nanum Gothic, serif;">
 					<!-- 제목 들어가는 부분 -->
 					</h3>
 				</div>
@@ -221,7 +245,7 @@
 					<div id="mContfile" style="width:100%;">
 					</div>
 					
-					<div id="mCont" style="width:100%; text-align:center;">
+					<div id="mCont" style="width:100%; text-align:center; font-family: Nanum Gothic, serif;">
 					</div>
 					</div>					
 				</div>
@@ -229,14 +253,13 @@
 				<div class="modal-footer">
 				</div>
 			</div>
-		</div>		
-	</div>
+		</div>
 
 <!--Three.js Satart...........................................................................................-->
-<div id="back" style="height: 600px;"> 
+
 	<div class="menu">
-		<button class="btn btn-primary pull-left" id="table">TABLE</button>
-		<button class="btn btn-primary pull-right" id="sphere">SPHERE</button>
+		<button class="pull-left btn btn-transparent" id="table" style='font-family: Nanum Gothic, serif;'>TABLE</button>
+		<button class="pull-right btn btn-transparent" id="sphere" style='font-family: Nanum Gothic, serif;'>SPHERE</button>
 	</div>
 
 	<div id="back">
@@ -244,7 +267,6 @@
 		<div id="maincontainer"></div>		
 		<div class="prevPage"></div>	
 		<div class="nextPage"></div>
-	</div>
 	</div>
 
 
@@ -355,7 +377,7 @@
 	        
 	        var object = new THREE.Object3D();
 	        object.position.x = ( tableData[i].x * 140 ) - 1150;
-	        object.position.y = - ( tableData[i].y* 180 ) + 950;	
+	        object.position.y = - ( tableData[i].y* 180 ) + 1050;	
 	        targets.table.push( object );	
 	    } 
 	
@@ -554,8 +576,8 @@
   		var makeBtn = "";
   		
   		conContfile += '<img src = ' + fileurl + contfile + '>';
-  		makeBtn += "<button type='button' class='btn btn-primary'" + "onclick='deleteModal(" + pno +")'> 삭 제 </button>"
-					+ "<button type='button' class='btn btn-primary'" + "onclick='insertModal(\""
+  		makeBtn += "<button type='button' style='font-family: Nanum Gothic, serif;' class='btn btn-primary'" + "onclick='deleteModal(" + pno +")'> 삭 제 </button>"
+					+ "<button type='button' style='font-family: Nanum Gothic, serif;' class='btn btn-primary'" + "onclick='insertModal(\""
 					+ title + "\",\"" + contfile + "\",\"" + cont + "\",\"" + pno + "\")'>" + "수 정 </button>";
 				
 		targetbtn.html(makeBtn);
@@ -583,11 +605,11 @@
 		var footerCont = "";
 		
 		titleCont += "<button type='button' class='close' data-dismiss='modal'>✕</button>"
-					+ "<h3 id='mTitle' style='text-align: center;''>" + title + "</h3>";
+					+ "<h3 id='mTitle' style='text-align: center; font-family: Nanum Gothic, serif;'>" + title + "</h3>";
 		bodyCont += "<div id='mContfile' style='width:100%;'><img src = '" + fileurl + contfile + "'></div>"
-					+ "<div id='mCont' style='width:100%; text-align:center;'>" + cont + "</div>";
-		footerCont += "<button type='button' class='btn btn-primary'" + "onclick='deleteModal(" + pno +")'> 삭 제 </button>"
-					+ "<button type='button' class='btn btn-primary'" + "onclick='insertModal(\""
+					+ "<div id='mCont' style='width:100%; text-align:center; font-family: Nanum Gothic, serif;'>" + cont + "</div>";
+		footerCont += "<button type='button' style='font-family: Nanum Gothic, serif;' class='btn btn-primary'" + "onclick='deleteModal(" + pno +")'> 삭 제 </button>"
+					+ "<button type='button' style='font-family: Nanum Gothic, serif;' class='btn btn-primary'" + "onclick='insertModal(\""
 					+ title + "\",\"" + contfile + "\",\"" + cont + "\",\"" + pno + "\")'>" + "수 정 </button>";
 					
 		tarTitle.html(titleCont);
@@ -636,14 +658,14 @@
 		var bodyCont = "";
 		var footerCont = "";
 		
-		titleCont += "<input id='modal-title' type='tex/t' style='text-align: center;' value= " + title + ">"
+		titleCont += "<input id='modal-title' type='text' style='text-align: center; font-family: Nanum Gothic, serif;' value= " + title + ">"
 		bodyCont += "<div id='modalInsertPicture'>"
 					+ "<img src = '" + fileurl + contfile + "'></div>"
 					+ "<form target='zero' action='/han/file/upload' method='post' enctype='multipart/form-data'>"
-					+ "<input type='file' name='file'><input type='submit' value='수 정'>	</form>"
+					+ "<input type='file' name='file'><input type='submit' style='font-family: Nanum Gothic, serif;' value='수 정'>	</form>"
  					+ "<iframe name='zero' width='0' height='0'></iframe>"
-					+ "<textarea id='modal-cont'>" + cont + "</textarea>";
- 		footerCont += "<button type='button' class='btn btn-primary'" + "onclick='insertLogic(\""
+					+ "<textarea id='modal-cont' style='font-family: Nanum Gothic, serif;'>" + cont + "</textarea>";
+ 		footerCont += "<button type='button' style='font-family: Nanum Gothic, serif;' class='btn btn-primary'" + "onclick='insertLogic(\""
 						+ contfile + "\",\"" + pno + "\")'> 완 료 </button>";
 			
 		tarTitle.html(titleCont);

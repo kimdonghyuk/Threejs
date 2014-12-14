@@ -28,6 +28,7 @@
     <link rel="apple-touch-icon-precomposed" href="/resources/images/ico/apple-touch-icon-57-precomposed.png">
     
     <style>
+    	@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
         @media screen and (max-width: 979px){
             body{
                 padding-top: 0px;
@@ -52,6 +53,32 @@
 			-moz-background-size: cover;
 			-o-background-size: cover;
 			background-size: cover; */
+		}
+		
+		body{
+			background-image: url("/resources/book/background/book_Background.jpg");
+	    	background-position: center center;
+		    background-repeat: no-repeat;
+		    background-attachment: fixed;
+		    background-size: cover;
+		    font-family: 'Nanum Gothic', serif;
+		}
+		
+				
+		#btnArea{
+		margin:30px;
+		font-size:25px;
+		}
+	
+		.aqua {
+			background: #F1FA50;
+			font-size: 12px;
+			color: #000000;
+			text-align: center;
+			border: solid 1px #A2C5D5;
+			background: -moz-linear-gradient(0%, 100%, 90deg, #F1F789, #ffffff);
+			background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffffff),
+				to(#F1F789));
 		}
 	
     </style>
@@ -99,17 +126,24 @@
 	</section>	
 	
 	<!-- / .title -->
-    <div style="height: 40px; padding: 5px;" >
-        <a class="btn-success btn-large pull-right" href="/book/regphoto">사진 올리기</a>
-        <a class="btn-success btn-large pull-right" href="/book/regist">새 도감 만들기</a>
-    </div>
+	    <div class="sample" id="btnArea" style="padding:15px;" >
+	       <div class="btnSelect"><a href="/book/main" role="button" class="btn-social pull-right">
+				<p><i class="icon-list icon-white"></i><strong> 도감 목록 &nbsp &nbsp &nbsp </strong></p>
+			</a></div>
+			
+			<div class="btnSelect"><a href="/book/regist" role="button" class="btn-social pull-right">
+				<p><i class="icon-book icon-white"></i><strong> 도감 등록 &nbsp &nbsp &nbsp </strong></p>
+			</a></div>
+	    </div>
     
 	<!--사진 등록꾸민곳 -->
 	<section id="about-us" class="container main">
 	    <div class="row-fluid">
-	        <div class="span8 offset2" style="border: solid; border-color: blue; opacity: 0.8;">
+	        <div class="span8 offset2" style="border: solid; border-color: white;">
 	            <div class="blog" style="opacity: 1;">
-	            	
+	            	<label><strong>  &nbsp &nbsp 도감을 선택해주세요. </strong></label>
+          			<select id="selectBook" style="width: 250px; opacity: 0.9"></select>
+          			
 	            	<form target="zero" action="/han/file/upload" method="post" enctype="multipart/form-data" >
 					<input type='file' name='file' value='파일 추가'>
 					<input type='submit' value="UPLOAD">
@@ -137,26 +171,11 @@
 	                
 	                <!-- End Blog Item -->
 	                
-	                <label> 도감을 선택해주세요. </label>
-						<select id="selectBook" style="width: 250px; opacity: 0.9"></select>
-	                
-	                <div class="btnArea"><button class='pull-right' onclick='regImage()'> 등 록 </button></div>
+	                <div class="btnArea"><button class='aqua btn-large pull-right button-radius' onclick='regImage()'><strong> 등 록 </strong></button></div>
 	            </div>
 	        </div>
 	    </div>
 	</section>
-
-	<footer id="footer" style="opacity: 0.7; position: absolute; bottom:auto; width: 100%; background-color: black;">
-	    <div class="container">
-				<div class="span12" style="margin-top:-15px">
-	                &copy; Bit58th 한잔해!!
-	            </div>
-	            <!--/Goto Top-->
-	        </div>
-	    </div>
-	</footer>
-
-
 <!--.......... Login form ................................................................................................-->
 	<div class="modal hide fade in" id="loginForm" aria-hidden="false">
 	    <div class="modal-header">

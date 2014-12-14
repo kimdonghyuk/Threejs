@@ -27,7 +27,8 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/resources/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="/resources/images/ico/apple-touch-icon-57-precomposed.png">
     
-    <style>  
+    <style>
+    @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
     	
         .diary{
             width: 775px;
@@ -54,42 +55,56 @@
         }
         
         body{
-	    	background-image : url("/resources/images/diary/wall06.jpg");
+			background-image: url("/resources/images/diary/book_Background.jpg");
 	    	background-repeat : no repeat;
 	    	background-size : cover;
+	    	font-family: 'Nanum Gothic', serif;
     	}
+    	
+	    		
+		p, strong, button {
+			font-family: 'Nanum Gothic', serif;
+		}
+		
+		.aqua {
+			background: #A1CBF2;
+			font-size: 12px;
+			color: #000000;
+			text-align: center;
+			border: solid 1px #A2C5D5;
+			background: -moz-linear-gradient(0%, 100%, 90deg, #BCBDBF, #ffffff);
+			background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffffff),
+				to(#BCBDBF));
+		}
     </style>
     
 </head>
 <body>
 
-   <!--Header-->
-    <header class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container">
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-                <a id="logo" class="pull-left" href="/index"></a>
-                <div class="nav-collapse collapse pull-right">
-                    <ul class="nav">
-                        <li><a href="/index">메인화면</a></li>
-                        <li><a href="/search/main">검색</a></li>
-                        <li><a href="/book/main">나만의 도감</a></li>
-                        <li><a href="/favor/main">즐겨찾기</a></li>
-                        <li class="active"><a href="/diary/main">관찰일기</a></li> 
-                        <li><a href="/mypages/main">My Page</a></li>
-                        <li class="login">
-                        <a href='/user/logout'>LogOut</a>
-                        </li>
-                    </ul>        
-                </div><!--/.nav-collapse -->
-            </div>
-        </div>
-    </header>
-    <!-- /header -->
+	<!--Header-->
+	<header class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<a class="btn btn-navbar" data-toggle="collapse"
+				data-target=".nav-collapse"> <span class="icon-bar"></span> <span
+				class="icon-bar"></span> <span class="icon-bar"></span>
+			</a> <a id="logo" class="pull-left" href="/index"></a>
+			<div class="nav-collapse collapse pull-right">
+				<ul class="nav">
+					<li><a href="/index">메인화면</a></li>
+					<li><a href="/search/main">검색</a></li>
+					<li><a href="/book/main">나만의 도감</a></li>
+					<li><a href="/favor/main">즐겨찾기</a></li>
+					<li class="active"><a href="/diary/main">관찰일기</a></li>
+					<li><a href="/mypages/main">My Page</a></li>
+					<li class="login"><a href='/user/logout'>LogOut</a></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+	</header>
+	<!-- /header -->
 
     <!-- / .title -->
     <section class="title">
@@ -125,7 +140,7 @@
                             <!-- 본문 들어갈 부분 -->
                             <label>일기 내용을 적어주세요</label>
                             <textarea name="cont" id="message" required="required" class="input-block-level" rows="8"></textarea>
-                            <input type="submit" class="btn btn-primary btn-large pull-right button-radius" value="등 록">
+                            <input type="submit" class="aqua btn-large pull-right button-radius" value="등 록">
                         </form>
                     <!-- End Blog Item -->
                     <div class="gap"></div>
