@@ -53,11 +53,11 @@
             }
         }
         
-        /* #ts1 {
-			max-width:800px;
+        #ts1 {
+			/* max-width:800px;
 			height:500px;
-			margin: auto;
-	    } */
+			margin: auto; */
+	    }
         
 	    #ts1 li a{
 	        text-decoration:none;
@@ -170,7 +170,7 @@
     </style>
     
 </head>
-<body class="bgBlur">
+<body>
 
    <!--Header-->
     <header class="navbar navbar-fixed-top">
@@ -213,11 +213,12 @@
 </section>
 <!-- / .title -->
 
-<div id="back">
+<!-- <div id="back"> -->
     <div class="question text-center">질문이 들어갈 부분</div>
     <!--tagClout-->
-    <div id="ts1" class="span8 offset2">질문 배열이 들어갈 부분. tagCloud</div>
-</div>
+    <div id="ts1" class="span8 offset4">질문 배열이 들어갈 부분. tagCloud</div>
+    <!-- <div id="ts1">질문 배열이 들어갈 부분. tagCloud</div> -->
+<!-- </div> -->
 
 <!--Footer-->
 <div class="footer">
@@ -226,27 +227,14 @@
         <a href="javascript:nextPage()" class="btn btn-primary pull-right nextBtn">다음</a>
     </div>
 </div>
-<!-- <footer id="footer">
-    <div class="container">
-        <div class="row-fluid">
-            <div class="span5">
-                Bit58th 한잔해!!
-            </div>
-            <div class="span1">
-                <a id="gototop" class="gototop pull-right" href="#"><i class="icon-angle-up"></i></a>
-            </div>
-            /Goto Top
-        </div>
-    </div>
-</footer> -->
 <!--/Footer-->
 
 <!-- Result Modal -->
-	<div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
-	    <div class="modal-dialog modal-sm">
+	<div class="modal hide fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+	    <div class="modal-dialog">
 	        <div class="modal-content">
 	            <div class="modal-header">
-	                <!-- <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button> -->
+	                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
 	                <p class="modal-title text-center" id="myModalLabel">제목이 들어갈 부분</p>
 	            </div>
 	            <br>
@@ -259,10 +247,6 @@
 		            <br><br>
 		            <div id="relatedContList">관련컨텐츠 배열이 들어갈 부분</div>
 	            </div>
-	            <!-- <div class="modal-footer">
-	                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	                <button type="button" class="btn btn-primary">Save changes</button>
-	            </div> -->
 	        </div>
 	    </div>
 	</div>
@@ -277,8 +261,10 @@
 <script type="text/javascript" src="/resources/js/jquery.mousewheel.min.js"></script>
 <script type="text/javascript" src="/resources/js/jquery.tagsphere.js"></script>
 
+
 <!-- 검색로직 -->
 <script src="/resources/js/search/arr.js"></script>
+<script src="/resources/js/search/jquery.ui.touch.js"></script>
 
 <script type="text/javascript">
 	
@@ -455,7 +441,6 @@
 					"</a></li>"
 	    		}
 	    	}else{
-		    	console.log(val.img);
 	    		switch(val.img){
 	    		case "포도.png":
 	    			str += "<li class='span3'>" +
@@ -467,30 +452,10 @@
 					"<img src='/resources/images/search/tag/체리.png'>" + 
 					"</a></li>"
 	    			break;
-	    		case "잎넓적잎.png":
-	    			str += "<li class='span3'>" +
-					"<a href='javascript:rootQuestion(\""+val.rootSet+"\",\""+val.rootStr+"\")'>" +
-					"<img src='/resources/images/search/tag/"+val.img+"'>" + 
-					"</a></li>" +
-					"<li class='span3'>" +
-					"<a href='javascript:rootQuestion(\""+val.rootSet+"\",\""+val.rootStr+"\")'>" +
-					"<img src='/resources/images/search/tag/잎넓적잎1.png'>" + 
-					"</a></li>"
-	    			break;
-	    		case "잎불규칙.png":
-	    			str += "<li class='span3'>" +
-					"<a href='javascript:rootQuestion(\""+val.rootSet+"\",\""+val.rootStr+"\")'>" +
-					"<img src='/resources/images/search/tag/"+val.img+"'>" + 
-					"</a></li>" +
-					"<li class='span3'>" +
-					"<a href='javascript:rootQuestion(\""+val.rootSet+"\",\""+val.rootStr+"\")'>" +
-					"<img src='/resources/images/search/tag/잎불규칙1.png'>" + 
-					"</a></li>"
-	    			break;
 				default:
-					console.log("왜???");
 					str += "<li class='span3'>" +
-					"<a href='javascript:rootQuestion(\""+val.rootSet+"\",\""+val.rootStr+"\")'>" +
+					//"<a href='javascript:rootQuestion(\""+val.rootSet+"\",\""+val.rootStr+"\")'>" +
+					"<a href='javascript:rootQuestion(\""+val.rootSet+"\",\""+val.rootStr+"\")' touchstart='rootQuestion(\""+val.rootSet+"\",\""+val.rootStr+"\")'>" +
 					"<img src='/resources/images/search/tag/"+val.img+"'>" + 
 					"</a></li>"
 	    		}

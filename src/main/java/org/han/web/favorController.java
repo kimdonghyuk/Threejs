@@ -106,6 +106,7 @@ public class favorController {
 		
 		System.out.println(vo);
 		service.add(vo);
+		//return "redirect:/search/contList";
 	}
 	
 
