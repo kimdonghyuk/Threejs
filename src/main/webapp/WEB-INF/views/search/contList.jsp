@@ -64,6 +64,7 @@
         	color:black;
         	z-index:1;
         	line-height:1.2em;
+        	list-style:none;
         }
         p{
         /* font-size:x-large; */
@@ -92,6 +93,10 @@
         margin-left:auto;
         margin-right:auto;
         }
+        
+        ul {
+	    	
+	    }
         
      </style>
 </head>
@@ -157,7 +162,7 @@
 		             
 		                    <div class="span12" >
 								<div class = "favortitle">
-		                        <p class="cont-title"><strong id="title" class="pull-left" style="padding-top: 10px; margin-left: 15px;">제목</strong></p>
+		                        <p class="cont-title"><strong id="title" class="pull-left" style="padding-top: 10px; margin-left: 15px;">제목</strong></p><br>
 		                        </div>
 		                        <p class="pull-right contli"  id="addfavor" style="padding-bottom: 5px; margin-right: 10px;">
 		                        <!-- <a href="/favor/addFavor?cno=">즐겨찾기 추가<i class="icon-star"></i></a> --></p>
@@ -199,7 +204,7 @@ function viewCont(cno){
 		$("#title").html(data.title);
 		console.log(data.cate);
 		if(data.cate=="동요"){
-			$("#contDetail").html("<iframe src='"+data.cont+"'frameborder='0' allowfullscreen></iframe><p>*youtube 참고</p>"); 
+			$("#contDetail").html("<iframe src='"+data.cont+"'frameborder='0' allowfullscreen></iframe><br><p>*youtube 참고</p>"); 
 		} else{
 			$("#contDetail").html("<img src='/resources/images/play/"+data.contfile+"' vspace='10' align = 'center'>"+"<p class='contli'>"+data.cont+'</p>'); 
 		}

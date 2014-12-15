@@ -90,7 +90,7 @@ public class favorController {
 	
 	//addFavor from search result
 	@RequestMapping("/addFavor")
-	public @ResponseBody String addFavor(@RequestParam(value="cno" , defaultValue="") Integer cno, HttpServletRequest request){
+	public @ResponseBody void addFavor(@RequestParam(value="cno" , defaultValue="") Integer cno, HttpServletRequest request){
 		
 		Cookie[] cookies = request.getCookies();
 		String userid = null;
@@ -106,7 +106,7 @@ public class favorController {
 		
 		System.out.println(vo);
 		service.add(vo);
-		return "redirect:/search/contList";
+		//return "redirect:/search/contList";
 	}
 	
 
