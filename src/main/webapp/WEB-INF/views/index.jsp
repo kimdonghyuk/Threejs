@@ -31,6 +31,7 @@
     <link rel="apple-touch-icon-precomposed" href="resources/images/ico/apple-touch-icon-57-precomposed.png">
     
     <style>
+   		@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
     	@media screen and (max-width: 979px) {
 		body {
 			padding-top: 0px;
@@ -49,7 +50,33 @@
         }
 		body{
 		 	background-color:black;
-		}   
+		}
+		
+		p{
+		font-family: 'Nanum Gothic', serif;
+		}
+		#h2{
+		padding: 170px 0 0;
+		margin: 0;
+		position: relative;
+		font-size: 60px;
+		line-height: normal;
+		z-index: 100;	
+		color:white;
+		}
+		#h3{
+		margin-top: 0;
+		position: relative;
+		line-height: normal;
+		z-index: 100;
+		color:white;
+		font-size: 30px;
+		}
+		#a{
+		letter-spacing:2px;
+		}
+		
+		/* font-family: 'Nanum Gothic', serif; */   
     </style>
     
 </head>
@@ -67,15 +94,17 @@
                 </a>
                 <a id="logo" class="pull-left" href="/index"></a>
                 <div class="nav-collapse collapse pull-right">
+                    
                     <ul class="nav">
-                        <li class="active"><a href="/index">메인화면</a></li>
-                        <li><a href="/search/main">검색</a></li>
-                        <li><a href="/book/main">나만의도감</a></li>
-                        <li><a href="/favor/main">즐겨찾기</a></li>
-                        <li><a href="/diary/main">관찰일기</a></li> 
+                        <li class="active"><a href="/index"><p>메인화면</p></a></li>
+                        <li><a href="/search/main"><p>검색</p></a></li>
+                        <li><a href="/book/main"><p>나만의도감</p></a></li>
+                        <li><a href="/favor/main"><p>즐겨찾기</p></a></li>
+                        <li><a href="/diary/main"><p>관찰일기</p></a></li> 
                         <li><a href="/mypages/main">My Pages</a></li>
                         <li class="login" id ="login" ><a href="/user/login">Login</a></li>
-                    </ul>        
+                    </ul>
+                         
                 </div><!--/.nav-collapse -->
             </div>
         </div>
@@ -95,14 +124,12 @@
                         <div class="container">
                         <br>
                         <br>
-                        <br>
-                            <h2>검색</h2>
-                            <h3 class="gap">지금 눈앞에 보이는 그거 같이 찾아볼까요???</h3>
-                            <a class="btn btn-large btn-transparent" href="/search/main">자세히보기</a>
-                          
-                            
-                            
-
+                        <br>                            
+                            <p id="h2">검색</p>
+                            <br>
+                            <p id="h3">지금 눈앞에 보이는 그거 같이 찾아볼까요???</p>
+                            <br>
+                            <p id="a"><a class="btn btn-large btn-transparent" href="/search/main">자세히보기</a></p>                         	
                         </div>
                     </div>
                 </div>
@@ -116,9 +143,11 @@
                         <br>
                         <br>
                         <br>
-                            <h2>도감만들기</h2>
-                            <h3 class="gap">내가 본것들 예쁘게 담아서 친구한테 자랑해야지~!</h3>
-                            <a class="btn btn-large btn-transparent" href="/book/main">자세히보기</a>
+                            <p id="h2">도감만들기</p>
+                            <br>
+                            <p id="h3">내가 본것들 예쁘게 담아서 친구한테 자랑해야지~!</p>
+                            <br>
+                            <p id="a"><a class="btn btn-large btn-transparent" href="/book/main">자세히보기</a></p>
                         </div>
                     </div>
                 </div>
@@ -129,9 +158,11 @@
                         <br>
                         <br>
                         <br>
-                            <h2>관찰일기</h2>
-                            <h3 class="gap">시간이 지나면 어떻게 변하는지 기록해보자!!</h3>
-                            <a class="btn btn-large btn-transparent" href="/diary/main">자세히보기</a>
+                            <p id="h2">관찰일기</p>
+                            <br>
+                            <p id="h3">시간이 지나면 어떻게 변하는지 기록해보자!!</p>
+                            <br>
+                            <p id="a"><a class="btn btn-large btn-transparent" href="/diary/main">자세히보기</a></p>
                         </div>
                     </div>
                 </div>
@@ -147,9 +178,11 @@
                         <br>
                         <br>
                         <br>
-                            <h2>즐겨찾기</h2>
-                            <h3 class="gap">우리 그때 그 놀이 하고 또 놀까??</h3>
-                            <a class="btn btn-large btn-transparent" href="/favor/main">자세히보기</a>
+                            <p id="h2">관찰일기</p>
+                            <br>
+                            <p id="h3">우리 그때 그 놀이 하고 또 놀까??</p>
+                            <br>
+                            <p id="a"><a class="btn btn-large btn-transparent" href="/favor/main">자세히보기</a></p>
                         </div>
                     </div>
                 </div>

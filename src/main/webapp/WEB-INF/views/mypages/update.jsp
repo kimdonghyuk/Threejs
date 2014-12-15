@@ -47,27 +47,36 @@ body {
 	}
 }
 
-body {
-	background-color: lightblue;﻿
-}
+	body {
+	
+			background:url("../resources/images/mypage/mypage.jpg") no-repeat;
+		    background-position: center center;
+		    background-repeat: no-repeat;
+		    background-attachment: fixed;
+		    background-size: cover;
+		
+		}
 
-p{
-        font-size:xx-large;
-        font-family: 'Hanna', serif;
-        ﻿
+	p{	        
+	        font-family: 'Nanum Gothic', serif;	               ﻿
         }
+        
+    .othertext{
+     font-size:xx-large;
+     color:white;
+    }   
 
-.center-button {
-	height: 50px;
-	width: 200px;
-	margin: auto;
-}
-
-.center-button-in {
-	margin: 3px; 0
-	margin-top: 10px;
-	border-radius: 5px;
-}
+	.center-button {
+		height: 50px;
+		width: 200px;
+		margin: auto;
+	}
+	
+	.center-button-in {
+		margin: 3px; 0
+		margin-top: 10px;
+		border-radius: 5px;
+	}
 
 
 </style>
@@ -85,11 +94,11 @@ p{
 			</a> <a id="logo" class="pull-left" href="/index"></a>
 			<div class="nav-collapse collapse pull-right">
 				<ul class="nav">
-					<li><a href="/index">메인화면</a></li>
-					<li><a href="/search/main">검색</a></li>
-					<li><a href="/book/main">나만의도감</a></li>
-					<li><a href="/favor/main">즐겨찾기</a></li>
-					<li><a href="/diary/main">관찰일기</a></li>
+					<li><a href="/index"><p>메인화면</p></a></li>
+					<li><a href="/search/main"><p>검색</p></a></li>
+					<li><a href="/book/main"><p>나만의도감</p></a></li>
+					<li><a href="/favor/main"><p>즐겨찾기</p></a></li>
+					<li><a href="/diary/main"><p>관찰일기</p></a></li>
 					<li class="active"><a href="/mypages/main">My Pages</a></li>
 					<li class="login"><a href='/user/logout'>LogOut</a></li>
 				</ul>
@@ -104,7 +113,7 @@ p{
 	<div class="container">
 		<div class="row-fluid">
 			<div class="span6">
-				<h1>My Page</h1>
+				<h1><p>My Page</p></h1>
 			</div>
 
 		</div>
@@ -117,59 +126,43 @@ p{
 
 	<div id="menu" style="height: 80%; padding: 20px 20px 20px 20px">
 		<div id="container" style="max-width: 700px; margin: auto">
-			<p>회원 정보</p>
+			<p class="othertext">회원 정보</p>
 			<br>
 			<br>
 <h4>${error}<h4>
 			<form action="modify">
-				
-					<p>경험치: ${user.exp}</p>
 					<br>
-					<p>ID : ${user.userid}</p>
+					<p class="othertext">경험치: ${user.exp}</p>
 					<br>
-					<p>E-mail: <input type="text" name="email"	value="${user.email}"></p>
 					<br>
-					<p>변경 할 비밀번호: <input type="password" name="pw" value="${user.pw}"></p>
+					<p class="othertext">ID : ${user.userid}</p>
+					<br>
+					<br>
+					<p class="othertext">E-mail: <input type="text" name="email"	value="${user.email}"></p>
+					<br>
+					<br>
+					<p class="othertext">변경 할 비밀번호: <input type="password" name="pw" value="${user.pw}"></p>
 					<br>
 
-				<input type="hidden" name="userid" value="${user.userid}"> 
-				<input type="hidden" name="exp" value="${user.exp}">
+				<input class=pull-right type="hidden" name="userid" value="${user.userid}"> 
+				<input class=pull-left type="hidden" name="exp" value="${user.exp}">
 
 				<!-- <button type="submit"
 					class="btn btn-primary btn-large pull-right button-radius">정보수정</button> -->
 				
-				<button type = "submit" align="left" class="btn btn-primary btn-large">정보수정</button>
+				<button type = "submit" align="left" class="btn btn-large btn-transparent">정보수정</button>
 			</form>
 
-<!-- 버튼배치가 이상하지만 윤형오빠가 나두라고 했다 -->
 			<br>
 			<form action="delete">
 				<input type="hidden" name="userid" value="${user.userid}"> 
 				<input type="hidden" name="pw" value="${user.pw}">
 
-				<button type="submit" align="right" class="btn btn-primary btn-large button-radius">계정삭제</button>
+				<button type="submit" align="right" class="btn btn-large btn-transparent">계정삭제</button>
 			</form>
 
 		</div>
 	</div>
-
-	<!-- 리스트 끝 -->
-
-
-
-	<footer id="footer"
-		style="opacity: 0.7; position: absolute; bottom: auto; width: 100%; background-color: black;">
-	<div class="container">
-		<div class="row-fluid">
-			<div class="span12" style="margin-top: -15px">
-				&copy; Bit58th 한잔해!! <a id="gototop" class="gototop pull-right"
-					href="#"><i class="icon-angle-up"></i></a>
-			</div>
-			<!--/Goto Top-->
-		</div>
-	</div>
-	</footer>
-
 
 	<script src="/resources/js/vendor/jquery-1.9.1.min.js"></script>
 	<script src="/resources/js/vendor/bootstrap.min.js"></script>
