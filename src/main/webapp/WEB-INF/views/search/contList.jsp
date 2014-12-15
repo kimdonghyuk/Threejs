@@ -71,7 +71,7 @@
 		font-family: 'Nanum Gothic', serif;
         }
         .contli {
-        font-size:20px;
+        font-size:15px;
         line-height:1.5em;
         }
         .cont-title {
@@ -160,7 +160,7 @@
 		                        <p class="cont-title"><strong id="title" class="pull-left" style="padding-top: 10px; margin-left: 15px;">제목</strong></p>
 		                        </div>
 		                        <p class="pull-right contli"  id="addfavor" style="padding-bottom: 5px; margin-right: 10px;">
-		                        <a href="/favor/addFavor?cno=">즐겨찾기 추가<i class="icon-star"></i></a></p>
+		                        <!-- <a href="/favor/addFavor?cno=">즐겨찾기 추가<i class="icon-star"></i></a> --></p>
 		
 		                    </div>
 		             

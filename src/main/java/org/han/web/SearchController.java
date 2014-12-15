@@ -48,6 +48,7 @@ public class SearchController {
 			@RequestParam(value="cnoSet", defaultValue="") String cnos,
 			@RequestParam(value="cno", defaultValue="") int cno,
 			Model model){
+		System.out.println(cnos + cno);
 		String[] cnoSet = cnos.split(",");
 		model.addAttribute("list",service.contList(cnoSet));
 		model.addAttribute("cno",cno);
