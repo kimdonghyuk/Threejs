@@ -79,11 +79,11 @@
 			</a> <a id="logo" class="pull-left" href="/index"></a>
 			<div class="nav-collapse collapse pull-right">
 				<ul class="nav">
-					<li><a href="/index">메인화면</a></li>
-					<li><a href="/search/main">검색</a></li>
-					<li><a href="/book/main">나만의도감</a></li>
-					<li><a href="/favor/main">즐겨찾기</a></li>
-					<li><a href="/diary/main">관찰일기</a></li>
+					<li><a href="/index"><p>메인화면</p></a></li>
+					<li><a href="/search/main"><p>검색</p></a></li>
+					<li><a href="/book/main"><p>나만의도감</p></a></li>
+					<li><a href="/favor/main"><p>즐겨찾기</p></a></li>
+					<li><a href="/diary/main"><p>관찰일기</p></a></li>
 					<li class="active"><a href="/mypages/main">My Pages</a></li>
 					<li class="login"><a href='/user/logout'>LogOut</a></li>
 				</ul>

@@ -81,7 +81,7 @@
         margin-left:auto;
         margin-right:auto;
         }
-<<<<<<< HEAD
+		
         #detailfont{
         font-size:15px;
         line-height:1.5em;
@@ -95,13 +95,7 @@
         .othertext{
         font-size:15px;
         }
-        
-
-    </style>
-=======
-        
-     </style>
->>>>>>> 162edd569ba7f9edd344e0eea67eef53678f7698
+        </style>
 </head>
 
 <body>
