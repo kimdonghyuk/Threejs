@@ -32,9 +32,13 @@ public class SearchServiceTest {
 	
 	@Test
 	public void setContTest() {
-		ArrayList<String> arr = new ArrayList<String>();
-		arr.add("옥수수");
-		arr.add("개나리");
-		//logger.info(service.setCont(arr));
+		String[] arr = new String[] {"옥수수","개나리"};
+		logger.info(service.setCont(arr));
+	}
+	
+	@Test
+	public void viewContTest() {
+		String[] arr = new String[] {"150","160"};
+		logger.info(service.contList(arr));
 	}
 }

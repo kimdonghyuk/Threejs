@@ -36,7 +36,8 @@
 		href="/resources/images/ico/apple-touch-icon-57-precomposed.png">
 	
 	<style>
-    	@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+		@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+	
 		@media screen and (max-width: 979px) {
 			body {
 				padding-top: 0px;
@@ -60,6 +61,10 @@
 	    font-family: 'Nanum Gothic', serif;
 		}
 		
+		p, strong, ul, li, label {
+        	font-family: 'Nanum Gothic', serif;
+        }
+
 		#btnArea{
 		margin:30px;
 		font-size:25px;
@@ -74,6 +79,10 @@
 			background: -moz-linear-gradient(0%, 100%, 90deg, #F1F789, #ffffff);
 			background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffffff),
 				to(#F1F789));
+		}
+		
+		li {
+			list-style: none;
 		}
 		
 		
@@ -95,11 +104,11 @@
                 <a id="logo" class="pull-left" href="/index"></a>
                 <div class="nav-collapse collapse pull-right">
                     <ul class="nav">
-                        <li><a href="/index">메인화면</a></li>
-                        <li><a href="/search/main">검색</a></li>
-                        <li class="active"><a href="/book/main">나만의도감</a></li>
-                        <li><a href="/favor/main">즐겨찾기</a></li>
-                        <li><a href="/diary/main">관찰일기</a></li> 
+                        <li><a href="/index"><p>메인화면</p></a></li>
+                        <li><a href="/search/main"><p>검색</p></a></li>
+                        <li class="active"><a href="/book/main"><p>나만의도감</p></a></li>
+                        <li><a href="/favor/main"><p>즐겨찾기</p></a></li>
+                        <li><a href="/diary/main"><p>관찰일기</p></a></li> 
                         <li><a href="/mypages/main">My Pages</a></li>
                         <li class="login">
                         <a href='/user/logout'>LogOut</a>
@@ -112,17 +121,21 @@
     <!-- /header -->
 
 	<section class="title">
-		<div class="container">
-			<div class="row-fluid">
-				<div class="span6">
-					<h1>나만의도감 등록</h1>
-				</div>
-			</div>
-		</div>
-	</section>
+        <div class="container">
+            <div class="row-fluid">
+                <div class="span6">
+                    <h1><p>나만의도감</p></h1>
+                </div>
+            </div>
+    </section>
 	
 <div id="back" style="height:635px;">	
 	<!-- / .title -->
+    <div style="height: 40px; padding: 5px;" >
+        <a class="btn-success btn-large pull-right" href="/book/regphoto" style='font-family: Nanum Gothic, serif;'>사진 올리기</a>
+        <a class="btn-success btn-large pull-right" href="/book/regist" style='font-family: Nanum Gothic, serif;'>새 도감 만들기</a>
+    </div>
+
 	    <div class="sample" id="btnArea" style="padding:15px;" >
 			<div class="btnSelect"><a href="/book/main" role="button" class="btn-social pull-right">
 				<p><i class="icon-list icon-white"></i><strong> 도감 목록 &nbsp &nbsp &nbsp </strong></p>
@@ -153,13 +166,12 @@
         <div class="span8 offset2">
             <div class="blog" style="opacity: 1;">
                 <form method="post" action="registdata" accept-charset="utf-8">
-                    <label>여기에 제목을 적어주세요</label>
-                    <textarea name="title"  required="required" class="input-block-level"></textarea>
+                    <textarea name="title"  required="required" class="input-block-level" placeholder="여기에 제목을 적어주세요"></textarea>
                     <!-- <input name="contfile" type="file" class="btn btn-primary btn-small">
                     <p class="insertImg"><p class="help-block">선택된 사진이 없어요...</p> -->
                     <!-- 본문 들어갈 부분 -->
                     <ul class="filename"></ul>
-                   <input type="submit" class="aqua btn-large pull-right button-radius" value="등 록">
+                    <button type="submit" style='font-family: Nanum Gothic, serif;' class="btn btn-primary btn-large pull-right">도감 등록</button>
                 </form>
                 <!-- End Blog Item -->
                 <div class="gap"></div>

@@ -28,13 +28,15 @@
     <link rel="apple-touch-icon-precomposed" href="/resources/images/ico/apple-touch-icon-57-precomposed.png">
     
     <style>
+    	@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
         @media screen and (max-width: 979px){
             body{
                 padding-top: 0px;
             }
         }
         body{
-            background:url("../resources/images/favor/favor.jpg");
+        	font-family: 'Nanum Gothic', serif;
+            background:url("../resources/images/play/favor.jpg");
         }
         .center-button{
             height: 50px;
@@ -64,9 +66,17 @@
         	line-height:1.2em;
         }
         p{
+        /* font-size:x-large; */
+        line-height:1.5em;
+		font-family: 'Nanum Gothic', serif;
+        }
+        .contli {
+        font-size:20px;
+        line-height:1.5em;
+        }
+        .cont-title {
         font-size:x-large;
         line-height:1.5em;
-       
         }
         img{
         border-radius: 30px;
@@ -74,8 +84,16 @@
         margin-left:auto;
         margin-right:auto;
         }
-
-    </style>
+        iframe{
+        width:100%;
+        height:400px;
+        border-radius: 30px;
+        display:block;
+        margin-left:auto;
+        margin-right:auto;
+        }
+        
+     </style>
 </head>
 
 <body>
@@ -92,11 +110,11 @@
                 <a id="logo" class="pull-left" href="/index"></a>
                 <div class="nav-collapse collapse pull-right">
                     <ul class="nav">
-                        <li><a href="/index">메인화면</a></li>
-                        <li><a href="/search/main">검색</a></li>
-                        <li><a href="/book/main">나만의도감</a></li>
-                        <li class="active"><a href="/favor/main">즐겨찾기</a></li>
-                        <li><a href="/diary/main">관찰일기</a></li> 
+                        <li><a href="/index"><p>메인화면</p></a></li>
+                        <li class="active"><a href="/search/main"><p>검색</p></a></li>
+                        <li><a href="/book/main"><p>나만의도감</p></a></li>
+                        <li><a href="/favor/main"><p>즐겨찾기</p></a></li>
+                        <li><a href="/diary/main"><p>관찰일기</p></a></li> 
                         <li><a href="/mypages/main">My Pages</a></li>
                         <li class="login">
                         <a href='/user/logout'>LogOut</a>
@@ -112,7 +130,7 @@
     <div class="container">
         <div class="row-fluid">
             <div class="span6">
-                <h1>관련 컨텐츠</h1>
+                <h1><p>관련 컨텐츠</p></h1>
             </div>
 
         </div>
@@ -120,35 +138,37 @@
 </section>
 <!-- / .title -->
 
-<!-- 관련 컨텐츠 리스트 뿌려줄곳 -->
+<!-- 관련컨텐츠 리스트 뿌려줄곳 -->
 
     <div id="menu" style="height: 600px; padding-top: 20px">
     	<div class="container">
 	    	<div class = "row-fluid">
 		        <div class="sidebar-nav">
 		            <div class="well span3" id=falist style="border: 3px solid antiquewhite; margin:auto; border-radius: 30px;">
-		                <ul class="nav nav-list">
-		                <!-- favor 리스트 불러오기 -->
-		                </ul>
+		                <p class="cont-title">관련 컨텐츠 목록</p>
+		                <c:forEach items="${list}" var="vo">
+							<li><a href="javascript:viewCont(${vo.cno })"><p class="contli">[${vo.cate}]${vo.title }</p></a></li>
+						</c:forEach>
 		            </div>
 		        </div>
 		        <!-- 즐겨찾기 항목 상세설명 -->
 		    
-		            <div class="span9" style="border: 3px solid antiquewhite; border-radius: 30px;" >
+		            <div id=falist class="span9" style="border: 3px solid antiquewhite; border-radius: 30px;" >
 		             
 		                    <div class="span12" >
 								<div class = "favortitle">
-		                        <h4><strong id="title" class="pull-left" style="padding-top: 10px; margin-left: 15px;">놀이 제목</strong></h4>
+		                        <p class="cont-title"><strong id="title" class="pull-left" style="padding-top: 10px; margin-left: 15px;">제목</strong></p>
 		                        </div>
-		                        <h5 class="pull-right"  id="delfavor" style="padding-bottom: 5px; margin-right: 10px;">즐겨찾기 해제 
-		                        <a href="즐겨찾기 삭제"><i class="icon-star"></i> </a></h5>
+		                        <p class="pull-right contli"  id="addfavor" style="padding-bottom: 5px; margin-right: 10px;">
+		                        <a href="/favor/addFavor?cno=">즐겨찾기 추가<i class="icon-star"></i></a></p>
 		
 		                    </div>
 		             
 		                
 		                  
 		                    <div class="span11" id="contDetail">
-		                        <p>놀이 설명 입니다.</p>
+		                    	
+		                        <%-- <img src='/resources/images/play/${contvo.contfile }' vspace='10' align = 'center'><p class="contli">${contvo.cont }</p> --%>
 		                    </div>
 		               
 		            </div>
@@ -160,55 +180,37 @@
     </div>
 
 <!-- 리스트 끝 -->
-
+<input type="hidden" id="setCno" value=${cno }>
 <script src="/resources/js/vendor/jquery-1.9.1.min.js"></script>
 <script src="/resources/js/vendor/bootstrap.min.js"></script>
 <script src="/resources/js/main.js"></script>
 
 
-<!-- cont불러오기 여기 스크립트 다시 해주세요 윤횽오빠-->
 <script type="text/javascript">
-
-/* $(document).ready(); */
-
 $(document).ready(function(){
-		 favorlist();
-	});
-	
-function favorlist(){
-    $.post("list", function(data){
-    	var list ="<li>즐겨찾기 목록</li>"
-        var target = $('#favorlist');       
-        $.each (data , function (key , val) {         
-            list +="<li><a href=javascript:contList("+val.cno+","+val.fno+")> <i class='icon-star'></i>"
-            		+val.cate+val.title+"</li><br>"			
-        });
-        target.html(list);
-    });
-};
+	viewCont(document.getElementById("setCno").value);
+});
 
-
-
-function contList(cno,fno){
+function viewCont(cno){
 	
- 	var result = {cno:cno , fno:fno}
-	$.post("detail",result,function(data){
-		console.log(data.fno);
-		console.log(data.contfile);
-	
-		/*  var title = document.getElementById("title");*/
+ 	var result = {cno:cno}
+	$.post("/search/viewCont",result,function(data){
+		console.log(data);
+		$("#title").html(data.title);
+		console.log(data.cate);
+		if(data.cate=="동요"){
+			$("#contDetail").html("<iframe src='"+data.cont+"'frameborder='0' allowfullscreen></iframe><p>*youtube 참고</p>"); 
+		} else{
+			$("#contDetail").html("<img src='/resources/images/play/"+data.contfile+"' vspace='10' align = 'center'>"+"<p class='contli'>"+data.cont+'</p>'); 
+		}
 		
-		var title = $('#title');
-		var contdetail = $('#contDetail');
-		var contimg=$('#contimg');
-		var delfavor = $('#delfavor');
-		
-		title.html('<p>'+data.title+'</p>');
-		contdetail.html("<img src='/resources/images/favor/"+data.contfile+"' vspace='10' align = 'center'>"+'<p>'+data.cont+'</p>'); 
-		/* contdetail.html("<textarea id = 'cont' cols='100' rows='10' readonly='readonly'>"+data.cont+"</textarea>") */
-		/*    contdetail.html("<img src='/resources/images/favor/"+data.contfile+"' vspace='10' align = left>"); */ 
-		/* contimg.html("<img src='/resources/book/images/ko.jpg' vspace='10' border-radius:'30px'>"); */
-		delfavor.html("즐겨찾기 해제<a href='delFavor?fno="+data.fno+"'><i class='icon-star'></i></a>");
+		$("#addfavor").html("<a href='javascript:addFavor("+data.cno+")'>즐겨찾기 추가<i class='icon-star'></i></a>");
+	}
+)};
+
+function addFavor(cno){
+	$.post("/favor/addFavor",{cno:cno},function(data){
+		alert("즐겨찾기에 추가되었습니다.");
 	}
 )};
 
