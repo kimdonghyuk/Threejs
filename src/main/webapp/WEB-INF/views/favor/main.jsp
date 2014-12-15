@@ -28,6 +28,7 @@
     <link rel="apple-touch-icon-precomposed" href="/resources/images/ico/apple-touch-icon-57-precomposed.png">
     
     <style>
+   		@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
         @media screen and (max-width: 979px){
             body{
                 padding-top: 0px;
@@ -64,9 +65,7 @@
         	line-height:1.2em;
         }
         p{
-        font-size:x-large;
-        line-height:1.5em;
-       
+        font-family: 'Nanum Gothic', serif;
         }
         img{
         border-radius: 30px;
@@ -82,8 +81,27 @@
         margin-left:auto;
         margin-right:auto;
         }
+<<<<<<< HEAD
+        #detailfont{
+        font-size:15px;
+        line-height:1.5em;
+        }
+        #delfavor{
+        font-size:20px;
+        }
+        .favorlist{
+        font-size:x-large;
+        }
+        .othertext{
+        font-size:15px;
+        }
+        
+
+    </style>
+=======
         
      </style>
+>>>>>>> 162edd569ba7f9edd344e0eea67eef53678f7698
 </head>
 
 <body>
@@ -100,11 +118,11 @@
                 <a id="logo" class="pull-left" href="/index"></a>
                 <div class="nav-collapse collapse pull-right">
                     <ul class="nav">
-                        <li><a href="/index">메인화면</a></li>
-                        <li><a href="/search/main">검색</a></li>
-                        <li><a href="/book/main">나만의도감</a></li>
-                        <li class="active"><a href="/favor/main">즐겨찾기</a></li>
-                        <li><a href="/diary/main">관찰일기</a></li> 
+                        <li><a href="/index"><p>메인화면</p></a></li>
+                        <li><a href="/search/main"><p>검색</p></a></li>
+                        <li><a href="/book/main"><p>나만의도감</p></a></li>
+                        <li class="active"><a href="/favor/main"><p>즐겨찾기</p></a></li>
+                        <li><a href="/diary/main"><p>관찰일기</p></a></li> 
                         <li><a href="/mypages/main">My Pages</a></li>
                         <li class="login">
                         <a href='/user/logout'>LogOut</a>
@@ -120,7 +138,7 @@
     <div class="container">
         <div class="row-fluid">
             <div class="span6">
-                <h1>즐겨찾기</h1>
+                <h1><p>즐겨찾기</p></h1>
             </div>
 
         </div>
@@ -137,7 +155,7 @@
 		            <div class="well span3" id=falist style="border: 3px solid antiquewhite; margin:auto; border-radius: 30px;">
 		                <ul class="nav nav-list">
 		                
-		                    <li class="nav-header" style="border: 1px;" id="favorlist">즐겨찾기 항목</li>
+		                    <li class="nav-header" style="border: 1px;" id="favorlist"></li>
 		                <!-- favor 리스트 불러오기 -->
 						
 		                </ul>
@@ -149,17 +167,16 @@
 		             
 		                    <div class="span12" >
 								<div class = "favortitle">
-		                        <h4><strong id="title" class="pull-left" style="padding-top: 10px; margin-left: 15px;">놀이 제목</strong></h4>
+		                        <p class='favorlist'><strong id="title" class="pull-left" style="padding-top: 10px; margin-left: 15px;">놀이 제목</strong></p>
 		                        </div>
-		                        <h5 class="pull-right"  id="delfavor" style="padding-bottom: 5px; margin-right: 10px;">즐겨찾기 해제 
-		                        <a href="즐겨찾기 삭제"><i class="icon-star"></i> </a></h5>
-		
+		                        <p class="pull-right"  id="delfavor" style="padding-bottom: 5px; margin-right: 10px;">즐겨찾기 해제 
+		                        <a href="즐겨찾기 삭제"><i class="icon-star"></i></a></p>
 		                    </div>
 		             
 		                
 		                  
 		                    <div class="span11" id="contDetail">
-		                        <p>놀이 설명 입니다.</p>
+		                        <p id="detailfont">놀이 설명 입니다.</p>
 		                    </div>
 		               
 		            </div>
@@ -188,11 +205,11 @@ $(document).ready(function(){
 	
 function favorlist(){
     $.post("list", function(data){
-    	var list ="<li>즐겨찾기 목록</li>"
+    	var list ="<li><p class='favorlist'>즐겨찾기 목록</p></li>"
         var target = $('#favorlist');       
         $.each (data , function (key , val) {         
             list +="<a href=javascript:contList("+val.cno+","+val.fno+")>"
-            		+"<li>["+val.cate+"]"+val.title+"</li><br>"			
+            		+"<li><p class='othertext'>["+val.cate+"]"+val.title+"</p></li><br>"			
         });
         target.html(list);
     });
@@ -204,8 +221,8 @@ function contList(cno,fno){
 	
  	var result = {cno:cno , fno:fno}
 	$.post("detail",result,function(data){
-		console.log(data.fno);
-		console.log(data.contfile);
+		/* console.log(data.fno);
+		console.log(data.contfile); */
 	
 		/*  var title = document.getElementById("title");*/
 		
@@ -216,15 +233,15 @@ function contList(cno,fno){
 	
 	
 		
-		title.html('<p>'+data.title+'</p>');
+		title.html('<p class="favorlist">'+data.title+'</p>');
 		
 		if(data.cate=="동요")
 			{
-			contdetail.html("<iframe src='"+data.cont+"'frameborder='0' allowfullscreen></iframe><p>*youtube 참고</p>"); 
+			contdetail.html("<iframe src='"+data.cont+"'frameborder='0' allowfullscreen></iframe><br><p class='favorlist'>*youtube 참고</p>"); 
 			} else{
 			
 			
-		contdetail.html("<img src='/resources/images/play/"+data.contfile+"' vspace='10' align = 'center'>"+'<p>'+data.cont+'</p>'); 
+		contdetail.html("<img src='/resources/images/play/"+data.contfile+"' vspace='10' align = 'center'>"+'<p id="detailfont">'+data.cont+'</p>'); 
 			}
 		
 		delfavor.html("즐겨찾기 해제<a href='delFavor?fno="+data.fno+"'><i class='icon-star'></i></a>");

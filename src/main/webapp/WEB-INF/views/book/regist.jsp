@@ -163,7 +163,7 @@
 	</div>	
 	<br>
     <div class="row-fluid">
-        <div class="span8 offset2" style="border: solid; border-color: white; opacity: 0.9;">
+        <div class="span8 offset2">
             <div class="blog" style="opacity: 1;">
                 <form method="post" action="registdata" accept-charset="utf-8">
                     <textarea name="title"  required="required" class="input-block-level" placeholder="여기에 제목을 적어주세요"></textarea>

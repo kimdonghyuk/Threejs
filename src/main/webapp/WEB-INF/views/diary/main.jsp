@@ -88,7 +88,6 @@
 	#btnA{
 		 cursor: pointer;
 	}
-
 	
 	.aqua {
 		background: #A1CBF2;
@@ -253,13 +252,11 @@
 	<script src="/resources/js/main.js"></script>
 
 	<script type="text/javascript">
-
 	function goPage(num) {
 		console.log(num);
 		document.diaryForm.page.value = num;
 		document.diaryForm.submit();
 	}
-
 	
  	function updateResult(data){
 		alert(data);
@@ -273,7 +270,6 @@
 		}
 	}
  	
-
 	function insertDiary(dno, title, cont, contfile, tag){
 		
 		var insertTitle = document.getElementById('checkInsert');
@@ -317,7 +313,6 @@
 	}
 	
 	function updateResult(data){
-
 		var btnTarget = $("#insertPicture");
 		var btnContent = "";
 		
@@ -337,7 +332,6 @@
 		var insertCont = document.getElementById('insertCont').value;
 		var insertTag = document.getElementById('insertTag').value; 
 		var fileName = document.getElementById('getFileName');
-
 		if(isNull(fileName)){
 			fileName = mfileName;}
 		else{
@@ -401,7 +395,6 @@
 		deleteDoReply(numRno);
 		downRcount(numDno);
 	}
-
 	function createReply(num){
 		var createCont = document.getElementById('createReply_'+ num).value;
 		console.log(num);
@@ -479,8 +472,6 @@
 	function isNull(obj){
 		return (typeof obj != "undefined" && obj !=null && obj != "")? false:true;
 	}
-
-
 	
 	
 </script>

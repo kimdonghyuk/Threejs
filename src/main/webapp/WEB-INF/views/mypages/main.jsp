@@ -57,11 +57,13 @@
 		}
 	
 	p{
+	 font-family: 'Nanum Gothic', serif;	       
+	}
+	.font{
 	        color:white;
 	        font-size:xx-large;
-	        font-family: 'Hanna', serif;
-	        ﻿
-	  }
+	        	        ﻿
+	  	 }
 </style>
 </head>
 
@@ -96,7 +98,7 @@
 	<div class="container">
 		<div class="row-fluid">
 			<div class="span6">
-				<h1>My Page</h1>
+				<h1><p>My Page</p></h1>
 			</div>
 
 		</div>
@@ -109,25 +111,28 @@
 
 	<div id="menu" style="height: 600px; padding: 20px 20px 20px 20px">
 		<div id="container" style="max-width: 700px; margin: auto">
-			<p>회원 정보</p>
+			<br>
+			<br>
+			<br>
+			<p class="font">회원 정보</p>
 			<br>
 			<br>
 			<br>
 
 			<form action="update">
-					<p>경험치: ${user.exp}</p>
+					<p class="font">경험치: ${user.exp}</p>
 					<br>
 					<br>
-					<p>ID : ${user.userid}</p>
+					<p class="font">ID : ${user.userid}</p>
 					<br>
 					<br>
-					<p>E-mail: ${user.email}</p>
+					<p class="font">E-mail: ${user.email}</p>
 					<br>
 					<br>
 
 				<input type="hidden" name="userid" value="${user.userid}">
 				<button type="submit"
-					class="btn btn-primary btn-large pull-right button-radius">정보수정</button>
+					class="btn btn-large btn-transparent btn-large pull-right button-radius">정보수정</button>
 			</form>
 		</div>
 	</div>

@@ -171,7 +171,7 @@
 	                
 	                <!-- End Blog Item -->
 	                
-	                <div class="btnArea"><button class='aqua btn-large pull-right button-radius' onclick='regImage()'><strong> 등 록 </strong></button></div>
+	                <div class="btnArea"><button class='aqua btn-large pull-right button-radius' style="position:absolute; right:10%; bottom:auto;" onclick='regImage()'><strong> 등 록 </strong></button></div>
 	            </div>
 	        </div>
 	    </div>
@@ -236,10 +236,10 @@
 			var content = "";
 			
 			content += "<div class='span4' style='height:230px;'>"
-						+ "<div><input type='text' style='width:165px; heigth:30px; 'id='createTitle_" + updateCount + "' placeholder='제목'>"
+						+ "<div><input type='textarea' style='width:155px; heigth:15px; 'id='createTitle_" + updateCount + "' placeholder='제목'>"
 						+ "<input id='getFileName_" + updateCount + "' type='hidden' value='" + data.fileName + "'>"
-						+ "<image class='thumb' style='width:200px;'  id='createImg_" + updateCount + "' src='/han/file/regphoto/"+data.fileName+"'/></p>"
-						+ "<div style='margin:auto;'><input type='text' style='width:165px; heigth:30px;'  id='createCont_" + updateCount + "' placeholder='내용'><div></div>";
+						+ "<image class='thumb' style='width:150px;'  id='createImg_" + updateCount + "' src='/han/file/regphoto/"+data.fileName+"'/></p>"
+						+ "<div style='margin:auto;'><input type='textarea' style='width:155px; heigth:15px;'  id='createCont_" + updateCount + "' placeholder='내용'><div></div>";
 			
 			target.append(content);
 			updateCount++;
