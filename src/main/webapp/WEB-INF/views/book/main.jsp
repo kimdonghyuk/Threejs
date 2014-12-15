@@ -28,6 +28,8 @@
     <link rel="apple-touch-icon-precomposed" href="/resources/images/ico/apple-touch-icon-57-precomposed.png">
     
     <style>
+    @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+	
 	.btn-success {
 		margin: 5px;
 		width: 119px;
@@ -38,10 +40,12 @@
 	
 	
 	body {
-		background-image: url("/resources/book/background/book_main_background.png");
-    	background-repeat : no repeat;
-    	background-size : cover;
-    	height:635px;
+ 		background-image: url("/resources/book/background/book_Background.jpg");
+    	background-position: center center;
+	    background-repeat: no-repeat;
+	    background-attachment: fixed;
+	    background-size: cover;
+	    font-family: 'Nanum Gothic', serif;
 	}
 	
 	@media screen and (max-width: 979px) {
@@ -63,10 +67,7 @@
 	.registDogam:hover{
 		opacity : 0.7;	
 	}
-	
-	.span4{
-		/* background-image: url("/resources/book/background/book_showlist_background.jpg") */
-	}
+
 	
 	#card-3:hover {
 		-moz-transform: scale(1.1) rotate(0deg);
@@ -75,12 +76,21 @@
 		-webkit-transition: all 0.5s ease-in-out; 
 	}
 	
+	#btnSelect:hover{
+		-moz-transform: scale(1.1) rotate(0deg);
+   	 	-webkit-transform: scale(1.1) rotate(0deg);
+   	 	-moz-transition: all 0.5s ease-in-out;
+		-webkit-transition: all 0.5s ease-in-out; 
+		
+	}
+	
 	.thumbnail {
+		margin-left:8%;
 		padding:15px;
-		border-radius: 15px;
-		border-width: 15px;
-		border : 15px;
-		-webkit-border-image:url("/resources/book/images/card_bg.jpg") 15 round;
+		border-radius: 5px;
+		border : 5px;
+		-webkit-border-image:url("/resources/book/images/note.png") 1 round;
+/* 		-webkit-border-image:url("/resources/book/images/card_bg.jpg") 15 round; */
   		/* -webkit-column-gap: 1.5em;
   		-webkit-column-rule: 1px solid #ccc;
   		border:10px solid #ccc;
@@ -88,15 +98,32 @@
 	}
 	
 	#imgset {
-		max-width : 320px;
-		height: 250px;
+		margin-left:10%;
+		margin-top:10%;
+		padding: 30px;
+		max-width : 200px;
+		height: 200px;
+		padding: 0px;
+		border: 2px solid;
+		border-radius: 10px;
+		border-color: gray;
 	}
 	
-	#imgset{
-		border-radius: 15px;
-		border : solid 5px #ccc;
-	
+	.caption{
+		text-align:center;
+		margin-left:5%;
+		font-color: black;
 	}
+	
+	#btnArea{
+		margin:30px;
+		font-size:25px;
+	}
+	
+	p, strong, ul, li, label {
+        	font-family: 'Nanum Gothic', serif;
+        }
+        	
 </style>    
 </head>
 
@@ -113,15 +140,13 @@
                 <a id="logo" class="pull-left" href="/index"></a>
                 <div class="nav-collapse collapse pull-right">
                     <ul class="nav">
-                        <li><a href="/index">메인화면</a></li>
-                        <li><a href="/search/main">검색</a></li>
-                        <li class="active"><a href="/book/main">나만의도감</a></li>
-                        <li><a href="/favor/main">즐겨찾기</a></li>
-                        <li><a href="/diary/main">관찰일기</a></li> 
+                        <li><a href="/index"><p>메인화면</p></a></li>
+                        <li><a href="/search/main"><p>검색</p></a></li>
+                        <li class="active"><a href="/book/main"><p>나만의도감</p></a></li>
+                        <li><a href="/favor/main"><p>즐겨찾기</p></a></li>
+                        <li><a href="/diary/main"><p>관찰일기</p></a></li> 
                         <li><a href="/mypages/main">My Pages</a></li>
-                        <li class="login">
-                        <a href='/user/logout'>LogOut</a>
-                        </li>
+                        <li class="login"><a href='/user/logout'>LogOut</a></li>
                     </ul>        
                 </div><!--/.nav-collapse -->
             </div>
@@ -134,25 +159,36 @@
         <div class="container">
             <div class="row-fluid">
                 <div class="span6">
-                    <h1>나만의도감</h1>
+                    <h1><p>나만의도감</p></h1>
                 </div>
             </div>
 		</div>
     </section>
+    
 	<!-- Dogam UI Set -->
 	<div id="back" style="height: 600px;">    
 	    <!-- btn Set -->
-	    <div class="sample" style="height: 100px; padding: 5px;" >
-	        <a class="btn-success btn-large pull-right" id="updatePicture" href="/book/regphoto">사진 올리기</a>
-	        <a class="btn-success btn-large pull-right" id="registDogam" href="/book/regist">새 도감 만들기</a>
+	    <div class="sample" id="btnArea" style="padding:15px;" >
+	    	<div class="btnSelect"><a onclick='resetModal();' href="#updateForm" role="button" class="btn-social pull-right" data-toggle="modal">
+				<p><i class="icon-edit icon-white"></i> <strong>수 정 &nbsp</strong></p>  
+			</a></div>
+			
+			<div class="btnSelect"><a href="#testForm" role="button" class="btn-social pull-right" data-toggle="modal">
+				<p><i class="icon-trash icon-white"></i> <strong>삭 제 &nbsp &nbsp &nbsp</strong></p>
+			</a></div>
+			
+			<div class="btnSelect"><a href="/book/regphoto" role="button" class="btn-social pull-right">
+				<p><i class="icon-camera icon-white"></i><strong> 사진 등록 &nbsp &nbsp &nbsp </strong></p>
+			</a></div>
+			
+			<div class="btnSelect"><a href="/book/regist" role="button" class="btn-social pull-right">
+				<p><i class="icon-book icon-white"></i><strong> 도감 등록 &nbsp &nbsp &nbsp </strong></p>
+			</a></div>
 	    </div>
 
-		<div class="sample span12" style="height: 50px; padding: 5px;">
+		<div class="sample span12" style="height: 30px; padding: 5px;">
 			
-			<!-- Start Delete Modal -->
-			<a href="#testForm" role="button" class="btn-social btn-small pull-right" data-toggle="modal">
-				<i class="icon-trash icon-white"></i> <span><strong>삭제</strong></span>
-			</a>
+
 			 
 			<!-- 모달 -->
 			<div class="modal fade" id="testForm" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
@@ -166,23 +202,18 @@
 								style="width: 250px; opacity: 0.9"></select>
 			  </div>
 			  <div class="modal-footer" id="delmodal">
-			    <button class="btn" data-dismiss="modal" aria-hidden="true">닫기</button>
+			    <button class="btn" data-dismiss="modal" aria-hidden="true" style='font-family: Nanum Gothic, serif;'>닫기</button>
 			    <!-- <button class="btn btn-primary" onclick="deleteBook();">삭제</button> -->
 			  </div>
 			</div>
 			<!-- End Delete Modal -->
 			
 			
-			<!-- Start Update Modal -->
-			<a onclick='resetModal();' href="#updateForm" role="button" class="btn-social btn-small pull-right" data-toggle="modal">
-				<i class="icon-edit icon-white"></i> <span><strong>수정</strong></span>
-			</a>
-			 
 			<!-- 모달 -->
 			<div class="modal fade" id="updateForm" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-						<h3 id="mTitle" style="text-align: center;">
+						<h3 id="mTitle" style="text-align: center; font-family: Nanum Gothic, serif;">
 						<!-- 제목 들어가는 부분 -->
 						</h3>
 				</div>
@@ -193,7 +224,6 @@
 								style="width: 250px; opacity: 0.9" onchange="showlist(this.value)"></select>
 					<div id="mContfile" style="width:100%;">
 					</div>
-					
 				</div>		
 				<div class="modal-footer" id="updatemodal"></div>			
 			</div>
@@ -211,22 +241,20 @@
 				</ul>
 			</div>
 		</div>
-	           
-		<!-- End Album list -->
 	</div>
     <!-- End Dogam -->
     
-<footer id="footer" style="opacity: 0.7; position: absolute; bottom: auto; width: 100%; background-color: black;">
+<!-- <footer id="footer" style="opacity: 0.7; position: absolute; bottom: 0; width: 100%; background-color: black;">
     <div class="container">
         <div class="row-fluid">
             <div class="span12" style="margin-top:-15px">
                 &copy; Bit58th 한잔해!!                
                 <a id="gototop" class="gototop pull-right" href="#"><i class="icon-angle-up"></i></a>
             </div>
-            <!--/Goto Top-->
+            /Goto Top
         </div>
     </div>
-</footer>
+</footer> -->
 
 <!--  Login form -->
 <div class="modal hide fade in" id="loginForm" aria-hidden="false">
@@ -270,10 +298,10 @@
 			async:false,
 			success:function(data){
 				for(var i= 0, len = data.length; i < len ; i++){
-					content+= "<li class='span4' id='card-3'><div class='thumbnail'>"
+					content+= "<li class='span4' id='card-3'><div class='thumbnail' align='center' >"
 					+ "<a href='/book/sample?bno=" + data[i].bno + "'><img src = '/han/file/regphoto/" + data[i].contfile + "' id='imgset'></a>"
 					+ "<div class='caption'>"
-					+ "<h3 style = 'text-align:center;'>" + data[i].title + "</h3>" 
+					+ "<h3 style = 'text-align:center; font-family: Nanum Gothic, serif;'>" + data[i].title + "</h3>" 
 					+"</div></div></li>";
 										
 				}
@@ -289,12 +317,12 @@
 			var target = $(".form-control");
 			var target1 = $("#delmodal");
 			var target2 = $("#updatemodal");
-			var content = "<option value=" + "'default'>도감선택란</option>";
-			var content1 ="<button class='btn btn-primary' onclick='deleteBook();'>삭제</button>";	
+			var content = "<option value=" + "'default' style='font-family: Nanum Gothic, serif;'>도감선택란</option>";
+			var content1 ="<button class='btn btn-primary' style='font-family: Nanum Gothic, serif;' onclick='deleteBook();'>삭제</button>";	
 			//var content2 ="<button class='btn btn-primary' onclick='updateBook();'>수정</button>";
 			$.getJSON(url, function (data) {			// 해당 url에 담겨져있는 Jsondata를 parameter값으로 받음.
 				$.each(data, function (key, val) {	// for each문을 돌려서 key값을 잡고 val값을 item 배열에 넣어줌.
-					content += "<option name=bno value=" + val.bno +">" + val.title + "</option>";
+					content += "<option name=bno value=" + val.bno +">" + "<p>" + val.title + "</p></option>";
 					
 				});
 					target.html(content);
@@ -314,7 +342,6 @@
 			}
 	
 			function reTable(){
-				console.log("data Start");
 				var i = 0;
 				var target = $(".thumbnails");
 				var content = "";
@@ -323,12 +350,12 @@
 					dataType:"json",
 					async:false,
 					success:function(data){
-				
 						for(var i= 0, len = data.length; i < len ; i++){
-							content+= "<li class='span4' id='card-3'><div class='thumbnail'>"
-							+ "<a href='/book/sample?bno=" + data[i].bno + "'><img src = '/han/file/regphoto/" + data[i].contfile + "'></a>"
+							content+= "<li class='span4' id='card-3'><div class='thumbnail' align='center' >"
+							+ "<a href='/book/sample?bno=" + data[i].bno + "'>"
+							+ "<img src = '/han/file/regphoto/" + data[i].contfile + "' id='imgset' border='3'></a>"
 							+ "<div class='caption'>"
-							+ "<h3 style = 'text-align:center;'>" + data[i].title + "</h3>" 
+							+ "<h3 style = 'text-align:center; font-family: Nanum Gothic, serif;'>" + data[i].title + "</h3>" 
 							+"</div></div></li>";
 												
 						}
@@ -356,11 +383,11 @@
 						concontfile += "<div id='modalInsertPicture'>" 
 						+"<label>사진:<img src = /han/file/regphoto/" + data.contfile + " style = 'width : 50%; height : 50%;'></label></div>"
 						+ "<form target='zero' id ='zerodata' action='/han/file/upload'  method='post' enctype='multipart/form-data'>"
-						+ "<label>제목:<input type='text' id='retitle' placeholder ='" + data.title + "' autofocus></label>"
+						+ "<label>제목:<input type='text' id='retitle' style='font-family: Nanum Gothic, serif;' placeholder ='" + data.title + "' autofocus></label>"
 						+ "<input type='file' name='file'><input type='hidden' name='title' value=" + data.title + ">"
 						+ "<input type='hidden' name=bno value=" + data.bno + ">"
 						+ "<input type='hidden' name=contfile value=" + data.contfile + ">"
-						+ "<input type='submit' value='사진수정'>"
+						+ "<input type='submit' style ='font-family: Nanum Gothic, serif;' value='사진수정'>"
 						+ "</form>"
 						+ "<iframe name='zero' width='0px' height='0px'></iframe>";
 						console.log(concontfile);
@@ -415,8 +442,8 @@
 					content += "<input id='getFileName' type='hidden' value='" + data.fileName + "'>"
 								+ "<image id='thumb' src='/han/file/regphoto/" + data.fileName + "'/></p>";
 					
-					conbtn += "<button type='button' class='btn btn-primary'" + "onclick='insertModal(\""
-					+ zero.title.value + "\",\"" + data.fileName + "\",\"" + zero.bno.value + "\")'>" + "수 정 </button>";			
+					conbtn += "<button type='button' style='font-family: Nanum Gothic, serif;' class='btn btn-primary'" + "onclick='insertModal(\""
+					+ zero.title.value + "\",\"" + data.fileName + "\",\"" + zero.bno.value + "\")'>" + "수 정</button>";			
 					console.log(content);
 					console.log(conbtn);
 					target.html(content);

@@ -14,7 +14,7 @@ public interface DiaryMapper {
 	@Select(" select rownum rn, dno, userid, title, cont, contfile, regdate, tag, rcount, ceil(cnt/3) cnt"
 			+ " from( select  /*+INDEX_desc(tbl_diary pk_diary)*/"
 			+ " rownum rn, dno, userid, title, cont, contfile, regdate, tag, rcount, count(dno) over() cnt"
-			+ " from tbl_diary where dno > 0)"
+			+ " from tbl_diary where dno > 0 and userid=#{userid})"
 			+ " where rn>(#{page}-1)*3 and rn<=(#{page}*3)")
 	public List<DiaryVO> readDiary(PageMaker pm);
 	

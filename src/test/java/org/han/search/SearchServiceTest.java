@@ -1,5 +1,7 @@
 package org.han.search;
 
+import java.util.ArrayList;
+
 import javax.inject.Inject;
 
 import org.apache.log4j.Logger;
@@ -30,6 +32,13 @@ public class SearchServiceTest {
 	
 	@Test
 	public void setContTest() {
-		logger.info(service.setCont(5));
+		String[] arr = new String[] {"옥수수","개나리"};
+		logger.info(service.setCont(arr));
+	}
+	
+	@Test
+	public void viewContTest() {
+		String[] arr = new String[] {"150","160"};
+		logger.info(service.contList(arr));
 	}
 }

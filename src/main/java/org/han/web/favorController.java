@@ -59,9 +59,6 @@ public class favorController {
 
 		for (Cookie cookie : cookies) {
 
-			System.out.println("getName: " + cookie.getName());
-			System.out.println("getValue: " + cookie.getValue());
-
 			if (cookie.getName().equals("login")) {
 				userid = cookie.getValue();
 			}
@@ -89,6 +86,26 @@ public class favorController {
 		
 		service.del(fno);
 		return "redirect:main";
+	}
+	
+	//addFavor from search result
+	@RequestMapping("/addFavor")
+	public @ResponseBody void addFavor(@RequestParam(value="cno" , defaultValue="") Integer cno, HttpServletRequest request){
+		
+		Cookie[] cookies = request.getCookies();
+		String userid = null;
+
+		for (Cookie cookie : cookies) {
+
+			if (cookie.getName().equals("login")) {
+				userid = cookie.getValue();
+			}
+		}
+		vo.setCno(cno);
+		vo.setUserid(userid);
+		
+		System.out.println(vo);
+		service.add(vo);
 	}
 	
 

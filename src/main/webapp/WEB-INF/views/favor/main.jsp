@@ -81,6 +81,7 @@
         margin-left:auto;
         margin-right:auto;
         }
+<<<<<<< HEAD
         #detailfont{
         font-size:15px;
         line-height:1.5em;
@@ -97,6 +98,10 @@
         
 
     </style>
+=======
+        
+     </style>
+>>>>>>> 162edd569ba7f9edd344e0eea67eef53678f7698
 </head>
 
 <body>
@@ -158,7 +163,7 @@
 		        </div>
 		        <!-- 즐겨찾기 항목 상세설명 -->
 		    
-		            <div class="span9" style="border: 3px solid antiquewhite; border-radius: 30px;" >
+		            <div id=falist class="span9" style="border: 3px solid antiquewhite; border-radius: 30px;" >
 		             
 		                    <div class="span12" >
 								<div class = "favortitle">

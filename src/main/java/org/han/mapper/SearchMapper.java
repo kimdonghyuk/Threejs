@@ -1,5 +1,6 @@
 package org.han.mapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
@@ -17,6 +18,11 @@ public interface SearchMapper {
 	@Select("select * from tbl_search where sno = #{sno}")
 	public SearchVO result(int sno);
 	
-	@Select("select cno, title from tbl_cont where sno = #{sno}")
-	public List<ContVO> setCont(int sno);
+	//@Select("select cno, title from tbl_cont where sno = #{sno}")
+	public List<ContVO> setCont(@Param("keySet") String[] keySet);
+	
+	public List<ContVO> contList(@Param("cnoSet") String[] cnoSet);
+	
+	@Select("select cno,title,cont,contfile,cate from tbl_cont where cno = #{cno}")
+	public ContVO viewCont(int cno);
 }

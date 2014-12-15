@@ -1,5 +1,6 @@
 package org.han.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -23,7 +24,15 @@ public class SearchService {
 		return mapper.result(sno);
 	}
 	
-	public List<ContVO> setCont(int sno){
-		return mapper.setCont(sno);
+	public List<ContVO> setCont(String[] keySet){
+		return mapper.setCont(keySet);
+	}
+	
+	public List<ContVO> contList(String[] cnoSet){
+		return mapper.contList(cnoSet);
+	}
+	
+	public ContVO viewCont(int cno){
+		return mapper.viewCont(cno);
 	}
 }

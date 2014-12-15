@@ -28,6 +28,7 @@
     <link rel="apple-touch-icon-precomposed" href="/resources/images/ico/apple-touch-icon-57-precomposed.png">
     
     <style>
+    	@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
         @media screen and (max-width: 979px){
             body{
                 padding-top: 0px;
@@ -39,17 +40,47 @@
     	width : 119px;	
     	text-align : center;
     	font-weight: bold;
-    	opacity : 0.8; 
+    	opacity : 0.8;
     	}
     	
-    	body {
-		background-image: url("/resources/book/background/book_main_background.png");
-    	background-repeat : no repeat;
-    	background-size : cover;
-    	height:600px;
-	}
-    	    
-        
+    	html {
+			background-image: url("/resources/book/background/book_Background.jpg");
+			background-position: center center;
+		    background-repeat: no-repeat;
+		    background-attachment: fixed;
+		    background-size: cover;
+			/* -webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover; */
+		}
+		
+		body{
+			background-image: url("/resources/book/background/book_Background.jpg");
+	    	background-position: center center;
+		    background-repeat: no-repeat;
+		    background-attachment: fixed;
+		    background-size: cover;
+		    font-family: 'Nanum Gothic', serif;
+		}
+		
+				
+		#btnArea{
+		margin:30px;
+		font-size:25px;
+		}
+	
+		.aqua {
+			background: #F1FA50;
+			font-size: 12px;
+			color: #000000;
+			text-align: center;
+			border: solid 1px #A2C5D5;
+			background: -moz-linear-gradient(0%, 100%, 90deg, #F1F789, #ffffff);
+			background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffffff),
+				to(#F1F789));
+		}
+	
     </style>
     
 </head>
@@ -95,17 +126,24 @@
 	</section>	
 	
 	<!-- / .title -->
-    <div style="height: 40px; padding: 5px;" >
-        <a class="btn-success btn-large pull-right" href="/book/regphoto">사진 올리기</a>
-        <a class="btn-success btn-large pull-right" href="/book/regist">새 도감 만들기</a>
-    </div>
+	    <div class="sample" id="btnArea" style="padding:15px;" >
+	       <div class="btnSelect"><a href="/book/main" role="button" class="btn-social pull-right">
+				<p><i class="icon-list icon-white"></i><strong> 도감 목록 &nbsp &nbsp &nbsp </strong></p>
+			</a></div>
+			
+			<div class="btnSelect"><a href="/book/regist" role="button" class="btn-social pull-right">
+				<p><i class="icon-book icon-white"></i><strong> 도감 등록 &nbsp &nbsp &nbsp </strong></p>
+			</a></div>
+	    </div>
     
 	<!--사진 등록꾸민곳 -->
 	<section id="about-us" class="container main">
 	    <div class="row-fluid">
-	        <div class="span8 offset2" style="border: solid; border-color: blue; opacity: 0.8;">
+	        <div class="span8 offset2" style="border: solid; border-color: white;">
 	            <div class="blog" style="opacity: 1;">
-	            	
+	            	<label><strong>  &nbsp &nbsp 도감을 선택해주세요. </strong></label>
+          			<select id="selectBook" style="width: 250px; opacity: 0.9"></select>
+          			
 	            	<form target="zero" action="/han/file/upload" method="post" enctype="multipart/form-data" >
 					<input type='file' name='file' value='파일 추가'>
 					<input type='submit' value="UPLOAD">
@@ -133,26 +171,11 @@
 	                
 	                <!-- End Blog Item -->
 	                
-	                <label> 도감을 선택해주세요. </label>
-						<select id="selectBook" style="width: 250px; opacity: 0.9"></select>
-	                
-	                <div class="btnArea"><button class='pull-right' onclick='regImage()'> 등 록 </button></div>
+	                <div class="btnArea"><button class='aqua btn-large pull-right button-radius' style="position:absolute; right:10%; bottom:auto;" onclick='regImage()'><strong> 등 록 </strong></button></div>
 	            </div>
 	        </div>
 	    </div>
 	</section>
-
-	<footer id="footer" style="opacity: 0.7; position: absolute; bottom:0px; width: 100%; background-color: black;">
-	    <div class="container">
-				<div class="span12" style="margin-top:-15px">
-	                &copy; Bit58th 한잔해!!
-	            </div>
-	            <!--/Goto Top-->
-	        </div>
-	    </div>
-	</footer>
-
-
 <!--.......... Login form ................................................................................................-->
 	<div class="modal hide fade in" id="loginForm" aria-hidden="false">
 	    <div class="modal-header">
@@ -192,7 +215,6 @@
 		$.getJSON(url, function (data) {			// 해당 url에 담겨져있는 Jsondata를 parameter값으로 받음.
 			$.each(data, function (key, val) {	// for each문을 돌려서 key값을 잡고 val값을 item 배열에 넣어줌.
 				content += "<option name=bno value=" + val.bno +">" + val.title + "</option>";
-				
 			});
 				target.html(content);
 			});
@@ -214,17 +236,17 @@
 			var content = "";
 			
 			content += "<div class='span4' style='height:230px;'>"
-						+ "<div><input type='text' style='width:165px; heigth:30px; 'id='createTitle_" + updateCount + "' placeholder='제목'>"
+						+ "<div><input type='textarea' style='width:155px; heigth:15px; 'id='createTitle_" + updateCount + "' placeholder='제목'>"
 						+ "<input id='getFileName_" + updateCount + "' type='hidden' value='" + data.fileName + "'>"
-						+ "<image class='thumb' style='width:200px;'  id='createImg_" + updateCount + "' src='/han/file/regphoto/"+data.fileName+"'/></p>"
-						+ "<div style='margin:auto;'><input type='text' style='width:165px; heigth:30px;'  id='createCont_" + updateCount + "' placeholder='내용'><div></div>";
+						+ "<image class='thumb' style='width:150px;'  id='createImg_" + updateCount + "' src='/han/file/regphoto/"+data.fileName+"'/></p>"
+						+ "<div style='margin:auto;'><input type='textarea' style='width:155px; heigth:15px;'  id='createCont_" + updateCount + "' placeholder='내용'><div></div>";
 			
 			target.append(content);
-			updateCount++;	
+			updateCount++;
 		}else{
 			alert("이미지 파일을 올려주세요.(jpg,gif,png 지원)");
 			return;
-		}	
+		}
 }
  		
 	function regImage(){

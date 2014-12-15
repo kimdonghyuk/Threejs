@@ -1,5 +1,7 @@
 package org.han.search;
 
+import java.util.ArrayList;
+
 import javax.inject.Inject;
 
 import org.apache.log4j.Logger;
@@ -21,6 +23,18 @@ public class SearchMapperTest {
 	@Test
 	public void setResultTest() {
 		logger.info(mapper.setResult("p1a1a1",1));
+	}
+	
+	@Test
+	public void setCont() {
+		String[] arr = new String[] {"옥수수","개나리"};
+		logger.info(mapper.setCont(arr));
+	}
+	
+	@Test
+	public void viewCont() {
+		String[] arr = new String[] {"150","162","190"};
+		logger.info(mapper.contList(arr));
 	}
 
 }
