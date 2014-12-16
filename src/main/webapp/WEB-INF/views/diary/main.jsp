@@ -176,7 +176,7 @@
 							<p>${table.cont}</p>
 							</p>
 						</div>
-						<div id="diaryReply">
+						<div id="diaryReply_${table.dno}">
 							<c:choose>
 								<c:when test="${table.rcount==0}">
 									<a class="btn btn-link" id="replyView"
@@ -279,7 +279,7 @@
 			var titleTarget = document.getElementById('diaryTitle_' + dno);
 			var tagTarget = document.getElementById('diaryTag_' + dno);
 			var contTarget = document.getElementById('diaryCont_' + dno);
-			var btnTarget = document.getElementById('reply_' + dno);
+ 			var btnTarget = document.getElementById('diaryReply_' + dno);
 			
 			// content 선언부분
 			var fileurl = "/han/file/regphoto/";
@@ -298,7 +298,7 @@
 							+ "<iframe name='zero' width='0' height='0'></iframe>"
 							+ "<input type='textarea' placeholder='" + cont + "' id='insertCont'></textarea>";						
 			btnContent += "<button type='button' class='pull-right' style='border-radius: 5px; background-color:#EEEDC0; opacity:0.8;'" 
-							+ "onclick='insertComplete(" + dno + ",\"" + contfile + "\")'> 완 료 </button>";
+							+ "onclick='insertDiaryComplete(" + dno + ",\"" + contfile + "\")'> 완 료 </button>";
 							
 			// innerHTML 밀어넣어 주는 부분
 			titleTarget.innerHTML = titleContent;
@@ -326,7 +326,7 @@
 		}
 	}
 	
-	function insertComplete(num, mfileName){
+	function insertDiaryComplete(num, mfileName){
 		
 		var insertTitle = document.getElementById('checkInsert').value;
 		var insertCont = document.getElementById('insertCont').value;

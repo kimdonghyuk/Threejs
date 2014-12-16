@@ -117,7 +117,7 @@
 	
 	#btnArea{
 		margin:30px;
-		font-size:25px;
+		font-size:12px;
 	}
 	
 	p, strong, ul, li, label {
@@ -168,27 +168,35 @@
 	<!-- Dogam UI Set -->
 	<div id="back" style="height: 600px;">    
 	    <!-- btn Set -->
-	    <div class="sample" id="btnArea" style="padding:15px;" >
-	    	<div class="btnSelect"><a onclick='resetModal();' href="#updateForm" role="button" class="btn-social pull-right" data-toggle="modal">
-				<p><i class="icon-edit icon-white"></i> <strong>수 정 &nbsp</strong></p>  
+	    	<div class="btnSelect" style='padding:15px;'>
+	    		
+	    		<a onclick='resetModal();' href="#updateForm" role="button" class="btn-social" data-toggle="modal">
+				<i class="icon-edit icon-white"></i> <strong>수 정 &nbsp &nbsp &nbsp</strong></a>
+				
+				<a href="#testForm" role="button" class="btn-social pull-center" data-toggle="modal">
+				<i class="icon-trash icon-white"></i> <strong>삭 제 &nbsp &nbsp &nbsp</strong></a>
+				
+				<a href="/book/regphoto" role="button" class="btn-social pull-center">
+				<i class="icon-camera icon-white"></i><strong> 사진 등록 &nbsp &nbsp &nbsp </strong></a>
+				
+				<a href="/book/regist" role="button" class="btn-social pull-center">
+				<i class="icon-book icon-white"></i><strong> 도감 등록 &nbsp &nbsp &nbsp </strong>	</a>
+				
+				</div>
+			
+<!-- 			<div class="btnSelect"><a href="#testForm" role="button" class="btn-social pull-center" data-toggle="modal">
+				<i class="icon-trash icon-white"></i> <strong>삭 제 &nbsp &nbsp &nbsp</strong>
 			</a></div>
 			
-			<div class="btnSelect"><a href="#testForm" role="button" class="btn-social pull-right" data-toggle="modal">
-				<p><i class="icon-trash icon-white"></i> <strong>삭 제 &nbsp &nbsp &nbsp</strong></p>
+			<div class="btnSelect"><a href="/book/regphoto" role="button" class="btn-social pull-center">
+				<i class="icon-camera icon-white"></i><strong> 사진 등록 &nbsp &nbsp &nbsp </strong>
 			</a></div>
 			
-			<div class="btnSelect"><a href="/book/regphoto" role="button" class="btn-social pull-right">
-				<p><i class="icon-camera icon-white"></i><strong> 사진 등록 &nbsp &nbsp &nbsp </strong></p>
-			</a></div>
-			
-			<div class="btnSelect"><a href="/book/regist" role="button" class="btn-social pull-right">
-				<p><i class="icon-book icon-white"></i><strong> 도감 등록 &nbsp &nbsp &nbsp </strong></p>
-			</a></div>
-	    </div>
+			<div class="btnSelect"><a href="/book/regist" role="button" class="btn-social pull-center">
+				<i class="icon-book icon-white"></i><strong> 도감 등록 &nbsp &nbsp &nbsp </strong>
+			</a></div> -->
 
-		<div class="sample span12" style="height: 30px; padding: 5px;">
-			
-
+		<div class="sample span12" style="height: 10px; padding: 5px;">
 			 
 			<!-- 모달 -->
 			<div class="modal fade" id="testForm" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
