@@ -28,60 +28,59 @@
     <link rel="apple-touch-icon-precomposed" href="/resources/images/ico/apple-touch-icon-57-precomposed.png">
     
     <style>
-    	@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
-        @media screen and (max-width: 979px){
-            body{
-                padding-top: 0px;
-            }
-        }
-        
-        .btn-success{    	
-    	margin : 5px;
-    	width : 119px;	
-    	text-align : center;
-    	font-weight: bold;
-    	opacity : 0.8;
-    	}
-    	
-    	html {
-			background-image: url("/resources/book/background/book_Background.jpg");
-			background-position: center center;
-		    background-repeat: no-repeat;
-		    background-attachment: fixed;
-		    background-size: cover;
-			/* -webkit-background-size: cover;
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+@media screen and (max-width: 979px) {
+	body {
+		padding-top: 0px;
+	}
+}
+
+.btn-success {
+	margin: 5px;
+	width: 119px;
+	text-align: center;
+	font-weight: bold;
+	opacity: 0.8;
+}
+
+html {
+	background-image: url("/resources/book/background/book_Background.jpg");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	/* -webkit-background-size: cover;
 			-moz-background-size: cover;
 			-o-background-size: cover;
 			background-size: cover; */
-		}
-		
-		body{
-			background-image: url("/resources/book/background/book_Background.jpg");
-	    	background-position: center center;
-		    background-repeat: no-repeat;
-		    background-attachment: fixed;
-		    background-size: cover;
-		    font-family: 'Nanum Gothic', serif;
-		}
-		
-				
-		#btnArea{
-		margin:30px;
-		font-size:25px;
-		}
-	
-		.aqua {
-			background: #F1FA50;
-			font-size: 12px;
-			color: #000000;
-			text-align: center;
-			border: solid 1px #A2C5D5;
-			background: -moz-linear-gradient(0%, 100%, 90deg, #F1F789, #ffffff);
-			background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffffff),
-				to(#F1F789));
-		}
-	
-    </style>
+}
+
+body {
+	background-image: url("/resources/book/background/book_Background.jpg");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	font-family: 'Nanum Gothic', serif;
+}
+
+#btnArea {
+	font-size: 25px;
+	padding:30px;
+}
+
+.aqua {
+	background: #F1FA50;
+	font-size: 12px;
+	color: #000000;
+	text-align: center;
+	border: solid 1px #A2C5D5;
+	background: -moz-linear-gradient(0%, 100%, 90deg, #F1F789, #ffffff);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffffff),
+		to(#F1F789));
+}
+</style>
     
 </head>
 
@@ -126,7 +125,7 @@
 	</section>	
 	
 	<!-- / .title -->
-	    <div class="sample" id="btnArea" style="padding:15px;" >
+		    <div class="sample" id="btnArea" style="padding:15px;" >
 	       <div class="btnSelect"><a href="/book/main" role="button" class="btn-social pull-right">
 				<p><i class="icon-list icon-white"></i><strong> 도감 목록 &nbsp &nbsp &nbsp </strong></p>
 			</a></div>
@@ -135,6 +134,15 @@
 				<p><i class="icon-book icon-white"></i><strong> 도감 등록 &nbsp &nbsp &nbsp </strong></p>
 			</a></div>
 	    </div>
+<!-- 	    <div class="sample" id="btnArea" style="padding:15px;" >
+	       <div class="btnSelect"><a href="/book/main" role="button" class="btn-social pull-center">
+				<i class="icon-list icon-white"></i><strong> 도감 목록 &nbsp &nbsp &nbsp </strong>	</a>
+			
+				<a href="/book/regist" role="button" class="btn-social pull-center">
+				<i class="icon-book icon-white"></i><strong> 도감 등록 &nbsp &nbsp &nbsp </strong>	</a>
+				
+			</div>
+	    </div> -->
     
 	<!--사진 등록꾸민곳 -->
 	<section id="about-us" class="container main">
@@ -224,7 +232,7 @@
  		console.log(data);
  		console.log("updateCount  : " + updateCount);
  		
- 		if(updateCount == 6){
+ 		if(updateCount == 7){
  			alert("그림 파일은 최대 5개까지 등록 가능합니다.");
  			return;
  		}
@@ -241,7 +249,7 @@
 						+ "<image class='thumb' style='width:150px;'  id='createImg_" + updateCount + "' src='/han/file/regphoto/"+data.fileName+"'/></p>"
 						+ "<div style='margin:auto;'><input type='textarea' style='width:155px; heigth:15px;'  id='createCont_" + updateCount + "' placeholder='내용'><div></div>";
 			
-			target.append(content);
+			target.append(content);l
 			updateCount++;
 		}else{
 			alert("이미지 파일을 올려주세요.(jpg,gif,png 지원)");

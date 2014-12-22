@@ -216,7 +216,7 @@
 <!-- <div id="back"> -->
     <div class="question text-center">질문이 들어갈 부분</div>
     <!--tagClout-->
-    <div id="ts1" class="span8 offset4">질문 배열이 들어갈 부분. tagCloud</div>
+    <div id="ts1" class="span8 offset3">질문 배열이 들어갈 부분. tagCloud</div>
     <!-- <div id="ts1">질문 배열이 들어갈 부분. tagCloud</div> -->
 <!-- </div> -->
 

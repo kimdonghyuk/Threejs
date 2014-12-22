@@ -66,7 +66,6 @@
         }
 
 		#btnArea{
-		margin:30px;
 		font-size:25px;
 		}
 		
@@ -83,6 +82,22 @@
 		
 		li {
 			list-style: none;
+		}
+		
+ 		#btnArea{
+		font-size:25px;
+	padding:30px;
+		} 
+		
+		.aqua {
+			background: #F1FA50;
+			font-size: 12px;
+			color: #000000;
+			text-align: center;
+			border: solid 1px #A2C5D5;
+			background: -moz-linear-gradient(0%, 100%, 90deg, #F1F789, #ffffff);
+			background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffffff),
+				to(#F1F789));
 		}
 		
 		
@@ -130,11 +145,6 @@
     </section>
 	
 <div id="back" style="height:635px;">	
-	<!-- / .title -->
-    <div style="height: 40px; padding: 5px;" >
-        <a class="btn-success btn-large pull-right" href="/book/regphoto" style='font-family: Nanum Gothic, serif;'>사진 올리기</a>
-        <a class="btn-success btn-large pull-right" href="/book/regist" style='font-family: Nanum Gothic, serif;'>새 도감 만들기</a>
-    </div>
 
 	    <div class="sample" id="btnArea" style="padding:15px;" >
 			<div class="btnSelect"><a href="/book/main" role="button" class="btn-social pull-right">
@@ -146,6 +156,14 @@
 			</a></div>
 	    </div>
 
+<!-- 	    <div class="sample" id="btnArea" style="padding:15px;" >
+			<div class="btnSelect"><a href="/book/main" role="button" class="btn-social pull-center">
+				<i class="icon-list icon-white"></i><strong> 도감 목록 &nbsp &nbsp &nbsp </strong>
+			</a>
+			<a href="/book/regphoto" role="button" class="btn-social pull-center">
+				<i class="icon-camera icon-white"></i><strong> 사진 등록 &nbsp &nbsp &nbsp </strong></a></div>
+	    </div>
+ -->
 	<!--도감 등록꾸민곳 -->
 	<section id="about-us" class="container main">
     <div class="row-fluid">
@@ -171,7 +189,7 @@
                     <p class="insertImg"><p class="help-block">선택된 사진이 없어요...</p> -->
                     <!-- 본문 들어갈 부분 -->
                     <ul class="filename"></ul>
-                    <button type="submit" style='font-family: Nanum Gothic, serif;' class="btn btn-primary btn-large pull-right">도감 등록</button>
+                    <button type="submit" style='font-family: Nanum Gothic, serif;' class="aqua btn-large pull-right button-radius">도감 등록</button>
                 </form>
                 <!-- End Blog Item -->
                 <div class="gap"></div>
