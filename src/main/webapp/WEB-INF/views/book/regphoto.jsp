@@ -249,7 +249,7 @@ body {
 						+ "<image class='thumb' style='width:150px;'  id='createImg_" + updateCount + "' src='/han/file/regphoto/"+data.fileName+"'/></p>"
 						+ "<div style='margin:auto;'><input type='textarea' style='width:155px; heigth:15px;'  id='createCont_" + updateCount + "' placeholder='내용'><div></div>";
 			
-			target.append(content);l
+			target.append(content);
 			updateCount++;
 		}else{
 			alert("이미지 파일을 올려주세요.(jpg,gif,png 지원)");

@@ -81,10 +81,7 @@
         margin-left:auto;
         margin-right:auto;
         }
-<<<<<<< HEAD
-		
-=======
->>>>>>> a27dc2fcd8cfa0a789d8bf3785ede5b8cff649b9
+        
         #detailfont{
         font-size:15px;
         line-height:1.5em;
@@ -98,12 +95,9 @@
         .othertext{
         font-size:15px;
         }
-<<<<<<< HEAD
         </style>
-=======
         
      </style>
->>>>>>> a27dc2fcd8cfa0a789d8bf3785ede5b8cff649b9
 </head>
 
 <body>
